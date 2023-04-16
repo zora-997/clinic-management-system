@@ -1,7 +1,7 @@
 import React from 'react'
 import BottomSideBar from '../sidebar/bottomSidebat/BottomSideBar';
 import TopSideBar from './topSideBar/TopSideBar';
-import doctor from "../../../img/image/twoDoctor.svg";
+//import doctor from "../../../img/image/twoDoctor.svg";
 
 const SideBar = () => {
     return (
@@ -10,9 +10,9 @@ const SideBar = () => {
                 <TopSideBar />
                 <BottomSideBar />
             </div>
-            <div className='h-full'>
+            {/* <div className='h-full'>
                 <img src={doctor} alt='doctor card' className='ml-3 w-[200px]  h-full' />
-            </div>
+            </div> */}
         </aside>
 
 
