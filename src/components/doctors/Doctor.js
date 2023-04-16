@@ -14,6 +14,11 @@ const Doctors = () => {
 
     const [show, setShow] = useState(false);
     const [addshow, setAddShow] = useState(false);
+
+    // sort la gawra bo bchuk wa ba pechawa nawa la bchuk bo gawra
+    let sort = doctorList.sort((a, b) => b.doctor_percentage - a.doctor_percentage);
+    console.log(sort);
+
     return (
 
         <div className=" flex flex-col  items-center  w-full select-none">
