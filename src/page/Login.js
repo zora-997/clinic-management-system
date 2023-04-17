@@ -23,10 +23,11 @@ const Login = () => {
 
         if (username === '')
             errors.username = 'enter your username';
-        if (username !== '') {
+        else if (username !== '') {
             let name = adminList.map(a => a.admin_name === username && a.admin_name).filter(f => f !== false)
             console.log(name[0] + " name");
             if (!name[0]) {
+                errors.incorrectUsername = "incorrectUsername"
                 errors.username = 'incorrect username';
             }
 
@@ -34,6 +35,7 @@ const Login = () => {
 
         if (password === '')
             errors.password = 'enter your password';
+
 
         console.log(errors.username + " useernmae");
         return Object.keys(errors).length === 0 ? null : errors;
@@ -85,7 +87,7 @@ const Login = () => {
                                 className={`${usernameerror === 'enter your username' && username === "" ? 'border-red-500' : 'border-sky-500'} w-full placeholder-slate-200 pl-12   mb-8 py-1.5 px-1 bg-white  rounded-xl focus:ring-0 focus:border-sky-500 border focus:outline-none shadow-sm shadow-sky-100 peer`} />
                             <TiUser size={25} className={` absolute top-2 ml-2 pointer-events-none text-sky-400 border-sky-300`} />
 
-                            <p className='text-red-500 absolute top-10 ml-2'>{username === "" && usernameerror}</p>
+                            <p className='text-red-500 absolute top-10 ml-2'>{username === "" && usernameerror || incorrectUsername === "incorrectUsername" && usernameerror}</p>
                         </div>
 
                         <div className='relative w-full'>
