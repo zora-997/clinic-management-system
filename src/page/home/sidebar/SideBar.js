@@ -5,7 +5,7 @@ import TopSideBar from './topSideBar/TopSideBar';
 
 const SideBar = () => {
     return (
-        <aside className={`fixed grid gap-y-24 z-20 shadow-sm shadow-black/10  font-body h-screen w-56`}>
+        <aside className={`fixed grid gap-y-24 z-20 shadow-sm shadow-gray-100 bg-white  font-body h-screen w-56`}>
             <div>
                 <TopSideBar />
                 <BottomSideBar />
