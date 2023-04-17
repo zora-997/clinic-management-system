@@ -1,7 +1,5 @@
 import React, { useState, useContext } from 'react'
 import GlobalContext from "../../contexts/createContext/context";
-import doctor from "../../../img/image/twoDoctor.svg";
-import side from "../../../img/image/kch22.png";
 import LineChart from '../chart/LineChart';
 
 
