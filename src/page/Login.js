@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import login from "../img/image/login.gif";
 //import { RxLockClosed, RxPerson } from "react-icons/rx";
@@ -13,31 +13,41 @@ const Login = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [incorrectUsername, setIncorrectUsername] = useState(false);
     const [usernameerror, setUsernameerror] = useState("");
     const [passerror, setPasserror] = useState("");
+    const [show, setShow] = useState(false);
+    const [showPass, setShowPass] = useState(false);
 
 
     const validate = () => {
         const errors = {};
 
-
         if (username === '') {
-            errors.username = 'username Rquired';
+            errors.username = 'username rquired';
         }
         else if (username !== "rasan") {
-            errors.incorrect = 'incorrect username'
+            console.log(username);
+            setShow(true)
+            errors.username = 'incorrect username'
         }
         if (password === '') {
-            errors.password = 'password Required';
+            errors.password = 'password rquired';
+        }
+        else if (password !== "12345") {
+            console.log(password);
+            setShowPass(true)
+            errors.password = 'incorrect password'
         }
 
-
-
-        console.log(errors.username + " useernmae");
         return Object.keys(errors).length === 0 ? null : errors;
     }
 
+    useEffect(() => {
+        setShow(false)
+        setShowPass(false)
+    }, [!username, !password])
+
+    console.log('username ' + username);
 
     const handelLogin = (e) => {
         e.preventDefault();
@@ -45,13 +55,12 @@ const Login = () => {
         const errors = validate();
 
         if (errors) {
-            setIncorrectUsername(errors.incorrect)
             setUsernameerror(errors.username);
             setPasserror(errors.password);
         } else {
             // const adminId = adminList.map(admin => admin.admin_name === username && admin.admin_id).filter(f => f !== false);
             // console.log(adminId[0]);
-            setIncorrectUsername("")
+
             setUsernameerror("");
             setPasserror("");
             history("/dashbord")
@@ -81,19 +90,23 @@ const Login = () => {
                     <form onSubmit={handelLogin}>
                         <div className='relative w-full'>
                             <input type='text' onChange={(e) => setUsername(e.target.value)} placeholder='username'
-                                className={`${usernameerror === 'enter your username' && username === "" ? 'border-red-500' : 'border-sky-500'} w-full placeholder-slate-200 pl-12   mb-8 py-1.5 px-1 bg-white  rounded-xl focus:ring-0 focus:border-sky-500 border focus:outline-none shadow-sm shadow-sky-100 peer`} />
+                                className={`${(usernameerror === 'username rquired' && username === '') || (usernameerror === 'incorrect username' && username !== '') ? 'border-red-500' : 'border-sky-500'}
+                                     w-full placeholder-slate-200 pl-12   mb-8 py-1.5 px-1 bg-white  rounded-xl focus:ring-0 focus:border-sky-500 border focus:outline-none shadow-sm shadow-sky-100 peer`} />
                             <TiUser size={25} className={` absolute top-2 ml-2 pointer-events-none text-sky-400 border-sky-300`} />
 
                             {username === '' && <p className='text-red-500 absolute top-10 ml-2'>{usernameerror}</p>}
-                            {username !== '' && username === '' && < p className='text-red-500 absolute top-10 ml-2'>{incorrectUsername}</p>}
+                            {show ? <p className='text-red-500 absolute top-10 ml-2'>{usernameerror}</p> : null}
+
+
 
                         </div>
 
                         <div className='relative w-full'>
                             <input type='password' onChange={(e) => setPassword(e.target.value)} placeholder='password'
-                                className={`${passerror === 'enter your password' && password === "" ? 'border-red-500' : 'border-sky-500'} w-full placeholder-slate-200 pl-12  mb-8 py-1.5 px-1 bg-white  rounded-xl focus:ring-0 border focus:border-sky-500 focus:outline-none shadow-sm shadow-sky-100`} />
+                                className={`${(passerror === 'password rquired' && password === "") || (passerror === 'incorrect password' && password !== '') ? 'border-red-500' : 'border-sky-500'} w-full placeholder-slate-200 pl-12  mb-8 py-1.5 px-1 bg-white  rounded-xl focus:ring-0 border focus:border-sky-500 focus:outline-none shadow-sm shadow-sky-100`} />
                             <TiLockClosed size={23} className=' absolute top-2 ml-2 pointer-events-none text-sky-400' />
-                            <p className='text-red-500 absolute top-10 ml-2'>{!password && passerror}</p>
+                            {password === '' && <p className='text-red-500 absolute top-10 ml-2'>{passerror}</p>}
+                            {showPass ? <p className='text-red-500 absolute top-10 ml-2'>{passerror}</p> : null}
                         </div>
 
                         <button type='submit' className='py-1 w-full shadow-md rounded-xl text-white text-xl text-center bg-gradient-to-r from-sky-400 via-sky-300 to-slate-50 border-sky-200 border-r-2 ' > Login</button>
