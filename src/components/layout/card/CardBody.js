@@ -16,7 +16,7 @@ const CardBody = () => {
         <div className='mt-1 grid grid-cols-4 w-full  '>
 
             <div style={{ backgroundColor: '#0171FE' }}
-                className='pl-5 rounded-3xl  w-[251px] h-[120px] flex items-center justify-start  
+                className='pl-5 rounded-2xl  w-[251px] h-[120px] flex items-center justify-start  
                 relative  py-3 overflow-hidden '>
                 <div className='bg-white rounded-full'>
                     {/* <FaUsers style={{ color: '#0171FE' }} size={25} className=" relative  transition-colors duration-500 ease-in-out" /> */}
@@ -40,7 +40,7 @@ const CardBody = () => {
 
             {/** card 3 */}
             <div style={{ backgroundColor: '#04D5C7' }}
-                className='  pl-5 rounded-3xl  w-[251px] h-[120px] flex items-center justify-start i 
+                className='  pl-5 rounded-2xl  w-[251px] h-[120px] flex items-center justify-start i 
                 relative py-3 overflow-hidden'>
                 <div className='bg-white rounded-full p-3'>
                     <FaUser style={{ color: '#04D5C7' }} size={25} className=" relative  transition-colors duration-500 ease-in-out" />
@@ -60,7 +60,7 @@ const CardBody = () => {
 
             {/** card 2 */}
             <div style={{ backgroundColor: '#9284F7' }}
-                className='  pl-5 rounded-3xl  w-[251px] h-[120px] flex items-center justify-start i 
+                className='  pl-5 rounded-2xl  w-[251px] h-[120px] flex items-center justify-start i 
                 relative py-3 overflow-hidden'>
                 <div className='bg-white rounded-full p-3'>
                     <BsFillHeartPulseFill style={{ color: '#9284F7' }} size={25} className=" relative  transition-colors duration-500 ease-in-out" />
@@ -82,7 +82,7 @@ const CardBody = () => {
 
             {/** card 4 */}
             <div style={{ backgroundColor: '#FF996C' }}
-                className='  pl-5 rounded-3xl  w-[251px] h-[120px] flex items-center justify-start i 
+                className='  pl-5 rounded-2xl  w-[251px] h-[120px] flex items-center justify-start i 
                 relative py-3 overflow-hidden'>
                 <div className='bg-white rounded-full p-3'>
                     <img src={report} alt="no doctor" />

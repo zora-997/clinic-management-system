@@ -10,7 +10,7 @@ const Header = () => {
 
     return (
         // fixed bka headerka awaste
-        <div className=' flex justify-end w-full h-16  select-none'>
+        <div className=' flex justify-end w-full h-16 select-none'>
             <div className={`h-16  w-[83.6%] `}>
                 <div className={`flex pt-4 justify-between items-end `}>
                     <span className={`font-medium text-2xl text-gray-600 capitalize  ml-8`}> {location.pathname.slice(1)} </span>
@@ -25,7 +25,7 @@ const Header = () => {
 
                     {/** log out buuton */}
                     {location.pathname === "/dashbord" &&
-                        <Link to="/login" className="mr-12 relative rounded-xl px-5 py-1  overflow-hidden group text-red-400   hover:bg-gradient-to-r hover:from-red-300 hover:to-red-300 hover:text-white transition-colors  ease-in duration-300">
+                        <Link to="/login" className="mr-12 relative rounded-md px-5 py-1  overflow-hidden group text-red-400   hover:bg-gradient-to-r hover:from-red-300 hover:to-red-300 hover:text-white transition-colors  ease-in duration-300">
                             <span className="absolute right-0 w-14 h-36 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
                             <span className="relative">Log Out</span>
                         </Link>

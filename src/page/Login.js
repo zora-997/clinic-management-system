@@ -13,7 +13,7 @@ const Login = () => {
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [incorrectUsername, setIncorrectUsername] = useState("");
+    const [incorrectUsername, setIncorrectUsername] = useState(false);
     const [usernameerror, setUsernameerror] = useState("");
     const [passerror, setPasserror] = useState("");
 
@@ -21,20 +21,17 @@ const Login = () => {
     const validate = () => {
         const errors = {};
 
-        if (username === '')
-            errors.username = 'enter your username';
-        else if (username !== '') {
-            let name = adminList.map(a => a.admin_name === username && a.admin_name).filter(f => f !== false)
-            console.log(name[0] + " name");
-            if (!name[0]) {
-                errors.incorrectUsername = "incorrectUsername"
-                errors.username = 'incorrect username';
-            }
 
+        if (username === '') {
+            errors.username = 'username Rquired';
+        }
+        else if (username !== "rasan") {
+            errors.incorrect = 'incorrect username'
+        }
+        if (password === '') {
+            errors.password = 'password Required';
         }
 
-        if (password === '')
-            errors.password = 'enter your password';
 
 
         console.log(errors.username + " useernmae");
@@ -48,7 +45,7 @@ const Login = () => {
         const errors = validate();
 
         if (errors) {
-            setIncorrectUsername(errors.incorrectUsername)
+            setIncorrectUsername(errors.incorrect)
             setUsernameerror(errors.username);
             setPasserror(errors.password);
         } else {
@@ -87,14 +84,16 @@ const Login = () => {
                                 className={`${usernameerror === 'enter your username' && username === "" ? 'border-red-500' : 'border-sky-500'} w-full placeholder-slate-200 pl-12   mb-8 py-1.5 px-1 bg-white  rounded-xl focus:ring-0 focus:border-sky-500 border focus:outline-none shadow-sm shadow-sky-100 peer`} />
                             <TiUser size={25} className={` absolute top-2 ml-2 pointer-events-none text-sky-400 border-sky-300`} />
 
-                            <p className='text-red-500 absolute top-10 ml-2'>{username === "" && usernameerror || incorrectUsername === "incorrectUsername" && usernameerror}</p>
+                            {username === '' && <p className='text-red-500 absolute top-10 ml-2'>{usernameerror}</p>}
+                            {username !== '' && username === '' && < p className='text-red-500 absolute top-10 ml-2'>{incorrectUsername}</p>}
+
                         </div>
 
                         <div className='relative w-full'>
                             <input type='password' onChange={(e) => setPassword(e.target.value)} placeholder='password'
                                 className={`${passerror === 'enter your password' && password === "" ? 'border-red-500' : 'border-sky-500'} w-full placeholder-slate-200 pl-12  mb-8 py-1.5 px-1 bg-white  rounded-xl focus:ring-0 border focus:border-sky-500 focus:outline-none shadow-sm shadow-sky-100`} />
                             <TiLockClosed size={23} className=' absolute top-2 ml-2 pointer-events-none text-sky-400' />
-                            <p className='text-red-500 absolute top-10 ml-2'>{password === "" && passerror}</p>
+                            <p className='text-red-500 absolute top-10 ml-2'>{!password && passerror}</p>
                         </div>
 
                         <button type='submit' className='py-1 w-full shadow-md rounded-xl text-white text-xl text-center bg-gradient-to-r from-sky-400 via-sky-300 to-slate-50 border-sky-200 border-r-2 ' > Login</button>
@@ -107,8 +106,8 @@ const Login = () => {
 
                 </div>
 
-            </div>
-        </div>
+            </div >
+        </div >
     )
 }
 

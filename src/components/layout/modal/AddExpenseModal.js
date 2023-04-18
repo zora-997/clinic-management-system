@@ -46,14 +46,14 @@ const AddExpenseModal = ({ isAddVisible, onClose }) => {
                             <div className='w-1/3'>
                                 <label className='text-gray-500'>Amount</label>
                                 <input type="number" autoComplete="off"
-                                    onChange={(val) => set_new_expense_amount(val.target.value)} value={expense_amount} placeholder='0.00'
+                                    onChange={(val) => set_new_expense_amount(val.target.value)} value={expense_amount} placeholder='0.00' required
                                     className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2' />
                             </div>
                         </div>
 
                         <label className='text-gray-500'>Date</label>
                         <input type="date" autoComplete="off"
-                            onChange={(val) => set_new_expense_date(val.target.value)} value={expense_date} placeholder='date'
+                            onChange={(val) => set_new_expense_date(val.target.value)} value={expense_date} placeholder='date' required
                             className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2' />
 
                         <label className='text-gray-500'>Note</label>

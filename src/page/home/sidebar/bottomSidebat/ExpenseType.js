@@ -8,7 +8,7 @@ const ExpenseType = () => {
     const location = useLocation()
     return (
         <div className='w-full'>
-            <li className={`${location.pathname === '/expensetype' && 'bg-blue-500 text-white'} mb-2 group cursor-pointer w-full items-center hover:text-white hover:bg-blue-500 duration-100 p-2.5 rounded-full `} >
+            <li className={`${location.pathname === '/expensetype' && 'bg-blue-500 text-white'} mb-2 group cursor-pointer w-full items-center hover:text-white hover:bg-blue-500 duration-100 p-2.5 rounded-lg `} >
                 <Link to="/expensetype" className="relative flex justify-start items-center w-full">
                     <TbReportMoney size={22} className="mr-4 ml-7" />
                     <span >ExpenseType</span>
