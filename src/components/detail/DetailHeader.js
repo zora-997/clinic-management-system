@@ -1,14 +1,14 @@
 import React, { useContext } from 'react'
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import tooth from "../../img/image/teeth (2).png";
-import toothback from "../../img/image/dan154.jpeg";
+
 import GlobalContext from '../contexts/createContext/context';
 
 
 const DetailHeader = () => {
 
     const { sickList, doctorList } = useContext(GlobalContext);
-    const { id } = useParams();
+    const location = useLocation();
 
     const did = doctorList.map((d) => d.doctor_id)
     const dn = doctorList.map((d) => d.doctor_name)
@@ -25,7 +25,7 @@ const DetailHeader = () => {
                 {sickList.map(sick => {
                     return (
                         <div key={sick.sick_id} className=''>
-                            {sick.sick_id === id &&
+                            {sick.sick_id === location.state &&
                                 <div className=''>
                                     <i className='text-2xl  font-serif p-2 px-2  w-full rounded-full'>Dr.{dn[did.indexOf(`${sick.doctor_id}`)]}</i>
                                 </div>

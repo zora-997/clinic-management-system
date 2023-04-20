@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react'
 import { useParams } from 'react-router-dom';
 import GlobalContext from "../../components/contexts/createContext/context";
-import DetailBodyBox from './DetailBodyBox';
-import DetailTypeOfWork from './alldetail/DetailTypeOfWork';
+import DetailTypeOfWork from './DetailTypeOfWork';
 import uuid from "react-uuid";
+import { VscAdd } from "react-icons/vsc";
 
 
 
@@ -22,12 +22,7 @@ const DetailBodyInput = () => {
 
     let sick_surgery_date = (new Date().toISOString().slice(0, 10));
 
-    // bor war grtni nawi surgery type ba pey surgery_type_id
-    const sid = surgeryType.map((d) => d.surgery_type_id)
-    const sn = surgeryType.map((d) => d.surgery_type_name)
-
-
-    // TEMP 
+    // TEMP bo war grtni type of worky taza
     const [sick_surgery, setsicksurgerys] = useState([]);
 
     const onSearch = (search, id) => {
@@ -71,12 +66,12 @@ const DetailBodyInput = () => {
                     <div className='relative w-[30%]'>
                         <div className='flex flex-col w-full border-b rounded-md  absolute'>
                             <label className='text-gray-600 mb-2'>Surgery Type</label>
-                            <input type="text" required name='surgery_type_name' placeholder='Surgery Search' value={surgery_type_name}
+                            <input type="text" required name='surgery_type_name' placeholder='Surgery Search' value={surgery_type_name || ''}
                                 onChange={(e) => set_surgery_type_name(e.target.value)}
                                 autoComplete="off"
-                                className={` ${surgery_type_name && 'bg-sky-50'} w-full bg-slate-50 text-sm focus:ring-1 focus:ring-sky-500 pl-2 focus:outline-none border border-gray-300 p-2 rounded shadow-sm shadow-black/10 `} />
+                                className={` ${surgery_type_name && 'bg-blue-100'} w-full bg-slate-50 text-sm focus:ring-1 focus:ring-sky-500 pl-2 focus:outline-none border border-gray-300 p-2 rounded shadow-sm shadow-black/10 `} />
 
-                            {surgeryType.filter(itme => {
+                            {surgeryType && surgeryType.filter(itme => {
                                 const search = surgery_type_name.toLowerCase();
                                 const surgeryName = itme.surgery_type_name.toLowerCase();
                                 return search && surgeryName.startsWith(search) && surgeryName !== search
@@ -95,9 +90,10 @@ const DetailBodyInput = () => {
                     {/** price input */}
                     <div className='flex flex-col w-[30%]'>
                         <label className='text-gray-600 mb-1'>Price</label>
-                        <input type="number" name='surgery_type_price' required placeholder='0.00' value={surgery_type_price}
+                        {/** value = {surgery_type_price || ''} aw or agar da naney awa alle auncontrolled wata ama sarata null yan undefined boia aw || bo da aney ka te batallish be */}
+                        <input type="number" name='surgery_type_price' required placeholder='0.00' value={surgery_type_price || ''}
                             onChange={(e) => set_surgery_type_price(e.target.value)}
-                            className={`bg-slate-50 focus:ring-1 ${surgery_type_price && 'bg-sky-50'} focus:outline-none border pl-2 p-2 w-full  rounded shadow-sm shadow-black/10`} />
+                            className={`bg-slate-50 focus:ring-1 ${surgery_type_price && 'bg-blue-100'} focus:outline-none border pl-2 p-2 w-full  rounded shadow-sm shadow-black/10`} />
                     </div>
 
                     {/** button  Add New Work*/}
@@ -105,8 +101,8 @@ const DetailBodyInput = () => {
                         <button
                             type='submit'
                             onClick={() => { surgery_type_id && set_show(true) }}
-                            className={` hover:text-white shadow-sm shadow-gray-300 border text-sky-400 border-sky-300 h-fit p-1.5 px-3 rounded-md hover:bg-sky-300`}>
-                            Add New Work
+                            className={` hover:text-white shadow-sm flex items-center shadow-gray-300 border text-sky-400 border-sky-300 h-fit p-1.5 px-3 rounded-md hover:bg-sky-300`}>
+                            <VscAdd className='mr-1' /> New Work
                         </button>
                     </div>
                 </div>
@@ -117,7 +113,7 @@ const DetailBodyInput = () => {
                     <textarea placeholder='Description' cols="50" rows="4"
                         value={sick_surgery_invoice_note}
                         onChange={(e) => set_sick_surgery_invoice_note(e.target.value)}
-                        className={`bg-slate-50 ${sick_surgery_invoice_note && 'bg-sky-50'} focus:ring-1 focus:outline-none border p-3 flex-wrap rounded-md shadow-sm shadow-black/10`} >
+                        className={`bg-slate-50 ${sick_surgery_invoice_note && 'bg-blue-100'} focus:ring-1 focus:outline-none border p-3 flex-wrap rounded-md shadow-sm shadow-black/10`} >
                     </textarea>
                 </div>
 

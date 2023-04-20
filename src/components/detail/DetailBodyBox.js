@@ -1,6 +1,6 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useRef } from 'react'
 import GlobalContext from '../contexts/createContext/context'
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import calendar from "../../img/image/calendar.png";
 import money from "../../img/image/money.png";
 import ComponentToPrint from './ComponentToPrint ';
@@ -9,8 +9,7 @@ import { useReactToPrint } from 'react-to-print';
 const DetailBodyBox = () => {
 
     const { surgeryType, sickList } = useContext(GlobalContext);
-    const { id } = useParams();
-
+    const location = useLocation();
 
     const sid = surgeryType.map((d) => d.surgery_type_id)
     const sn = surgeryType.map((d) => d.surgery_type_name)
@@ -27,11 +26,12 @@ const DetailBodyBox = () => {
             {/** sickSurgery && la gall  item.sick_visit &&  am dwana zor grngn bo away agar yakekian la katy map krdinish propertykay nabu nalle map reading undefined*/}
             {sickList && sickList.map(sick => {
                 return (
-                    <div key={sick.sick_id}>
+                    <div key={sick.sick_id} >
                         {
-                            sick.sick_id && sick.sick_id === id &&
+                            sick.sick_id && sick.sick_id === location.state &&
                             <div className='flex justify-between my-4'>
-                                <div className='invisible absolute'>
+                                {/** invisible bo away dyar nabe absolute bo awaia design tek nache  */}
+                                <div className='absolute invisible bg-red-300'>
                                     <ComponentToPrint props={sickList} ref={componentRef} />
                                 </div>
                                 <p className='text-xl  border-b-2 border-sky-300 w-fit'>History of Work </p>
@@ -50,7 +50,7 @@ const DetailBodyBox = () => {
             {sickList && sickList.map(sick => {
                 return (
                     <div key={sick.sick_id} className=' '>
-                        {sick.sick_id === id ? (
+                        {sick.sick_id === location.state ? (
                             <div className='flex flex-col mb-4 pl-2 rounded-3xl   shadow-black/5 bg-white'>
 
                                 {/* date div */}

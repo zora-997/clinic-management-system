@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import GlobalContext from '../contexts/createContext/context';
 import calendar from "../../img/image/calendar.png";
 import money from "../../img/image/money.png";
@@ -10,11 +10,15 @@ import tooth from "../../img/image/teeth (2).png";
 const ComponentToPrint = React.forwardRef(({ props }, ref) => {
 
     const { surgeryType, doctorList } = useContext(GlobalContext)
-    const { id } = useParams();
 
+    const location = useLocation();
+
+
+    // bo dar kdni nawi surgery tpe
     const sid = surgeryType.map((d) => d.surgery_type_id)
     const sn = surgeryType.map((d) => d.surgery_type_name)
 
+    // bo dar kdni nawi doctor
     const did = doctorList.map((d) => d.doctor_id)
     const dn = doctorList.map((d) => d.doctor_name)
     return (
@@ -30,7 +34,7 @@ const ComponentToPrint = React.forwardRef(({ props }, ref) => {
                     {props.map(sick => {
                         return (
                             <div key={sick.sick_id} className=''>
-                                {sick.sick_id === id &&
+                                {sick.sick_id === location.state &&
                                     <div className=''>
                                         <i className='text-2xl  font-serif p-2 px-2  w-full rounded-full'>Dr.{dn[did.indexOf(`${sick.doctor_id}`)]}</i>
                                     </div>
@@ -44,12 +48,12 @@ const ComponentToPrint = React.forwardRef(({ props }, ref) => {
 
 
 
-
+            {/** sick information print */}
             {props.map(sick => {
                 return (
                     <div key={sick.sick_id} className='mb-10 mt-4'>
                         {
-                            sick.sick_id === id &&
+                            sick.sick_id === location.state &&
                             <div>
                                 <div className='flex justify-between w-full pr-16 mb-3 '>
                                     <p className='font-bold text-xl text-gray-500'>Name&nbsp;:&nbsp;<span className='text-xl font-normal text-cyan-500 '>{sick.sick_name}</span></p>
@@ -72,8 +76,9 @@ const ComponentToPrint = React.forwardRef(({ props }, ref) => {
             {props && props.map(sick => {
                 return (
                     <div key={sick.sick_id} className=' '>
-                        {sick.sick_id === id ? (
+                        {sick.sick_id === location.state ? (
                             <div className='flex flex-col mb-4 pl-2 rounded-3xl   shadow-black/5 bg-white'>
+                                <p className='text-xl  border-b-2 border-sky-300 w-fit mb-5'>History of Work </p>
 
                                 {/* date div */}
                                 {sick.sick_invoice && sick.sick_invoice.map((invoice, index) => {

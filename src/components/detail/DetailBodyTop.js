@@ -1,11 +1,13 @@
 import React, { useContext } from 'react'
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import GlobalContext from '../contexts/createContext/context'
 
 const DetailBodyTop = () => {
 
     const { sickList } = useContext(GlobalContext);
-    const { id } = useParams();
+    const location = useLocation();
+
+    console.log(location.state);
 
     return (
 
@@ -15,7 +17,7 @@ const DetailBodyTop = () => {
                 return (
                     <div key={sick.sick_id}>
                         {
-                            sick.sick_id === id &&
+                            sick.sick_id === location.state &&
                             <div>
                                 <div className='flex justify-between w-full pr-16 mb-3 '>
                                     <p className='font-bold text-xl text-gray-500'>Name&nbsp;:&nbsp;<span className='text-xl font-normal text-cyan-500 '>{sick.sick_name}</span></p>

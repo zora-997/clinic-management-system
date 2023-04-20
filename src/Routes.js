@@ -50,7 +50,7 @@ const MainRoutes = () => {
 
                 {/* detail route */}
                 <Route exact path="/" element={<AllDetail />} >
-                    <Route exact path="detail/:id" element={<Detail />} />
+                    <Route exact path="detail" element={<Detail />} />
                 </Route>
 
                 {/* Expense type */}
