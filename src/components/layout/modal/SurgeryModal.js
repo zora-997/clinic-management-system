@@ -23,8 +23,8 @@ const SurgeryModal = ({ isVisible, onClose, surgery_type_name, setSurgey_name, s
                     <input type="number" autocomplete="off" onChange={(val) => setSurgey_price(val.target.value)} value={surgery_type_price} placeholder='new Percentage' className='focus:ring-1 mt-1 focus:outline-none rounded border mb-3  p-2' />
 
                     <div className='flex justify-between'>
-                        <button onClick={(e) => { updateDoctorHandler(e); onClose(false); }} className='border rounded-md bg-yellow-500 hover:bg-yellow-400 text-white px-8 p-1.5 my-2'>Update</button>
-                        <button onClick={() => { deleteSurgery(surgery_type_id); onClose(false); }} className='border rounded-md bg-red-600 hover:bg-red-500 text-white   px-8 p-1.5 my-2'>Delete</button>
+                        <button onClick={(e) => { updateDoctorHandler(e); onClose(false); }} className='border rounded-md bg-cyan-500 hover:bg-cyan-400 text-white px-8 p-1.5 my-2'>Update</button>
+                        <button onClick={() => { deleteSurgery(surgery_type_id); onClose(false); }} className='border rounded-md bg-red-500 hover:bg-red-400 text-white   px-8 p-1.5 my-2'>Delete</button>
                     </div>
 
                 </div>

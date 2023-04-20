@@ -9,7 +9,7 @@ const DetailBodyTop = () => {
 
     return (
 
-        <div className='rounded-md shadow-sm p-5'>
+        <div className='rounded-md shadow-sm p-5 '>
 
             {sickList.map(sick => {
                 return (
@@ -22,7 +22,7 @@ const DetailBodyTop = () => {
                                     <p className='font-bold text-xl text-gray-500 pl-14'>Age&nbsp;:&nbsp;&nbsp; <span className='text-xl font-normal text-cyan-500'>{sick.sick_age}</span></p>
                                     <p className='font-bold text-xl text-gray-500 pl-5'>Gender&nbsp;:&nbsp;&nbsp; <span className='text-xl font-normal text-cyan-500'>{sick.sick_gender}</span> </p>
                                 </div>
-                                <div className='flex w-3/4 justify-between'>
+                                <div className='flex w-[68%]  justify-between '>
                                     <p className='font-bold text-xl text-gray-500'>Date&nbsp;:&nbsp;&nbsp; <span className='text-xl font-normal text-cyan-500 '>{sick.sick_date}</span> </p>
                                     <p className='font-bold text-xl text-gray-500'>Phone&nbsp;:&nbsp;&nbsp; <span className='text-xl font-normal text-cyan-500'>{sick.sick_phone}</span> </p>
                                 </div>

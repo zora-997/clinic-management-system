@@ -14,7 +14,7 @@ const SickModal = ({ isVisible, onClose, sick_name, setSick_name, sick_phone, se
     if (!isVisible) return null;
     return (
         <div className='fixed z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
-            <div className='w-[400px] flex flex-col'>
+            <div className='w-[500px] flex flex-col'>
                 <button className='text-white text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
                 <div className=' bg-white rounded-md p-5 grid'>
 
@@ -41,8 +41,8 @@ const SickModal = ({ isVisible, onClose, sick_name, setSick_name, sick_phone, se
 
 
                     <div className='flex justify-between mt-2'>
-                        <button onClick={(e) => { updateSickHandler(e); onClose(false); }} className='border rounded-md bg-yellow-500 hover:bg-yellow-400 text-white px-8 p-1.5 '>Update</button>
-                        <button onClick={() => { deleteSick(sick_id); onClose(false); }} className='border rounded-md bg-red-600 hover:bg-red-500 text-white p-1.5 px-9 '>Delete</button>
+                        <button onClick={(e) => { updateSickHandler(e); onClose(false); }} className='border rounded-md bg-cyan-500 hover:bg-cyan-400 text-white px-8 p-1.5 '>Update</button>
+                        <button onClick={() => { deleteSick(sick_id); onClose(false); }} className='border rounded-md bg-red-500 hover:bg-red-400 text-white p-1.5 px-9 '>Delete</button>
                     </div>
 
                 </div>

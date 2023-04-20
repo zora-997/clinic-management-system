@@ -1,53 +1,75 @@
-import React, { useContext, useRef, useState } from 'react'
-import GlobalContext from '../contexts/createContext/context'
+import React, { useContext } from 'react'
 import { useParams } from 'react-router-dom';
+import GlobalContext from '../contexts/createContext/context';
 import calendar from "../../img/image/calendar.png";
 import money from "../../img/image/money.png";
-import ComponentToPrint from './ComponentToPrint ';
-import { useReactToPrint } from 'react-to-print';
+import tooth from "../../img/image/teeth (2).png";
 
-const DetailBodyBox = () => {
 
-    const { surgeryType, sickList } = useContext(GlobalContext);
+
+const ComponentToPrint = React.forwardRef(({ props }, ref) => {
+
+    const { surgeryType, doctorList } = useContext(GlobalContext)
     const { id } = useParams();
-
 
     const sid = surgeryType.map((d) => d.surgery_type_id)
     const sn = surgeryType.map((d) => d.surgery_type_name)
 
-    const componentRef = useRef()
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-    });
-
-
+    const did = doctorList.map((d) => d.doctor_id)
+    const dn = doctorList.map((d) => d.doctor_name)
     return (
-        <div className=''>
+        <div ref={ref} className='p-5'>
 
-            {/** sickSurgery && la gall  item.sick_visit &&  am dwana zor grngn bo away agar yakekian la katy map krdinish propertykay nabu nalle map reading undefined*/}
-            {sickList && sickList.map(sick => {
+
+            {/** header print */}
+            <div className='relative grid justify-center mt-3 border-b-2  pb-2 '>
+                <div className=' w-fit flex flex-col items-center'>
+                    {/** image  */}
+                    <img src={tooth} className="p-0.5 w-28" alt='tooth img' />
+                    {/** clinic name  */}
+                    {props.map(sick => {
+                        return (
+                            <div key={sick.sick_id} className=''>
+                                {sick.sick_id === id &&
+                                    <div className=''>
+                                        <i className='text-2xl  font-serif p-2 px-2  w-full rounded-full'>Dr.{dn[did.indexOf(`${sick.doctor_id}`)]}</i>
+                                    </div>
+                                }
+                            </div>
+                        )
+                    })}
+                </div>
+            </div>
+
+
+
+
+
+            {props.map(sick => {
                 return (
-                    <div key={sick.sick_id}>
+                    <div key={sick.sick_id} className='mb-10 mt-4'>
                         {
-                            sick.sick_id && sick.sick_id === id &&
-                            <div className='flex justify-between my-4'>
-                                <div className='invisible absolute'>
-                                    <ComponentToPrint props={sickList} ref={componentRef} />
+                            sick.sick_id === id &&
+                            <div>
+                                <div className='flex justify-between w-full pr-16 mb-3 '>
+                                    <p className='font-bold text-xl text-gray-500'>Name&nbsp;:&nbsp;<span className='text-xl font-normal text-cyan-500 '>{sick.sick_name}</span></p>
+                                    <p className='font-bold text-xl text-gray-500 pl-14'>Age&nbsp;:&nbsp;&nbsp; <span className='text-xl font-normal text-cyan-500'>{sick.sick_age}</span></p>
+                                    <p className='font-bold text-xl text-gray-500 pl-5'>Gender&nbsp;:&nbsp;&nbsp; <span className='text-xl font-normal text-cyan-500'>{sick.sick_gender}</span> </p>
                                 </div>
-                                <p className='text-xl  border-b-2 border-sky-300 w-fit'>History of Work </p>
-                                <button
-                                    onClick={() => { handlePrint() }}
-                                    className='hover:text-white shadow-sm shadow-gray-300 border text-sky-400 border-sky-300 h-fit p-1.5 px-3 rounded-md hover:bg-sky-300'>
-                                    Print History
-                                </button>
+                                <div className='flex w-[68%]  justify-between '>
+                                    <p className='font-bold text-xl text-gray-500'>Date&nbsp;:&nbsp;&nbsp; <span className='text-xl font-normal text-cyan-500 '>{sick.sick_date}</span> </p>
+                                    <p className='font-bold text-xl text-gray-500'>Phone&nbsp;:&nbsp;&nbsp; <span className='text-xl font-normal text-cyan-500'>{sick.sick_phone}</span> </p>
+                                </div>
                             </div>
                         }
-
                     </div>
                 )
-            })}
+            })
+            }
 
-            {sickList && sickList.map(sick => {
+            {/** bashi box */}
+
+            {props && props.map(sick => {
                 return (
                     <div key={sick.sick_id} className=' '>
                         {sick.sick_id === id ? (
@@ -102,16 +124,10 @@ const DetailBodyBox = () => {
                     </div>
                 )
             })}
-
-
-
-
-
         </div>
 
 
     )
-}
+})
 
-export default DetailBodyBox
-
+export default ComponentToPrint 

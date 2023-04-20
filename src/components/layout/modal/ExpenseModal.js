@@ -49,7 +49,7 @@ const ExpenseModal = ({ isVisible, onClose, expense_type_name, expense_id, expen
                     <div className='flex justify-between'>
                         <button
                             onClick={(e) => { updateExpenseHandler(e); onClose(false); }}
-                            className='border rounded-md bg-yellow-500 hover:bg-yellow-400 text-white px-8 p-1.5 my-2'>
+                            className='border rounded-md bg-cyan-500 hover:bg-cyan-400 text-white px-8 p-1.5 my-2'>
                             Update
                         </button>
                         <button

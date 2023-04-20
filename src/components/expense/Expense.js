@@ -54,7 +54,7 @@ const Expense = () => {
                                     set_new_admin_id(expense.admin_id);
                                     set_new_expense_note(expense.expense_note)
                                 }}
-                                className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200 hover:scale-105 duration-300  ">
+                                className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
                                 <th scope='row' className="px-5 py-4">&nbsp;&nbsp;{index + 1}</th>
                                 <td className="px-6 py-4">{en[eid.indexOf(`${expense.expense_type_id}`)]}</td>
                                 <td className="px-6 py-4">{expense.expense_amount}</td>

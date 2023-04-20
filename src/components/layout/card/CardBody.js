@@ -24,7 +24,7 @@ const CardBody = () => {
                 </div>
                 <div className='flex flex-col  pt-3 pl-2 g transition-colors duration-500 ease-in-out'>
                     <span style={{ color: '#A3D5F9' }} className='text-sm  '>Active Doctor</span>
-                    <span style={{ color: '#DFF4FD' }} className='text-xl pb-3 relative '>{doctorList.length}54</span>
+                    <span style={{ color: '#DFF4FD' }} className='text-xl pb-3 relative '>{doctorList.length}</span>
                 </div>
 
                 {/** icon kall */}
@@ -47,7 +47,7 @@ const CardBody = () => {
                 </div>
                 <div className='flex flex-col  pt-3 pl-2 g transition-colors duration-500 ease-in-out'>
                     <span style={{ color: '#ACFFFB' }} className='text-sm  '>Active Users</span>
-                    <span style={{ color: '#EBFFFF' }} className='text-xl pb-3 relative '>25</span>
+                    <span style={{ color: '#EBFFFF' }} className='text-xl pb-3 relative '>2</span>
                 </div>
 
                 {/** icon kall */}
@@ -67,7 +67,7 @@ const CardBody = () => {
                 </div>
                 <div className='flex flex-col  pt-3 pl-2 g transition-colors duration-500 ease-in-out'>
                     <span style={{ color: '#DBD3FF' }} className='text-sm'>Total Sick</span>
-                    <span style={{ color: '#F8F6FF' }} className='text-xl pb-3 relative '>{sickList.length}54</span>
+                    <span style={{ color: '#F8F6FF' }} className='text-xl pb-3 relative '>{sickList.length}</span>
                 </div>
 
                 {/** icon kall */}
@@ -89,7 +89,7 @@ const CardBody = () => {
                 </div>
                 <div className='flex flex-col  pt-3 pl-2 g transition-colors duration-500 ease-in-out'>
                     <span style={{ color: '#FFDFD1' }} className='text-sm'>Total Report</span>
-                    <span style={{ color: '#F8F6FF' }} className='text-xl pb-3 relative '>{sickList.length}54</span>
+                    <span style={{ color: '#F8F6FF' }} className='text-xl pb-3 relative '>{sickList.length}</span>
                 </div>
 
                 {/** icon kall */}
