@@ -7,6 +7,7 @@ import { Link, useLocation } from "react-router-dom";
 import ExpenseType from "./ExpenseType";
 
 import ExpenseList from "./ExpenseList";
+import ReportList from "./ReportList";
 
 
 const BottomSideBar = () => {
@@ -28,6 +29,7 @@ const BottomSideBar = () => {
                 <SurgeryTypeList />
                 <ExpenseType />
                 <ExpenseList />
+                <ReportList />
             </ul>
 
 

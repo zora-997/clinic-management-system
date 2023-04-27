@@ -18,6 +18,8 @@ import AllExpenseType from "./components/expensetype/allExpenseType/AllExpenseTy
 
 import AllExpense from "./components/expense/allExpense/AllExpense";
 import Expense from "./components/expense/Expense";
+import AllReport from "./components/report/allReport/AllReport";
+import Report from "./components/report/Report";
 
 
 
@@ -61,6 +63,11 @@ const MainRoutes = () => {
                 {/* Expense  */}
                 <Route exact path="/" element={<AllExpense />} >
                     <Route exact path="expense" element={<Expense />} />
+                </Route>
+
+                {/* Report  */}
+                <Route exact path="/" element={<AllReport />} >
+                    <Route exact path="report" element={<Report />} />
                 </Route>
 
             </Routes>
