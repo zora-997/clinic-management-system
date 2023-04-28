@@ -49,7 +49,7 @@ const ReportExpense = () => {
                                         })
 
                                     }
-                                    {expense.expenses.length > 0 && <div className='py-3 '><span className='bg-green-50 p-0.5 rounded'> Total : {expense.total_expense}</span></div>}
+                                    {expense.expenses.length > 0 && <div className='py-3 pl-1 '><span className='bg-green-100/50 text-green-500 p-1 rounded'> Total : {expense.total_expense}</span></div>}
                                 </>
                             )
 
@@ -61,8 +61,8 @@ const ReportExpense = () => {
 
 
                 </table>
-                <div className='w-full flex justify-center bg-green-100 my-3'>
-                    <span className='py-3 text-green-600'>Total Expense : {totalExpense}</span>
+                <div className='w-full flex justify-center bg-green-100/50 my-3'>
+                    <span className='py-3 text-green-500'>Total Expense : {totalExpense}</span>
                 </div>
             </div>
         </div>

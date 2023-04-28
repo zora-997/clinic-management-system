@@ -34,8 +34,8 @@ const ReportDoctor = () => {
                     </tbody>
                 </table>
 
-                <div className='w-full flex justify-center bg-green-100 my-3'>
-                    <span className='py-3 text-green-600'>Total Income : {mainReportList.total_income}</span>
+                <div className='w-full flex justify-center bg-green-100/50 my-3'>
+                    <span className='py-3 text-green-500'>Total Income : {mainReportList.total_income}</span>
                 </div>
             </div>
         </div>
