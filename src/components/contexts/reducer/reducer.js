@@ -150,6 +150,12 @@ const reducer = (state, { type, payload }) => {
                 ...state,
                 adminList: payload,
             };
+        ///************* report ***** */
+        case 'GETREPORT':
+            return {
+                ...state,
+                mainReportList: payload,
+            };
 
         default:
             return state;

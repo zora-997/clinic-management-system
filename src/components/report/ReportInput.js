@@ -1,19 +1,27 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import GlobalContext from '../contexts/createContext/context';
 
 const ReportInput = ({ setSearchShow }) => {
 
-    const location = useLocation()
-    console.log(location.search);
+    const { fetchReport } = useContext(GlobalContext)
+
+    const location = useLocation();
 
     const [from, setFrom] = useState("");
     const [to, setTo] = useState("");
 
     const inputHandler = (e) => {
         e.preventDefault();
+
+        console.log(from, " ", to);
+        fetchReport({ from, to })
         setSearchShow(true)
 
     }
+
+
+
     return (
         <div className='flex justify-end mt-8   w-full '>
 

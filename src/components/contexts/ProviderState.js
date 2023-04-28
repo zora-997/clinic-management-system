@@ -31,7 +31,8 @@ const ProviderState = ({ children }) => {
         sickSurgery: [],
         expenseTypeList: [],
         expenseList: [],
-        adminList: []
+        adminList: [],
+        mainReportList: []
     }
 
     const [query, setQuery] = useState("")
@@ -50,6 +51,7 @@ const ProviderState = ({ children }) => {
         fetchExpenseType();
         fetchExpense();
         fetchAdmin();
+
 
     }, [])
 
@@ -84,6 +86,17 @@ const ProviderState = ({ children }) => {
             type: 'GETADMIN',
             payload: res.data.data
         })
+
+    }
+
+    //  feach main report
+    const fetchReport = async (date) => {
+        const res = await api.post('report/mainreport.php', date);
+        dispatch({
+            type: 'GETREPORT',
+            payload: res.data
+        })
+        // console.log(res.data.doctor.map(i => i.doctor_name));
 
     }
 
@@ -362,7 +375,9 @@ const ProviderState = ({ children }) => {
             updateExpense,
             deleteExpense,
             searchExpense,
-            adminList: state.adminList
+            adminList: state.adminList,
+            mainReportList: state.mainReportList,
+            fetchReport
 
 
         }}>

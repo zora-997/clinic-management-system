@@ -13,7 +13,7 @@ const Report = () => {
             <ReportInput setSearchShow={setSearchShow} />
             {searchShow &&
                 <div>
-                    <ReportButton setExpenseShow={setExpenseShow} />
+                    <ReportButton setExpenseShow={setExpenseShow} expenseShow={expenseShow} />
                     {!expenseShow ? <ReportDoctor /> : <ReportExpense />}
                 </div>
             }
