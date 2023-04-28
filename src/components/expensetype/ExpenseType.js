@@ -20,7 +20,10 @@ const ExpenseType = () => {
             <AddExponseTypeModal isAddVisible={addshow} onClose={setAddShow} />
             <div className='ml-36 mt-10'>
                 <div className='place-self-start'>
-                    <button onClick={() => setAddShow(true)} className='border-cyan-200 shadow-gray-300 text-left text-lg  text-cyan-400 hover:text-cyan-300  duration-300 py-1  my-3 '>Create ExpenseType</button>
+                    <button onClick={() => setAddShow(true)}
+                        className={`
+                     text-white shadow-sm flex items-center shadow-gray-300 border mb-2 
+                      hover:text-cyan-400 border-cyan-300 h-fit p-1 px-9 rounded-md bg-cyan-500 hover:bg-transparent duration-200`}>Create ExpenseType</button>
                 </div>
                 <table className="whitespace-nowrap bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 dark:text-gray-400 w-[1000px]">
                     <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 dark:bg-gray-700 dark:text-gray-400">

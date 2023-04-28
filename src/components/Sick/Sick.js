@@ -33,7 +33,11 @@ const Sick = () => {
             {/** button u table hamui tyaya */}
             <div className='pr-12  mt-10'>
                 <div className='flex justify-between w-full'>
-                    <button onClick={() => setAddShow(true)} className=' border-cyan-200 shadow-gray-300 text-left text-xl  text-cyan-400 hover:text-cyan-300   duration-300 py-1  my-3'>Create Sick</button>
+                    <button onClick={() => setAddShow(true)}
+                        className={`
+                     text-white shadow-sm flex items-center shadow-gray-300 border mb-2 
+                      hover:text-cyan-400 border-cyan-300 h-fit p-1 px-9 rounded-md bg-cyan-500 hover:bg-transparent duration-200`}
+                    >Create Sick</button>
                 </div>
 
                 <table className=" overflow-hidden bg-white text-sm shadow-sm text-left text-gray-500 dark:text-gray-400  w-[1050px]">

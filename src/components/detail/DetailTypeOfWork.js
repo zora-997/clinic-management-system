@@ -42,7 +42,7 @@ const DetailTypeOfWork = ({ sick_surgery, clickAddWork, setsicksurgerys }) => {
                                 <td className="pl-2 py-4">{item.surgery_type_price}</td>
                                 <td className="pl-2 py-4">{item.sick_surgery_invoice_note}</td>
                                 <td onClick={() => deleteHandller(item.sick_surgery_id)} className="pl-2 py-4 cursor-pointer">
-                                    <img src={bin} className='w-5 place-self-center ml-4' alt='delete icon' />
+                                    <img src={bin} className='hover:bg-red-100  w-5 place-self-center ml-4' alt='delete icon' />
                                 </td>
                             </tr>
                         )

@@ -10,8 +10,8 @@ const ReportButton = ({ setExpenseShow, expenseShow }) => {
                     type='submit'
                     onClick={() => setExpenseShow(false)}
                     className={`
-                     hover:text-white shadow-sm flex items-center shadow-gray-300 border mr-3 ${!expenseShow && 'bg-sky-300 text-white'}
-                      text-sky-400 border-sky-300 h-fit p-1 px-9 rounded-md hover:bg-sky-300`}>
+                     hover:text-white text-cyan-400 shadow-sm flex items-center shadow-gray-300 border mr-3 ${!expenseShow && 'bg-cyan-500 text-white/100'}
+                       border-cyan-300 h-fit p-1 px-9 rounded-md hover:bg-cyan-500`}>
                     Doctor
                 </button>
 
@@ -20,8 +20,8 @@ const ReportButton = ({ setExpenseShow, expenseShow }) => {
                     type='submit'
                     onClick={() => setExpenseShow(true)}
                     className={`
-                     hover:text-white shadow-sm flex items-center shadow-gray-300 border ${expenseShow && 'bg-sky-300 text-white'}
-                      text-sky-400 border-sky-300 h-fit p-1 px-8 rounded-md hover:bg-sky-300`}>
+                     hover:text-white text-cyan-400 shadow-sm flex items-center shadow-gray-300 border mr-3 ${expenseShow && 'bg-cyan-500 text-white/100'}
+                       border-cyan-300 h-fit p-1 px-9 rounded-md hover:bg-cyan-500`}>
                     Expense
                 </button>
             </div>
