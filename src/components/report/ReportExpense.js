@@ -1,28 +1,26 @@
 import React, { useContext } from 'react'
 import GlobalContext from '../contexts/createContext/context';
 
-const ReportExpense = () => {
+const ReportExpense = ({ show, setShow }) => {
     const { mainReportList, expenseTypeList } = useContext(GlobalContext);
     //bo garanaway nawi expenseTypeList
     const eid = expenseTypeList.map(expense => expense.expense_type_id)
     const en = expenseTypeList.map(expense => expense.expense_type_name)
     const totalExpense = mainReportList.total_expense;
-    console.log(totalExpense);
+
+    if (!show) return null;
     return (
-        <div className='flex justify-end mt-4'>
-            <div className='w-3/4 mr-20 flex flex-col'>
+        <div onClick={() => setShow(false)} className=' fixed  z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
+            <div className='w-3/4 flex flex-col'>
                 <table className="whitespace-nowrap bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 dark:text-gray-400 ">
                     <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 dark:bg-gray-700 dark:text-gray-400">
                         <tr className=''>
-
                             <th scope="col" className="px-6 py-3">Id</th>
                             <th scope="col" className="px-6 py-3">ExpenseType</th>
                             <th scope="col" className="px-6 py-3">Amount</th>
                             <th scope="col" className="px-6 py-3">Expense Note</th>
                             <th scope="col" className="px-6 py-3">Date</th>
                             {/* <th scope="col" className="px-6 py-3">Total Expense</th> */}
-
-
                         </tr>
                     </thead>
                     <tbody>
@@ -61,7 +59,7 @@ const ReportExpense = () => {
 
 
                 </table>
-                <div className='w-full flex justify-center bg-green-100/50 my-3'>
+                <div className='w-full flex justify-center bg-green-100/75 my-3'>
                     <span className='py-3 text-green-500'>Total Expense : {totalExpense}</span>
                 </div>
             </div>

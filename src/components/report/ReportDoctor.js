@@ -1,14 +1,15 @@
 import React, { useContext } from 'react'
 import GlobalContext from '../contexts/createContext/context'
 
-const ReportDoctor = () => {
+const ReportDoctor = ({ showDoctor, setShowDoctor }) => {
     const { mainReportList } = useContext(GlobalContext);
 
     console.log();
 
+    if (!showDoctor) return null;
     return (
-        <div className='flex justify-end mt-4'>
-            <div className='w-3/4 mr-20 flex flex-col'>
+        <div onClick={() => setShowDoctor(false)} className=' fixed  z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
+            <div className='w-3/4 flex flex-col'>
                 <table className="whitespace-nowrap bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 dark:text-gray-400 ">
                     <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
@@ -34,10 +35,11 @@ const ReportDoctor = () => {
                     </tbody>
                 </table>
 
-                <div className='w-full flex justify-center bg-green-100/50 my-3'>
+                <div className='w-full flex justify-center bg-green-100/75 my-3'>
                     <span className='py-3 text-green-500'>Total Income : {mainReportList.total_income}</span>
                 </div>
             </div>
+
         </div>
 
     )

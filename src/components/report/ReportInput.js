@@ -1,15 +1,10 @@
-import React, { useContext, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import React, { useContext } from 'react'
 import GlobalContext from '../contexts/createContext/context';
 
-const ReportInput = ({ setSearchShow }) => {
+const ReportInput = ({ setSearchShow, from, to, setFrom, setTo }) => {
 
     const { fetchReport } = useContext(GlobalContext)
 
-    const location = useLocation();
-
-    const [from, setFrom] = useState("");
-    const [to, setTo] = useState("");
 
     const inputHandler = (e) => {
         e.preventDefault();
