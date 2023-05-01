@@ -50,7 +50,6 @@ const ProviderState = ({ children }) => {
         fetchSickSurgery();
         fetchExpenseType();
         fetchExpense();
-        fetchAdmin();
 
 
     }, [])
@@ -80,13 +79,13 @@ const ProviderState = ({ children }) => {
     }
 
     //   feach admin
-    const fetchAdmin = async () => {
-        const res = await api.get('admin/read.php');
+    const fetchAdmin = async (admin) => {
+        const res = await api.get('admin/login.php', admin);
+        console.log(res.data);
         dispatch({
             type: 'GETADMIN',
-            payload: res.data.data
+            payload: res.data
         })
-
     }
 
     //  feach main report
@@ -377,7 +376,8 @@ const ProviderState = ({ children }) => {
             searchExpense,
             adminList: state.adminList,
             mainReportList: state.mainReportList,
-            fetchReport
+            fetchReport,
+            fetchAdmin
 
 
         }}>
