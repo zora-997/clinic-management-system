@@ -30,7 +30,7 @@ const ReportInput = ({ setSearchShow, from, to, setFrom, setTo }) => {
                         required
                         onChange={(e) => setFrom(e.target.value)}
                         value={from}
-                        className={`bg-white focus:ring-1 focus:outline-none border pl-2 p-1 w-full  rounded shadow-sm shadow-black/10`} />
+                        className={`bg-white ${from && 'bg-blue-300/30'} focus:ring-2 focus:outline-none border pl-2 p-1 w-full  rounded shadow-sm shadow-black/10`} />
                 </div>
 
                 {/** to input */}
@@ -42,7 +42,7 @@ const ReportInput = ({ setSearchShow, from, to, setFrom, setTo }) => {
                         required
                         onChange={(e) => setTo(e.target.value)}
                         value={to}
-                        className={`bg-white focus:ring-1 focus:outline-none border pl-2 p-1 w-full  rounded shadow-sm shadow-black/10`} />
+                        className={`bg-white ${to && 'bg-blue-300/30'} focus:ring-2 focus:outline-none border pl-2 p-1 w-full  rounded shadow-sm shadow-black/10`} />
                 </div>
 
                 {/** button search */}
