@@ -8,6 +8,7 @@ import ExpenseType from "./ExpenseType";
 
 import ExpenseList from "./ExpenseList";
 import ReportList from "./ReportList";
+import AppointmentList from "./AppointmentList";
 
 
 const BottomSideBar = () => {
@@ -30,6 +31,7 @@ const BottomSideBar = () => {
                 <ExpenseType />
                 <ExpenseList />
                 <ReportList />
+                <AppointmentList />
             </ul>
 
 
