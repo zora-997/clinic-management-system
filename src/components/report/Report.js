@@ -14,15 +14,14 @@ const Report = () => {
     return (
         <div className='flxe flex-col'>
             <ReportInput setSearchShow={setSearchShow} from={from} setFrom={setFrom} to={to} setTo={setTo} />
+            {searchShow && <ReportMain />}
+
             {/* {searchShow &&
                 <div>
                     <ReportButton setExpenseShow={setExpenseShow} expenseShow={expenseShow} />
                     {!expenseShow ? <ReportDoctor /> : <ReportExpense />}
                 </div>
             } */}
-
-            {searchShow && <ReportMain />}
-
         </div>
     )
 }
