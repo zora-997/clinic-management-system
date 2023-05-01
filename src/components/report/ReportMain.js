@@ -2,12 +2,11 @@ import React, { useContext, useState } from 'react'
 import GlobalContext from '../contexts/createContext/context'
 import ReportDoctor from './ReportDoctor';
 import { HiArrowSmRight } from "react-icons/hi";
-import { FaMoneyCheckAlt } from "react-icons/fa";
-import { AiFillMoneyCollect, AiOutlineMoneyCollect } from "react-icons/ai";
+import { AiOutlineMoneyCollect } from "react-icons/ai";
 import { MdAttachMoney } from "react-icons/md";
-import { SiExpensify, SiVirustotal } from "react-icons/si";
+import { SiExpensify } from "react-icons/si";
 import ReportExpense from './ReportExpense';
-import cost from "../../img/image/cost.svg";
+
 
 const ReportMain = () => {
     const [showDoctor, setShowDoctor] = useState(false);
