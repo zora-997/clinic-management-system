@@ -3,71 +3,74 @@ import React from 'react'
 const Appointment = () => {
     return (
         <div className='flex w-full justify-end mt-8'>
-            <div className='w-3/4 p-3 bg-white mr-24 shadow-sm rounded-2xl '>
+
+            <div className=' bg-white p-2 mr-24 w-3/4 shadow-sm shadow-gray-200 mt-5 rounded-t-3xl '>
                 <table class="  w-full text-sm text-left text-gray-500 ">
                     <thead class="text-xs rounded-2xl  text-gray-900 uppercase ">
                         <tr>
                             <th scope="col" class="px-6 py-3">
-                                Product name
+                                Name
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Color
+                                Gender
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Category
+                                Disease
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Price
+                                Time
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="bg-white">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap ">
-                                Apple MacBook Pro 17"
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap capitalize ">
+                                arkan osman
                             </th>
                             <td class="px-6 py-4">
-                                Silver
+                                male
                             </td>
                             <td class="px-6 py-4">
-                                Laptop
+                                <span className='text-blue-500 bg-blue-100/60 rounded-3xl p-1 px-2'>shakara</span>
                             </td>
                             <td class="px-6 py-4">
-                                $2999
+                                10:30 AM
                             </td>
                         </tr>
                         <tr class="bg-white dark:bg-gray-800">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                Microsoft Surface Pro
+                                zanyar jaza
                             </th>
                             <td class="px-6 py-4">
-                                White
+                                male
                             </td>
                             <td class="px-6 py-4">
-                                Laptop PC
+                                <span className='text-green-500 bg-green-100/60 rounded-3xl p-1 px-2'> corona</span>
                             </td>
                             <td class="px-6 py-4">
-                                $1999
+                                12:25 PM
                             </td>
                         </tr>
                         <tr class="bg-white dark:bg-gray-800">
                             <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
-                                Magic Mouse 2
+                                kazhan
                             </th>
                             <td class="px-6 py-4">
-                                Black
+                                female
+                            </td>
+                            <td class="px-6 py-4 ">
+                                <span className='text-purple-500 bg-purple-100/60 rounded-3xl p-1 px-2'>hallamat</span>
                             </td>
                             <td class="px-6 py-4">
-                                Accessories
-                            </td>
-                            <td class="px-6 py-4">
-                                $99
+                                3:15 AM
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
         </div>
+
 
     )
 }
