@@ -21,6 +21,9 @@ import Expense from "./components/expense/Expense";
 import AllReport from "./components/report/allReport/AllReport";
 import Report from "./components/report/Report";
 
+import Appointment from "./components/appointment/Appointment";
+import AllApointment from "./components/appointment/allAppointment/AllApointment";
+
 
 
 
@@ -68,6 +71,12 @@ const MainRoutes = () => {
                 {/* Report  */}
                 <Route exact path="/" element={<AllReport />} >
                     <Route exact path="report" element={<Report />} />
+                </Route>
+
+
+                {/* appointment  */}
+                <Route exact path="/" element={<AllApointment />} >
+                    <Route exact path="appointment" element={<Appointment />} />
                 </Route>
 
             </Routes>

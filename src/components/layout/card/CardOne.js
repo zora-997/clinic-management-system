@@ -46,7 +46,7 @@ const CardOne = () => {
     });
 
     return (
-        <div className='flex justify-between w-[700px] items-center mt-6'>
+        <div className='flex justify-between w-[700px]  items-center mt-6'>
 
             <LineChart chartData={userData} className="pl-8 pr-0" />
 

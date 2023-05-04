@@ -18,7 +18,7 @@ const ReportInput = ({ setSearchShow, from, to, setFrom, setTo }) => {
 
 
     return (
-        <div className='flex justify-end mt-8   w-full '>
+        <div className='flex justify-end mt-8 w-full '>
 
             <form onSubmit={inputHandler} className='flex justify-between items-center mr-20   w-3/4'>
                 {/** from input */}

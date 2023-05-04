@@ -16,12 +16,12 @@ const Header = () => {
                     <span className={`font-medium text-2xl text-gray-600 capitalize  ml-8`}> {location.pathname.slice(1)} </span>
 
                     {/** search input */}
-                    {location.pathname !== "/dashbord" &&
-                        <div className='search flex rounded-full mr-24  bg-white/60 hover:bg-white p-1.5  w-[410px] shadow-sm '>
-                            <AiOutlineSearch size={22} className="text-sky-500" />
-                            <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search...' className=' bg-transparent w-full focus:outline-none pl-2' />
-                        </div>
-                    }
+
+                    <div className='search flex rounded-full mr-24  bg-white/60 hover:bg-white p-1.5  w-[410px] shadow-sm '>
+                        <AiOutlineSearch size={22} className="text-sky-500" />
+                        <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search...' className=' bg-transparent w-full focus:outline-none pl-2' />
+                    </div>
+
 
                     {/** log out buuton */}
                     {location.pathname === "/dashbord" &&

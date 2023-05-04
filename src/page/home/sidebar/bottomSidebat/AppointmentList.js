@@ -10,7 +10,7 @@ const AppointmentList = () => {
     return (
         <div className='w-full relative'>
             <li className={` ${location.pathname === '/appointment' && 'bg-blue-500 text-white'} mb-2 group cursor-pointer w-full items-center hover:text-white hover:bg-blue-500 duration-100 p-2.5 rounded-lg `} >
-                <Link className="relative flex justify-start items-center w-full">
+                <Link to="/appointment" className="relative flex justify-start items-center w-full">
                     <BiUserPin size={23} className="mr-4 ml-7 " />
                     <span >Appointment</span>
                     <MdArrowRight className={` ${location.pathname === '/appointment' && 'text-white'} absolute right-0 text-white  group-hover:text-white rounded-xl`} size={20} />

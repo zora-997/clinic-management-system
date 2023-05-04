@@ -25,13 +25,13 @@ const BottomSideBar = () => {
 
                     </Link>
                 </li>
+                <AppointmentList />
                 <DoctorList />
                 <SickList />
                 <SurgeryTypeList />
                 <ExpenseType />
                 <ExpenseList />
                 <ReportList />
-                <AppointmentList />
             </ul>
 
 

@@ -13,7 +13,7 @@ const CardBody = () => {
 
 
     return (
-        <div className='mt-1 grid grid-cols-4 w-full  '>
+        <div className='mt-1 grid grid-cols-4 gap-x-5 w-full  '>
 
             <div style={{ backgroundColor: '#0171FE' }}
                 className='pl-5 rounded-2xl  w-[251px] h-[120px] flex items-center justify-start  
