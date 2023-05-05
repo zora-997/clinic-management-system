@@ -2,7 +2,7 @@ import React from 'react'
 
 const CardAppointment = () => {
     return (
-        <div className=' bg-white p-2 border-t border-t-gray-50 shadow-sm shadow-gray-200 mt-5 rounded-t-3xl '>
+        <div className=' bg-white p-2 border-t border-t-gray-100 shadow-sm shadow-gray-200 mt-5 rounded-t-3xl '>
             <table class="  w-full text-sm text-left text-gray-500 ">
                 <thead class="text-xs rounded-2xl  text-gray-900 uppercase ">
                     <tr>
