@@ -35,8 +35,8 @@ const CardAppointment = () => {
                             10:30 AM
                         </td>
                     </tr>
-                    <tr class="bg-white dark:bg-gray-800">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                    <tr class="bg-white ">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap ">
                             zanyar jaza
                         </th>
                         <td class="px-6 py-4">
@@ -49,8 +49,8 @@ const CardAppointment = () => {
                             12:25 PM
                         </td>
                     </tr>
-                    <tr class="bg-white dark:bg-gray-800">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                    <tr class="bg-white ">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap ">
                             kazhan
                         </th>
                         <td class="px-6 py-4">

@@ -37,8 +37,8 @@ const Appointment = () => {
                                 10:30 AM
                             </td>
                         </tr>
-                        <tr class="bg-white dark:bg-gray-800">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                        <tr class="bg-white ">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap ">
                                 zanyar jaza
                             </th>
                             <td class="px-6 py-4">
@@ -51,8 +51,50 @@ const Appointment = () => {
                                 12:25 PM
                             </td>
                         </tr>
-                        <tr class="bg-white dark:bg-gray-800">
-                            <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap dark:text-white">
+                        <tr class="bg-white ">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap ">
+                                kazhan
+                            </th>
+                            <td class="px-6 py-4">
+                                female
+                            </td>
+                            <td class="px-6 py-4 ">
+                                <span className='text-purple-500 bg-purple-100/60 rounded-3xl p-1 px-2'>hallamat</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                3:15 AM
+                            </td>
+                        </tr>
+                        <tr class="bg-white">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap capitalize ">
+                                arkan osman
+                            </th>
+                            <td class="px-6 py-4">
+                                male
+                            </td>
+                            <td class="px-6 py-4">
+                                <span className='text-blue-500 bg-blue-100/60 rounded-3xl p-1 px-2'>shakara</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                10:30 AM
+                            </td>
+                        </tr>
+                        <tr class="bg-white ">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap ">
+                                zanyar jaza
+                            </th>
+                            <td class="px-6 py-4">
+                                male
+                            </td>
+                            <td class="px-6 py-4">
+                                <span className='text-green-500 bg-green-100/60 rounded-3xl p-1 px-2'> corona</span>
+                            </td>
+                            <td class="px-6 py-4">
+                                12:25 PM
+                            </td>
+                        </tr>
+                        <tr class="bg-white ">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-500 whitespace-nowrap ">
                                 kazhan
                             </th>
                             <td class="px-6 py-4">

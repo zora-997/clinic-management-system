@@ -23,8 +23,8 @@ const DetailTypeOfWork = ({ sick_surgery, clickAddWork, setsicksurgerys }) => {
                     Set Type of Work
                 </button>
             </div>
-            <table className=' overflow-hidden bg-white text-sm rounded-md shadow-md shadow-black/5 text-left text-gray-500 dark:text-gray-400'>
-                <thead className=" shadow-sm text-md text-white border-2 border-cyan-200 uppercase rounded-t-xl bg-cyan-500 dark:bg-gray-700 dark:text-gray-400">
+            <table className=' overflow-hidden bg-white text-sm rounded-md shadow-md shadow-black/5 text-left text-gray-500 '>
+                <thead className=" shadow-sm text-md text-white border-2 border-cyan-200 uppercase rounded-t-xl bg-cyan-500 ">
                     <tr className=''>
                         <th scope="col" className="pl-1.5 w-72">Surgery Type</th>
                         <th scope="col" className="pl-1.5 w-48">Price</th>

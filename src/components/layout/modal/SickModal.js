@@ -29,7 +29,19 @@ const SickModal = ({ isVisible, onClose, sick_name, setSick_name, sick_phone, se
                         </div>
                         <div className='w-1/2'>
                             <label className='text-gray-500'>Gender</label>
-                            <input type="text" autoComplete="off" onChange={(val) => setSick_gender(val.target.value)} value={sick_gender} placeholder='new gender' className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2' />
+                            <select name='sick_gender' placeholder='Gender' required onChange={(e) => setSick_gender(e.target.value)} value={sick_gender} className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 '>
+                                {sick_gender === "male" ?
+                                    <>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </> :
+                                    <>
+                                        <option value="female">Female</option>
+                                        <option value="male">Male</option>
+                                    </>
+                                }
+
+                            </select>
                         </div>
                     </div>
 

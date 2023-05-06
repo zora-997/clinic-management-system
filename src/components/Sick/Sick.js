@@ -40,8 +40,8 @@ const Sick = () => {
                     >Create Sick</button>
                 </div>
 
-                <table className=" overflow-hidden bg-white text-sm shadow-sm text-left text-gray-500 dark:text-gray-400  w-[1050px]">
-                    <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 dark:bg-gray-700 dark:text-gray-400">
+                <table className=" overflow-hidden bg-white text-sm shadow-sm text-left text-gray-500  w-[1050px]">
+                    <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                         <tr className=''>
                             <th scope="col" className="px-5 py-3 text-center">Id</th>
                             <th scope="col" className=" py-3"> Name</th>

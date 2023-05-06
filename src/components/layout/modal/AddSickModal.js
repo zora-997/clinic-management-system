@@ -3,22 +3,20 @@ import GlobalContext from "../../contexts/createContext/context";
 export const AddSickModal = ({ isAddVisible, onClose }) => {
 
     const { addSick, doctorList } = useContext(GlobalContext);
-    const [sick, setSick] = useState({
-        sick_name: "",
-        sick_phone: "",
-        sick_age: 0,
-        sick_gender: "",
-        doctor_id: "",
-        sick_date: ""
-    });
 
-    // input change
-    const onInputChange = e => setSick({ ...sick, [e.target.name]: e.target.value })
+    const [sick_name, setSick_name] = useState("");
+    const [sick_phone, setSick_phone] = useState("");
+    const [sick_age, setSick_age] = useState(0);
+    const [sick_gender, setSick_gender] = useState("male");
+    const [doctor_id, setDoctor_id] = useState("");
+    const [sick_date, setSick_date] = useState("");
+
 
     // add Sick.
     const addSickrHandler = e => {
         e.preventDefault();
-        addSick(sick);
+        console.log(sick_gender);
+        addSick({ sick_name, sick_phone, sick_age, sick_gender, doctor_id, sick_date });
     }
 
 
@@ -32,25 +30,24 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
                     <div className='flex'>
                         <div className='w-3/4 mr-5'>
                             <label className='text-gray-500' >Name</label>
-                            <input type='text' name='sick_name' placeholder='Name' autoComplete="off" required className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 ' onChange={onInputChange} />
+                            <input type='text' name='sick_name' placeholder='Name' autoComplete="off" required className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 ' onChange={(e) => setSick_name(e.target.value)} />
                         </div>
                         <div className='w-1/3'>
                             <label className='text-gray-500' >Age</label>
-                            <input type='number' name='sick_age' placeholder='age' autoComplete="off" required className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 ' onChange={onInputChange} />
+                            <input type='number' name='sick_age' placeholder='age' autoComplete="off" required className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 ' onChange={(e) => setSick_age(e.target.value)} />
                         </div>
                     </div>
 
                     <div className='flex'>
                         <div className='w-3/4 mr-5'>
                             <label className='text-gray-500' >Phone</label>
-                            <input type='text' name='sick_phone' placeholder='Phone' autoComplete="off" required className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 ' onChange={onInputChange} />
+                            <input type='text' name='sick_phone' placeholder='Phone' autoComplete="off" required className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 ' onChange={(e) => setSick_phone(e.target.value)} />
                         </div>
                         <div className='w-1/3'>
                             <label className='text-gray-500' >Gender</label>
-                            <select name='sick_gender' placeholder='Gender' required onChange={onInputChange} className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 '>
-                                <option></option>
-                                <option value="Male">Male</option>
-                                <option value="Female">Female</option>
+                            <select name='sick_gender' placeholder='Gender' required onChange={(e) => setSick_gender(e.target.value)} className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 '>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
                             </select>
                         </div>
                     </div>
@@ -58,7 +55,7 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
                     <div className='flex'>
                         <div className='w-3/4 mr-5'>
                             <label className='text-gray-500' >Doctor</label>
-                            <select name='doctor_id' required onChange={onInputChange} className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 '>
+                            <select name='doctor_id' required onChange={(e) => setDoctor_id(e.target.value)} className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 '>
                                 <option></option>
                                 {doctorList.map((doctor) => {
                                     return <option key={doctor.doctor_id} value={`${doctor.doctor_id}`}>{doctor.doctor_name}</option>
@@ -67,7 +64,7 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
                         </div>
                         <div className='w-1/3'>
                             <label className='text-gray-500' >Date</label>
-                            <input type='date' name='sick_date' autoComplete="off" placeholder='Sick Date' required className="w-full rounded border my-2 p-1.5" onChange={onInputChange} />
+                            <input type='date' name='sick_date' autoComplete="off" placeholder='Sick Date' required className="w-full rounded border my-2 p-1.5" onChange={(e) => setSick_date(e.target.value)} />
                         </div>
                     </div>
                     <button type='submit' className='border rounded-md bg-cyan-500 hover:bg-cyan-400 text-white p-2 my-2'>Create Sick</button>

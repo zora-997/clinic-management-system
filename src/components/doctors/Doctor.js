@@ -30,8 +30,8 @@ const Doctors = () => {
                      text-white shadow-sm flex items-center shadow-gray-300 border mb-2 
                       hover:text-cyan-400 border-cyan-300 h-fit p-1 px-9 rounded-md bg-cyan-500 hover:bg-transparent duration-200`}>Create Doctor</button>
                 </div>
-                <table className="whitespace-nowrap bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 dark:text-gray-400 w-[1000px]">
-                    <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 dark:bg-gray-700 dark:text-gray-400">
+                <table className="whitespace-nowrap bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500  w-[1000px]">
+                    <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                         <tr>
                             <th scope="col" className="px-6 py-3">Id</th>
                             <th scope="col" className="px-6 py-3">Doctor Name</th>

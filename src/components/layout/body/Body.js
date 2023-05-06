@@ -9,8 +9,8 @@ const Body = () => {
 
 
     return (
-        <div className='body flex w-full justify-end mt-6 select-none'>
-            < div className='flex flex-col w-[1090px] mr-6  ' >
+        <div className='body flex w-full justify-end mt-6   select-none'>
+            < div className='flex flex-col w-[1090px] mr-4  ' >
                 <CardBody />
                 <div className='flex justify-between '>
                     <CardOne />

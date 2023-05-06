@@ -5,20 +5,17 @@ import GlobalContext from "../../contexts/createContext/context";
 const AddSurgeryModal = ({ isAddVisible, onClose }) => {
 
     const { addSurgeryType } = useContext(GlobalContext)
-    const [surgery, setSurgery] = useState({
-        surgery_type_name: "",
-        surgery_type_price: 0,
-        surgery_type_date: ""
-    });
+    const [surgery_type_name, setSurgery_type_name] = useState("");
+    const [surgery_type_price, setSurgery_type_price] = useState(0);
 
 
-    // input change
-    const onInputChange = e => setSurgery({ ...surgery, [e.target.name]: e.target.value })
+    let surgery_type_date = (new Date().toISOString().slice(0, 10));
+
 
     // add doctor.
     const addSurgeryHandler = e => {
         e.preventDefault();
-        addSurgeryType(surgery);
+        addSurgeryType({ surgery_type_name, surgery_type_price, surgery_type_date });
     }
 
     if (!isAddVisible) return null;
@@ -31,16 +28,15 @@ const AddSurgeryModal = ({ isAddVisible, onClose }) => {
                     <div className='flex justify-between mb-3'>
                         <div className='w-3/4 mr-5'>
                             <label className='text-gray-500'>Name</label>
-                            <input type='text' name='surgery_type_name' autoComplete="off" placeholder='Surgery Name' required className="w-full focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 p-2" onChange={onInputChange} />
+                            <input type='text' name='surgery_type_name' autoComplete="off" placeholder='Surgery Name' required className="w-full focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 p-2" onChange={(e) => setSurgery_type_name(e.target.value)} />
                         </div>
                         <div className='w-1/3'>
                             <label className='text-gray-500'>Price</label>
-                            <input type='number' name='surgery_type_price' autoComplete="off" placeholder='Surgey Price' required className="w-full focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 p-2" onChange={onInputChange} />
+                            <input type='number' name='surgery_type_price' autoComplete="off" placeholder='0.00' required className="w-full focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 p-2" onChange={(e) => setSurgery_type_price(e.target.value)} />
                         </div>
                     </div>
 
-                    <label className='text-gray-500'>Date</label>
-                    <input type='date' name='surgery_type_date' autoComplete="off" placeholder='surgery type date' required className="w-full focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 p-2" onChange={onInputChange} />
+
 
                     <button type='submit' className='border rounded-md bg-cyan-500 hover:bg-cyan-400 text-white p-2 my-3'>Create Surgery Type</button>
                 </form>

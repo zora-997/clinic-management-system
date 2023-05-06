@@ -7,7 +7,8 @@ const AddModal = ({ isAddVisible, onClose }) => {
 
     const [doctor_name, setDoctor_name] = useState("");
     const [doctor_percentage, setDoctor_percentage] = useState(0);
-    const [doctor_date, setDoctor_date] = useState("");
+    // const [doctor_date, setDoctor_date] = useState("");
+    let doctor_date = (new Date().toISOString().slice(0, 10));
 
 
     // add doctor.
@@ -39,12 +40,11 @@ const AddModal = ({ isAddVisible, onClose }) => {
                         </div>
                         <div className='w-1/3'>
                             <label className='text-gray-500'>Percentage</label>
-                            <input type='number' name='doctor_percentage' autoComplete="off" placeholder='D.percentage' required className="block w-full focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 p-2" onChange={(val) => setDoctor_percentage(val.target.value)} />
+                            <input type='number' name='doctor_percentage' autoComplete="off" placeholder='0.00' required className="block w-full focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 p-2" onChange={(val) => setDoctor_percentage(val.target.value)} />
                         </div>
 
                     </div>
-                    <label className='text-gray-500'>Date</label>
-                    <input type='date' name='doctor_date' autoComplete="off" placeholder='D.date' required className="focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 p-2" onChange={(val) => setDoctor_date(val.target.value)} />
+
 
                     <button type='submit' className='border rounded-md bg-cyan-500 hover:bg-cyan-400 text-white p-2 my-2'>create</button>
                 </form>
