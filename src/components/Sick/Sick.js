@@ -69,7 +69,7 @@ const Sick = () => {
                                     <td className="px-3 py-4">{sick.sick_gender}</td>
                                     <td className="px-6 py-4 w-56 ">{dn[did.indexOf(`${sick.doctor_id}`)]}</td>
                                     <td className="px-6 py-4">{sick.sick_date}</td>
-                                    <td onClick={() => { setShow(true); setSick_name(sick.sick_name); setSick_phone(sick.sick_phone); setSick_age(sick.sick_age); setSick_gender(sick.sick_gender); setSick_id(sick.sick_id); }} className=" py-4">Edit</td>
+                                    <td onClick={() => { setShow(true); setSick_name(sick.sick_name); setSick_phone(sick.sick_phone); setSick_age(sick.sick_age); setSick_gender(sick.sick_gender); setSick_id(sick.sick_id); }} className=" py-4 "> <span className='hover:border-b hover:border-cyan-400 w-fit'>Edit</span></td>
 
                                 </tr>
 

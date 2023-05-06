@@ -8,7 +8,7 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
     const [sick_phone, setSick_phone] = useState("");
     const [sick_age, setSick_age] = useState(0);
     const [sick_gender, setSick_gender] = useState("male");
-    const [doctor_id, setDoctor_id] = useState("");
+    const [doctor_id, setDoctor_id] = useState(0);
     const [sick_date, setSick_date] = useState("");
 
 
@@ -17,6 +17,14 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
         e.preventDefault();
         console.log(sick_gender);
         addSick({ sick_name, sick_phone, sick_age, sick_gender, doctor_id, sick_date });
+
+        setSick_name("")
+        setSick_phone("")
+        setSick_age(0)
+        setSick_gender("male")
+        setDoctor_id(0)
+        setSick_date("")
+
     }
 
 
