@@ -9,7 +9,7 @@ import GlobalContext from '../../contexts/createContext/context';
 
 const CardBody = () => {
 
-    const { doctorList, sickList } = useContext(GlobalContext)
+    const { doctorList, sickList, sickSurgery } = useContext(GlobalContext)
 
 
     return (
@@ -46,8 +46,8 @@ const CardBody = () => {
                     <FaUser style={{ color: '#04D5C7' }} size={25} className=" relative  transition-colors duration-500 ease-in-out" />
                 </div>
                 <div className='flex flex-col  pt-3 pl-2 g transition-colors duration-500 ease-in-out'>
-                    <span style={{ color: '#ACFFFB' }} className='text-sm  '>Active Users</span>
-                    <span style={{ color: '#EBFFFF' }} className='text-xl pb-3 relative '>2</span>
+                    <span style={{ color: '#ACFFFB' }} className='text-sm  '>Active Sick</span>
+                    <span style={{ color: '#EBFFFF' }} className='text-xl pb-3 relative '>{sickList.length}</span>
                 </div>
 
                 {/** icon kall */}
@@ -66,8 +66,8 @@ const CardBody = () => {
                     <BsFillHeartPulseFill style={{ color: '#9284F7' }} size={25} className=" relative  transition-colors duration-500 ease-in-out" />
                 </div>
                 <div className='flex flex-col  pt-3 pl-2 g transition-colors duration-500 ease-in-out'>
-                    <span style={{ color: '#DBD3FF' }} className='text-sm'>Total Sick</span>
-                    <span style={{ color: '#F8F6FF' }} className='text-xl pb-3 relative '>{sickList.length}</span>
+                    <span style={{ color: '#DBD3FF' }} className='text-sm'>Sick Surgery</span>
+                    <span style={{ color: '#F8F6FF' }} className='text-xl pb-3 relative '>{sickSurgery.length}</span>
                 </div>
 
                 {/** icon kall */}
@@ -88,8 +88,8 @@ const CardBody = () => {
                     <img src={report} alt="no doctor" />
                 </div>
                 <div className='flex flex-col  pt-3 pl-2 g transition-colors duration-500 ease-in-out'>
-                    <span style={{ color: '#FFDFD1' }} className='text-sm'>Total Report</span>
-                    <span style={{ color: '#F8F6FF' }} className='text-xl pb-3 relative '>{sickList.length}</span>
+                    <span style={{ color: '#FFDFD1' }} className='text-sm'>Today Appointment</span>
+                    <span style={{ color: '#F8F6FF' }} className='text-xl pb-3 relative '>34</span>
                 </div>
 
                 {/** icon kall */}

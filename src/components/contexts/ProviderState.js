@@ -328,6 +328,7 @@ const ProviderState = ({ children }) => {
 
     // add sick surgery
     const addSickSurgery = async (sickSurgery) => {
+        // ba kar hatwa la <DetailBodyInput />
         await api.post('sick_surgery/create.php', sickSurgery);
         dispatch({
             type: SET_TYPE_OF_WORK,

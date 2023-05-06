@@ -14,11 +14,14 @@ const AddExpenseModal = ({ isAddVisible, onClose }) => {
     const [expense_note, set_new_expense_note] = useState("");
     const [expense_date, set_new_expense_date] = useState("");
 
+    const getIdAdmin = localStorage.getItem("data")
+    let admin_id = (JSON.parse(getIdAdmin).token);
+
 
     // update exponse type.
     const createExpenseHandler = (e) => {
         e.preventDefault();
-        addExpense({ expense_type_id, expense_amount, admin_id: 1, expense_date, expense_note });
+        addExpense({ expense_type_id, expense_amount, admin_id, expense_date, expense_note });
         set_new_expense_type_id()
         set_new_expense_amount()
         set_new_expense_note("")

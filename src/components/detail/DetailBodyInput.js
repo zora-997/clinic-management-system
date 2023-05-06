@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import GlobalContext from "../../components/contexts/createContext/context";
 import DetailTypeOfWork from './DetailTypeOfWork';
 import uuid from "react-uuid";
@@ -56,12 +56,9 @@ const DetailBodyInput = () => {
             sick_surgery_date,
             items: sick_surgery
         })
+        // bo away la naw table typeOfWork datay peshutr pshan naiatawa
         setsicksurgerys([])
-        console.log(doctor_id,
-            location.state,
-            sick_surgery_date,
-            sick_surgery);
-
+        // bo away la sar typeOfWork  namene
         set_show(false)
     }
 
@@ -69,7 +66,7 @@ const DetailBodyInput = () => {
     return (
         <div>
 
-            <form onSubmit={onClick} className='' >
+            <form onSubmit={onClick} >
 
                 <div className="mt-8 flex justify-between">
                     <div className='relative w-[30%]'>
