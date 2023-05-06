@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import GlobalContext from "../../components/contexts/createContext/context";
 import DetailTypeOfWork from './DetailTypeOfWork';
 import uuid from "react-uuid";
@@ -10,8 +10,8 @@ import { VscAdd } from "react-icons/vsc";
 
 const DetailBodyInput = () => {
 
-    const { id } = useParams();
-    const { surgeryType, addSickSurgery, doctor_id } = useContext(GlobalContext)
+    const location = useLocation();
+    const { surgeryType, addSickSurgery, sickList } = useContext(GlobalContext)
 
     const [surgery_type_id, set_surgery_type_id] = useState("")
     const [surgery_type_name, set_surgery_type_name] = useState("")
@@ -19,7 +19,10 @@ const DetailBodyInput = () => {
     const [sick_surgery_invoice_note, set_sick_surgery_invoice_note] = useState("");
     const [show, set_show] = useState(false);
 
-
+    // id doctor
+    let doctor_id = sickList.map(sick => sick.sick_id === location.state && sick.doctor_id).filter(f => f !== false)
+    console.log(doctor_id[0]);
+    // to day
     let sick_surgery_date = (new Date().toISOString().slice(0, 10));
 
     // TEMP bo war grtni type of worky taza
@@ -48,11 +51,17 @@ const DetailBodyInput = () => {
     const clickAddWork = (e) => {
         e.preventDefault();
         addSickSurgery({
-            doctor_id,
-            sick_id: id,
+            doctor_id: doctor_id[0],
+            sick_id: location.state,
             sick_surgery_date,
             items: sick_surgery
         })
+        setsicksurgerys([])
+        console.log(doctor_id,
+            location.state,
+            sick_surgery_date,
+            sick_surgery);
+
         set_show(false)
     }
 
