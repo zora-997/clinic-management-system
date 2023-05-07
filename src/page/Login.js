@@ -37,7 +37,7 @@ const Login = () => {
         <div className='flex flex-col'>
 
 
-            <div className={`p-3 mt-2 w-[900px] h-[10] ${!show && '-top-16'} ${show && 'top-0 duration-300'} flex justify-between place-self-center mb-4 absolute text-sm text-red-600 rounded-lg bg-red-100 `} role="alert">
+            <div className={`p-3 mt-2 w-full h-[10] ${!show && '-top-16'} ${show && 'top-0 duration-300'} flex justify-between place-self-center mb-4 absolute text-sm text-red-600 rounded-lg bg-red-100 `} role="alert">
                 <span className="font-medium">{error}</span>
                 <span onClick={() => setShow(false)} className="font-medium text-2xl cursor-pointer">×</span>
             </div>

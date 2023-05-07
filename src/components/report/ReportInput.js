@@ -9,7 +9,6 @@ const ReportInput = ({ setSearchShow, from, to, setFrom, setTo }) => {
     const inputHandler = (e) => {
         e.preventDefault();
 
-        console.log(from, " ", to);
         fetchReport({ from, to })
         setSearchShow(true)
 

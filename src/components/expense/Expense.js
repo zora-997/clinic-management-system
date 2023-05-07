@@ -7,7 +7,7 @@ import AddExpenseModal from '../layout/modal/AddExpenseModal';
 const Expense = () => {
 
     const { expenseList, searchExpense, expenseTypeList } = useContext(GlobalContext);
-    console.log(expenseList);
+
     //bo garanaway nawi expenseTypeList
     const eid = expenseTypeList.map(expense => expense.expense_type_id)
     const en = expenseTypeList.map(expense => expense.expense_type_name)

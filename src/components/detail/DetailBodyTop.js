@@ -11,23 +11,22 @@ const DetailBodyTop = () => {
 
     return (
 
-        <div className='rounded-md shadow-sm p-5 '>
+        <div className='rounded-md shadow-sm p-5'>
 
             {sickList.map(sick => {
                 return (
                     <div key={sick.sick_id}>
                         {
                             sick.sick_id === location.state &&
-                            <div>
-                                <div className='flex justify-between w-full pr-16 mb-3 '>
-                                    <p className='font-bold text-xl text-gray-500'>Name&nbsp;:&nbsp;<span className='text-xl font-normal text-cyan-500 '>{sick.sick_name}</span></p>
-                                    <p className='font-bold text-xl text-gray-500 pl-14'>Age&nbsp;:&nbsp;&nbsp; <span className='text-xl font-normal text-cyan-500'>{sick.sick_age}</span></p>
-                                    <p className='font-bold text-xl text-gray-500 pl-5'>Gender&nbsp;:&nbsp;&nbsp; <span className='text-xl font-normal text-cyan-500'>{sick.sick_gender}</span> </p>
-                                </div>
-                                <div className='flex w-[68%]  justify-between '>
-                                    <p className='font-bold text-xl text-gray-500'>Date&nbsp;:&nbsp;&nbsp; <span className='text-xl font-normal text-cyan-500 '>{sick.sick_date}</span> </p>
-                                    <p className='font-bold text-xl text-gray-500'>Phone&nbsp;:&nbsp;&nbsp; <span className='text-xl font-normal text-cyan-500'>{sick.sick_phone}</span> </p>
-                                </div>
+                            <div className='grid grid-cols-3'>
+
+                                <p className='font-bold text-xl  text-gray-500'>Name : <span className='text-xl font-normal text-cyan-500 '>{sick.sick_name}</span></p>
+                                <p className='font-bold text-xl text-gray-500  place-self-start ml-10'>Age &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;<span className='text-xl font-normal text-cyan-500'>{sick.sick_age}</span></p>
+                                <p className='font-bold text-xl text-gray-500 pl-5 ml-10'>Gender : <span className='text-xl font-normal text-cyan-500'>{sick.sick_gender}</span> </p>
+                                <p className='font-bold text-xl  text-gray-500 mt-3'>Date &nbsp;&nbsp;&nbsp;: <span className='text-xl font-normal text-cyan-500 '>{sick.sick_date}</span> </p>
+                                <p className='font-bold text-xl  text-gray-500 ml-10 mt-3'>Phone &nbsp;: &nbsp;&nbsp;<span className='text-xl font-normal text-cyan-500'>{sick.sick_phone}</span> </p>
+
+
                             </div>
 
 

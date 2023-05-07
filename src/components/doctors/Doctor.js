@@ -16,8 +16,8 @@ const Doctors = () => {
     const [addshow, setAddShow] = useState(false);
 
     // sort la gawra bo bchuk wa ba pechawa nawa la bchuk bo gawra
-    let sort = doctorList.sort((a, b) => b.doctor_percentage - a.doctor_percentage);
-    console.log(sort);
+    // let sort = doctorList.sort((a, b) => b.doctor_percentage - a.doctor_percentage);
+
 
     return (
 

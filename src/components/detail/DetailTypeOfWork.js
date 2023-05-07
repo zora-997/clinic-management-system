@@ -14,7 +14,7 @@ const DetailTypeOfWork = ({ sick_surgery, clickAddWork, setsicksurgerys }) => {
 
 
     return (
-        <div className='flex flex-col my-7 duration-500'>
+        <div className={` flex flex-col my-7 duration-500`}>
             <div className='flex justify-between items-center'>
                 <p className='text-xl my-4 border-b-2 border-sky-300 w-fit'>Type of Work </p>
                 <button type='submit'

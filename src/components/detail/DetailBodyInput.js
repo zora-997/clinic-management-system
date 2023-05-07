@@ -71,11 +71,11 @@ const DetailBodyInput = () => {
                 <div className="mt-8 flex justify-between">
                     <div className='relative w-[30%]'>
                         <div className='flex flex-col w-full border-b rounded-md  absolute'>
-                            <label className='text-gray-600 mb-2'>Surgery Type</label>
+                            <label className='text-gray-700 mb-2'>Surgery Type</label>
                             <input type="text" required name='surgery_type_name' placeholder='Surgery Search' value={surgery_type_name || ''}
                                 onChange={(e) => set_surgery_type_name(e.target.value)}
                                 autoComplete="off"
-                                className={` ${surgery_type_name && 'bg-blue-100'} w-full bg-slate-50 text-sm focus:ring-1 focus:ring-sky-500 pl-2 focus:outline-none border border-gray-300 p-2 rounded shadow-sm shadow-black/10 `} />
+                                className={` ${surgery_type_name && 'bg-sky-200'} w-full bg-slate-50 text-sm focus:ring-1 focus:ring-sky-500 pl-2 focus:outline-none border border-gray-300 p-2 rounded shadow-sm shadow-black/10 `} />
 
                             {surgeryType && surgeryType.filter(itme => {
                                 const search = surgery_type_name.toLowerCase();
@@ -95,11 +95,11 @@ const DetailBodyInput = () => {
 
                     {/** price input */}
                     <div className='flex flex-col w-[30%]'>
-                        <label className='text-gray-600 mb-1'>Price</label>
+                        <label className='text-gray-700 mb-1'>Price</label>
                         {/** value = {surgery_type_price || ''} aw or agar da naney awa alle auncontrolled wata ama sarata null yan undefined boia aw || bo da aney ka te batallish be */}
                         <input type="number" name='surgery_type_price' required placeholder='0.00' value={surgery_type_price || ''}
                             onChange={(e) => set_surgery_type_price(e.target.value)}
-                            className={`bg-slate-50 focus:ring-1 ${surgery_type_price && 'bg-blue-100'} focus:outline-none border pl-2 p-2 w-full  rounded shadow-sm shadow-black/10`} />
+                            className={`bg-slate-50 focus:ring-1 ${surgery_type_price && 'bg-sky-200 '} focus:outline-none border pl-2 p-2 w-full  rounded shadow-sm shadow-black/10`} />
                     </div>
 
                     {/** button  Add New Work*/}
@@ -114,12 +114,12 @@ const DetailBodyInput = () => {
                 </div>
 
                 {/** description input*/}
-                <div className='flex flex-col w-[60rem] mt-2 '>
-                    <label className='text-gray-600 mb-1'>Description</label>
+                <div className='flex flex-col w-full mt-2 '>
+                    <label className='text-gray-700 mb-1'>Description</label>
                     <textarea placeholder='Description' cols="50" rows="4"
                         value={sick_surgery_invoice_note}
                         onChange={(e) => set_sick_surgery_invoice_note(e.target.value)}
-                        className={`bg-slate-50 ${sick_surgery_invoice_note && 'bg-blue-100'} focus:ring-1 focus:outline-none border p-3 flex-wrap rounded-md shadow-sm shadow-black/10`} >
+                        className={`bg-slate-50 ${sick_surgery_invoice_note && 'bg-sky-200'} focus:ring-1 focus:outline-none border p-3 flex-wrap rounded-md shadow-sm shadow-black/10`} >
                     </textarea>
                 </div>
 
@@ -130,7 +130,7 @@ const DetailBodyInput = () => {
             {/** add new work  */}
             {
                 show && sick_surgery.length > 0 ?
-                    <DetailTypeOfWork sick_surgery={sick_surgery} clickAddWork={clickAddWork} set_show={set_show} setsicksurgerys={setsicksurgerys} />
+                    <DetailTypeOfWork sick_surgery={sick_surgery} clickAddWork={clickAddWork} setsicksurgerys={setsicksurgerys} />
                     : null
 
             }
