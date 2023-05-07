@@ -32,7 +32,7 @@ const ReportExpense = ({ show, setShow }) => {
 
                                     {
                                         expense.expenses.length > 0 && expense.expenses.map((i, inde) => {
-                                            return <tr key={inde}
+                                            return <tr key={inde + 1}
                                                 className="border  cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
                                                 <th scope='row' className="px-5 py-4">&nbsp;&nbsp;{inde + 1}</th>
                                                 <td className="px-6 py-4">{en[eid.indexOf(`${i.expense_type_id}`)]}</td>
