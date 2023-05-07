@@ -10,8 +10,8 @@ const ReportDoctor = ({ showDoctor, setShowDoctor }) => {
     return (
         <div onClick={() => setShowDoctor(false)} className=' fixed  z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
             <div className='w-3/4 flex flex-col'>
-                <table className="whitespace-nowrap bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 dark:text-gray-400 ">
-                    <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 dark:bg-gray-700 dark:text-gray-400">
+                <table className="whitespace-nowrap bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 ">
+                    <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                         <tr>
                             <th scope="col" className="px-6 py-3">Id</th>
                             <th scope="col" className="px-6 py-3">Doctor Name</th>

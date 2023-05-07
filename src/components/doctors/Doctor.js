@@ -73,20 +73,6 @@ export default Doctors;
 
 
 
-// am shewaia  ba be bakar henany useContext and useReducer
-
-
-  //const [doctorList, setdoctorList] = useState([]);
-  // setdoctorList(newDoctorsList);
-    // useEffect(() => {
-    //     // load all doctors.
-    //     const fetchDoctors = async () => {
-    //         const response = await api.get('/doctor');
-    //         setdoctorList(response.data);
-
-    //     }
-    //     fetchDoctors();
-    // }, [])
 
 
 
