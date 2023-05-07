@@ -191,6 +191,7 @@ const ProviderState = ({ children }) => {
     // all doctor
     const fetchDoctors = async () => {
         const res = await api.get('doctor/read.php');
+        console.log(res);
         dispatch({
             type: 'GET',
             payload: res.data.data
