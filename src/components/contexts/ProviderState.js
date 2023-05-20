@@ -191,7 +191,7 @@ const ProviderState = ({ children }) => {
     // all doctor
     const fetchDoctors = async () => {
         const res = await api.get('doctor/read.php');
-        console.log(res);
+
         dispatch({
             type: 'GET',
             payload: res.data.data
@@ -220,6 +220,7 @@ const ProviderState = ({ children }) => {
     // all sick surgery
     const fetchSickSurgery = async () => {
         const { data } = await api.get('sick_surgery/read.php');
+        console.log(data);
         dispatch({
             type: 'GETSICKSURGERY',
             payload: data.data
@@ -328,16 +329,15 @@ const ProviderState = ({ children }) => {
     }
 
     // add sick surgery
-    const addSickSurgery = async (sickSurgery) => {
+    const addSickSurgery = async (formData) => {
         // ba kar hatwa la <DetailBodyInput />
-        await api.post('sick_surgery/create.php', sickSurgery);
+        await api.post('sick_surgery/createe.php', formData)
         dispatch({
             type: SET_TYPE_OF_WORK,
-            payload: sickSurgery
+            payload: formData
         })
         fetchSickSurgery();
         fetchSick();
-
     }
 
 

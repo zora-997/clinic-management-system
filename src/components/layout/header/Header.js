@@ -25,7 +25,7 @@ const Header = () => {
 
                     {/** log out buuton */}
                     {location.pathname === "/dashbord" &&
-                        <Link to="/login" className="mr-12 relative rounded-md px-5 py-1  overflow-hidden group text-red-400   hover:bg-gradient-to-r hover:from-red-300 hover:to-red-300 hover:text-white transition-colors  ease-in duration-300">
+                        <Link to="/login" onClick={() => localStorage.removeItem('data')} className="mr-12 relative rounded-md px-5 py-1  overflow-hidden group text-red-400   hover:bg-gradient-to-r hover:from-red-300 hover:to-red-300 hover:text-white transition-colors  ease-in duration-300">
                             <span className="absolute right-0 w-14 h-36 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
                             <span className="relative">Log Out</span>
                         </Link>

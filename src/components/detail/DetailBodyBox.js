@@ -5,10 +5,16 @@ import calendar from "../../img/image/calendar.png";
 import money from "../../img/image/money.png";
 import ComponentToPrint from './ComponentToPrint ';
 import { useReactToPrint } from 'react-to-print';
+import DetailViewImage from './DetailViewImage';
+
+
+
+
 
 const DetailBodyBox = () => {
 
     const { surgeryType, sickList } = useContext(GlobalContext);
+
     const location = useLocation();
 
     const sid = surgeryType.map((d) => d.surgery_type_id)
@@ -37,7 +43,7 @@ const DetailBodyBox = () => {
                                 <p className='text-xl  border-b-2 border-sky-300 w-fit'>History of Work </p>
                                 <button
                                     onClick={() => { handlePrint() }}
-                                    className='hover:text-white shadow-sm shadow-gray-300 border text-sky-400 border-sky-300 h-fit p-1.5 px-3 rounded-md hover:bg-sky-300'>
+                                    className='hover:text-white shadow-sm shadow-gray-300 border text-sky-400 border-sky-300 h-fit p-1.5 px-7 tracking-wider rounded-md hover:bg-sky-300'>
                                     Print History
                                 </button>
                             </div>
@@ -51,7 +57,7 @@ const DetailBodyBox = () => {
                 return (
                     <div key={sick.sick_id} className=' '>
                         {sick.sick_id === location.state ? (
-                            <div className='flex flex-col mb-4 pl-2 rounded-3xl   shadow-black/5 bg-white'>
+                            <div className='box flex flex-col rounded-3xl shadow-black/5 bg-white'>
 
                                 {/* date div */}
                                 {sick.sick_invoice && sick.sick_invoice.map((invoice, index) => {
@@ -96,12 +102,15 @@ const DetailBodyBox = () => {
                                     )
                                 })}
 
+                                {/** image view */}
+                                <DetailViewImage />
                             </div>
                         ) : null
                         }
                     </div>
                 )
             })}
+
 
 
 

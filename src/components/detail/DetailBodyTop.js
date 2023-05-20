@@ -7,7 +7,7 @@ const DetailBodyTop = () => {
     const { sickList } = useContext(GlobalContext);
     const location = useLocation();
 
-    console.log(location.state);
+
 
     return (
 

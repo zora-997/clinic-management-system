@@ -23,6 +23,7 @@ import Report from "./components/report/Report";
 
 import Appointment from "./components/appointment/Appointment";
 import AllApointment from "./components/appointment/allAppointment/AllApointment";
+import PrivateRoute from "./page/home/PrivateRoute";
 
 
 
@@ -30,54 +31,62 @@ import AllApointment from "./components/appointment/allAppointment/AllApointment
 //import Main from "./page/home/main/Main";
 
 const MainRoutes = () => {
+
+
     return (
         <ProviderState>
+
             <Routes>
                 {/* page */}
+                <Route exact element={<PrivateRoute />} >
+
+                    <Route exact path="dashbord" element={<Dashbord />} />
+
+                    {/* Doctor */}
+                    <Route exact path="/" element={<AllDoctor />} >
+                        <Route exact path="doctor" element={<Doctors />} />
+                    </Route>
+
+
+
+                    {/* sick */}
+                    <Route exact path="/" element={<AllSick />} >
+                        <Route exact path="sick" element={<Sick />} />
+                    </Route>
+
+                    {/* surgery route */}
+                    <Route exact path="/" element={<AllSurgeryType />} >
+                        <Route exact path="surgeryType" element={<SurgeryType />} />
+                    </Route>
+
+                    {/* detail route */}
+                    <Route exact path="/" element={<AllDetail />} >
+                        <Route exact path="detail" element={<Detail />} />
+                    </Route>
+
+                    {/* Expense type */}
+                    <Route exact path="/" element={<AllExpenseType />} >
+                        <Route exact path="expensetype" element={<ExpenseType />} />
+                    </Route>
+
+                    {/* Expense  */}
+                    <Route exact path="/" element={<AllExpense />} >
+                        <Route exact path="expense" element={<Expense />} />
+                    </Route>
+
+                    {/* Report  */}
+                    <Route exact path="/" element={<AllReport />} >
+                        <Route exact path="report" element={<Report />} />
+                    </Route>
+
+
+                    {/* appointment  */}
+                    <Route exact path="/" element={<AllApointment />} >
+                        <Route exact path="appointment" element={<Appointment />} />
+                    </Route>
+                </Route>
                 <Route exact path="/" element={<Navigate replace to="login" />} />
                 <Route exact path="login" element={<Login />} />
-                <Route exact path="dashbord" element={<Dashbord />} />
-
-                {/* Doctor */}
-                <Route exact path="/" element={<AllDoctor />} >
-                    <Route exact path="doctor" element={<Doctors />} />
-                </Route>
-
-                {/* sick */}
-                <Route exact path="/" element={<AllSick />} >
-                    <Route exact path="sick" element={<Sick />} />
-                </Route>
-
-                {/* surgery route */}
-                <Route exact path="/" element={<AllSurgeryType />} >
-                    <Route exact path="surgeryType" element={<SurgeryType />} />
-                </Route>
-
-                {/* detail route */}
-                <Route exact path="/" element={<AllDetail />} >
-                    <Route exact path="detail" element={<Detail />} />
-                </Route>
-
-                {/* Expense type */}
-                <Route exact path="/" element={<AllExpenseType />} >
-                    <Route exact path="expensetype" element={<ExpenseType />} />
-                </Route>
-
-                {/* Expense  */}
-                <Route exact path="/" element={<AllExpense />} >
-                    <Route exact path="expense" element={<Expense />} />
-                </Route>
-
-                {/* Report  */}
-                <Route exact path="/" element={<AllReport />} >
-                    <Route exact path="report" element={<Report />} />
-                </Route>
-
-
-                {/* appointment  */}
-                <Route exact path="/" element={<AllApointment />} >
-                    <Route exact path="appointment" element={<Appointment />} />
-                </Route>
 
             </Routes>
         </ProviderState>

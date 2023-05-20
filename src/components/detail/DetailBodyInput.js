@@ -19,9 +19,13 @@ const DetailBodyInput = () => {
     const [sick_surgery_invoice_note, set_sick_surgery_invoice_note] = useState("");
     const [show, set_show] = useState(false);
 
+    const [file, setFile] = useState([]);
+
     // id doctor
     let doctor_id = sickList.map(sick => sick.sick_id === location.state && sick.doctor_id).filter(f => f !== false)
-    console.log(doctor_id[0]);
+
+    //sick_id
+    let sick_id = location.state;
     // to day
     let sick_surgery_date = (new Date().toISOString().slice(0, 10));
 
@@ -48,14 +52,66 @@ const DetailBodyInput = () => {
     }
 
 
+    /**
+     export default (images) => {
+    var today = new Date();
+    today = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+    let file = [];
+    var a = [{ surgery_type_id: 4, surgery_type_price: "40", sick_surgery_invoice_note: "ttt" }, { surgery_type_id: 4, surgery_type_price: "40", sick_surgery_invoice_note: "ttt" }];
+    if (images) {
+        file = images.target.files;
+    }
+    let formData = new FormData();
+    for (let i = 0; i < file.length; i++) {
+        formData.append('file[]', file[i]);
+    }
+    formData.append('doctor_id', 4);
+    formData.append('sick_id', 43);
+    formData.append('sick_surgery_date', today);
+    formData.append('items', JSON.stringify(a));
+
+    axios.post(${constant.host}sick_surgery/createe.php,
+        formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data',
+        }
+    }
+    ).then((res) => {
+        console.log(res);
+        if (res.data.status == 'ok') {
+        } else {
+        }
+    })
+}
+     */
+
+
     const clickAddWork = (e) => {
         e.preventDefault();
-        addSickSurgery({
-            doctor_id: doctor_id[0],
-            sick_id: location.state,
-            sick_surgery_date,
-            items: sick_surgery
-        })
+        // addSickSurgery({
+        //     doctor_id: doctor_id[0],
+        //     sick_id: location.state,
+        //     sick_surgery_date,
+        //     items: sick_surgery
+        // })
+
+        let formData = new FormData();
+        let dfile = [];
+        if (file) {
+            dfile = file.target.files;
+        }
+        for (let i = 0; i < dfile.length; i++) {
+            formData.append('file[]', dfile[i]);
+        }
+
+        formData.append('doctor_id', doctor_id[0]);
+        formData.append('sick_id', sick_id);
+        formData.append('sick_surgery_date', sick_surgery_date);
+        formData.append('items', JSON.stringify(sick_surgery));
+
+        addSickSurgery(formData)
+
+
         // bo away la naw table typeOfWork datay peshutr pshan naiatawa
         setsicksurgerys([])
         // bo away la sar typeOfWork  namene
@@ -130,7 +186,7 @@ const DetailBodyInput = () => {
             {/** add new work  */}
             {
                 show && sick_surgery.length > 0 ?
-                    <DetailTypeOfWork sick_surgery={sick_surgery} clickAddWork={clickAddWork} setsicksurgerys={setsicksurgerys} />
+                    <DetailTypeOfWork sick_surgery={sick_surgery} clickAddWork={clickAddWork} setsicksurgerys={setsicksurgerys} file={file} setFile={setFile} />
                     : null
 
             }

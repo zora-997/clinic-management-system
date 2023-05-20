@@ -1,16 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import GlobalContext from '../contexts/createContext/context'
 import bin from '../../../src/img/image/bin.png'
+import DetailImage from './DetailImage';
 
 
-const DetailTypeOfWork = ({ sick_surgery, clickAddWork, setsicksurgerys }) => {
+const DetailTypeOfWork = ({ sick_surgery, clickAddWork, setsicksurgerys, file, setFile }) => {
     const { surgeryType } = useContext(GlobalContext);
+
 
     const sid = surgeryType.map((d) => d.surgery_type_id);
     const sn = surgeryType.map((d) => d.surgery_type_name);
 
     const deleteHandller = id => setsicksurgerys(sick_surgery.filter(i => i.sick_surgery_id !== id));
-
 
 
     return (
@@ -19,7 +20,7 @@ const DetailTypeOfWork = ({ sick_surgery, clickAddWork, setsicksurgerys }) => {
                 <p className='text-xl my-4 border-b-2 border-sky-300 w-fit'>Type of Work </p>
                 <button type='submit'
                     onClick={clickAddWork}
-                    className='w-fit hover:text-white shadow-sm shadow-gray-300 border text-sky-400 border-sky-300 h-fit p-1.5 px-3 rounded-md hover:bg-sky-300'>
+                    className='w-fit hover:text-white shadow-sm  shadow-gray-300 border text-sky-400 border-sky-300 h-fit p-1.5 px-3 rounded-md hover:bg-sky-300'>
                     Set Type of Work
                 </button>
             </div>
@@ -50,6 +51,8 @@ const DetailTypeOfWork = ({ sick_surgery, clickAddWork, setsicksurgerys }) => {
 
                 </tbody>
             </table>
+
+            <DetailImage file={file} setFile={setFile} />
 
         </div>
     )
