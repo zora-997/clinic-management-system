@@ -15,7 +15,7 @@ const AddAppointmentModal = ({ isAddVisible, onClose }) => {
 
 
     // add Sick.
-    const addSickrHandler = e => {
+    const addAppointmentHandler = e => {
         e.preventDefault();
         addAppointment({
             sick_id,
@@ -51,7 +51,7 @@ const AddAppointmentModal = ({ isAddVisible, onClose }) => {
             <div className='w-[600px] flex flex-col'>
                 <button className='text-white text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
 
-                <form onSubmit={(e) => { addSickrHandler(e); onClose(false); }} className=' bg-white rounded-md  grid p-5'>
+                <form onSubmit={(e) => { addAppointmentHandler(e); onClose(false); }} className=' bg-white rounded-md  grid p-5'>
                     <div className='flex'>
                         {/** sick name start */}
                         <div className='w-3/4 mr-5'>

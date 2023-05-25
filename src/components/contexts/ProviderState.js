@@ -100,9 +100,9 @@ const ProviderState = ({ children }) => {
             payload: res.data.data
         })
     }
-    // appointment
+    // fetchDashbordAppointment
     const fetchDashbordAppointment = async (ddate) => {
-        console.log(ddate);
+
         const res = await api.post('appointment/read.php', { ddate });
         dispatch({
             type: 'GETAPPOINTMENT',
@@ -117,6 +117,28 @@ const ProviderState = ({ children }) => {
         dispatch({
             type: ADD_APPOINTMENT,
             payload: appointment
+        })
+    }
+
+    // delete Appointment
+    const deleteAppointment = async (appointment_id) => {
+        const res = await api.post('appointment/delete.php', { "appointment_id": appointment_id });
+        console.log(res.data);
+        dispatch({
+            type: DELETE_APPOINTMENT,
+            payload: appointment_id
+        })
+    }
+
+    // update Appointment
+    const updateAppointment = async (appointment, ddate) => {
+        await api.post('appointment/update.php', appointment);
+
+        fetchDashbordAppointment(ddate.toISOString().slice(0, 10));
+
+        dispatch({
+            type: UPDATE_APPOINTMENT,
+            payload: appointment.appointment_id
         })
     }
 
@@ -427,7 +449,9 @@ const ProviderState = ({ children }) => {
             appointmentList: state.appointmentList,
             addAppointment,
             fetchAppointment,
-            fetchDashbordAppointment
+            fetchDashbordAppointment,
+            deleteAppointment,
+            updateAppointment
 
 
 

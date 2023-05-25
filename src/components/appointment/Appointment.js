@@ -4,10 +4,17 @@ import AppointmentModal from '../layout/modal/AppointmentModal';
 import AddAppointmentModal from '../layout/modal/AddAppointmentModal';
 
 const Appointment = () => {
-    const { appointmentList, fetchAppointment } = useContext(GlobalContext);
+
+    const { appointmentList, fetchAppointment, doctorList, sickList } = useContext(GlobalContext);
     const [show, setShow] = useState(false);
     const [addshow, setAddShow] = useState(false);
     const [ddate, setDate] = useState("");
+
+    const did = doctorList.map((d) => d.doctor_id)
+    const dn = doctorList.map((d) => d.doctor_name)
+
+    const sid = sickList.map((s) => s.sick_id)
+    const sn = sickList.map((s) => s.sick_name)
 
     useEffect(() => {
         fetchAppointment(ddate)
@@ -47,8 +54,8 @@ const Appointment = () => {
                             return <tr key={index} onClick={() => { setShow(true); }}
                                 className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
                                 <th scope='row' className="px-5 py-4">&nbsp;&nbsp;{index + 1}</th>
-                                <td className="px-6 py-4">{appointment.sick_name}</td>
-                                <td className="px-6 py-4">{appointment.doctor_name}</td>
+                                <td className="px-6 py-4">{sn[sid.indexOf(`${appointment.sick_id}`)]}</td>
+                                <td className="px-6 py-4">{dn[did.indexOf(`${appointment.doctor_id}`)]}</td>
                                 <td className="px-6 py-4">{appointment.appointment_date}</td>
                                 <td className="px-6 py-4">{appointment.appointment_time}</td>
                                 <td className="px-6 py-4">{appointment.appointment_note}</td>

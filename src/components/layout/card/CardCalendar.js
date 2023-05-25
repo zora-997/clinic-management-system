@@ -4,10 +4,9 @@ import 'react-calendar/dist/Calendar.css';
 import GlobalContext from '../../contexts/createContext/context';
 
 
-const CardCalendar = () => {
+const CardCalendar = ({ ddate, setDate }) => {
 
     const { fetchDashbordAppointment } = useContext(GlobalContext);
-    const [ddate, setDate] = useState(new Date());
 
     useEffect(() => {
         fetchDashbordAppointment(ddate.toISOString().slice(0, 10))
