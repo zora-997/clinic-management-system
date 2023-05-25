@@ -1,117 +1,67 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import GlobalContext from '../contexts/createContext/context';
+import AppointmentModal from '../layout/modal/AppointmentModal';
+import AddAppointmentModal from '../layout/modal/AddAppointmentModal';
 
 const Appointment = () => {
-    return (
-        <div className='flex w-full justify-end mt-8'>
+    const { appointmentList, fetchAppointment } = useContext(GlobalContext);
+    const [show, setShow] = useState(false);
+    const [addshow, setAddShow] = useState(false);
+    const [ddate, setDate] = useState("");
 
-            <div className=' bg-white p-2 mr-24 w-3/4 shadow-sm shadow-gray-200 mt-5 rounded-t-3xl '>
-                <table className="  w-full text-sm text-left text-gray-500 ">
-                    <thead className="text-xs rounded-2xl  text-gray-900 uppercase ">
+    useEffect(() => {
+        fetchAppointment(ddate)
+    }, [ddate])
+
+
+
+    return (
+
+        <div className=" flex flex-col  items-center  w-full select-none">
+            <AppointmentModal isVisible={show} onClose={setShow} />
+            <AddAppointmentModal isAddVisible={addshow} onClose={setAddShow} />
+            <div className='ml-36 mt-10'>
+                <div className='flex justify-between items-center mb-2 '>
+                    <button onClick={() => setAddShow(true)} className={`
+                     text-white shadow-sm flex items-center shadow-gray-300 border place-self-end
+                      hover:text-cyan-400 border-cyan-300 h-fit p-1 px-7 rounded-md bg-cyan-500 hover:bg-transparent duration-200`}>Create Appointment</button>
+                    <div className='flex flex-col   w-1/3'>
+                        <label className='text-gray-600' >Date</label>
+                        <input onChange={(e) => setDate(e.target.value)} type="date" className={`focus:ring-1 focus:outline-none border  p-1 rounded`} />
+                    </div>
+                </div>
+
+                <table className="whitespace-nowrap bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500  w-[1000px]">
+                    <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                         <tr>
-                            <th scope="col" className="px-6 py-3">
-                                Name
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Gender
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Disease
-                            </th>
-                            <th scope="col" className="px-6 py-3">
-                                Time
-                            </th>
+                            <th scope="col" className="px-6 py-3">Id</th>
+                            <th scope="col" className="px-6 py-3">Sick name</th>
+                            <th scope="col" className="px-6 py-3">Doctor name</th>
+                            <th scope="col" className="px-6 py-3">Date</th>
+                            <th scope="col" className="px-6 py-3">Time</th>
+                            <th scope="col" className="px-6 py-3">Not</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr className="bg-white">
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-500 whitespace-nowrap capitalize ">
-                                arkan osman
-                            </th>
-                            <td className="px-6 py-4">
-                                male
-                            </td>
-                            <td className="px-6 py-4">
-                                <span className='text-blue-500 bg-blue-100/60 rounded-3xl p-1 px-2'>shakara</span>
-                            </td>
-                            <td className="px-6 py-4">
-                                10:30 AM
-                            </td>
-                        </tr>
-                        <tr className="bg-white ">
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-500 whitespace-nowrap ">
-                                zanyar jaza
-                            </th>
-                            <td className="px-6 py-4">
-                                male
-                            </td>
-                            <td className="px-6 py-4">
-                                <span className='text-green-500 bg-green-100/60 rounded-3xl p-1 px-2'> corona</span>
-                            </td>
-                            <td className="px-6 py-4">
-                                12:25 PM
-                            </td>
-                        </tr>
-                        <tr className="bg-white ">
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-500 whitespace-nowrap ">
-                                kazhan
-                            </th>
-                            <td className="px-6 py-4">
-                                female
-                            </td>
-                            <td className="px-6 py-4 ">
-                                <span className='text-purple-500 bg-purple-100/60 rounded-3xl p-1 px-2'>hallamat</span>
-                            </td>
-                            <td className="px-6 py-4">
-                                3:15 AM
-                            </td>
-                        </tr>
-                        <tr className="bg-white">
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-500 whitespace-nowrap capitalize ">
-                                arkan osman
-                            </th>
-                            <td className="px-6 py-4">
-                                male
-                            </td>
-                            <td className="px-6 py-4">
-                                <span className='text-blue-500 bg-blue-100/60 rounded-3xl p-1 px-2'>shakara</span>
-                            </td>
-                            <td className="px-6 py-4">
-                                10:30 AM
-                            </td>
-                        </tr>
-                        <tr className="bg-white ">
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-500 whitespace-nowrap ">
-                                zanyar jaza
-                            </th>
-                            <td className="px-6 py-4">
-                                male
-                            </td>
-                            <td className="px-6 py-4">
-                                <span className='text-green-500 bg-green-100/60 rounded-3xl p-1 px-2'> corona</span>
-                            </td>
-                            <td className="px-6 py-4">
-                                12:25 PM
-                            </td>
-                        </tr>
-                        <tr className="bg-white ">
-                            <th scope="row" className="px-6 py-4 font-medium text-gray-500 whitespace-nowrap ">
-                                kazhan
-                            </th>
-                            <td className="px-6 py-4">
-                                female
-                            </td>
-                            <td className="px-6 py-4 ">
-                                <span className='text-purple-500 bg-purple-100/60 rounded-3xl p-1 px-2'>hallamat</span>
-                            </td>
-                            <td className="px-6 py-4">
-                                3:15 AM
-                            </td>
-                        </tr>
+                        {ddate && appointmentList.map((appointment, index) => {
+                            return <tr key={index} onClick={() => { setShow(true); }}
+                                className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
+                                <th scope='row' className="px-5 py-4">&nbsp;&nbsp;{index + 1}</th>
+                                <td className="px-6 py-4">{appointment.sick_name}</td>
+                                <td className="px-6 py-4">{appointment.doctor_name}</td>
+                                <td className="px-6 py-4">{appointment.appointment_date}</td>
+                                <td className="px-6 py-4">{appointment.appointment_time}</td>
+                                <td className="px-6 py-4">{appointment.appointment_note}</td>
+                            </tr>
+                        })}
                     </tbody>
                 </table>
+                {!ddate ?
+                    <div className='py-1 w-full bg-yellow-100/50  text-yellow-500 flex justify-center'><span className='  p-1 rounded'>No Appointment</span></div> : null}
             </div>
 
         </div>
+
 
 
     )

@@ -1,68 +1,37 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import GlobalContext from '../../contexts/createContext/context';
 
 const CardAppointment = () => {
+    const { appointmentList } = useContext(GlobalContext);
+    const [show, setShow] = useState(false);
+
     return (
-        <div className=' bg-white p-2 border-t border-t-gray-100 shadow-sm shadow-gray-200 mt-5 rounded-t-3xl '>
+        <div className=' bg-white p-2 border-t border-t-gray-100 shadow-sm shadow-gray-200 mt-2 rounded-t-3xl '>
             <table className="  w-full text-sm text-left text-gray-500 ">
                 <thead className="text-xs rounded-2xl  text-gray-900 uppercase ">
                     <tr>
-                        <th scope="col" className="px-6 py-3">
-                            Name
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            Gender
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            Disease
-                        </th>
-                        <th scope="col" className="px-6 py-3">
-                            Time
-                        </th>
+                        <th scope="col" className="px-6 py-3">ID </th>
+                        <th scope="col" className="px-6 py-3">Sick Name </th>
+                        <th scope="col" className="px-6 py-3">Doctor name </th>
+                        <th scope="col" className="px-6 py-3">Date</th>
+                        <th scope="col" className="px-6 py-3">Time </th>
+                        <th scope="col" className="px-6 py-3">Note </th>
                     </tr>
                 </thead>
+
                 <tbody>
-                    <tr className="bg-white">
-                        <th scope="row" className="px-6 py-4 font-medium text-gray-500 whitespace-nowrap capitalize ">
-                            arkan osman
-                        </th>
-                        <td className="px-6 py-4">
-                            male
-                        </td>
-                        <td className="px-6 py-4">
-                            <span className='text-blue-500 bg-blue-100/60 rounded-3xl p-1 px-2'>shakara</span>
-                        </td>
-                        <td className="px-6 py-4">
-                            10:30 AM
-                        </td>
-                    </tr>
-                    <tr className="bg-white ">
-                        <th scope="row" className="px-6 py-4 font-medium text-gray-500 whitespace-nowrap ">
-                            zanyar jaza
-                        </th>
-                        <td className="px-6 py-4">
-                            male
-                        </td>
-                        <td className="px-6 py-4">
-                            <span className='text-green-500 bg-green-100/60 rounded-3xl p-1 px-2'> corona</span>
-                        </td>
-                        <td className="px-6 py-4">
-                            12:25 PM
-                        </td>
-                    </tr>
-                    <tr className="bg-white ">
-                        <th scope="row" className="px-6 py-4 font-medium text-gray-500 whitespace-nowrap ">
-                            kazhan
-                        </th>
-                        <td className="px-6 py-4">
-                            female
-                        </td>
-                        <td className="px-6 py-4 ">
-                            <span className='text-purple-500 bg-purple-100/60 rounded-3xl p-1 px-2'>hallamat</span>
-                        </td>
-                        <td className="px-6 py-4">
-                            3:15 AM
-                        </td>
-                    </tr>
+                    {appointmentList && appointmentList.map((appointment, index) => {
+                        return <tr key={index} onClick={() => { setShow(true); }}
+                            className=" cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
+                            <th scope='row' className="px-5 py-4">&nbsp;&nbsp;{index + 1}</th>
+                            <td className="px-6 py-4">{appointment.sick_name}</td>
+                            <td className="px-6 py-4">{appointment.doctor_name}</td>
+                            <td className="px-6 py-4">{appointment.appointment_date}</td>
+                            <td className="px-6 py-4">{appointment.appointment_time}</td>
+                            <td className="px-6 py-4">{appointment.appointment_note}</td>
+                        </tr>
+                    })}
+
                 </tbody>
             </table>
         </div>

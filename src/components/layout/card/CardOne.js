@@ -1,11 +1,10 @@
-import React, { useState, useContext } from 'react'
-import GlobalContext from "../../contexts/createContext/context";
+import React, { useState } from 'react'
 import LineChart from '../chart/LineChart';
 
 
 const CardOne = () => {
 
-    const { sickList } = useContext(GlobalContext);
+
     const [userData, setUserData] = useState({
         labels: [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023],
         datasets: [
@@ -46,12 +45,8 @@ const CardOne = () => {
     });
 
     return (
-        <div className='flex justify-between w-[700px]  items-center mt-6'>
-
+        <div className='mr-3'>
             <LineChart chartData={userData} className="pl-8 pr-0" />
-
-            {/** side bar body */}
-
         </div>
     )
 }

@@ -52,40 +52,6 @@ const DetailBodyInput = () => {
     }
 
 
-    /**
-     export default (images) => {
-    var today = new Date();
-    today = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    let file = [];
-    var a = [{ surgery_type_id: 4, surgery_type_price: "40", sick_surgery_invoice_note: "ttt" }, { surgery_type_id: 4, surgery_type_price: "40", sick_surgery_invoice_note: "ttt" }];
-    if (images) {
-        file = images.target.files;
-    }
-    let formData = new FormData();
-    for (let i = 0; i < file.length; i++) {
-        formData.append('file[]', file[i]);
-    }
-    formData.append('doctor_id', 4);
-    formData.append('sick_id', 43);
-    formData.append('sick_surgery_date', today);
-    formData.append('items', JSON.stringify(a));
-
-    axios.post(${constant.host}sick_surgery/createe.php,
-        formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data',
-        }
-    }
-    ).then((res) => {
-        console.log(res);
-        if (res.data.status == 'ok') {
-        } else {
-        }
-    })
-}
-     */
-
-
     const clickAddWork = (e) => {
         e.preventDefault();
         // addSickSurgery({

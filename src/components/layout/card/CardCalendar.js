@@ -1,18 +1,21 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import GlobalContext from '../../contexts/createContext/context';
 
 
 const CardCalendar = () => {
 
-    const [date, setDate] = useState(new Date());
+    const { fetchDashbordAppointment } = useContext(GlobalContext);
+    const [ddate, setDate] = useState(new Date());
 
-    function handleDateChange(newDate) {
-        setDate(newDate);
-    }
+    useEffect(() => {
+        fetchDashbordAppointment(ddate.toISOString().slice(0, 10))
+    }, [ddate])
+
     return (
         <>
-            <Calendar className='w-full h-[17rem] mr-1 z-10 bg-white rounded-3xl shadow-sm  mt-5' onChange={handleDateChange} value={date} />
+            <Calendar className='scale-90 h-[17rem]  rounded-2xl shadow-sm ' onChange={(newDate) => setDate(newDate)} value={ddate} />
 
         </>
     )

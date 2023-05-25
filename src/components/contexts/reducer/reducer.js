@@ -14,7 +14,10 @@ import {
     ADD_EXPENSE_TYPE,
     DELETE_EXPENSE,
     UPDATE_EXPENSE,
-    ADD_EXPENSE
+    ADD_EXPENSE,
+    ADD_APPOINTMENT,
+    UPDATE_APPOINTMENT,
+    DELETE_APPOINTMENT
 } from "../actions/action";
 
 
@@ -155,6 +158,30 @@ const reducer = (state, { type, payload }) => {
             return {
                 ...state,
                 mainReportList: payload,
+            };
+
+        ///************* APPOINTMENT ***** */
+        case 'GETAPPOINTMENT':
+            return {
+                ...state,
+                appointmentList: payload,
+            };
+        case ADD_APPOINTMENT:
+            return {
+                ...state,
+                appointmentList: [...state.appointmentList, payload]
+            };
+        case DELETE_APPOINTMENT:
+            return {
+                ...state,
+                appointmentList: state.appointmentList.filter((appointment) => appointment.appointment_id !== payload),
+            };
+        case UPDATE_APPOINTMENT:
+            return {
+                ...state,
+                appointmentList: state.appointmentList.map((appointment) => {
+                    return appointment.appointment_id === payload ? payload : state
+                })
             };
 
         default:

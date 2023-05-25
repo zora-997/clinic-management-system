@@ -18,7 +18,11 @@ import {
     ADD_EXPENSE_TYPE,
     ADD_EXPENSE,
     DELETE_EXPENSE,
-    UPDATE_EXPENSE
+    UPDATE_EXPENSE,
+    ADD_APPOINTMENT,
+    UPDATE_APPOINTMENT,
+    DELETE_APPOINTMENT
+
 } from "../contexts/actions/action";
 
 
@@ -32,7 +36,8 @@ const ProviderState = ({ children }) => {
         expenseTypeList: [],
         expenseList: [],
         adminList: [],
-        mainReportList: []
+        mainReportList: [],
+        appointmentList: []
     }
 
     const [query, setQuery] = useState("")
@@ -50,6 +55,7 @@ const ProviderState = ({ children }) => {
         fetchSickSurgery();
         fetchExpenseType();
         fetchExpense();
+        fetchAppointment();
 
 
     }, [])
@@ -77,6 +83,43 @@ const ProviderState = ({ children }) => {
     const searchExpense = (data) => {
         return data && data.filter((item) => query.toLowerCase() === '' ? item : item.expense_date.toLowerCase().includes(query))
     }
+
+    // Appointment search
+    /*  const searchAppointment = (data) => {
+         return data.filter((item) => query.toLowerCase() === '' ? item : item.sick_name.toLowerCase().includes(query))
+     } */
+
+    // feach appointment
+    const fetchAppointment = async (ddate) => {
+        console.log("fetchAppointment");
+        console.log(ddate);
+        const res = await api.post('appointment/read.php', { ddate });
+        console.log(res.data);
+        dispatch({
+            type: 'GETAPPOINTMENT',
+            payload: res.data.data
+        })
+    }
+    // appointment
+    const fetchDashbordAppointment = async (ddate) => {
+        console.log(ddate);
+        const res = await api.post('appointment/read.php', { ddate });
+        dispatch({
+            type: 'GETAPPOINTMENT',
+            payload: res.data.data
+        })
+    }
+
+    // add appointment
+    const addAppointment = async (appointment) => {
+        const res = await api.post('appointment/create.php', appointment);
+        console.log(res);
+        dispatch({
+            type: ADD_APPOINTMENT,
+            payload: appointment
+        })
+    }
+
 
     //   feach admin
     const fetchAdmin = async (admin) => {
@@ -211,6 +254,7 @@ const ProviderState = ({ children }) => {
     // all sick
     const fetchSick = async () => {
         const { data } = await api.get('sick/read.php');
+
         dispatch({
             type: 'GETSICK',
             payload: data.data
@@ -379,7 +423,12 @@ const ProviderState = ({ children }) => {
             adminList: state.adminList,
             mainReportList: state.mainReportList,
             fetchReport,
-            fetchAdmin
+            fetchAdmin,
+            appointmentList: state.appointmentList,
+            addAppointment,
+            fetchAppointment,
+            fetchDashbordAppointment
+
 
 
         }}>

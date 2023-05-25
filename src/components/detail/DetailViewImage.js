@@ -8,7 +8,7 @@ const DetailViewImage = () => {
     const [show, setShow] = useState(false);
     const location = useLocation();
     return (
-        <div>
+        <div >
             <div onClick={() => setShow(true)} className='flex items-center cursor-pointer'>
 
                 <span className='text-blue-500 tracking-wider mr-1'>View image</span>
@@ -18,11 +18,11 @@ const DetailViewImage = () => {
 
             {
                 show ? (
-                    <div className='flex flex-col w-fit'>
+                    <div className='flex flex-col w-full'>
                         {
                             sickList && sickList.map(sick => {
                                 return (
-                                    <div key={sick.sick_id}>
+                                    <div key={sick.sick_id} >
                                         {sick.sick_id === location.state ? (
                                             <div key={sick.sick_id}>
                                                 {sick.sick_invoice && sick.sick_invoice.map((invoice, index) => {
@@ -32,8 +32,8 @@ const DetailViewImage = () => {
                                                             {invoice.image && invoice.image.map((img, index) => {
 
                                                                 return (
-                                                                    <div key={img.sick_surgery_invoice_image_id + index} >
-                                                                        <img src={'https://freepaidaccount.com/clinic/api/uploads/' + img.sick_surgery_invoice_image_name} alt="view" />
+                                                                    <div key={img.sick_surgery_invoice_image_id + index} className='flex relative bg-red-200 w-full' >
+                                                                        <span><img className='mt-3' src={'https://freepaidaccount.com/clinic/api/uploads/' + img.sick_surgery_invoice_image_name} alt="view" /></span>
 
                                                                     </div>
                                                                 )

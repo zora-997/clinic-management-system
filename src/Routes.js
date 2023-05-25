@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useHistory, useLocation, useNavigate } from "react-router-dom";
 import ProviderState from "./components/contexts/ProviderState";
 import AllDoctor from "./components/doctors/allDoctor/AllDoctor";
 import Doctors from "./components/doctors/Doctor";
@@ -28,16 +28,17 @@ import PrivateRoute from "./page/home/PrivateRoute";
 
 
 
+
 //import Main from "./page/home/main/Main";
 
 const MainRoutes = () => {
-
 
     return (
         <ProviderState>
 
             <Routes>
-                {/* page */}
+                {/* page route */}
+                {/* PrivateRoute ama bo awaya kasaka login nakrdbe natwane bcheta naw hich bashekawa  */}
                 <Route exact element={<PrivateRoute />} >
 
                     <Route exact path="dashbord" element={<Dashbord />} />
@@ -79,14 +80,24 @@ const MainRoutes = () => {
                         <Route exact path="report" element={<Report />} />
                     </Route>
 
-
                     {/* appointment  */}
                     <Route exact path="/" element={<AllApointment />} >
                         <Route exact path="appointment" element={<Appointment />} />
                     </Route>
+
+
+                    {/** aw index bo awa katek to  login krdwa la naw dashbordy ballam pathy dashbordaka asritawa aw index ai garenetawa bo dashbord wa dway awa path dashbord daney u bangi componenty dashbord akay */}
+                    <Route index element={<Navigate to="dashbord" />} />
+                    <Route exact path="dashbord" element={<Dashbord />} />
+                    <Route exact path="/*" element={<Navigate to="dashbord" />} />
+
+
                 </Route>
+
                 <Route exact path="/" element={<Navigate replace to="login" />} />
                 <Route exact path="login" element={<Login />} />
+
+
 
             </Routes>
         </ProviderState>

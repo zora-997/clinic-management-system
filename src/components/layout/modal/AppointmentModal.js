@@ -1,0 +1,37 @@
+import React, { useContext } from 'react'
+import GlobalContext from '../../contexts/createContext/context'
+
+
+const AppointmentModal = ({ isVisible, onClose }) => {
+    // const {  } = useContext(GlobalContext)
+
+    // update appointment.
+    /*  const updateDoctorHandler = (e) => {
+         e.preventDefault();
+        
+     }
+  */
+    if (!isVisible) return null;
+    return (
+        <div className=' fixed z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
+            <div className='w-[400px] flex flex-col'>
+                <button className='text-white text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
+                <div className=' bg-white rounded-md p-5 grid '>
+                    <label className='text-gray-500'>Name</label>
+                    <input type="text" autoComplete="off" value={""} placeholder='new name' className='focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2' />
+                    <label className='mt-2 text-gray-500'>Percentage</label>
+                    <input type="number" autoComplete="off" value={""} placeholder='new Percentage' className='focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2' />
+
+                    <div className='flex justify-between'>
+                        <button onClick={(e) => { onClose(false); }} className='border rounded-md bg-cyan-500 hover:bg-cyan-400 text-white px-8 p-1.5 my-2'>Update</button>
+                        <button onClick={() => { onClose(false); }} className='border rounded-md bg-red-500 hover:bg-red-400 text-white   px-8 p-1.5 my-2'>Delete</button>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    )
+}
+
+export default AppointmentModal
