@@ -102,8 +102,12 @@ const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
                     <div className='w-3/4 mr-5 mt-2'>
                         <label className='text-gray-700 '>Doctor name</label>
                         {/** value = {doctor_name || ''} aw or agar da naney awa alle auncontrolled wata ama sarata null yan undefined boia aw || bo da aney ka te batallish be */}
-                        <input type="text" readOnly required placeholder='Doctor name' value={doctor_name || ''}
-                            className={`focus:ring-1 focus:outline-none border pl-2 p-2 w-full  rounded `} />
+                        <select required onChange={(e) => setDoctor_id(e.target.value)} className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 '>
+                            <option>{doctor_name || ''}</option>
+                            {doctorList.map((doctor) => {
+                                return <option key={doctor.doctor_id} value={`${doctor.doctor_id}`}>{doctor.doctor_name}</option>
+                            })}
+                        </select>
                     </div>
                     <div className='w-1/3'>
                         <label className='text-gray-500' >Time</label>
