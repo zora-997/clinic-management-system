@@ -9,6 +9,7 @@ const CardCalendar = ({ ddate, setDate }) => {
     const { fetchDashbordAppointment } = useContext(GlobalContext);
 
     useEffect(() => {
+        console.log(ddate.toISOString().slice(0, 10));
         fetchDashbordAppointment(ddate.toISOString().slice(0, 10))
     }, [ddate])
 

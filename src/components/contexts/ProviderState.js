@@ -133,9 +133,7 @@ const ProviderState = ({ children }) => {
     // update Appointment
     const updateAppointment = async (appointment, ddate) => {
         await api.post('appointment/update.php', appointment);
-
         fetchDashbordAppointment(ddate.toISOString().slice(0, 10));
-
         dispatch({
             type: UPDATE_APPOINTMENT,
             payload: appointment.appointment_id

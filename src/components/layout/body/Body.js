@@ -8,6 +8,7 @@ import CardCalendar from '../card/CardCalendar'
 const Body = () => {
 
     const [ddate, setDate] = useState(new Date());
+    console.log(ddate.toISOString().slice(0, 10) + " date now");
     return (
         <div className='body flex w-full justify-end mt-6 select-none'>
             < div className='flex flex-col w-[1090px] mr-4' >
