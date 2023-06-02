@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import GlobalContext from '../contexts/createContext/context'
 import { useLocation } from 'react-router-dom';
 import calendar from "../../img/image/calendar.png";
@@ -6,6 +6,8 @@ import money from "../../img/image/money.png";
 import ComponentToPrint from './ComponentToPrint ';
 import { useReactToPrint } from 'react-to-print';
 import DetailViewImage from './DetailViewImage';
+import gallery from "../../img/image/image-gallery (1).png";
+import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 
 
@@ -16,6 +18,8 @@ const DetailBodyBox = () => {
     const { surgeryType, sickList } = useContext(GlobalContext);
 
     const location = useLocation();
+    const [isVisible, setIsVisible] = useState(false);
+    const [id, setId] = useState(0);
 
     const sid = surgeryType.map((d) => d.surgery_type_id)
     const sn = surgeryType.map((d) => d.surgery_type_name)
@@ -24,6 +28,21 @@ const DetailBodyBox = () => {
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
     });
+
+
+    const slidLeft = () => {
+        var slider = document.getElementById('slider');
+        slider.scrollLeft = slider.scrollLeft - 500;
+        console.log('left side');
+
+    }
+
+    const slidRight = () => {
+        var slider = document.getElementById('slider');
+        slider.scrollLeft = slider.scrollLeft + 500;
+        console.log('right side');
+
+    }
 
 
     return (
@@ -66,14 +85,14 @@ const DetailBodyBox = () => {
 
                                             {/** div date u price */}
                                             <div className='flex flex-col justify-around border-r  relative  pl-2 w-[30%]'>
-                                                <div className='flex items-center' >
-                                                    <img src={calendar} alt='calendar' className='w-5 h-5 mr-3' />
+                                                <div className='flex items-center mb-2' >
+                                                    <img src={calendar} alt='calendar' className='w-6 h-6 mr-3' />
                                                     <span className='text-lg font-normal '>{invoice.sick_surgery_date}</span>
                                                 </div>
                                                 {/** price div */}
                                                 <div key={sick.sick_id + index + 2} className='flex  items-center'>
 
-                                                    <img src={money} alt='money' className='w-5 h-5 mr-3' /><span className='text-lg font-normal '>
+                                                    <img src={money} alt='money' className='w-6 h-6 mr-3' /><span className='text-lg font-normal '>
                                                         {invoice.sick_surgery_invoice && invoice.sick_surgery_invoice
                                                             .map(data => data.surgery_type_price)
                                                             .reduce((a, c) => parseInt(a) + parseInt(c))
@@ -84,7 +103,7 @@ const DetailBodyBox = () => {
                                             </div>
 
                                             {/** div surgery type u description */}
-                                            <div className='text-start pl-2 w-full'>
+                                            <div className='text-start pl-2 w-full '>
                                                 {invoice.sick_surgery_invoice && invoice.sick_surgery_invoice.map((data, index) => {
                                                     return (
                                                         <div key={sick.sick_id + index + 3} className='flex flex-col  m-2 '>
@@ -98,12 +117,44 @@ const DetailBodyBox = () => {
                                                     )
                                                 })}
                                             </div>
+                                            {/** image icon */}
+                                            <div className='m-2 cursor-pointer flex ' >
+                                                <img src={gallery} alt='fahs' onClick={() => { setIsVisible(true); setId(invoice.sick_surgery_id) }} />
+                                                {isVisible && invoice.sick_surgery_id === id &&
+
+                                                    <div className=' fixed z-20   inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex  justify-center items-center'>
+
+                                                        <button className='text-white text-xl place-self-end  w-fit ' onClick={() => setIsVisible(false)}> X </button>
+                                                        <MdChevronLeft className='opacity-50  cursor-pointer hover:opacity-100' onClick={slidLeft} size={40} />
+                                                        <div id='slider' className='overflow-x-scroll scroll   scroll-smooth  scrollbar-hide whitespace-nowrap flex  justify-center w-[800px] items-center bg-white  rounded-md '>
+                                                            {invoice.image && invoice.image.map((img, index) => {
+                                                                return (
+                                                                    <div key={img.sick_surgery_invoice_image_id} className=' w-[300px]  ' >
+                                                                        <img className='object-cover p-3 pl-5 w-[400px] h-[400px]' src={'https://freepaidaccount.com/clinic/api/uploads/' + img.sick_surgery_invoice_image_name} alt="view" />
+                                                                    </div>
+                                                                )
+
+
+
+                                                            })
+                                                            }
+
+                                                        </div>
+                                                        <MdChevronRight className='opacity-50 cursor-pointer hover:opacity-100' onClick={slidRight} size={40} />
+                                                    </div>
+
+                                                }
+
+
+
+
+                                            </div>
                                         </div>
                                     )
                                 })}
 
-                                {/** image view */}
-                                <DetailViewImage />
+
+                                {/* <DetailViewImage isVisible={isVisible} setIsVisible={setIsVisible} /> */}
                             </div>
                         ) : null
                         }

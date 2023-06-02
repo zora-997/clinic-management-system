@@ -24,50 +24,53 @@ const ViewImageModal = ({ isVisible, setIsVisible }) => {
     return (
 
         <div
-            className=' fixed z-20  inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex flex-col justify-center items-center'>
+            className=' fixed z-20 overflow-x-scroll inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex flex-col justify-center items-center'>
 
             <button className='text-white text-xl place-self-end pr-[15rem] w-fit ' onClick={() => setIsVisible(false)}> X </button>
-            <div className='flex  items-center'>
+            <div className='flex  items-center overflow-x-scroll'>
                 <MdChevronLeft className='opacity-50 cursor-pointer hover:opacity-100' onClick={slidLeft} size={40} />
-                {isVisible && (
-                    <div id='slider' className=' bg-white rounded-md flex h-[500px]  w-[1000px] overflow-x-scroll scroll  scroll-smooth  scrollbar-hide whitespace-nowrap'>
-                        {
-                            sickList && sickList.map(sick => {
-                                return (
 
-                                    <div key={sick.sick_id} className='flex' >
-                                        {/** am classa sarawa flex chun scrolla ka leraya drus abe agar lai bay esh naka */}
-                                        {/** am classa xwaraa flex chun hamui aka ba row */}
-                                        {sick.sick_id === location.state ? (
-                                            <div key={sick.sick_id} className='flex'>
-                                                {sick.sick_invoice && sick.sick_invoice.map((invoice, index) => {
-                                                    return (
-                                                        <div key={sick.sick_id + index + 1} className=' w-[300px] '>
-                                                            {invoice.image && invoice.image.map((img, index) => {
-                                                                return (
-                                                                    <div key={img.sick_surgery_invoice_image_id} className=' flex w-full h-full' >
-                                                                        <img className=' p-3 pl-5 ' src={'https://freepaidaccount.com/clinic/api/uploads/' + img.sick_surgery_invoice_image_name} alt="view" />
-                                                                    </div>
-                                                                )
-                                                            })}
-                                                        </div>
+                <div id='slider' className=' bg-white rounded-md flex h-[500px]  w-[1000px] overflow-x-scroll scroll  scroll-smooth  scrollbar-hide whitespace-nowrap'>
+                    {
+                        sickList && sickList.map(sick => {
+                            return (
 
+                                <div key={sick.sick_id} className='flex' >
+                                    {/** am classa sarawa flex chun scrolla ka leraya drus abe agar lai bay esh naka */}
+                                    {/** am classa xwaraa flex chun hamui aka ba row */}
+                                    {sick.sick_id === location.state ? (
+                                        <div key={sick.sick_id} className='flex'>
+                                            {sick.sick_invoice && sick.sick_invoice.map((invoice, index) => {
 
-                                                    )
-                                                })}
-                                            </div>
+                                                return (
+                                                    <div key={sick.sick_id + index + 1} className=' w-[300px] '>
+                                                        {invoice.image && invoice.image.map((img, index) => {
 
-                                        ) : null}
+                                                            return (
 
-                                    </div>
-                                )
-                            })
-                        }
+                                                                <div key={img.sick_surgery_invoice_image_id} className=' flex w-full h-full' >
+                                                                    <img className=' p-3 pl-5 ' src={'https://freepaidaccount.com/clinic/api/uploads/' + img.sick_surgery_invoice_image_name} alt="view" />
+                                                                </div>
+                                                            )
+
+                                                        })}
+                                                    </div>
 
 
-                    </div>
-                )
-                }
+                                                )
+                                            })}
+                                        </div>
+
+                                    ) : null}
+
+                                </div>
+                            )
+                        })
+                    }
+
+
+                </div>
+
                 <MdChevronRight className='opacity-50 cursor-pointer hover:opacity-100' onClick={slidRight} size={40} />
             </div>
 

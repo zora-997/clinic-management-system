@@ -15,7 +15,9 @@ const Sick = () => {
 
 
     const [sick_id, setSick_id] = useState(0);
+    const [doctor_id, setDoctor_id] = useState(0);
     const [sick_name, setSick_name] = useState("");
+    const [doctor_name, setDoctor_name] = useState("");
     const [sick_phone, setSick_phone] = useState("");
     const [sick_age, setSick_age] = useState(0);
     const [sick_gender, setSick_gender] = useState("");
@@ -27,7 +29,21 @@ const Sick = () => {
 
     return (
         <div className=" flex flex-col items-end  pb-5  w-full select-none">
-            <SickModal isVisible={show} onClose={setShow} sick_name={sick_name} setSick_name={setSick_name} sick_phone={sick_phone} setSick_phone={setSick_phone} sick_id={sick_id} sick_age={sick_age} setSick_age={setSick_age} sick_gender={sick_gender} setSick_gender={setSick_gender} />
+            <SickModal
+                isVisible={show}
+                onClose={setShow}
+                doctor_id={doctor_id}
+                setDoctor_id={setDoctor_id}
+                sick_name={sick_name}
+                setSick_name={setSick_name}
+                sick_phone={sick_phone}
+                setSick_phone={setSick_phone}
+                sick_id={sick_id}
+                sick_age={sick_age}
+                setSick_age={setSick_age}
+                sick_gender={sick_gender}
+                setSick_gender={setSick_gender}
+                doctor_name={doctor_name} />
             <AddSickModal isAddVisible={addshow} onClose={setAddShow} />
 
             {/** button u table hamui tyaya */}
@@ -69,7 +85,17 @@ const Sick = () => {
                                     <td className="px-3 py-4">{sick.sick_gender}</td>
                                     <td className="px-6 py-4 w-56 ">{dn[did.indexOf(`${sick.doctor_id}`)]}</td>
                                     <td className="px-6 py-4">{sick.sick_date}</td>
-                                    <td onClick={() => { setShow(true); setSick_name(sick.sick_name); setSick_phone(sick.sick_phone); setSick_age(sick.sick_age); setSick_gender(sick.sick_gender); setSick_id(sick.sick_id); }} className=" py-4 "> <span className='hover:border-b hover:border-cyan-400 w-fit'>Edit</span></td>
+                                    <td
+                                        onClick={() => {
+                                            setShow(true);
+                                            setSick_name(sick.sick_name);
+                                            setSick_phone(sick.sick_phone);
+                                            setSick_age(sick.sick_age);
+                                            setSick_gender(sick.sick_gender);
+                                            setSick_id(sick.sick_id);
+                                            setDoctor_id(sick.doctor_id)
+                                            setDoctor_name(dn[did.indexOf(`${sick.doctor_id}`)])
+                                        }} className=" py-4 "> <span className='hover:border-b hover:border-cyan-400 w-fit'>Edit</span></td>
 
                                 </tr>
 

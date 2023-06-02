@@ -134,7 +134,8 @@ const ProviderState = ({ children }) => {
 
     // update Appointment
     const updateAppointment = async (appointment, ddate) => {
-        await api.post('appointment/update.php', appointment);
+        const res = await api.post('appointment/update.php', appointment);
+        console.log(res.data);
         fetchAppointment(ddate);
         dispatch({
             type: UPDATE_APPOINTMENT,
@@ -378,7 +379,8 @@ const ProviderState = ({ children }) => {
 
     // update Sick 
     const updateSick = async (sick) => {
-        await api.post('sick/update.php', sick);
+        const res = await api.post('sick/update.php', sick);
+        console.log(res.data);
         fetchSick();
         dispatch({
             type: UPDATE_SICK,
