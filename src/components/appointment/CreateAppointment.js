@@ -1,38 +1,38 @@
-import React, { useContext, useState } from 'react'
-import GlobalContext from '../../contexts/createContext/context'
+import React, { useContext, useEffect, useState } from 'react'
+import GlobalContext from '../contexts/createContext/context';
+
+const CreateAppointment = ({ ddate }) => {
+
+    const { addAppointment, fetchAppointment, doctorList, sickList } = useContext(GlobalContext);
 
 
-const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
-    setSick_id,
-    doctor_id,
-    setDoctor_id,
-    sick_name,
-    setSick_name,
-    doctor_name,
-    setDoctor_name,
-    appointment_date,
-    setAppointmentDate,
-    appointment_time,
-    setAppointmentTime,
-    appointment_note,
-    setAppointmentNot, }) => {
+    /* const did = doctorList.map((d) => d.doctor_id)
+    const dn = doctorList.map((d) => d.doctor_name)
+    
+    const sid = sickList.map((s) => s.sick_id)
+    const sn = sickList.map((s) => s.sick_name) */
 
-    const { deleteAppointment, updateAppointment, sickList, doctorList } = useContext(GlobalContext)
+
+    const [sick_id, setSick_id] = useState(0)
+    const [doctor_id, setDoctor_id] = useState(0);
+    const [sick_name, setSick_name] = useState("");
+    const [doctor_name, setDoctor_name] = useState("");
+    const [appointment_date, setAppointmentDate] = useState("");
+    const [appointment_time, setAppointmentTime] = useState("");
+    const [appointment_note, setAppointmentNot] = useState("");
 
 
 
 
-    // update appointment.
-    const updateAppointmentHandler = (e) => {
+    // add appointment.
+    const addAppointmentHandler = e => {
         e.preventDefault();
-        // aw ddate bo awa la ffeachappointment dwbara update bbinitawa
-        updateAppointment({
+        addAppointment({
             sick_id,
             doctor_id,
             appointment_date,
             appointment_time,
-            appointment_note,
-            appointment_id
+            appointment_note
         }, ddate)
 
         setSick_name("");
@@ -43,8 +43,8 @@ const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
         setDoctor_id(0);
         setSick_id(0);
 
-    }
 
+    }
     const onSearch = (search, id) => {
         setSick_name(search)
         doctorList.map((item) => {
@@ -53,12 +53,10 @@ const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
             } return null;
         })
     }
-
-    if (!isVisible) return null;
     return (
-        <div className=' fixed z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex flex-col justify-center items-center'>
-            <button className='text-white w-[770px] text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
-            <div className='w-[600px] flex flex-col bg-white rounded-md p-5'>
+
+        < div className='w-[1035px] place-self-center ml-14 ' >
+            <form onSubmit={(e) => addAppointmentHandler(e)} className=' bg-white rounded-md  grid p-5'>
                 <div className='flex'>
                     {/** sick name start */}
                     <div className='w-3/4 mr-5'>
@@ -88,55 +86,48 @@ const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
                     </div>
                     {/** sick name end*/}
 
-                    <div className='w-1/3'>
+                    <div className='w-3/4'>
                         <label className='text-gray-500' >Date</label>
-                        <input
-                            type='date'
-                            required
-                            className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 '
-                            value={appointment_date || ''}
-                            onChange={(e) => setAppointmentDate(e.target.value)} />
+                        <input type='date' value={appointment_date || ''} required className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 ' onChange={(e) => setAppointmentDate(e.target.value)} />
                     </div>
                 </div>
 
                 <div className='flex'>
-                    <div className='w-3/4 mr-5 mt-2'>
+                    <div className='w-3/4 mr-5 '>
                         <label className='text-gray-700 '>Doctor name</label>
                         {/** value = {doctor_name || ''} aw or agar da naney awa alle auncontrolled wata ama sarata null yan undefined boia aw || bo da aney ka te batallish be */}
-                        <select required onChange={(e) => setDoctor_id(e.target.value)} className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 '>
-                            <option>{doctor_name || ''}</option>
-                            {doctorList.map((doctor) => {
-                                return <option key={doctor.doctor_id} value={`${doctor.doctor_id}`}>{doctor.doctor_name}</option>
-                            })}
-                        </select>
+                        <input type="text" readOnly required placeholder='Doctor name' value={doctor_name || ''}
+                            className={`focus:ring-1 focus:outline-none border pl-2 p-2 w-full  rounded `} />
                     </div>
-                    <div className='w-1/3'>
+                    <div className='w-3/4'>
                         <label className='text-gray-500' >Time</label>
                         <input type="time" required placeholder='Time'
                             className={`focus:ring-1 focus:outline-none border pl-2 p-2 w-full  rounded `}
                             onChange={(e) => setAppointmentTime(e.target.value)}
                             value={appointment_time || ''} />
 
-
                     </div>
                 </div>
 
                 <div className='flex'>
                     <div className='w-full '>
-                        <label className='text-gray-500' >Note</label>
-                        <input type='text' name='sick_phone' placeholder='not' autoComplete="off" required className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 ' value={appointment_note || ''} onChange={(e) => setAppointmentNot(e.target.value)} />
+                        <label className='text-gray-500' >Not</label>
+                        <input
+                            type='text'
+                            name='sick_phone'
+                            placeholder='not'
+                            autoComplete="off"
+                            required
+                            value={appointment_note || ''}
+                            className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 ' onChange={(e) => setAppointmentNot(e.target.value)} />
                     </div>
                 </div>
-                <div className='flex justify-between'>
-                    <button onClick={(e) => { updateAppointmentHandler(e); onClose(false); }} className='border rounded-md bg-cyan-500 hover:bg-cyan-400 text-white px-8 p-1.5 my-2'>Update</button>
-                    <button onClick={() => { deleteAppointment(appointment_id); onClose(false); }} className='border rounded-md bg-red-500 hover:bg-red-400 text-white   px-8 p-1.5 my-2'>Delete</button>
-                </div>
+                <button type='submit' className='border rounded-md bg-cyan-500 hover:bg-cyan-400 text-white p-2 my-2'>Create appointment</button>
+            </form>
 
+        </div >
 
-            </div>
-        </div>
     )
 }
 
-
-export default AppointmentModal
+export default CreateAppointment

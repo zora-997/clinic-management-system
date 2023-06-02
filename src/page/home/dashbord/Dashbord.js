@@ -6,14 +6,12 @@ import SideBar from '../sidebar/SideBar'
 
 const Dashbord = () => {
     const storedUser = localStorage.getItem('data');
-    const user = JSON.parse(storedUser);
     const history = useNavigate();
     return (
 
 
         <div>
             {
-
                 !storedUser ? history("/login") :
 
                     <div className='dashbord  w-full'>

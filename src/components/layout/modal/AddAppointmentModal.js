@@ -14,7 +14,7 @@ const AddAppointmentModal = ({ isAddVisible, onClose }) => {
 
 
 
-    // add Sick.
+    // add appointment.
     const addAppointmentHandler = e => {
         e.preventDefault();
         addAppointment({

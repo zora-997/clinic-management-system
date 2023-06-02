@@ -2,64 +2,38 @@ import React, { useContext, useState } from 'react'
 import { HiArrowNarrowRight } from 'react-icons/hi'
 import GlobalContext from '../contexts/createContext/context'
 import { useLocation } from 'react-router-dom';
+import ViewImageModal from '../layout/modal/ViewImageModal';
+import { MdChevronLeft, MdChevronRight } from "react-icons/md";
 
 const DetailViewImage = () => {
     const { sickList } = useContext(GlobalContext);
-    const [show, setShow] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
     const location = useLocation();
-    return (
-        <div >
-            <div onClick={() => setShow(true)} className='flex items-center cursor-pointer'>
 
+    const slidLeft = () => {
+        var slider = document.getElementById('slider');
+        slider.scrollLeft = slider.scrollLeft - 500;
+
+    }
+
+    const slidRight = () => {
+        var slider = document.getElementById('slider');
+        slider.scrollLeft = slider.scrollLeft + 500;
+
+    }
+
+
+    return (
+        <div className='w-full  '>
+            <div onClick={() => setIsVisible(true)} className='flex items-center cursor-pointer'>
                 <span className='text-blue-500 tracking-wider mr-1'>View image</span>
                 <HiArrowNarrowRight className='text-blue-500' />
-
             </div>
 
-            {
-                show ? (
-                    <div className='flex flex-col w-full'>
-                        {
-                            sickList && sickList.map(sick => {
-                                return (
-                                    <div key={sick.sick_id} >
-                                        {sick.sick_id === location.state ? (
-                                            <div key={sick.sick_id}>
-                                                {sick.sick_invoice && sick.sick_invoice.map((invoice, index) => {
-
-                                                    return (
-                                                        <div key={sick.sick_id + index + 1}>
-                                                            {invoice.image && invoice.image.map((img, index) => {
-
-                                                                return (
-                                                                    <div key={img.sick_surgery_invoice_image_id + index} className='flex relative bg-red-200 w-full' >
-                                                                        <span><img className='mt-3' src={'https://freepaidaccount.com/clinic/api/uploads/' + img.sick_surgery_invoice_image_name} alt="view" /></span>
-
-                                                                    </div>
-                                                                )
-                                                            })}
-                                                        </div>
-                                                    )
-                                                })}
-                                            </div>
-
-                                        ) : null}
-
-                                    </div>
-                                )
-                            })
-                        }
+            <ViewImageModal isVisible={isVisible} setIsVisible={setIsVisible} />
 
 
-                        <span className='border mt-3' onClick={() => setShow(false)}>close</span>
-
-                    </div>
-                ) : null
-
-            }
-
-
-        </div>
+        </div >
     )
 }
 

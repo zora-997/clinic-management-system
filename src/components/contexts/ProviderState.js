@@ -43,9 +43,9 @@ const ProviderState = ({ children }) => {
     const [query, setQuery] = useState("")
     const [sick_id, setDetailSickId] = useState(0)
     const [doctor_id, setDetailDoctorId] = useState(0)
-
-
     const [state, dispatch] = useReducer(reducer, initialState)
+
+    const [ddate, setDate] = useState(new Date().toISOString().slice(0, 10));
 
     // load all doctors.
     useEffect(() => {
@@ -55,7 +55,7 @@ const ProviderState = ({ children }) => {
         fetchSickSurgery();
         fetchExpenseType();
         fetchExpense();
-        fetchAppointment();
+        fetchAppointment(ddate);
 
 
     }, [])
@@ -111,8 +111,10 @@ const ProviderState = ({ children }) => {
     }
 
     // add appointment
-    const addAppointment = async (appointment) => {
+    const addAppointment = async (appointment, ddate) => {
+        // aw ddate bo awaya la katy druskrdni appointment yaksar datakaw bo feach bka bikata naw table appointment
         const res = await api.post('appointment/create.php', appointment);
+        fetchAppointment(ddate)
         console.log(res);
         dispatch({
             type: ADD_APPOINTMENT,
@@ -133,7 +135,7 @@ const ProviderState = ({ children }) => {
     // update Appointment
     const updateAppointment = async (appointment, ddate) => {
         await api.post('appointment/update.php', appointment);
-        fetchDashbordAppointment(ddate.toISOString().slice(0, 10));
+        fetchAppointment(ddate);
         dispatch({
             type: UPDATE_APPOINTMENT,
             payload: appointment.appointment_id
@@ -284,7 +286,7 @@ const ProviderState = ({ children }) => {
     // all sick surgery
     const fetchSickSurgery = async () => {
         const { data } = await api.get('sick_surgery/read.php');
-        console.log(data);
+
         dispatch({
             type: 'GETSICKSURGERY',
             payload: data.data
@@ -365,8 +367,9 @@ const ProviderState = ({ children }) => {
 
     // add doctor
     const addSick = async (sick) => {
-        await api.post('sick/create.php', sick);
+        const res = await api.post('sick/create.php', sick);
         fetchSick();
+        console.log(res.data);
         dispatch({
             type: ADD_SICK,
             payload: sick
@@ -449,7 +452,9 @@ const ProviderState = ({ children }) => {
             fetchAppointment,
             fetchDashbordAppointment,
             deleteAppointment,
-            updateAppointment
+            updateAppointment,
+            setDate,
+            ddate
 
 
 
