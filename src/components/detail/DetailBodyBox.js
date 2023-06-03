@@ -124,23 +124,30 @@ const DetailBodyBox = () => {
 
                                                     <div className=' fixed z-20   inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex  justify-center items-center'>
 
-                                                        <button className='text-white text-xl place-self-end  w-fit ' onClick={() => setIsVisible(false)}> X </button>
                                                         <MdChevronLeft className='opacity-50  cursor-pointer hover:opacity-100' onClick={slidLeft} size={40} />
-                                                        <div id='slider' className='overflow-x-scroll scroll   scroll-smooth  scrollbar-hide whitespace-nowrap flex  justify-center w-[800px] items-center bg-white  rounded-md '>
-                                                            {invoice.image && invoice.image.map((img, index) => {
-                                                                return (
-                                                                    <div key={img.sick_surgery_invoice_image_id} className=' w-[300px]  ' >
-                                                                        <img className='object-cover p-3 pl-5 w-[400px] h-[400px]' src={'https://freepaidaccount.com/clinic/api/uploads/' + img.sick_surgery_invoice_image_name} alt="view" />
-                                                                    </div>
-                                                                )
+                                                        {/** am div xwarawa nabe wenakan hamui nahenetawa inja width kai lera diyari akai hi image modalaka */}
+                                                        <div className=' flex  justify-center w-[800px] items-center bg-white  rounded-md '>
+                                                            <button className='place-self-start text-xl text-black  w-fit ' onClick={() => setIsVisible(false)}> X </button>
+                                                            {/** amsh bo drusbuni actiony scrollakaw u hidn scroll ka ba karde */}
+                                                            <div id='slider' key={invoice.sick_surgery_id + 1} className='flex overflow-x-scroll scrollbar-hide scroll whitespace-nowrap  scroll-smooth ' >
+                                                                {invoice.image && invoice.image.map((img, index) => {
+                                                                    {/* am div xwarawa nabe scrollka durs nabe hamu nwenakan ba statiki yatawa */ }
+                                                                    return (
+                                                                        <div key={img.sick_surgery_invoice_image_id + 1} className='flex' >
+                                                                            <div key={img.sick_surgery_invoice_image_id} className='w-[400px]' >
+                                                                                <img className='object-cover p-3 w-[400px] h-[400px]' src={'https://freepaidaccount.com/clinic/api/uploads/' + img.sick_surgery_invoice_image_name} alt="view" />
+                                                                            </div>
+                                                                        </div>
+                                                                    )
 
 
-
-                                                            })
-                                                            }
+                                                                })
+                                                                }
+                                                            </div>
 
                                                         </div>
                                                         <MdChevronRight className='opacity-50 cursor-pointer hover:opacity-100' onClick={slidRight} size={40} />
+
                                                     </div>
 
                                                 }
