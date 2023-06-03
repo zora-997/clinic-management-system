@@ -81,7 +81,7 @@ const DetailBodyBox = () => {
                                 {/* date div */}
                                 {sick.sick_invoice && sick.sick_invoice.map((invoice, index) => {
                                     return (
-                                        <div key={sick.sick_id + index + 1} className=' text-left flex  shadow-sm shadow-black/20 rounded-md mb-4 justify-between w-full  border-r-2   text-gray-700 text-xl '>
+                                        <div key={sick.sick_id + index + 1} className=' text-left flex  shadow-sm shadow-black/10 bg-gray-50/50 rounded-md mb-4 justify-between w-full p-2.5    text-gray-700 text-xl '>
 
                                             {/** div date u price */}
                                             <div className='flex flex-col justify-around border-r  relative  pl-2 w-[30%]'>
@@ -117,44 +117,15 @@ const DetailBodyBox = () => {
                                                     )
                                                 })}
                                             </div>
+
                                             {/** image icon */}
-                                            <div className='m-2 cursor-pointer flex ' >
-                                                <img src={gallery} alt='fahs' onClick={() => { setIsVisible(true); setId(invoice.sick_surgery_id) }} />
-                                                {isVisible && invoice.sick_surgery_id === id &&
-
-                                                    <div className=' fixed z-20   inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex  justify-center items-center'>
-
-                                                        <MdChevronLeft className='opacity-50  cursor-pointer hover:opacity-100' onClick={slidLeft} size={40} />
-                                                        {/** am div xwarawa nabe wenakan hamui nahenetawa inja width kai lera diyari akai hi image modalaka */}
-                                                        <div className=' flex  justify-center w-[800px] items-center bg-white  rounded-md '>
-                                                            <button className='place-self-start text-xl text-black  w-fit ' onClick={() => setIsVisible(false)}> X </button>
-                                                            {/** amsh bo drusbuni actiony scrollakaw u hidn scroll ka ba karde */}
-                                                            <div id='slider' key={invoice.sick_surgery_id + 1} className='flex overflow-x-scroll scrollbar-hide scroll whitespace-nowrap  scroll-smooth ' >
-                                                                {invoice.image && invoice.image.map((img, index) => {
-                                                                    {/* am div xwarawa nabe scrollka durs nabe hamu nwenakan ba statiki yatawa */ }
-                                                                    return (
-                                                                        <div key={img.sick_surgery_invoice_image_id + 1} className='flex' >
-                                                                            <div key={img.sick_surgery_invoice_image_id} className='w-[400px]' >
-                                                                                <img className='object-cover p-3 w-[400px] h-[400px]' src={'https://freepaidaccount.com/clinic/api/uploads/' + img.sick_surgery_invoice_image_name} alt="view" />
-                                                                            </div>
-                                                                        </div>
-                                                                    )
+                                            {/** setId bo awaya bzani kam box awe wenay aw box bo benetawa */}
+                                            <div className=' cursor-pointer flex ' >
 
 
-                                                                })
-                                                                }
-                                                            </div>
+                                                <img src={gallery} alt='fahs' className='w-10 h-10 ' onClick={() => { setIsVisible(true); setId(invoice.sick_surgery_id) }} />
 
-                                                        </div>
-                                                        <MdChevronRight className='opacity-50 cursor-pointer hover:opacity-100' onClick={slidRight} size={40} />
-
-                                                    </div>
-
-                                                }
-
-
-
-
+                                                <DetailViewImage isVisible={isVisible} setIsVisible={setIsVisible} id={id} setId={setId} invoice={invoice} />
                                             </div>
                                         </div>
                                     )
