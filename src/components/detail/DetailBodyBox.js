@@ -122,9 +122,9 @@ const DetailBodyBox = () => {
                                             {/** setId bo awaya bzani kam box awe wenay aw box bo benetawa */}
                                             <div className=' cursor-pointer flex ' >
 
-
-                                                <img src={gallery} alt='fahs' className='w-10 h-10 ' onClick={() => { setIsVisible(true); setId(invoice.sick_surgery_id) }} />
-
+                                                <div className=' hover:bg-black/10 duration-200 rounded-lg h-fit p-0.5'>
+                                                    <img src={gallery} alt='fahs' className='w-10 h-10  ' onClick={() => { setIsVisible(true); setId(invoice.sick_surgery_id) }} />
+                                                </div>
                                                 <DetailViewImage isVisible={isVisible} setIsVisible={setIsVisible} id={id} setId={setId} invoice={invoice} />
                                             </div>
                                         </div>
