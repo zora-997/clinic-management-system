@@ -25,6 +25,9 @@ import Appointment from "./components/appointment/Appointment";
 import AllApointment from "./components/appointment/allAppointment/AllApointment";
 import PrivateRoute from "./page/home/PrivateRoute";
 
+import AllSickDetail from "./components/sickDetail/allSickDetail/AllSickDetail";
+import SickDetail from "./components/sickDetail/SickDetail";
+
 
 
 
@@ -83,6 +86,11 @@ const MainRoutes = () => {
                     {/* appointment  */}
                     <Route exact path="/" element={<AllApointment />} >
                         <Route exact path="appointment" element={<Appointment />} />
+                    </Route>
+
+                    {/* sick detal  */}
+                    <Route exact path="/" element={<AllSickDetail />} >
+                        <Route exact path="sickdetail" element={<SickDetail />} />
                     </Route>
 
 

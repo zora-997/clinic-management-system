@@ -3,7 +3,7 @@ import GlobalContext from '../contexts/createContext/context';
 
 const CreateAppointment = ({ ddate }) => {
 
-    const { addAppointment, fetchAppointment, doctorList, sickList } = useContext(GlobalContext);
+    const { addAppointment, doctorList, sickList } = useContext(GlobalContext);
 
 
     /* const did = doctorList.map((d) => d.doctor_id)
@@ -55,11 +55,11 @@ const CreateAppointment = ({ ddate }) => {
     }
     return (
 
-        < div className='w-[1035px] place-self-center ml-14 ' >
+        < div className='w-[1100px] place-self-end ml-14 ' >
             <form onSubmit={(e) => addAppointmentHandler(e)} className=' bg-white rounded-md  grid p-5'>
                 <div className='flex'>
                     {/** sick name start */}
-                    <div className='w-3/4 mr-5'>
+                    <div className='w-1/4 mr-5'>
                         <div className='relative '>
                             <div className='flex flex-col w-full  rounded-md  absolute'>
                                 <label className='text-gray-700 mb-2'>Sick name</label>
@@ -86,43 +86,45 @@ const CreateAppointment = ({ ddate }) => {
                     </div>
                     {/** sick name end*/}
 
-                    <div className='w-3/4'>
+                    <div className='w-1/4'>
                         <label className='text-gray-500' >Date</label>
                         <input type='date' value={appointment_date || ''} required className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 ' onChange={(e) => setAppointmentDate(e.target.value)} />
                     </div>
-                </div>
 
-                <div className='flex'>
-                    <div className='w-3/4 mr-5 '>
+                    <div className='w-1/4 mr-5 '>
                         <label className='text-gray-700 '>Doctor name</label>
                         {/** value = {doctor_name || ''} aw or agar da naney awa alle auncontrolled wata ama sarata null yan undefined boia aw || bo da aney ka te batallish be */}
-                        <input type="text" readOnly required placeholder='Doctor name' value={doctor_name || ''}
-                            className={`focus:ring-1 focus:outline-none border pl-2 p-2 w-full  rounded `} />
+                        <input type="text" readOnly disabled required placeholder='Doctor name' value={doctor_name || ''}
+                            className={`focus:ring-1 focus:outline-none border pl-2 p-2 w-full mt-2 ml-2  rounded `} />
                     </div>
-                    <div className='w-3/4'>
+                    <div className='w-1/4'>
                         <label className='text-gray-500' >Time</label>
                         <input type="time" required placeholder='Time'
-                            className={`focus:ring-1 focus:outline-none border pl-2 p-2 w-full  rounded `}
+                            className={`focus:ring-1 focus:outline-none border pl-2 p-2 mt-2 w-full  rounded `}
                             onChange={(e) => setAppointmentTime(e.target.value)}
                             value={appointment_time || ''} />
 
                     </div>
                 </div>
-
                 <div className='flex'>
-                    <div className='w-full '>
-                        <label className='text-gray-500' >Not</label>
+
+
+                </div>
+
+                <div className='flex items-center'>
+                    <div className=' w-1/2'>
+                        <label className='text-gray-500' >Note</label>
                         <input
                             type='text'
                             name='sick_phone'
-                            placeholder='not'
+                            placeholder='note'
                             autoComplete="off"
                             required
                             value={appointment_note || ''}
                             className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 ' onChange={(e) => setAppointmentNot(e.target.value)} />
                     </div>
+                    <button type='submit' className='border rounded-md bg-cyan-500 hover:bg-cyan-400 text-white w-1/2 p-2 mt-5 ml-2'>Create appointment</button>
                 </div>
-                <button type='submit' className='border rounded-md bg-cyan-500 hover:bg-cyan-400 text-white p-2 my-2'>Create appointment</button>
             </form>
 
         </div >

@@ -21,7 +21,8 @@ import {
     UPDATE_EXPENSE,
     ADD_APPOINTMENT,
     UPDATE_APPOINTMENT,
-    DELETE_APPOINTMENT
+    DELETE_APPOINTMENT,
+    CHANGE_STATE_APPOINTMENT
 
 } from "../contexts/actions/action";
 
@@ -56,6 +57,7 @@ const ProviderState = ({ children }) => {
         fetchExpenseType();
         fetchExpense();
         fetchAppointment(ddate);
+
 
 
     }, [])
@@ -113,6 +115,7 @@ const ProviderState = ({ children }) => {
     // add appointment
     const addAppointment = async (appointment, ddate) => {
         // aw ddate bo awaya la katy druskrdni appointment yaksar datakaw bo feach bka bikata naw table appointment
+
         const res = await api.post('appointment/create.php', appointment);
         fetchAppointment(ddate)
         console.log(res);
@@ -142,6 +145,19 @@ const ProviderState = ({ children }) => {
             payload: appointment.appointment_id
         })
     }
+
+    // change state Appointment
+    const ChangeStateAppointment = async (changeState, ddate) => {
+        const res = await api.post('appointment/changestate.php', changeState);
+        console.log(res.data);
+        fetchAppointment(ddate);
+        dispatch({
+            type: CHANGE_STATE_APPOINTMENT,
+            payload: changeState.appointment_id
+        })
+    }
+
+
 
 
     //   feach admin
@@ -456,7 +472,8 @@ const ProviderState = ({ children }) => {
             deleteAppointment,
             updateAppointment,
             setDate,
-            ddate
+            ddate,
+            ChangeStateAppointment
 
 
 

@@ -9,6 +9,8 @@ import ExpenseType from "./ExpenseType";
 import ExpenseList from "./ExpenseList";
 import ReportList from "./ReportList";
 import AppointmentList from "./AppointmentList";
+import SickDetail from "./SickDetailMenu";
+import SickDetailMenu from "./SickDetailMenu";
 
 
 const BottomSideBar = () => {
@@ -26,6 +28,7 @@ const BottomSideBar = () => {
                     </Link>
                 </li>
                 <AppointmentList />
+                <SickDetailMenu />
                 <DoctorList />
                 <SickList />
                 <SurgeryTypeList />

@@ -3,10 +3,18 @@ import GlobalContext from '../contexts/createContext/context';
 import AppointmentModal from '../layout/modal/AppointmentModal';
 // import AddAppointmentModal from '../layout/modal/AddAppointmentModal';
 import CreateAppointment from './CreateAppointment';
+import { CiNoWaitingSign } from "react-icons/ci";
+import { IoCodeWorkingOutline } from "react-icons/io";
+import { MdOutlineIncompleteCircle } from "react-icons/md";
+import { ImCancelCircle } from "react-icons/im";
+import arrows from "../../img/image/arrows.png";
+import timer from "../../img/image/time-left.png";
+import checked from "../../img/image/check-mark.png";
+import x from "../../img/image/cancel.png";
 
 const Appointment = () => {
 
-    const { appointmentList, setDate, ddate, fetchAppointment } = useContext(GlobalContext);
+    const { appointmentList, setDate, ddate, fetchAppointment, ChangeStateAppointment } = useContext(GlobalContext);
     const [show, setShow] = useState(false);
     const [appointment_id, setAppointmentId] = useState(0);
     const [sick_id, setSick_id] = useState(0)
@@ -17,7 +25,13 @@ const Appointment = () => {
     const [appointment_time, setAppointmentTime] = useState("");
     const [appointment_note, setAppointmentNot] = useState("");
 
-    // const [addshow, setAddShow] = useState(false);
+
+    const [waitState, setWaitState] = useState("");
+    const [workingState, setWorkingState] = useState("");
+    const [completedState, setCompletedState] = useState("");
+    const [canceledState, setCanceledState] = useState("");
+
+
 
 
     /* const did = doctorList.map((d) => d.doctor_id)
@@ -30,9 +44,46 @@ const Appointment = () => {
         fetchAppointment(ddate)
     }, [ddate])
 
+
+    const waitStateHandel = (appointment_id) => {
+        setWaitState("wait");
+        ChangeStateAppointment({
+            appointment_id,
+            appointment_state: waitState
+        }, ddate)
+        console.log(waitState + " " + appointment_id);
+    }
+
+    const workingStateHandel = (appointment_id) => {
+        setWorkingState("working");
+        ChangeStateAppointment({
+            appointment_id,
+            appointment_state: workingState
+        }, ddate)
+        console.log(workingState + " " + appointment_id);
+    }
+
+    const completedStateHandel = (appointment_id) => {
+        setCompletedState("completed");
+        ChangeStateAppointment({
+            appointment_id,
+            appointment_state: completedState
+        }, ddate)
+        console.log(completedState + " " + appointment_id);
+    }
+
+    const canceledStateHandel = (appointment_id) => {
+        setCanceledState("canceled");
+        ChangeStateAppointment({
+            appointment_id,
+            appointment_state: canceledState
+        }, ddate)
+        console.log(canceledState + " " + appointment_id);
+    }
+
     return (
 
-        <div className=" flex flex-col items-center pl-28 mt-8 w-full select-none">
+        <div className=" flex flex-col items-end mt-8  select-none">
             <AppointmentModal
                 isVisible={show}
                 onClose={setShow}
@@ -58,53 +109,67 @@ const Appointment = () => {
             <CreateAppointment ddate={ddate} />
 
 
-            <div className='mt-6 bg-white ml-16 p-5 rounded-md'>
-                <div className='flex justify-between items-center mb-2 '>
+            <div className='mt-6 bg-white flex flex-col w-[1100px] items-end  p-5 rounded-md '>
 
-                    <div className='flex flex-col   w-1/3'>
-                        <label className='text-gray-600' >Appointment Date</label>
-                        <input onChange={(e) => setDate(e.target.value)} value={ddate} type="date" className={`focus:ring-1 focus:outline-none border  p-1 rounded`} />
+
+
+                <div className='flex flex-col'>
+                    <div className='flex justify-between items-center mb-2  '>
+                        <div className='flex flex-col  w-1/3'>
+                            <label className='text-gray-600' >Appointment Date</label>
+                            <input onChange={(e) => setDate(e.target.value)} value={ddate} type="date" className={`focus:ring-1 focus:outline-none border  p-1 rounded`} />
+                        </div>
                     </div>
+
+                    <table className="whitespace-nowrap w-[1050px] bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 ">
+                        <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
+                            <tr>
+                                <th scope="col" className="px-6 py-3">Id</th>
+                                <th scope="col" className="px-6 py-3">Sick name</th>
+                                <th scope="col" className="px-6 py-3">Doctor name</th>
+                                <th scope="col" className="px-6 py-3">Date</th>
+                                <th scope="col" className="px-6 py-3">Time</th>
+                                <th scope="col" className="px-6 py-3">App.state</th>
+                                <th scope="col" className="px-6 py-3">Change State</th>
+                                <th scope="col" className="px-6 py-3">Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {appointmentList && appointmentList.map((appointment, index) => {
+                                return <tr
+                                    key={index}
+                                    onDoubleClick={() => {
+                                        setShow(true);
+                                        setAppointmentId(appointment.appointment_id);
+                                        setSick_id(appointment.sick_id);
+                                        setDoctor_id(appointment.doctor_id);
+                                        setSick_name(appointment.sick_name);
+                                        setDoctor_name(appointment.doctor_name);
+                                        setAppointmentDate(appointment.appointment_date);
+                                        setAppointmentTime(appointment.appointment_time);
+                                        setAppointmentNot(appointment.appointment_note)
+
+                                    }}
+                                    className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
+                                    <th scope='row' className="px-5 py-4">&nbsp;&nbsp;{index + 1}</th>
+                                    <td className=" px-2 py-4">{appointment.sick_name}</td>
+                                    <td className=" px-2 py-4">{appointment.doctor_name}</td>
+                                    <td className=" px-2 py-4">{appointment.appointment_date}</td>
+                                    <td className=" px-2 py-4">{appointment.appointment_time}</td>
+                                    <td className=" px-2 w-10 py-4">{appointment.appointment_state}</td>
+                                    <td className=" px-2 py-4 flex gap-2">
+                                        <img className='w-6' onClick={() => waitStateHandel(appointment.appointment_id)} src={timer} alt='wait' />
+                                        <img className='w-6' onClick={() => workingStateHandel(appointment.appointment_id)} src={arrows} alt='working' />
+                                        <img className='w-6' onClick={() => completedStateHandel(appointment.appointment_id)} src={checked} alt='checked' />
+                                        <img className='w-6' onClick={() => canceledStateHandel(appointment.appointment_id)} src={x} alt='cros' />
+                                    </td>
+                                    <td className=" px-2 py-4">{appointment.appointment_note}</td>
+                                </tr>
+                            })}
+                        </tbody>
+                    </table>
                 </div>
 
-                <table className="whitespace-nowrap bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500  w-[1000px]">
-                    <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
-                        <tr>
-                            <th scope="col" className="px-6 py-3">Id</th>
-                            <th scope="col" className="px-6 py-3">Sick name</th>
-                            <th scope="col" className="px-6 py-3">Doctor name</th>
-                            <th scope="col" className="px-6 py-3">Date</th>
-                            <th scope="col" className="px-6 py-3">Time</th>
-                            <th scope="col" className="px-6 py-3">Not</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {appointmentList && appointmentList.map((appointment, index) => {
-                            return <tr
-                                key={index}
-                                onClick={() => {
-                                    setShow(true);
-                                    setAppointmentId(appointment.appointment_id);
-                                    setSick_id(appointment.sick_id);
-                                    setDoctor_id(appointment.doctor_id);
-                                    setSick_name(appointment.sick_name);
-                                    setDoctor_name(appointment.doctor_name);
-                                    setAppointmentDate(appointment.appointment_date);
-                                    setAppointmentTime(appointment.appointment_time);
-                                    setAppointmentNot(appointment.appointment_note)
-
-                                }}
-                                className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
-                                <th scope='row' className="px-5 py-4">&nbsp;&nbsp;{index + 1}</th>
-                                <td className="px-6 py-4">{appointment.sick_name}</td>
-                                <td className="px-6 py-4">{appointment.doctor_name}</td>
-                                <td className="px-6 py-4">{appointment.appointment_date}</td>
-                                <td className="px-6 py-4">{appointment.appointment_time}</td>
-                                <td className="px-6 py-4">{appointment.appointment_note}</td>
-                            </tr>
-                        })}
-                    </tbody>
-                </table>
                 {!ddate ?
                     <div className='py-1 w-full bg-yellow-100/50  text-yellow-500 flex justify-center'><span className='  p-1 rounded'>No Appointment</span></div> : null}
             </div>

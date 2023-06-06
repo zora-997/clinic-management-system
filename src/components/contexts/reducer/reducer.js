@@ -17,7 +17,8 @@ import {
     ADD_EXPENSE,
     ADD_APPOINTMENT,
     UPDATE_APPOINTMENT,
-    DELETE_APPOINTMENT
+    DELETE_APPOINTMENT,
+    CHANGE_STATE_APPOINTMENT
 } from "../actions/action";
 
 
@@ -177,6 +178,13 @@ const reducer = (state, { type, payload }) => {
                 appointmentList: state.appointmentList.filter((appointment) => appointment.appointment_id !== payload),
             };
         case UPDATE_APPOINTMENT:
+            return {
+                ...state,
+                appointmentList: state.appointmentList.map((appointment) => {
+                    return appointment.appointment_id === payload ? payload : state
+                })
+            };
+        case CHANGE_STATE_APPOINTMENT:
             return {
                 ...state,
                 appointmentList: state.appointmentList.map((appointment) => {
