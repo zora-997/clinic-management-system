@@ -158,10 +158,10 @@ const Appointment = () => {
                                     <td className=" px-2 py-4">{appointment.appointment_time}</td>
                                     <td className=" px-2 w-10 py-4">{appointment.appointment_state}</td>
                                     <td className=" px-2 py-4 flex gap-2">
-                                        <img className='w-6' onClick={() => waitStateHandel(appointment.appointment_id)} src={timer} alt='wait' />
-                                        <img className='w-6' onClick={() => workingStateHandel(appointment.appointment_id)} src={arrows} alt='working' />
-                                        <img className='w-6' onClick={() => completedStateHandel(appointment.appointment_id)} src={checked} alt='checked' />
-                                        <img className='w-6' onClick={() => canceledStateHandel(appointment.appointment_id)} src={x} alt='cros' />
+                                        <img className='w-6 hover:bg-yellow-50 rounded-xl' onClick={() => waitStateHandel(appointment.appointment_id)} src={timer} alt='wait' />
+                                        <img className='w-6 hover:bg-sky-200 rounded-xl' onClick={() => workingStateHandel(appointment.appointment_id)} src={arrows} alt='working' />
+                                        <img className='w-6 hover:bg-green-200 rounded-xl' onClick={() => completedStateHandel(appointment.appointment_id)} src={checked} alt='checked' />
+                                        <img className='w-6 hover:bg-red-100 rounded-xl' onClick={() => canceledStateHandel(appointment.appointment_id)} src={x} alt='cros' />
                                     </td>
                                     <td className=" px-2 py-4">{appointment.appointment_note}</td>
                                 </tr>
