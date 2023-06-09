@@ -43,8 +43,9 @@ const ProviderState = ({ children }) => {
 
     const [query, setQuery] = useState("")
     const [sick_id, setDetailSickId] = useState(0)
-    const [doctor_id, setDetailDoctorId] = useState(0)
+    const [doctorr_id, setDetailDoctorId] = useState(0)
     const [state, dispatch] = useReducer(reducer, initialState)
+
 
     const [ddate, setDate] = useState(new Date().toISOString().slice(0, 10));
 
@@ -93,10 +94,10 @@ const ProviderState = ({ children }) => {
 
     // feach appointment
     const fetchAppointment = async (ddate) => {
-        console.log("fetchAppointment");
-        console.log(ddate);
+
+
         const res = await api.post('appointment/read.php', { ddate });
-        console.log(res.data);
+
         dispatch({
             type: 'GETAPPOINTMENT',
             payload: res.data.data
@@ -118,7 +119,7 @@ const ProviderState = ({ children }) => {
 
         const res = await api.post('appointment/create.php', appointment);
         fetchAppointment(ddate)
-        console.log(res);
+
         dispatch({
             type: ADD_APPOINTMENT,
             payload: appointment
@@ -128,7 +129,7 @@ const ProviderState = ({ children }) => {
     // delete Appointment
     const deleteAppointment = async (appointment_id) => {
         const res = await api.post('appointment/delete.php', { "appointment_id": appointment_id });
-        console.log(res.data);
+
         dispatch({
             type: DELETE_APPOINTMENT,
             payload: appointment_id
@@ -138,7 +139,7 @@ const ProviderState = ({ children }) => {
     // update Appointment
     const updateAppointment = async (appointment, ddate) => {
         const res = await api.post('appointment/update.php', appointment);
-        console.log(res.data);
+
         fetchAppointment(ddate);
         dispatch({
             type: UPDATE_APPOINTMENT,
@@ -149,12 +150,24 @@ const ProviderState = ({ children }) => {
     // change state Appointment
     const ChangeStateAppointment = async (changeState, ddate) => {
         const res = await api.post('appointment/changestate.php', changeState);
-        console.log(res.data);
-        fetchAppointment(ddate);
+
         dispatch({
             type: CHANGE_STATE_APPOINTMENT,
             payload: changeState.appointment_id
         })
+        fetchAppointment(ddate);
+    }
+
+    let re;
+    // inrow Appointment
+    const inrowAppointment = async (doctor_id) => {
+        const res = await api.post('appointment/inrow.php', { doctor_id });
+        console.log(res.data.data);
+        return res.data.data
+
+
+
+
     }
 
 
@@ -447,7 +460,7 @@ const ProviderState = ({ children }) => {
             searchSurgeryType,
             sick_id,
             setDetailSickId,
-            doctor_id,
+            doctorr_id,
             setDetailDoctorId,
             sickSurgery: state.sickSurgery,
             addSickSurgery,
@@ -473,7 +486,12 @@ const ProviderState = ({ children }) => {
             updateAppointment,
             setDate,
             ddate,
-            ChangeStateAppointment
+            ChangeStateAppointment,
+            inrowAppointment,
+
+
+
+
 
 
 

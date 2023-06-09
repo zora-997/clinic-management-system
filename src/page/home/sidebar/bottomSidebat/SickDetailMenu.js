@@ -5,6 +5,10 @@ import { Link, useLocation } from 'react-router-dom'
 
 const SickDetailMenu = () => {
     const location = useLocation()
+
+
+
+
     return (
         <div className='w-full'>
             <li className={`${location.pathname === '/sickdetail' && 'bg-blue-500 text-white'} mb-2 group cursor-pointer w-full items-center hover:text-white hover:bg-blue-500 duration-100 p-2.5 rounded-lg `} >

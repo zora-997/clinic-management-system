@@ -1,23 +1,18 @@
-import React, { useContext, useRef, useState } from 'react'
-import GlobalContext from '../contexts/createContext/context'
-import { useLocation } from 'react-router-dom';
-import calendar from "../../img/image/calendar.png";
+import React, { useRef, useState } from 'react'
+import GlobalContext from '../contexts/createContext/context';
+import { useContext } from 'react';
+import DetailViewImage from '../detail/DetailViewImage';
 import money from "../../img/image/money.png";
 import gallery from "../../img/image/image-gallery (1).png";
-import ComponentToPrint from './ComponentToPrint ';
+import ComponentToPrint from '../detail/ComponentToPrint ';
+import calendar from "../../img/image/calendar.png";
 import { useReactToPrint } from 'react-to-print';
-import DetailViewImage from './DetailViewImage';
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import SickComponentToPrint from './SickComponentToPrint';
 
 
 
-
-
-const DetailBodyBox = () => {
-
+function SickDetailBodyBox({ sickDetail, setSickDetail }) {
     const { surgeryType, sickList } = useContext(GlobalContext);
-
-    const location = useLocation();
     const [isVisible, setIsVisible] = useState(false);
     const [id, setId] = useState(0);
 
@@ -30,21 +25,6 @@ const DetailBodyBox = () => {
     });
 
 
-    const slidLeft = () => {
-        var slider = document.getElementById('slider');
-        slider.scrollLeft = slider.scrollLeft - 500;
-        console.log('left side');
-
-    }
-
-    const slidRight = () => {
-        var slider = document.getElementById('slider');
-        slider.scrollLeft = slider.scrollLeft + 500;
-        console.log('right side');
-
-    }
-
-
     return (
         <div className=''>
 
@@ -53,11 +33,11 @@ const DetailBodyBox = () => {
                 return (
                     <div key={sick.sick_id} >
                         {
-                            sick.sick_id && sick.sick_id === location.state &&
+                            sick.sick_id && sick.sick_id === sickDetail.sick_id &&
                             <div className='flex justify-between my-4'>
                                 {/** invisible bo away dyar nabe absolute bo awaia design tek nache  */}
                                 <div className='absolute invisible bg-red-300'>
-                                    <ComponentToPrint props={sickList} ref={componentRef} />
+                                    {/* <SickComponentToPrint sickDetail={sickDetail} props={sickList} ref={componentRef} /> */}
                                 </div>
                                 <p className='text-xl  border-b-2 border-sky-300 w-fit'>History of Work </p>
                                 <button
@@ -75,7 +55,7 @@ const DetailBodyBox = () => {
             {sickList && sickList.map(sick => {
                 return (
                     <div key={sick.sick_id} className=' '>
-                        {sick.sick_id === location.state ? (
+                        {sick.sick_id === sickDetail.sick_id ? (
                             <div className='box flex flex-col rounded-3xl shadow-black/5 bg-white'>
 
                                 {/* date div */}
@@ -151,5 +131,4 @@ const DetailBodyBox = () => {
     )
 }
 
-export default DetailBodyBox
-
+export default SickDetailBodyBox

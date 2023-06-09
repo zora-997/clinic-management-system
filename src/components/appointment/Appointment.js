@@ -3,18 +3,16 @@ import GlobalContext from '../contexts/createContext/context';
 import AppointmentModal from '../layout/modal/AppointmentModal';
 // import AddAppointmentModal from '../layout/modal/AddAppointmentModal';
 import CreateAppointment from './CreateAppointment';
-import { CiNoWaitingSign } from "react-icons/ci";
-import { IoCodeWorkingOutline } from "react-icons/io";
-import { MdOutlineIncompleteCircle } from "react-icons/md";
-import { ImCancelCircle } from "react-icons/im";
 import arrows from "../../img/image/arrows.png";
 import timer from "../../img/image/time-left.png";
 import checked from "../../img/image/check-mark.png";
 import x from "../../img/image/cancel.png";
 
+
+
 const Appointment = () => {
 
-    const { appointmentList, setDate, ddate, fetchAppointment, ChangeStateAppointment } = useContext(GlobalContext);
+    const { appointmentList, setDate, ddate, fetchAppointment, ChangeStateAppointment, setDetailDoctorId } = useContext(GlobalContext);
     const [show, setShow] = useState(false);
     const [appointment_id, setAppointmentId] = useState(0);
     const [sick_id, setSick_id] = useState(0)
@@ -33,7 +31,6 @@ const Appointment = () => {
 
 
 
-
     /* const did = doctorList.map((d) => d.doctor_id)
     const dn = doctorList.map((d) => d.doctor_name)
     
@@ -45,41 +42,49 @@ const Appointment = () => {
     }, [ddate])
 
 
+
+
     const waitStateHandel = (appointment_id) => {
-        setWaitState("wait");
+        // setWaitState("wait");
         ChangeStateAppointment({
             appointment_id,
-            appointment_state: waitState
+            appointment_state: "wait"
         }, ddate)
         console.log(waitState + " " + appointment_id);
+
+
     }
 
-    const workingStateHandel = (appointment_id) => {
-        setWorkingState("working");
+    const workingStateHandel = (appointment_id, doctor_id) => {
+        // setWorkingState("working");
         ChangeStateAppointment({
             appointment_id,
-            appointment_state: workingState
+            appointment_state: 'working'
         }, ddate)
-        console.log(workingState + " " + appointment_id);
+        setDetailDoctorId(doctor_id)
+
+
     }
 
     const completedStateHandel = (appointment_id) => {
-        setCompletedState("completed");
+        // setCompletedState("completed");
         ChangeStateAppointment({
             appointment_id,
-            appointment_state: completedState
+            appointment_state: "completed"
         }, ddate)
         console.log(completedState + " " + appointment_id);
     }
 
     const canceledStateHandel = (appointment_id) => {
-        setCanceledState("canceled");
+        // setCanceledState("canceled");
         ChangeStateAppointment({
             appointment_id,
-            appointment_state: canceledState
+            appointment_state: "canceled"
         }, ddate)
         console.log(canceledState + " " + appointment_id);
     }
+
+
 
     return (
 
@@ -122,6 +127,7 @@ const Appointment = () => {
                     </div>
 
                     <table className="whitespace-nowrap w-[1050px] bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 ">
+
                         <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                             <tr>
                                 <th scope="col" className="px-6 py-3">Id</th>
@@ -159,7 +165,7 @@ const Appointment = () => {
                                     <td className=" px-2 w-10 py-4">{appointment.appointment_state}</td>
                                     <td className=" px-2 py-4 flex gap-2">
                                         <img className='w-6 hover:bg-yellow-50 rounded-xl' onClick={() => waitStateHandel(appointment.appointment_id)} src={timer} alt='wait' />
-                                        <img className='w-6 hover:bg-sky-200 rounded-xl' onClick={() => workingStateHandel(appointment.appointment_id)} src={arrows} alt='working' />
+                                        <img className='w-6 hover:bg-sky-200 rounded-xl' onClick={() => { workingStateHandel(appointment.appointment_id, appointment.doctor_id) }} src={arrows} alt='working' />
                                         <img className='w-6 hover:bg-green-200 rounded-xl' onClick={() => completedStateHandel(appointment.appointment_id)} src={checked} alt='checked' />
                                         <img className='w-6 hover:bg-red-100 rounded-xl' onClick={() => canceledStateHandel(appointment.appointment_id)} src={x} alt='cros' />
                                     </td>

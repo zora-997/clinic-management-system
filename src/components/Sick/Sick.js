@@ -77,6 +77,7 @@ const Sick = () => {
                                 <tr key={index}
 
                                     onDoubleClick={() => { history(`/detail`, { state: sick.sick_id }) }}
+
                                     className="  border hover:w-44 cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300 ">
                                     <th scope='row' className="px-5 py-4">&nbsp;&nbsp; {index + 1}</th>
                                     <td className="py-4 w-56 ">{sick.sick_name}</td>
