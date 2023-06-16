@@ -7,11 +7,11 @@ import gallery from "../../img/image/image-gallery (1).png";
 import ComponentToPrint from '../detail/ComponentToPrint ';
 import calendar from "../../img/image/calendar.png";
 import { useReactToPrint } from 'react-to-print';
-import SickComponentToPrint from './SickComponentToPrint';
 
 
 
-function SickDetailBodyBox({ sickDetail, setSickDetail }) {
+
+function SickDetailBodyBox({ sickDetail }) {
     const { surgeryType, sickList } = useContext(GlobalContext);
     const [isVisible, setIsVisible] = useState(false);
     const [id, setId] = useState(0);
@@ -19,10 +19,11 @@ function SickDetailBodyBox({ sickDetail, setSickDetail }) {
     const sid = surgeryType.map((d) => d.surgery_type_id)
     const sn = surgeryType.map((d) => d.surgery_type_name)
 
-    const componentRef = useRef()
-    const handlePrint = useReactToPrint({
-        content: () => componentRef.current,
-    });
+    // const componentRef = useRef()
+    // const handlePrint = useReactToPrint({
+    //     content: () => componentRef.current,
+    // });
+
 
 
     return (
@@ -41,7 +42,7 @@ function SickDetailBodyBox({ sickDetail, setSickDetail }) {
                                 </div>
                                 <p className='text-xl  border-b-2 border-sky-300 w-fit'>History of Work </p>
                                 <button
-                                    onClick={() => { handlePrint() }}
+                                    //   onClick={() => { handlePrint() }}
                                     className='hover:text-white shadow-sm shadow-gray-300 border text-sky-400 border-sky-300 h-fit p-1.5 px-7 tracking-wider rounded-md hover:bg-sky-300'>
                                     Print History
                                 </button>

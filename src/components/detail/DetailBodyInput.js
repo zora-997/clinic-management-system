@@ -75,13 +75,14 @@ const DetailBodyInput = () => {
         formData.append('sick_surgery_date', sick_surgery_date);
         formData.append('items', JSON.stringify(sick_surgery));
 
-        addSickSurgery(formData)
-
+        addSickSurgery(formData);
 
         // bo away la naw table typeOfWork datay peshutr pshan naiatawa
-        setsicksurgerys([])
+        setsicksurgerys([]);
         // bo away la sar typeOfWork  namene
-        set_show(false)
+        set_show(false);
+
+
     }
 
 

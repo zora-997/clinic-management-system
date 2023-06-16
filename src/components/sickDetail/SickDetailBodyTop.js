@@ -1,21 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import React, { useContext } from 'react'
+
 import GlobalContext from '../contexts/createContext/context'
-import api from "../../api/api";
-import { log } from 'react-modal/lib/helpers/ariaAppHider';
-
-const SickDetailBodyTop = ({ sickDetail, setSickDetail }) => {
-
-    const { sickList, doctorr_id } = useContext(GlobalContext);
-
-    let doctor_id = doctorr_id
 
 
-    setTimeout(async (doctor_id) => {
-        let res = await api.post('appointment/inrow.php', { doctor_id });
-        setSickDetail(res.data.data)
-    }, 1000, doctor_id)
+const SickDetailBodyTop = ({ sickDetail }) => {
 
+    const { sickList } = useContext(GlobalContext);
 
 
 

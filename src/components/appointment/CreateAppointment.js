@@ -119,7 +119,7 @@ const CreateAppointment = ({ ddate }) => {
                             name='sick_phone'
                             placeholder='note'
                             autoComplete="off"
-                            required
+
                             value={appointment_note || ''}
                             className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 ' onChange={(e) => setAppointmentNot(e.target.value)} />
                     </div>

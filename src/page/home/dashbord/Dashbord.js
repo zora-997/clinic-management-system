@@ -12,7 +12,7 @@ const Dashbord = () => {
 
         <div>
             {
-                !storedUser ? history("/login") :
+                !storedUser ? history("/") :
 
                     <div className='dashbord   w-full'>
                         <SideBar />

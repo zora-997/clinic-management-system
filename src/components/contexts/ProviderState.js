@@ -43,7 +43,7 @@ const ProviderState = ({ children }) => {
 
     const [query, setQuery] = useState("")
     const [sick_id, setDetailSickId] = useState(0)
-    const [doctorr_id, setDetailDoctorId] = useState(0)
+
     const [state, dispatch] = useReducer(reducer, initialState)
 
 
@@ -94,14 +94,12 @@ const ProviderState = ({ children }) => {
 
     // feach appointment
     const fetchAppointment = async (ddate) => {
-
-
         const res = await api.post('appointment/read.php', { ddate });
-
         dispatch({
             type: 'GETAPPOINTMENT',
             payload: res.data.data
         })
+
     }
     // fetchDashbordAppointment
     const fetchDashbordAppointment = async (ddate) => {
@@ -149,13 +147,15 @@ const ProviderState = ({ children }) => {
 
     // change state Appointment
     const ChangeStateAppointment = async (changeState, ddate) => {
-        const res = await api.post('appointment/changestate.php', changeState);
+        await api.post('appointment/changestate.php', changeState);
 
         dispatch({
             type: CHANGE_STATE_APPOINTMENT,
             payload: changeState.appointment_id
         })
         fetchAppointment(ddate);
+
+
     }
 
     let re;
@@ -164,9 +164,6 @@ const ProviderState = ({ children }) => {
         const res = await api.post('appointment/inrow.php', { doctor_id });
         console.log(res.data.data);
         return res.data.data
-
-
-
 
     }
 
@@ -460,8 +457,7 @@ const ProviderState = ({ children }) => {
             searchSurgeryType,
             sick_id,
             setDetailSickId,
-            doctorr_id,
-            setDetailDoctorId,
+
             sickSurgery: state.sickSurgery,
             addSickSurgery,
             expenseTypeList: state.expenseTypeList,
@@ -488,6 +484,7 @@ const ProviderState = ({ children }) => {
             ddate,
             ChangeStateAppointment,
             inrowAppointment,
+
 
 
 

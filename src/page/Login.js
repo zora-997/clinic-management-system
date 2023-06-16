@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import login from "../img/image/login.gif";
 //import { RxLockClosed, RxPerson } from "react-icons/rx";
@@ -8,12 +8,16 @@ import api from "../../src/api/api";
 
 
 const Login = () => {
+
     const history = useNavigate();
 
     const [admin_name, setUsername] = useState("");
     const [admin_password, setPassword] = useState("");
     const [error, setError] = useState("");
     const [show, setShow] = useState(false);
+
+
+
 
 
     //   feach admin
@@ -23,8 +27,8 @@ const Login = () => {
         const res = await api.post('admin/login.php', { "admin_name": admin_name, "admin_password": admin_password });
         if (res.data.status === "ok") {
             localStorage.setItem("data", JSON.stringify(res.data))
-            const f = localStorage.getItem("data")
-            console.log(JSON.parse(f).role);
+            const user = localStorage.getItem("data")
+            console.log(JSON.parse(user).role);
             history("/dashbord")
         } else {
             setShow(true)
@@ -37,7 +41,7 @@ const Login = () => {
         <div className='flex flex-col'>
 
 
-            <div className={`p-3 mt-2 w-full h-[10] ${!show && '-top-16'} ${show && 'top-0 duration-300'} flex justify-between place-self-center mb-4 absolute text-sm text-red-600 rounded-lg bg-red-100 `} role="alert">
+            <div className={`p-3 mt-2 w-full h-[10] ${!show && '-top-16'} ${show && '-top-2 duration-300'} flex justify-between place-self-center mb-4 absolute text-sm text-red-600 rounded bg-red-100 `} role="alert">
                 <span className="font-medium">{error}</span>
                 <span onClick={() => setShow(false)} className="font-medium text-2xl cursor-pointer">×</span>
             </div>

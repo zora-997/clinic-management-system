@@ -7,7 +7,7 @@ import SickDetailTypeOfWork from './SickDetailTypeOfWork';
 
 const SickDetailInput = ({ sickDetail, setSickDetail }) => {
 
-    const { surgeryType, addSickSurgery, sickList } = useContext(GlobalContext)
+    const { surgeryType, addSickSurgery, setDetailDoctorId } = useContext(GlobalContext)
 
     const [surgery_type_id, set_surgery_type_id] = useState("")
     const [surgery_type_name, set_surgery_type_name] = useState("")
@@ -77,7 +77,10 @@ const SickDetailInput = ({ sickDetail, setSickDetail }) => {
         // bo away la naw table typeOfWork datay peshutr pshan naiatawa
         setsicksurgerys([])
         // bo away la sar typeOfWork  namene
-        set_show(false)
+        set_show(false);
+
+        // doctorr_id la sick detail abe sfdr kretawa bo away hamu katek request narwa bo api inrow
+        setInterval()
     }
 
 

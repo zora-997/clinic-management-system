@@ -7,15 +7,19 @@ import arrows from "../../img/image/arrows.png";
 import timer from "../../img/image/time-left.png";
 import checked from "../../img/image/check-mark.png";
 import x from "../../img/image/cancel.png";
+import surgery from "../../img/image/scalpel (1).png";
 import SickCancel from '../sickDetail/SickCancel';
+import SickWorkingModal from '../sickDetail/SickWorkingModal';
 
 
 
 const Appointment = () => {
 
-    const { appointmentList, setDate, ddate, fetchAppointment, ChangeStateAppointment, setDetailDoctorId } = useContext(GlobalContext);
+    const { appointmentList, setDate, ddate, fetchAppointment, ChangeStateAppointment } = useContext(GlobalContext);
     const [show, setShow] = useState(false);
     const [showCancel, setShowCancel] = useState(false);
+    const [showWorking, setShowWorking] = useState(false);
+
     const [appointment_id, setAppointmentId] = useState(0);
     const [sick_id, setSick_id] = useState(0)
     const [doctor_id, setDoctor_id] = useState(0);
@@ -60,32 +64,25 @@ const Appointment = () => {
 
     const workingStateHandel = (appointment_id, doctor_id) => {
         // setWorkingState("working");
-        ChangeStateAppointment({
-            appointment_id,
-            appointment_state: 'working'
-        }, ddate)
-        setDetailDoctorId(doctor_id)
-
-
-    }
-
-    const completedStateHandel = (appointment_id, appointment_state) => {
-        // setCompletedState("completed");
-        if (appointment_state === "wait") {
-            setState("The patient is waiting you can not complete!")
-            return setShowCancel(true);
+        const g = appointmentList.map(app => app.doctor_id === doctor_id && app.appointment_state).filter(f => f !== false)
+        const check = g.includes("working")
+        if (check) {
+            setShowWorking(true)
         } else {
             ChangeStateAppointment({
                 appointment_id,
-                appointment_state: "completed"
-            }, ddate)
+                appointment_state: 'working'
+            }, ddate, doctor_id)
         }
+
+
 
     }
 
+
+
     const canceledStateHandel = (appointment_id, appointment_state) => {
         if (appointment_state === "working") {
-            setState("The patient is working you can not canceled!")
             return setShowCancel(true);
         } else {
             ChangeStateAppointment({
@@ -122,8 +119,8 @@ const Appointment = () => {
             />
 
             {/* sick cancel modal */}
-            <SickCancel state={state} isVisible={showCancel} setShowCancel={setShowCancel} />
-
+            <SickCancel isVisible={showCancel} setShowCancel={setShowCancel} />
+            <SickWorkingModal isVisible={showWorking} setShowWorking={setShowWorking} />
             {/* <AddAppointmentModal isAddVisible={addshow} onClose={setAddShow} /> */}
             <CreateAppointment ddate={ddate} canceledState={canceledState} />
 
@@ -145,13 +142,13 @@ const Appointment = () => {
                         <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                             <tr>
                                 <th scope="col" className="px-6 py-3">Id</th>
-                                <th scope="col" className="px-6 py-3">Sick name</th>
-                                <th scope="col" className="px-6 py-3">Doctor name</th>
-                                <th scope="col" className="px-6 py-3">Date</th>
-                                <th scope="col" className="px-6 py-3">Time</th>
-                                <th scope="col" className="px-6 py-3">App.state</th>
-                                <th scope="col" className="px-6 py-3">Change State</th>
-                                <th scope="col" className="px-6 py-3">Note</th>
+                                <th scope="col" className=" py-3">Sick name</th>
+                                <th scope="col" className=" py-3">Doctor name</th>
+                                <th scope="col" className=" py-3">Date</th>
+                                <th scope="col" className=" py-3">Time</th>
+                                <th scope="col" className="pr-6 py-3">App.state</th>
+                                <th scope="col" className=" py-3">Change State</th>
+                                <th scope="col" className=" py-3">Note</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -177,11 +174,10 @@ const Appointment = () => {
                                     <td className=" px-2 py-4">{appointment.appointment_date}</td>
                                     <td className=" px-2 py-4">{appointment.appointment_time}</td>
                                     <td className=" px-2 w-10 py-4">{appointment.appointment_state}</td>
-                                    <td className=" px-2 py-4 flex gap-2">
-                                        <img className='w-6 hover:bg-yellow-50 rounded-xl' onClick={() => waitStateHandel(appointment.appointment_id)} src={timer} alt='wait' />
-                                        <img className='w-6 hover:bg-sky-200 rounded-xl' onClick={() => { workingStateHandel(appointment.appointment_id, appointment.doctor_id) }} src={arrows} alt='working' />
-                                        <img className='w-6 hover:bg-green-200 rounded-xl' onClick={() => completedStateHandel(appointment.appointment_id, appointment.appointment_state)} src={checked} alt='checked' />
-                                        <img className='w-6 hover:bg-red-100 rounded-xl' onClick={() => { canceledStateHandel(appointment.appointment_id, appointment.appointment_state); setAppointmentId(appointment.appointment_id) }} src={x} alt='cros' />
+                                    <td className=" px-2 py-4 flex gap-3">
+                                        <img className='w-7 hover:bg-yellow-50 rounded-xl' onClick={() => waitStateHandel(appointment.appointment_id)} src={timer} alt='wait' />
+                                        <img className='w-7 hover:bg-green-200 rounded-xl' onClick={() => { workingStateHandel(appointment.appointment_id, appointment.doctor_id) }} src={surgery} alt='working' />
+                                        <img className='w-7 hover:bg-red-100 rounded-xl' onClick={() => { canceledStateHandel(appointment.appointment_id, appointment.appointment_state); setAppointmentId(appointment.appointment_id) }} src={x} alt='cros' />
                                     </td>
                                     <td className=" px-2 py-4">{appointment.appointment_note}</td>
                                 </tr>
