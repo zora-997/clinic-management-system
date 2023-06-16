@@ -47,7 +47,7 @@ const Sick = () => {
             <AddSickModal isAddVisible={addshow} onClose={setAddShow} />
 
             {/** button u table hamui tyaya */}
-            <div className='pr-12  mt-10'>
+            <div className='mr-6 mt-10 bg-white rounded-md p-5'>
                 <div className='flex justify-between w-full'>
                     <button onClick={() => setAddShow(true)}
                         className={`

@@ -15,7 +15,7 @@ import SickWorkingModal from '../sickDetail/SickWorkingModal';
 
 const Appointment = () => {
 
-    const { appointmentList, setDate, ddate, fetchAppointment, ChangeStateAppointment } = useContext(GlobalContext);
+    const { appointmentList, setDate, ddate, fetchAppointment, ChangeStateAppointment, searchAppointment } = useContext(GlobalContext);
     const [show, setShow] = useState(false);
     const [showCancel, setShowCancel] = useState(false);
     const [showWorking, setShowWorking] = useState(false);
@@ -96,7 +96,7 @@ const Appointment = () => {
 
     return (
 
-        <div className=" flex flex-col items-end mt-8  select-none">
+        <div className=" flex flex-col items-end mt-8 mr-3  select-none">
             <AppointmentModal
                 isVisible={show}
                 onClose={setShow}
@@ -126,9 +126,6 @@ const Appointment = () => {
 
 
             <div className='mt-6 bg-white flex flex-col w-[1100px] items-end  p-5 rounded-md '>
-
-
-
                 <div className='flex flex-col'>
                     <div className='flex justify-between items-center mb-2  '>
                         <div className='flex flex-col  w-1/3'>
@@ -152,7 +149,7 @@ const Appointment = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {appointmentList && appointmentList.map((appointment, index) => {
+                            {appointmentList && searchAppointment(appointmentList).map((appointment, index) => {
                                 return <tr
                                     key={index}
                                     onDoubleClick={() => {

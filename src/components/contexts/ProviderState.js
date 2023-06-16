@@ -88,9 +88,9 @@ const ProviderState = ({ children }) => {
     }
 
     // Appointment search
-    /*  const searchAppointment = (data) => {
-         return data.filter((item) => query.toLowerCase() === '' ? item : item.sick_name.toLowerCase().includes(query))
-     } */
+    const searchAppointment = (data) => {
+        return data.filter((item) => query.toLowerCase() === '' ? item : item.sick_name.toLowerCase().includes(query))
+    }
 
     // feach appointment
     const fetchAppointment = async (ddate) => {
@@ -484,6 +484,7 @@ const ProviderState = ({ children }) => {
             ddate,
             ChangeStateAppointment,
             inrowAppointment,
+            searchAppointment
 
 
 

@@ -73,7 +73,7 @@ const SickDetail = () => {
             {/** body  */}
             <div className=' font-body flex flex-col p-3 bg-white mr-5 w-[68rem]'>
 
-                <SickDetailHeader />
+                <SickDetailHeader sickDetail={sickDetail} />
                 <SickDetailBodyTop sickDetail={sickDetail} setSickDetail={setSickDetail} />
                 {sickDetail.doctor_id && <SickDetailInput sickDetail={sickDetail} setSickDetail={setSickDetail} />}
 

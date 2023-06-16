@@ -8,6 +8,7 @@ import ComponentToPrint from './ComponentToPrint ';
 import { useReactToPrint } from 'react-to-print';
 import DetailViewImage from './DetailViewImage';
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import { BsFileEarmarkImage } from 'react-icons/bs';
 
 
 
@@ -122,8 +123,9 @@ const DetailBodyBox = () => {
                                             {/** setId bo awaya bzani kam box awe wenay aw box bo benetawa */}
                                             <div className=' cursor-pointer flex ' >
 
-                                                <div className=' hover:bg-black/10 duration-200 rounded-lg h-fit p-0.5'>
-                                                    <img src={gallery} alt='fahs' className='w-10 h-10  ' onClick={() => { setIsVisible(true); setId(invoice.sick_surgery_id) }} />
+                                                <div className='flex items-center h-full justify-center duration-200 rounded-lg'>
+                                                    {/* <img src={gallery} alt='fahs' className='w-10 h-10  '  /> */}
+                                                    <BsFileEarmarkImage size={25} onClick={() => { setIsVisible(true); setId(invoice.sick_surgery_id) }} />
                                                 </div>
                                                 <DetailViewImage isVisible={isVisible} setIsVisible={setIsVisible} id={id} setId={setId} invoice={invoice} />
                                             </div>

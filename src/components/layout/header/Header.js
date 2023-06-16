@@ -10,18 +10,18 @@ const Header = () => {
 
     return (
         // fixed bka headerka awaste
-        <div className=' flex justify-end w-full h-16 select-none'>
+        <div className=' flex justify-end w-full h-16 select-none '>
             <div className={`h-16  w-[83.6%] `}>
                 <div className={`flex pt-4 justify-between items-end `}>
                     <span className={`font-medium text-2xl text-gray-600 capitalize  ml-8`}> {location.pathname.slice(1)} </span>
 
                     {/** search input */}
-
-                    <div className='search flex rounded-full mr-24  bg-white/60 hover:bg-white p-1.5  w-[410px] shadow-sm '>
-                        <AiOutlineSearch size={22} className="text-sky-500" />
-                        <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search...' className=' bg-transparent w-full focus:outline-none pl-2' />
-                    </div>
-
+                    {location.pathname !== "/sickdetail" && location.pathname !== "/dashbord" &&
+                        <div className='search flex rounded-full mr-24  bg-white/60 hover:bg-white p-1.5  w-[410px] shadow-sm '>
+                            <AiOutlineSearch size={22} className="text-sky-500" />
+                            <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search...' className=' bg-transparent w-full focus:outline-none pl-2' />
+                        </div>
+                    }
 
                     {/** log out buuton */}
                     {location.pathname === "/dashbord" &&

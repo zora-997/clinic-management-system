@@ -16,8 +16,8 @@ const ReportMain = () => {
 
     const { mainReportList } = useContext(GlobalContext)
     return (
-        <div className='flex justify-end mt-16'>
-            <div className='grid gap-y-10 place-items-start grid-cols-3 w-3/4 mr-20 '>
+        <div className='flex justify-end mt-7'>
+            <div className='grid gap-y-10 gap-x-10 place-items-center grid-cols-3 w-3/4 mr-20 bg-white rounded-md py-8'>
 
 
                 <div className="w-[240px] p-3 bg-white group border-t-8 border-t-cyan-300 hover:border border duration-300   hover:border-cyan-300  rounded-lg shadow ">

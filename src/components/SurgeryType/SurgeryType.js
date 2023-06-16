@@ -18,10 +18,11 @@ const SurgeryType = () => {
 
     return (
 
-        <div className="flex flex-col items-center w-full select-none">
+        <div className="flex flex-col items-end w-full select-none">
             <SurgeryModal isVisible={show} onClose={setShow} surgery_type_name={surgery_type_name} setSurgey_name={setSurgey_name} surgery_type_price={surgery_type_price} setSurgey_price={setSurgey_price} surgery_type_id={surgery_type_id} />
             <AddSurgeryModal isAddVisible={addshow} onClose={setAddShow} />
-            <div className='ml-36 mt-10'>
+
+            <div className='mr-14 mt-10 bg-white rounded-md p-5'>
                 <div className='flex justify-between'>
                     <button onClick={() => setAddShow(true)}
                         className={`

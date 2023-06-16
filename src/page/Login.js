@@ -28,6 +28,7 @@ const Login = () => {
         if (res.data.status === "ok") {
             localStorage.setItem("data", JSON.stringify(res.data))
             const user = localStorage.getItem("data")
+            console.log("role");
             console.log(JSON.parse(user).role);
             history("/dashbord")
         } else {

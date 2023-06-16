@@ -23,10 +23,10 @@ const Expense = () => {
     const [addshow, setAddShow] = useState(false);
     return (
 
-        <div className=" flex flex-col  items-center  w-full select-none">
+        <div className=" flex flex-col  items-end  w-full select-none">
             <ExpenseModal isVisible={show} onClose={setShow} expense_type_name={expense_type_name} set_expense_type_name={set_expense_type_name} expense_id={expense_id} expense_type_id={expense_type_id} set_new_expense_type_id={set_new_expense_type_id} expense_amount={expense_amount} set_new_expense_amount={set_new_expense_amount} admin_id={admin_id} set_new_admin_id={set_new_admin_id} expense_note={expense_note} set_new_expense_note={set_new_expense_note} />
             <AddExpenseModal isAddVisible={addshow} onClose={setAddShow} />
-            <div className='ml-36 mt-10'>
+            <div className='mr-16 mt-10 bg-white rounded-md p-5'>
                 <div className='place-self-start'>
                     <button onClick={() => setAddShow(true)}
                         className={`

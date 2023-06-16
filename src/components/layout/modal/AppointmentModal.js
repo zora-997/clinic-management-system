@@ -4,8 +4,6 @@ import GlobalContext from '../../contexts/createContext/context'
 
 const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
     setSick_id,
-    doctor_id,
-    setDoctor_id,
     sick_name,
     setSick_name,
     doctor_name,
@@ -28,7 +26,6 @@ const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
         // aw ddate bo awa la ffeachappointment dwbara update bbinitawa
         updateAppointment({
             sick_id,
-            doctor_id,
             appointment_date,
             appointment_time,
             appointment_note,
@@ -40,7 +37,6 @@ const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
         setAppointmentNot("");
         setAppointmentTime("");
         setAppointmentDate("");
-        setDoctor_id(0);
         setSick_id(0);
 
     }
@@ -61,9 +57,9 @@ const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
             <div className='w-[600px] flex flex-col bg-white rounded-md p-5'>
                 <div className='flex'>
                     {/** sick name start */}
-                    <div className='w-3/4 mr-5'>
-                        <div className='relative '>
-                            <div className='flex flex-col w-full  rounded-md  absolute'>
+                    <div className='w-full '>
+                        <div className=' '>
+                            <div className='flex flex-col w-full  rounded-md  '>
                                 <label className='text-gray-700 mb-1'>Sick name</label>
                                 <input type="text" required placeholder='Sick search' value={sick_name || ''}
                                     onChange={(e) => setSick_name(e.target.value)}
@@ -79,7 +75,7 @@ const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
                                     .slice(0, 3)
                                     .map((itme) => {
                                         return <ul key={itme.sick_id} className='cursor-pointer bg-white hover:bg-sky-500  hover:text-white'
-                                            onClick={() => { onSearch(itme.sick_name, itme.doctor_id); setSick_id(itme.sick_id); setDoctor_id(itme.doctor_id) }} >
+                                            onClick={() => { onSearch(itme.sick_name, itme.doctor_id); setSick_id(itme.sick_id); }} >
                                             <li className='border-r border-l pl-2'>{itme.sick_name}</li>
                                         </ul>
                                     })}
@@ -88,7 +84,11 @@ const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
                     </div>
                     {/** sick name end*/}
 
-                    <div className='w-1/3 mb-3'>
+
+                </div>
+
+                <div className='flex my-3 gap-3 '>
+                    <div className='w-1/2'>
                         <label className='text-gray-500 mb-1' >Date</label>
                         <input
                             type='date'
@@ -97,21 +97,8 @@ const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
                             value={appointment_date || ''}
                             onChange={(e) => setAppointmentDate(e.target.value)} />
                     </div>
-                </div>
-
-                <div className='flex mb-3 '>
-                    <div className='w-3/4 mr-5'>
-                        <label className='text-gray-700 mb-1'>Doctor name</label>
-                        {/** value = {doctor_name || ''} aw or agar da naney awa alle auncontrolled wata ama sarata null yan undefined boia aw || bo da aney ka te batallish be */}
-                        <select required onChange={(e) => setDoctor_id(e.target.value)} className='w-full focus:ring-1 focus:outline-none rounded border  p-2 '>
-                            <option>{doctor_name || ''}</option>
-                            {doctorList.map((doctor) => {
-                                return <option key={doctor.doctor_id} value={`${doctor.doctor_id}`}>{doctor.doctor_name}</option>
-                            })}
-                        </select>
-                    </div>
-                    <div className='w-1/3'>
-                        <label className='text-gray-500 mb-1' >Time</label>
+                    <div className='w-1/2'>
+                        <label className='text-gray-500 ' >Time</label>
                         <input type="time" required placeholder='Time'
                             className={`focus:ring-1 focus:outline-none border pl-2 p-2 w-full  rounded `}
                             onChange={(e) => setAppointmentTime(e.target.value)}

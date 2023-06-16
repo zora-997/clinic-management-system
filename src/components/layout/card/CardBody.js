@@ -9,7 +9,7 @@ import GlobalContext from '../../contexts/createContext/context';
 
 const CardBody = () => {
 
-    const { doctorList, sickList, sickSurgery } = useContext(GlobalContext)
+    const { doctorList, sickList, sickSurgery, appointmentList } = useContext(GlobalContext)
 
 
     return (
@@ -89,7 +89,7 @@ const CardBody = () => {
                 </div>
                 <div className='flex flex-col  pt-3 pl-2 g transition-colors duration-500 ease-in-out'>
                     <span style={{ color: '#FFDFD1' }} className='text-sm'>Today Appointment</span>
-                    <span style={{ color: '#F8F6FF' }} className='text-xl pb-3 relative '>34</span>
+                    <span style={{ color: '#F8F6FF' }} className='text-xl pb-3 relative '>{appointmentList.length}</span>
                 </div>
 
                 {/** icon kall */}
