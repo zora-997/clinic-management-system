@@ -1,7 +1,5 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import SideBar from '../../../page/home/sidebar/SideBar'
-import Header from '../../layout/header/Header'
 
 
 
@@ -9,8 +7,6 @@ import Header from '../../layout/header/Header'
 const AllExpense = () => {
     return (
         <div className='AllExpense   '>
-            <SideBar />
-            <Header />
             <Outlet />
 
         </div>

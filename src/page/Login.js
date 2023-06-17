@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import login from "../img/image/login.gif";
 //import { RxLockClosed, RxPerson } from "react-icons/rx";
@@ -7,7 +7,9 @@ import { GiHospitalCross } from "react-icons/gi";
 import api from "../../src/api/api";
 
 
+
 const Login = () => {
+
 
     const history = useNavigate();
 
@@ -30,7 +32,9 @@ const Login = () => {
             const user = localStorage.getItem("data")
             console.log("role");
             console.log(JSON.parse(user).role);
-            history("/dashbord")
+
+            history("/dashbord", { state: user })
+
         } else {
             setShow(true)
             setError(res.data.message)

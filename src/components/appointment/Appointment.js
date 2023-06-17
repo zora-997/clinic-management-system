@@ -170,7 +170,7 @@ const Appointment = () => {
                                     <td className=" px-2 py-4">{appointment.doctor_name}</td>
                                     <td className=" px-2 py-4">{appointment.appointment_date}</td>
                                     <td className=" px-2 py-4">{appointment.appointment_time}</td>
-                                    <td className=" px-2 w-10 py-4">{appointment.appointment_state}</td>
+                                    <td className={`px-2 w-10 py-4 `} ><span className={`${appointment.appointment_state === "wait" && 'bg-yellow-200/60 px-2 py-0.5 rounded-xl'} ${appointment.appointment_state === "working" && 'bg-green-200/60 px-2 py-0.5 rounded-xl'} ${appointment.appointment_state === "scheduled" && 'bg-sky-200/60 px-2 py-0.5 rounded-xl'}`}>{appointment.appointment_state}</span></td>
                                     <td className=" px-2 py-4 flex gap-3">
                                         <img className='w-7 hover:bg-yellow-50 rounded-xl' onClick={() => waitStateHandel(appointment.appointment_id)} src={timer} alt='wait' />
                                         <img className='w-7 hover:bg-green-200 rounded-xl' onClick={() => { workingStateHandel(appointment.appointment_id, appointment.doctor_id) }} src={surgery} alt='working' />

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import SideBar from '../../../page/home/sidebar/SideBar'
-import Header from '../../layout/header/Header'
+
 
 
 
@@ -9,10 +8,7 @@ import Header from '../../layout/header/Header'
 const AllDoctor = () => {
     return (
         <div className='All-Doctor   '>
-            <SideBar />
-            <Header />
             <Outlet />
-
         </div>
     )
 }

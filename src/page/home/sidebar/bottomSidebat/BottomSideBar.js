@@ -16,7 +16,7 @@ import SickDetailMenu from "./SickDetailMenu";
 const BottomSideBar = () => {
     const location = useLocation()
     const user = localStorage.getItem("data")
-    let role = JSON.parse(user).role;
+    let role = user && JSON.parse(user).role;
 
     return (
         <div className="w-full font-body flex justify-center">

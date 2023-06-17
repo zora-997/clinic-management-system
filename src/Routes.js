@@ -28,6 +28,9 @@ import PrivateRoute from "./page/home/PrivateRoute";
 import AllSickDetail from "./components/sickDetail/allSickDetail/AllSickDetail";
 import SickDetail from "./components/sickDetail/SickDetail";
 
+import Header from "./components/layout/header/Header";
+
+
 
 
 
@@ -36,9 +39,13 @@ import SickDetail from "./components/sickDetail/SickDetail";
 
 const MainRoutes = () => {
 
-    return (
-        <ProviderState>
+    const location = useLocation()
 
+    return (
+
+        <ProviderState>
+            {/** am header lera bo awa danrwa chunka useState haia ba nawi query la global nasanuta boya abe la naw <ProviderState> be bo away la naw hamu page kan darkawe */}
+            {location.pathname !== "/login" && <Header />}
             <Routes>
                 {/* page route */}
                 {/* PrivateRoute ama bo awaya kasaka login nakrdbe natwane bcheta naw hich bashekawa  */}

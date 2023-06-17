@@ -25,11 +25,9 @@ const SickDetailHeader = ({ sickDetail }) => {
 
 
                 <div>
-
                     <div className=''>
                         <i className='text-2xl  font-serif p-2 px-2  w-full rounded-full'>{sickDetail.doctor_name}</i>
                     </div>
-
                 </div>
 
 
