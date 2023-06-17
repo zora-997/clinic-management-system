@@ -51,7 +51,7 @@ const MainRoutes = () => {
                 {/* PrivateRoute ama bo awaya kasaka login nakrdbe natwane bcheta naw hich bashekawa  */}
                 <Route exact element={<PrivateRoute />} >
 
-                    <Route exact path="dashbord" element={<Dashbord />} />
+                    <Route exact path="main" element={<Dashbord />} />
 
                     {/* Doctor */}
                     <Route exact path="/" element={<AllDoctor />} >
@@ -62,12 +62,12 @@ const MainRoutes = () => {
 
                     {/* sick */}
                     <Route exact path="/" element={<AllSick />} >
-                        <Route exact path="sick" element={<Sick />} />
+                        <Route exact path="patient" element={<Sick />} />
                     </Route>
 
                     {/* surgery route */}
                     <Route exact path="/" element={<AllSurgeryType />} >
-                        <Route exact path="surgeryType" element={<SurgeryType />} />
+                        <Route exact path="workingtype" element={<SurgeryType />} />
                     </Route>
 
                     {/* detail route */}
@@ -102,9 +102,9 @@ const MainRoutes = () => {
 
 
                     {/** aw index bo awa katek to  login krdwa la naw dashbordy ballam pathy dashbordaka asritawa aw index ai garenetawa bo dashbord wa dway awa path dashbord daney u bangi componenty dashbord akay */}
-                    <Route index element={<Navigate to="dashbord" />} />
-                    <Route exact path="dashbord" element={<Dashbord />} />
-                    <Route exact path="/*" element={<Navigate to="dashbord" />} />
+                    <Route index element={<Navigate to="main" />} />
+                    <Route exact path="main" element={<Dashbord />} />
+                    <Route exact path="/*" element={<Navigate to="main" />} />
 
 
                 </Route>

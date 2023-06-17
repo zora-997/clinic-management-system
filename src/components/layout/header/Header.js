@@ -16,7 +16,7 @@ const Header = () => {
                     <span className={`font-medium text-2xl text-gray-600 capitalize  ml-8`}> {location.pathname.slice(1)} </span>
 
                     {/** search input */}
-                    {location.pathname !== "/sickdetail" && location.pathname !== "/dashbord" &&
+                    {location.pathname !== "/sickdetail" && location.pathname !== "/main" &&
                         <div className='search flex rounded-full mr-24  bg-white/60 hover:bg-white p-1.5  w-[410px] shadow-sm '>
                             <AiOutlineSearch size={22} className="text-sky-500" />
                             <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search...' className=' bg-transparent w-full focus:outline-none pl-2' />
@@ -24,8 +24,8 @@ const Header = () => {
                     }
 
                     {/** log out buuton */}
-                    {location.pathname === "/dashbord" &&
-                        <Link onClick={() => { localStorage.removeItem('data'); setShow(false) }} to="/login" className="mr-12 relative rounded-md px-5 py-1  overflow-hidden group text-red-400   hover:bg-gradient-to-r hover:from-red-300 hover:to-red-300 hover:text-white transition-colors  ease-in duration-300">
+                    {location.pathname === "/main" &&
+                        <Link onClick={() => { localStorage.removeItem('data') }} to="/login" className="mr-12 relative rounded-md px-5 py-1  overflow-hidden group text-red-400   hover:bg-gradient-to-r hover:from-red-300 hover:to-red-300 hover:text-white transition-colors  ease-in duration-300">
                             <span className="absolute right-0 w-14 h-36 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
                             <span className="relative">Log Out</span>
                         </Link>

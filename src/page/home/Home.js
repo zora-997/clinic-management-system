@@ -11,6 +11,7 @@ const Home = () => {
     return (
         <div className='Home'>
 
+
             {/** am sibar la naw am home ya ka body borserkaia tanha la login dar nakawe  */}
             {location.pathname !== "/login" && < SideBar />}
 

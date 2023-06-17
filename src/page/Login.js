@@ -33,7 +33,7 @@ const Login = () => {
             console.log("role");
             console.log(JSON.parse(user).role);
 
-            history("/dashbord", { state: user })
+            history("/main", { state: user })
 
         } else {
             setShow(true)

@@ -27,15 +27,15 @@ const SurgeryType = () => {
                     <button onClick={() => setAddShow(true)}
                         className={`
                      text-white shadow-sm flex items-center shadow-gray-300 border mb-2 
-                      hover:text-cyan-400 border-cyan-300 h-fit p-1 px-9 rounded-md bg-cyan-500 hover:bg-transparent duration-200`}>Create Surgery</button>
+                      hover:text-cyan-400 border-cyan-300 h-fit p-1 px-9 rounded-md bg-cyan-500 hover:bg-transparent duration-200`}>Create working type</button>
                 </div>
                 <table className="bg-white overflow-hidden text-sm shadow-sm text-left text-gray-500  w-[1000px]">
                     <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                         <tr>
                             <th scope="col" className="px-6 py-3">Id</th>
-                            <th scope="col" className="px-6 py-3">Surgery name</th>
-                            <th scope="col" className="px-6 py-3">Surgery Price</th>
-                            <th scope="col" className="px-6 py-3">Surgery Date</th>
+                            <th scope="col" className="px-6 py-3">name</th>
+                            <th scope="col" className="px-6 py-3">Price</th>
+                            <th scope="col" className="px-6 py-3">Date</th>
                         </tr>
                     </thead>
                     <tbody>

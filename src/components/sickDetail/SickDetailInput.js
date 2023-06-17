@@ -80,7 +80,7 @@ const SickDetailInput = ({ sickDetail, setSickDetail }) => {
         set_show(false);
 
         // doctorr_id la sick detail abe sfdr kretawa bo away hamu katek request narwa bo api inrow
-        setInterval()
+
     }
 
 
@@ -92,8 +92,8 @@ const SickDetailInput = ({ sickDetail, setSickDetail }) => {
                 <div className="mt-8 flex justify-between">
                     <div className='relative w-[30%]'>
                         <div className='flex flex-col w-full border-b rounded-md  absolute'>
-                            <label className='text-gray-700 mb-2'>Surgery Type</label>
-                            <input type="text" required name='surgery_type_name' placeholder='Surgery Search' value={surgery_type_name || ''}
+                            <label className='text-gray-700 mb-2'>Working Type</label>
+                            <input type="text" required name='surgery_type_name' placeholder='working type Search' value={surgery_type_name || ''}
                                 onChange={(e) => set_surgery_type_name(e.target.value)}
                                 autoComplete="off"
                                 className={` ${surgery_type_name ? 'bg-sky-100' : 'bg-slate-50'} w-full  text-sm focus:ring-1 focus:ring-sky-500 pl-2 focus:outline-none border border-gray-300 p-2 rounded shadow-sm shadow-black/10 `} />

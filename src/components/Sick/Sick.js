@@ -53,7 +53,7 @@ const Sick = () => {
                         className={`
                      text-white shadow-sm flex items-center shadow-gray-300 border mb-2 
                       hover:text-cyan-400 border-cyan-300 h-fit p-1 px-9 rounded-md bg-cyan-500 hover:bg-transparent duration-200`}
-                    >Create Sick</button>
+                    >Create patient</button>
                 </div>
 
                 <table className=" overflow-hidden bg-white text-sm shadow-sm text-left text-gray-500  w-[1050px]">

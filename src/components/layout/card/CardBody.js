@@ -66,7 +66,7 @@ const CardBody = () => {
                     <BsFillHeartPulseFill style={{ color: '#9284F7' }} size={25} className=" relative  transition-colors duration-500 ease-in-out" />
                 </div>
                 <div className='flex flex-col  pt-3 pl-2 g transition-colors duration-500 ease-in-out'>
-                    <span style={{ color: '#DBD3FF' }} className='text-sm'>Sick Surgery</span>
+                    <span style={{ color: '#DBD3FF' }} className='text-sm'>Working</span>
                     <span style={{ color: '#F8F6FF' }} className='text-xl pb-3 relative '>{sickSurgery.length}</span>
                 </div>
 
