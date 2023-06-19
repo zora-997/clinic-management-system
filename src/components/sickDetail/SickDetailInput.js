@@ -79,8 +79,6 @@ const SickDetailInput = ({ sickDetail, setSickDetail }) => {
         // bo away la sar typeOfWork  namene
         set_show(false);
 
-        // doctorr_id la sick detail abe sfdr kretawa bo away hamu katek request narwa bo api inrow
-
     }
 
 
