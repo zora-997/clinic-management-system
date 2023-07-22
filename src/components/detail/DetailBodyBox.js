@@ -139,12 +139,14 @@ const DetailBodyBox = () => {
 
                                                 <div className='flex items-center h-full justify-center duration-200 rounded-md'>
                                                     {/* <img src={gallery} alt='fahs' className='w-10 h-10  '  /> */}
+
                                                     <BsFileEarmarkImage
                                                         size={25}
                                                         onClick={() => {
                                                             setIsVisible(true);
                                                             setId(invoice.sick_surgery_id)
-                                                        }} />
+                                                        }}
+                                                    />
                                                 </div>
                                                 <DetailViewImage
                                                     isVisible={isVisible}

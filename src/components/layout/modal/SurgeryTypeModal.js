@@ -192,7 +192,7 @@ const SurgeryTypeModal = ({ isVisible, onClose, sick_surgery_id, invoiceImage, s
                     <button type='submit'
                         onClick={clickAddWork}
                         disabled={invoice.length > 0 ? false : true}
-                        className={invoice.length > 0 ? 'w-32 bg-green-400 shadow-sm  shadow-gray-300 border text-white border-green-300  p-1.5  rounded-md hover:bg-green-300' : 'w-32 bg-green-200 shadow-sm  shadow-gray-300 border text-white border-green-300  p-1.5  rounded-md hover:bg-green-100'} >
+                        className={invoice.length > 0 ? 'w-32 bg-green-400 shadow-sm  shadow-gray-300 border text-white border-green-300  p-1.5  rounded-md hover:bg-green-300' : 'w-32 bg-green-200 shadow-sm  shadow-gray-300 border text-white   p-1.5  rounded-md hover:bg-green-100'} >
                         Update
                     </button>
                     <button type='submit'

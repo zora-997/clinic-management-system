@@ -15,10 +15,10 @@ const DetailHeader = () => {
 
 
     return (
-        <div className='relative grid justify-center  border-b-2  pb-2 '>
+        <div className='relative grid justify-center  border-b-2  pb-2 bg-white rounded'>
             {/* <img src={toothback} className="absolute" alt='tooth img' /> */}
 
-            <div className=' w-fit flex flex-col items-center'>
+            <div className=' w-fit flex flex-col items-center '>
                 {/** image  */}
                 <img src={tooth} className="p-0.5 w-28" alt='tooth img' />
                 {/** clinic name  */}
