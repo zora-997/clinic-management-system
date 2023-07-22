@@ -7,17 +7,20 @@ import { MdArrowRight } from "react-icons/md";
 const ExpenseType = () => {
     const location = useLocation()
     return (
-        <div className='w-full'>
-            <li className={`${location.pathname === '/expensetype' && 'bg-blue-500 text-white'} mb-2 group cursor-pointer w-full items-center hover:text-white hover:bg-blue-500 duration-100 p-2.5 rounded-lg `} >
-                <Link to="/expensetype" className="relative flex justify-start items-center w-full">
-                    <TbReportMoney size={22} className="mr-4 ml-7" />
+
+        <li className={`${location.pathname === '/expensetype' && 'bg-blue-500 text-white'}  group cursor-pointer w-full items-center hover:text-white hover:bg-blue-500 duration-100 p-2.5 rounded-lg `} >
+            <Link to="/expensetype" className=" flex justify-between items-center">
+                <div className="flex gap-3">
+                    <TbReportMoney size={22} />
                     <span >ExpenseType</span>
-                    <MdArrowRight className={` ${location.pathname === '/doctor' && 'text-white'} absolute right-0 text-white  group-hover:text-white rounded-xl`} size={20} />
+                </div>
 
-                </Link>
+                <MdArrowRight className={` ${location.pathname === '/doctor' && 'text-white'}  text-white  group-hover:text-white rounded-xl`} size={20} />
 
-            </li>
-        </div>
+            </Link>
+
+        </li>
+
     )
 }
 

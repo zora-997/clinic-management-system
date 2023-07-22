@@ -45,9 +45,10 @@ const CardOne = () => {
     });
 
     return (
-        <div className='mr-3'>
-            <LineChart chartData={userData} className="pl-8 pr-0" />
+        <div className='mt-3  md:w-2/3  sm:h-[18rem] flex-1  '>
+            <LineChart chartData={userData} />
         </div>
+
     )
 }
 

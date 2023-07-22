@@ -435,6 +435,42 @@ const ProviderState = ({ children }) => {
         fetchSick();
     }
 
+    // add sick surgery
+    const deleteSurgeryImage = async (sick_surgery_invoice_image_id) => {
+        // ba kar hatwa la <DetailBodyInput />
+        console.log(sick_surgery_invoice_image_id);
+        const res = await api.post('sick_surgery/delete_image.php', { "sick_surgery_invoice_image_id": sick_surgery_invoice_image_id })
+        console.log(res);
+        fetchSickSurgery();
+        fetchSick();
+    }
+
+    // add sick surgery
+    const deletSickSurgery = async (sick_surgery_id) => {
+        // ba kar hatwa la <DetailBodyInput />
+        console.log(sick_surgery_id);
+        const res = await api.post('sick_surgery/delete.php', { "sick_surgery_id": sick_surgery_id })
+        console.log(res);
+        fetchSickSurgery();
+        fetchSick();
+    }
+
+    const UpdateSickSurgery = async (formData) => {
+        // ba kar hatwa la <DetailBodyInput />
+        const res = await api.post('sick_surgery/update.php', formData);
+        console.log(res);
+        // dispatch({
+        //     type: SET_TYPE_OF_WORK,
+        //     payload: formData
+        // })
+        fetchSickSurgery();
+        fetchSick();
+    }
+
+
+
+
+
 
     return (
         <GlobalContext.Provider value={{
@@ -485,17 +521,15 @@ const ProviderState = ({ children }) => {
             ChangeStateAppointment,
             inrowAppointment,
             searchAppointment,
-
-
-
-
-
-
-
-
+            deleteSurgeryImage,
+            deletSickSurgery,
+            UpdateSickSurgery
 
         }}>
-            {children}
+            {/** am div bo awaya header ka la gall body ka wa column dar kawn wa la sidbar ka bn ba dw div flex */}
+            <div className='flex flex-col'>
+                {children}
+            </div>
         </GlobalContext.Provider>
     )
 }

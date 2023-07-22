@@ -11,7 +11,7 @@ const DetailBodyTop = () => {
 
     return (
 
-        <div className='rounded-md shadow-sm p-5'>
+        <div className='rounded-md shadow-sm p-5 bg-white'>
 
             {sickList.map(sick => {
                 return (

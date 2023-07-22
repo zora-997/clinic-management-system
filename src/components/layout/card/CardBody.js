@@ -13,11 +13,12 @@ const CardBody = () => {
 
 
     return (
-        <div className='mt-1 grid grid-cols-4 gap-x-5 w-full  '>
+        <div className=' mx-2 xl:flex  xl:justify-between grid  sm:grid-cols-2 gap-3 xl:gap-5   '>
+
 
             <div style={{ backgroundColor: '#0171FE' }}
-                className='pl-5 rounded-2xl  w-[251px] h-[120px] flex items-center justify-start  
-                relative  py-3 overflow-hidden '>
+                className='pl-5 rounded-2xl  xl:w-[260px] h-[120px] flex items-center justify-start  
+                relative  py-3 overflow-hidden shadow-md shadow-blue-100 border-2 border-blue-200'>
                 <div className='bg-white rounded-full'>
                     {/* <FaUsers style={{ color: '#0171FE' }} size={25} className=" relative  transition-colors duration-500 ease-in-out" /> */}
                     <img src={medical} alt="no doctor" className='w-8 m-2' />
@@ -40,8 +41,8 @@ const CardBody = () => {
 
             {/** card 3 */}
             <div style={{ backgroundColor: '#04D5C7' }}
-                className='  pl-5 rounded-2xl  w-[251px] h-[120px] flex items-center justify-start i 
-                relative py-3 overflow-hidden'>
+                className='  pl-5 rounded-2xl  xl:w-[260px] h-[120px] flex items-center justify-start i 
+                relative py-3 overflow-hidden shadow-md shadow-emerald-100 border-2 border-emerald-200'>
                 <div className='bg-white rounded-full p-3'>
                     <FaUser style={{ color: '#04D5C7' }} size={25} className=" relative  transition-colors duration-500 ease-in-out" />
                 </div>
@@ -60,8 +61,8 @@ const CardBody = () => {
 
             {/** card 2 */}
             <div style={{ backgroundColor: '#9284F7' }}
-                className='  pl-5 rounded-2xl  w-[251px] h-[120px] flex items-center justify-start i 
-                relative py-3 overflow-hidden'>
+                className='  pl-5 rounded-2xl  xl:w-[260px] h-[120px] flex items-center justify-start i 
+                relative py-3 overflow-hidden shadow-md shadow-purple-200/70 border-2 border-purple-200'>
                 <div className='bg-white rounded-full p-3'>
                     <BsFillHeartPulseFill style={{ color: '#9284F7' }} size={25} className=" relative  transition-colors duration-500 ease-in-out" />
                 </div>
@@ -82,8 +83,8 @@ const CardBody = () => {
 
             {/** card 4 */}
             <div style={{ backgroundColor: '#FF996C' }}
-                className='  pl-5 rounded-2xl  w-[251px] h-[120px] flex items-center justify-start i 
-                relative py-3 overflow-hidden'>
+                className='pl-5 rounded-2xl  xl:w-[260px] h-[120px] flex items-center justify-start
+                relative py-3 overflow-hidden shadow-md shadow-orange-100 border-2 border-orange-200'>
                 <div className='bg-white rounded-full p-3'>
                     <img src={report} alt="no doctor" />
                 </div>

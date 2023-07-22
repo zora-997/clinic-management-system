@@ -5,17 +5,22 @@ import { useLocation } from 'react-router-dom';
 
 const Home = () => {
 
-    let stor = localStorage.getItem('data');
+
     const location = useLocation()
 
     return (
-        <div className='Home'>
-
-
+        <div className={`Home flex  h-screen`}>
             {/** am sibar la naw am home ya ka body borserkaia tanha la login dar nakawe  */}
-            {location.pathname !== "/login" && < SideBar />}
 
-            <MainRoutes stor={stor} />
+            <div className='h-screen'>
+                {location.pathname !== "/login" && < SideBar />}
+            </div>
+
+
+
+            <div className='flex-1 overflow-auto '>
+                <MainRoutes />
+            </div>
         </div>
 
     )

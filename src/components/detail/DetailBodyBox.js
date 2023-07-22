@@ -3,12 +3,11 @@ import GlobalContext from '../contexts/createContext/context'
 import { useLocation } from 'react-router-dom';
 import calendar from "../../img/image/calendar.png";
 import money from "../../img/image/money.png";
-import gallery from "../../img/image/image-gallery (1).png";
 import ComponentToPrint from './ComponentToPrint ';
 import { useReactToPrint } from 'react-to-print';
 import DetailViewImage from './DetailViewImage';
-import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 import { BsFileEarmarkImage } from 'react-icons/bs';
+import SurgeryTypeModal from '../layout/modal/SurgeryTypeModal';
 
 
 
@@ -21,9 +20,16 @@ const DetailBodyBox = () => {
     const location = useLocation();
     const [isVisible, setIsVisible] = useState(false);
     const [id, setId] = useState(0);
+    const [idUpdate, setIdUpdate] = useState(0);
+    const [show, setShow] = useState(false);
+    const [invoice, setinvoice] = useState([]);
+    const [sick_surgery_id, setsick_surgery_id] = useState(0);
+    const [invoiceImage, setinvoiceImage] = useState([]);
+    const [image, setImage] = useState([]);
 
     const sid = surgeryType.map((d) => d.surgery_type_id)
     const sn = surgeryType.map((d) => d.surgery_type_name)
+
 
     const componentRef = useRef()
     const handlePrint = useReactToPrint({
@@ -31,31 +37,17 @@ const DetailBodyBox = () => {
     });
 
 
-    const slidLeft = () => {
-        var slider = document.getElementById('slider');
-        slider.scrollLeft = slider.scrollLeft - 500;
-        console.log('left side');
-
-    }
-
-    const slidRight = () => {
-        var slider = document.getElementById('slider');
-        slider.scrollLeft = slider.scrollLeft + 500;
-        console.log('right side');
-
-    }
-
 
     return (
-        <div className=''>
+        <div>
 
             {/** sickSurgery && la gall  item.sick_visit &&  am dwana zor grngn bo away agar yakekian la katy map krdinish propertykay nabu nalle map reading undefined*/}
             {sickList && sickList.map(sick => {
                 return (
-                    <div key={sick.sick_id} >
+                    <div key={sick.sick_id} className='' >
                         {
                             sick.sick_id && sick.sick_id === location.state &&
-                            <div className='flex justify-between my-4'>
+                            <div className='flex justify-between my-4 '>
                                 {/** invisible bo away dyar nabe absolute bo awaia design tek nache  */}
                                 <div className='absolute invisible bg-red-300'>
                                     <ComponentToPrint props={sickList} ref={componentRef} />
@@ -77,12 +69,25 @@ const DetailBodyBox = () => {
                 return (
                     <div key={sick.sick_id} className=' '>
                         {sick.sick_id === location.state ? (
-                            <div className='box flex flex-col rounded-3xl shadow-black/5 bg-white'>
-
+                            <div className='box flex flex-col rounded-md shadow-black/5 bg-white cursor-pointer'>
+                                <SurgeryTypeModal
+                                    isVisible={show}
+                                    setIsVisible={setIsVisible}
+                                    onClose={setShow}
+                                    invoice={invoice}
+                                    setinvoice={setinvoice}
+                                    invoiceImage={invoiceImage}
+                                    setinvoiceImage={setinvoiceImage}
+                                    idUpdate={idUpdate}
+                                    sick_surgery_id={sick_surgery_id}
+                                />
                                 {/* date div */}
                                 {sick.sick_invoice && sick.sick_invoice.map((invoice, index) => {
                                     return (
-                                        <div key={sick.sick_id + index + 1} className=' text-left flex  shadow-sm shadow-black/10 bg-gray-50/50 rounded-md mb-4 justify-between w-full p-2.5    text-gray-700 text-xl '>
+                                        <div
+
+                                            key={sick.sick_id + index + 1}
+                                            className=' text-left flex  shadow-sm shadow-black/10  rounded mb-4 justify-between w-full p-2.5    text-gray-700 text-xl '>
 
                                             {/** div date u price */}
                                             <div className='flex flex-col justify-around border-r  relative  pl-2 w-[30%]'>
@@ -107,7 +112,16 @@ const DetailBodyBox = () => {
                                             <div className='text-start pl-2 w-full '>
                                                 {invoice.sick_surgery_invoice && invoice.sick_surgery_invoice.map((data, index) => {
                                                     return (
-                                                        <div key={sick.sick_id + index + 3} className='flex flex-col  m-2 '>
+                                                        <div
+                                                            onClick={() => {
+                                                                setShow(true);
+                                                                setinvoice(invoice.sick_surgery_invoice);
+                                                                setinvoiceImage(invoice)
+                                                                setIdUpdate(invoice.sick_surgery_id)
+                                                                setsick_surgery_id(invoice.sick_surgery_id)
+                                                            }}
+                                                            key={sick.sick_id + index + 3}
+                                                            className='flex flex-col  m-2 '>
                                                             <div
                                                                 className=' -tracking-tight  '>
                                                                 <strong className='text-gray-600'>Surgery Tpye :</strong> <span className='text-base'> {sn[sid.indexOf(`${data.surgery_type_id}`)]}</span>
@@ -123,11 +137,19 @@ const DetailBodyBox = () => {
                                             {/** setId bo awaya bzani kam box awe wenay aw box bo benetawa */}
                                             <div className=' cursor-pointer flex ' >
 
-                                                <div className='flex items-center h-full justify-center duration-200 rounded-lg'>
+                                                <div className='flex items-center h-full justify-center duration-200 rounded-md'>
                                                     {/* <img src={gallery} alt='fahs' className='w-10 h-10  '  /> */}
-                                                    <BsFileEarmarkImage size={25} onClick={() => { setIsVisible(true); setId(invoice.sick_surgery_id) }} />
+                                                    <BsFileEarmarkImage
+                                                        size={25}
+                                                        onClick={() => {
+                                                            setIsVisible(true);
+                                                            setId(invoice.sick_surgery_id)
+                                                        }} />
                                                 </div>
-                                                <DetailViewImage isVisible={isVisible} setIsVisible={setIsVisible} id={id} setId={setId} invoice={invoice} />
+                                                <DetailViewImage
+                                                    isVisible={isVisible}
+                                                    setIsVisible={setIsVisible}
+                                                    id={id} setId={setId} invoice={invoice} />
                                             </div>
                                         </div>
                                     )
@@ -141,11 +163,6 @@ const DetailBodyBox = () => {
                     </div>
                 )
             })}
-
-
-
-
-
 
         </div>
 

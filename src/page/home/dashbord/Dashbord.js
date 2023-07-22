@@ -9,10 +9,10 @@ const Dashbord = () => {
     const history = useNavigate();
 
     return (
-        <div>
+        <div className=''>
             {
                 !storedUser ? history("/") :
-                    <div className='dashbord  w-full'>
+                    <div className='dashbord '>
                         <Body />
                         <Outlet />
                     </div>

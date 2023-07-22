@@ -43,7 +43,7 @@ const Login = () => {
     }
 
     return (
-        <div className=''>
+        <div className=' bg-purple-400 max-w-full'>
 
 
             {/** alert */}

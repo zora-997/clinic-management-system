@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom'
 
 const AllDetail = () => {
     return (
-        <div className='AllDetail flex'>
+        <div className='AllDetail'>
             <Outlet />
         </div>
     )

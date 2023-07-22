@@ -13,11 +13,13 @@ const DetailBodyInput = () => {
     const location = useLocation();
     const { surgeryType, addSickSurgery, sickList } = useContext(GlobalContext)
 
-    const [surgery_type_id, set_surgery_type_id] = useState("")
+    const [surgery_type_id, set_surgery_type_id] = useState(0)
     const [surgery_type_name, set_surgery_type_name] = useState("")
     const [surgery_type_price, set_surgery_type_price] = useState()
     const [sick_surgery_invoice_note, set_sick_surgery_invoice_note] = useState("");
     const [show, set_show] = useState(false);
+    const [showError, set_showError] = useState(false);
+
 
     const [file, setFile] = useState([]);
 
@@ -44,8 +46,14 @@ const DetailBodyInput = () => {
     // uuid for delte surgery type in table add new work
     const onClick = (e) => {
         e.preventDefault();
-        setsicksurgerys([...sick_surgery, { sick_surgery_id: uuid(), surgery_type_id, surgery_type_price, sick_surgery_invoice_note }]);
+        if (surgery_type_id == 0) {
+            set_showError(true)
 
+        } else {
+            setsicksurgerys([...sick_surgery, { sick_surgery_id: uuid(), surgery_type_id, surgery_type_price, sick_surgery_invoice_note }]);
+        }
+
+        set_surgery_type_id(0);
         set_surgery_type_name('');
         set_surgery_type_price('');
         set_sick_surgery_invoice_note('');
@@ -62,10 +70,11 @@ const DetailBodyInput = () => {
         // })
 
         let formData = new FormData();
-        let dfile = [];
-        if (file) {
+        let dfile = file;
+        if (!(file.length == 0)) {
             dfile = file.target.files;
         }
+        console.log(dfile);
         for (let i = 0; i < dfile.length; i++) {
             formData.append('file[]', dfile[i]);
         }
@@ -87,7 +96,7 @@ const DetailBodyInput = () => {
 
 
     return (
-        <div>
+        <div className='bg-white p-5 rounded-md my-2'>
 
             <form onSubmit={onClick} >
 
@@ -98,7 +107,8 @@ const DetailBodyInput = () => {
                             <input type="text" required name='surgery_type_name' placeholder='Working Type Search' value={surgery_type_name || ''}
                                 onChange={(e) => set_surgery_type_name(e.target.value)}
                                 autoComplete="off"
-                                className={` ${surgery_type_name ? 'bg-sky-100' : 'bg-slate-50'} w-full  text-sm focus:ring-1 focus:ring-sky-500 pl-2 focus:outline-none border border-gray-300 p-2 rounded shadow-sm shadow-black/10 `} />
+                                onFocus={() => set_showError(false)}
+                                className={` ${surgery_type_name ? 'bg-sky-100' : 'bg-slate-50'} ${showError && ' border border-red-400 bg-red-50'}  w-full  text-sm focus:ring-1 focus:ring-sky-500 pl-2 focus:outline-none border border-gray-300 p-2 rounded shadow-sm shadow-black/10 `} />
 
                             {surgeryType && surgeryType.filter(itme => {
                                 const search = surgery_type_name.toLowerCase();
@@ -113,6 +123,7 @@ const DetailBodyInput = () => {
                                         <li className='border-r border-l pl-2'>{itme.surgery_type_name}</li>
                                     </ul>
                                 })}
+
                         </div>
                     </div>
 

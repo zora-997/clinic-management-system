@@ -4,8 +4,7 @@ import GlobalContext from '../contexts/createContext/context';
 import calendar from "../../img/image/calendar.png";
 import money from "../../img/image/money.png";
 import tooth from "../../img/image/teeth (2).png";
-
-
+import './onprint.css'
 
 const ComponentToPrint = React.forwardRef(({ props }, ref) => {
 
@@ -22,7 +21,7 @@ const ComponentToPrint = React.forwardRef(({ props }, ref) => {
     const did = doctorList.map((d) => d.doctor_id)
     const dn = doctorList.map((d) => d.doctor_name)
     return (
-        <div ref={ref} className='p-5'>
+        <div ref={ref} className='p-5 onprint' >
 
 
             {/** header print */}

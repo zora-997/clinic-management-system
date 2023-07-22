@@ -5,14 +5,11 @@ import TopSideBar from './topSideBar/TopSideBar';
 
 const SideBar = () => {
     return (
-        <aside className={`fixed grid gap-y-24 z-20 shadow-sm shadow-gray-100 bg-white  font-body h-screen w-56`}>
-            <div>
-                <TopSideBar />
-                <BottomSideBar />
-            </div>
-            {/* <div className='h-full'>
-                <img src={doctor} alt='doctor card' className='ml-3 w-[200px]  h-full' />
-            </div> */}
+
+
+        <aside className={`hidden lg:flex w-60 h-screen flex-col  shadow-sm shadow-gray-100 bg-white font-body  `}>
+            <TopSideBar />
+            <BottomSideBar />
         </aside>
 
 

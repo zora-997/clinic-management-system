@@ -6,17 +6,19 @@ const SickList = () => {
 
 
     return (
-        <div className='w-full'>
-            <li className={`${location.pathname === '/patient' && 'bg-blue-500 text-white'} mb-2  cursor-pointer w-full items-center  hover:bg-blue-500 hover:text-white duration-100  p-2.5 rounded-lg`}>
-                <Link to="/patient" className=" relative flex justify-start enter items-center w-full">
-                    <BsHeartPulse size={20} className="mr-4 ml-7" />
+
+        <li className={`${location.pathname === '/patient' && 'bg-blue-500 text-white'}   cursor-pointer w-full items-center  hover:bg-blue-500 hover:text-white duration-100  p-2.5 rounded-lg`}>
+            <Link to="/patient" className=" flex justify-between items-center ">
+                <div className="flex gap-3">
+                    <BsHeartPulse size={20} />
                     <span >Patient</span>
-                    <MdArrowRight className={` ${location.pathname === '/patient' && 'text-white'} absolute right-0 text-white  rounded-xl`} size={20} />
+                </div>
+                <MdArrowRight className={` ${location.pathname === '/patient' && 'text-white'}  text-white  rounded-xl`} size={20} />
 
-                </Link>
-            </li>
+            </Link>
+        </li>
 
-        </div>
+
     )
 }
 

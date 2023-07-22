@@ -15,17 +15,18 @@ const ExpenseType = () => {
     const [addshow, setAddShow] = useState(false);
     return (
 
-        <div className=" flex flex-col  items-end  w-full select-none">
+        <div className="select-none">
+
             <ExponseTypeModal isVisible={show} onClose={setShow} expense_type_name={newName} setNewName={setNewName} expense_type_id={newExpense_id} />
             <AddExponseTypeModal isAddVisible={addshow} onClose={setAddShow} />
-            <div className='mr-16 mt-10 bg-white rounded-md p-5'>
+            <div className='overflow-auto mx-3 mt-10 bg-white rounded-md p-5 '>
                 <div className='place-self-start'>
                     <button onClick={() => setAddShow(true)}
                         className={`
                      text-white shadow-sm flex items-center shadow-gray-300 border mb-2 
                       hover:text-cyan-400 border-cyan-300 h-fit p-1 px-9 rounded-md bg-cyan-500 hover:bg-transparent duration-200`}>Create ExpenseType</button>
                 </div>
-                <table className="whitespace-nowrap bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500  w-[1000px]">
+                <table className="whitespace-nowrap bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 w-[500px] sm:w-[1030px]">
                     <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500  ">
                         <tr>
                             <th scope="col" className="px-6 py-3">Id</th>
@@ -47,8 +48,9 @@ const ExpenseType = () => {
                     </tbody>
                 </table>
             </div>
-
         </div>
+
+
 
 
 

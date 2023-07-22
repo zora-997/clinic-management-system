@@ -15,7 +15,7 @@ const CardCalendar = ({ ddate, setDate }) => {
 
     return (
         <>
-            <Calendar className='scale-90 h-[17rem]  rounded-2xl shadow-sm ' onChange={(newDate) => setDate(newDate)} value={ddate} />
+            <Calendar className=' min-w-full md:min-w-0 scale-95 place-self-stretch  rounded-2xl shadow-sm ' onChange={(newDate) => setDate(newDate)} value={ddate} />
 
         </>
     )

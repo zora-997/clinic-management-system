@@ -1,6 +1,7 @@
 import React from 'react'
 
 const DetailImage = ({ file, setFile }) => {
+
     const onchangeimg = (e) => {
         setFile(e);
     }
@@ -14,15 +15,12 @@ const DetailImage = ({ file, setFile }) => {
                 )
             })}
             <div className='flex justify-between items-center mt-6 mb-3'>
-
                 <input
                     multiple
                     type='file'
                     onChange={onchangeimg}
-                    className={` ${file ? 'bg-sky-100' : 'bg-slate-50'} w-[300px]  text-sm focus:ring-1 focus:ring-sky-500 pl-2 focus:outline-none border border-gray-300 p-2 rounded shadow-sm shadow-black/10 `} />
-
+                    className={` ${file ? 'bg-sky-100' : 'bg-slate-50'} w-full  text-sm focus:ring-1 focus:ring-sky-500 pl-2 focus:outline-none border border-gray-300 p-2 rounded shadow-sm shadow-black/10 `} />
             </div>
-
         </div>
     )
 }

@@ -28,7 +28,7 @@ const Sick = () => {
 
 
     return (
-        <div className=" flex flex-col items-end  pb-5  w-full select-none">
+        <div className="select-none">
             <SickModal
                 isVisible={show}
                 onClose={setShow}
@@ -47,7 +47,7 @@ const Sick = () => {
             <AddSickModal isAddVisible={addshow} onClose={setAddShow} />
 
             {/** button u table hamui tyaya */}
-            <div className='mr-6 mt-10 bg-white rounded-md p-5'>
+            <div className='mx-3 mt-10 bg-white rounded-md p-5 overflow-auto'>
                 <div className='flex justify-between w-full'>
                     <button onClick={() => setAddShow(true)}
                         className={`
@@ -56,7 +56,7 @@ const Sick = () => {
                     >Create patient</button>
                 </div>
 
-                <table className=" overflow-hidden bg-white text-sm shadow-sm text-left text-gray-500  w-[1050px]">
+                <table className=" overflow-hidden bg-white text-sm shadow-sm text-left text-gray-500  w-[1030px]">
                     <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                         <tr className=''>
                             <th scope="col" className="px-5 py-3 text-center">Id</th>

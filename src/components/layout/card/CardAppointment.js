@@ -7,32 +7,32 @@ const CardAppointment = ({ ddate }) => {
 
 
     return (
-        <div className=' bg-white p-2 border-t border-t-gray-100 shadow-sm shadow-gray-200 mt-2 rounded-t-3xl '>
+        <div className='overflow-auto mx-2 shadow-md bg-white p-2 border-t border-t-gray-100  shadow-gray-200 mt-2  rounded-t-3xl '>
 
-            <table className="  w-full text-sm text-left text-gray-500 ">
+            <table className="w-full text-sm text-left text-gray-500 ">
                 <thead className="text-xs rounded-2xl  text-gray-900 uppercase ">
                     <tr>
-                        <th scope="col" className="px-6 py-3">ID </th>
-                        <th scope="col" className="px-6 py-3">Sick Name </th>
-                        <th scope="col" className="px-6 py-3">Doctor name </th>
-                        <th scope="col" className="px-6 py-3">Date</th>
-                        <th scope="col" className="px-6 py-3">Time </th>
-                        <th scope="col" className="px-6 py-3">Note </th>
+                        <th scope="col" className="md:px-6 px-2 md:py-3 py-1">ID </th>
+                        <th scope="col" className="md:px-6 px-2 md:py-3 py-1">Name</th>
+                        <th scope="col" className="md:px-6 px-2 md:py-3 py-1">Dr.name </th>
+                        <th scope="col" className="md:px-6 px-2 md:py-3 py-1">Date</th>
+                        <th scope="col" className="md:px-6 px-2 md:py-3 py-1">Time </th>
+                        <th scope="col" className="md:px-6 px-2 md:py-3 py-1">Note </th>
                     </tr>
                 </thead>
 
-                <tbody>
+                <tbody className='flex-1'>
                     {appointmentList && appointmentList.map((appointment, index) => {
                         return <tr
                             key={index}
 
-                            className=" cursor-pointer select-none hover:bg-gray-50 duration-100  ">
-                            <th scope='row' className="px-5 py-4">&nbsp;&nbsp;{index + 1}</th>
-                            <td className="px-6 py-4">{appointment.sick_name}</td>
-                            <td className="px-6 py-4">{appointment.doctor_name}</td>
-                            <td className="px-6 py-4">{appointment.appointment_date}</td>
-                            <td className="px-6 py-4">{appointment.appointment_time}</td>
-                            <td className="px-6 py-4">{appointment.appointment_note}</td>
+                            className=" cursor-pointer select-none hover:bg-gray-50 duration-100 ">
+                            <th scope='row' className="md:px-5 px-1 md:py-4 py-1">&nbsp;&nbsp;{index + 1}</th>
+                            <td className="md:px-6 px-2 md:py-4 py-1 ">{appointment.sick_name}</td>
+                            <td className="md:px-6 px-2 md:py-4 py-1 ">{appointment.doctor_name}</td>
+                            <td className="md:px-6 px-2 md:py-4 py-1 ">{appointment.appointment_date}</td>
+                            <td className="md:px-6 px-2 md:py-4 py-1 ">{appointment.appointment_time}</td>
+                            <td className="md:px-6 px-2 md:py-4 py-1 ">{appointment.appointment_note}</td>
                         </tr>
                     })}
 

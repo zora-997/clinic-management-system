@@ -68,18 +68,16 @@ const SickDetail = () => {
 
 
     return (
-        <div className="flex flex-col items-end  pb-5  w-full select-none font-body   ">
+        <div className=" font-body ">
 
             {/** body  */}
-            <div className=' font-body flex flex-col p-3 bg-white mr-5 w-[68rem]'>
+            <div className=' font-body flex flex-col p-3 bg-white mr-5 w-full'>
 
                 <SickDetailHeader sickDetail={sickDetail} />
                 <SickDetailBodyTop sickDetail={sickDetail} setSickDetail={setSickDetail} />
                 {sickDetail.doctor_id && <SickDetailInput sickDetail={sickDetail} setSickDetail={setSickDetail} />}
 
                 <SickDetailBodyBox sickDetail={sickDetail} setSickDetail={setSickDetail} />
-
-
 
 
             </div>

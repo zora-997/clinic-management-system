@@ -8,7 +8,7 @@ const Report = () => {
     const [to, setTo] = useState("");
 
     return (
-        <div className='flxe flex-col'>
+        <div className='flxe flex-col px-3'>
             <ReportInput setSearchShow={setSearchShow} from={from} setFrom={setFrom} to={to} setTo={setTo} />
             {searchShow && <ReportMain />}
         </div>

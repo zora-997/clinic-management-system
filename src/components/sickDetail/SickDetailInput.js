@@ -50,12 +50,6 @@ const SickDetailInput = ({ sickDetail, setSickDetail }) => {
 
     const clickAddWork = (e) => {
         e.preventDefault();
-        // addSickSurgery({
-        //     doctor_id: doctor_id[0],
-        //     sick_id: location.state,
-        //     sick_surgery_date,
-        //     items: sick_surgery
-        // })
 
         let formData = new FormData();
         let dfile = [];
@@ -141,9 +135,6 @@ const SickDetailInput = ({ sickDetail, setSickDetail }) => {
                         className={` ${sick_surgery_invoice_note ? 'bg-sky-100' : 'bg-slate-50 '} focus:ring-1 focus:outline-none border p-3 flex-wrap rounded-md shadow-sm shadow-black/10`} >
                     </textarea>
                 </div>
-
-
-
             </form>
 
             {/** add new work  */}

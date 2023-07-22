@@ -10,10 +10,10 @@ const Body = () => {
     const [ddate, setDate] = useState(new Date());
     console.log(ddate.toISOString().slice(0, 10) + " date now");
     return (
-        <div className='body flex w-full justify-end mt-6 select-none'>
-            < div className='flex flex-col w-[1090px] mr-4' >
+        <div className='body  -mt-10 '>
+            < div className='flex-1 flex-col ' >
                 <CardBody />
-                <div className='flex justify-between items-center  mt-2'>
+                <div className='md:flex gap-3 grid   mx-2 '>
                     <CardOne />
                     <CardCalendar ddate={ddate} setDate={setDate} />
                 </div>
