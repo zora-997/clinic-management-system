@@ -25,7 +25,7 @@ const SurgeryTypeModal = ({ isVisible, onClose, sick_surgery_id, invoiceImage, s
 
     const [show, set_show] = useState(false);
 
-    const [id, setId] = useState(0);
+
 
     const location = useLocation();
     // id doctor

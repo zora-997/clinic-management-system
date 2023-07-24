@@ -8,6 +8,7 @@ import { useReactToPrint } from 'react-to-print';
 import DetailViewImage from './DetailViewImage';
 import { BsFileEarmarkImage } from 'react-icons/bs';
 import SurgeryTypeModal from '../layout/modal/SurgeryTypeModal';
+import WorkingTypeModal from '../layout/modal/WorkingTypeModal';
 
 
 
@@ -22,10 +23,19 @@ const DetailBodyBox = () => {
     const [id, setId] = useState(0);
     const [idUpdate, setIdUpdate] = useState(0);
     const [show, setShow] = useState(false);
+    const [showWorkingType, setShowWorkingType] = useState(false);
     const [invoice, setinvoice] = useState([]);
     const [sick_surgery_id, setsick_surgery_id] = useState(0);
     const [invoiceImage, setinvoiceImage] = useState([]);
-    const [image, setImage] = useState([]);
+
+    // bo update price u description ba kari ahwni la commponenty workin type
+    const [updat_sick_surgery_id, set_updat_sick_surgery_id] = useState(0);
+    const [surgery_type_id, set_surgery_type_id] = useState(0);
+    const [surgery_type_name, set_surgery_type_name] = useState("");
+    const [surgery_type_price, set_surgery_type_price] = useState(0);
+    const [sick_surgery_invoice_note, set_sick_surgery_invoice_note] = useState("");
+
+
 
     const sid = surgeryType.map((d) => d.surgery_type_id)
     const sn = surgeryType.map((d) => d.surgery_type_name)
@@ -81,6 +91,20 @@ const DetailBodyBox = () => {
                                     idUpdate={idUpdate}
                                     sick_surgery_id={sick_surgery_id}
                                 />
+                                {/* am modalla edit description w price naw bodybox aka */}
+                                <WorkingTypeModal
+                                    isVisible={showWorkingType}
+                                    onClose={setShowWorkingType}
+                                    set_surgery_type_name={set_surgery_type_name}
+                                    surgery_type_name={surgery_type_name}
+                                    set_surgery_type_price={set_surgery_type_price}
+                                    surgery_type_price={surgery_type_price}
+                                    set_sick_surgery_invoice_note={set_sick_surgery_invoice_note}
+                                    sick_surgery_invoice_note={sick_surgery_invoice_note}
+                                    set_surgery_type_id={set_surgery_type_id}
+                                    surgery_type_id={surgery_type_id}
+                                />
+
                                 {/* date div */}
                                 {sick.sick_invoice && sick.sick_invoice.map((invoice, index) => {
                                     return (
@@ -90,7 +114,15 @@ const DetailBodyBox = () => {
                                             className=' text-left flex  shadow-sm shadow-black/10  rounded mb-4 justify-between w-full p-2.5    text-gray-700 text-xl '>
 
                                             {/** div date u price */}
-                                            <div className='flex flex-col justify-around border-r  relative  pl-2 w-[30%]'>
+                                            <div
+                                                onClick={() => {
+                                                    setShow(true);
+                                                    setinvoice(invoice.sick_surgery_invoice);
+                                                    setinvoiceImage(invoice)
+                                                    setIdUpdate(invoice.sick_surgery_id)
+                                                    setsick_surgery_id(invoice.sick_surgery_id)
+                                                }}
+                                                className=' flex flex-col justify-around border-r  relative  pl-2 w-[30%]'>
                                                 <div className='flex items-center mb-2' >
                                                     <img src={calendar} alt='calendar' className='w-6 h-6 mr-3' />
                                                     <span className='text-lg font-normal '>{invoice.sick_surgery_date}</span>
@@ -113,16 +145,20 @@ const DetailBodyBox = () => {
                                                 {invoice.sick_surgery_invoice && invoice.sick_surgery_invoice.map((data, index) => {
                                                     return (
                                                         <div
-                                                            onClick={() => {
-                                                                setShow(true);
-                                                                setinvoice(invoice.sick_surgery_invoice);
-                                                                setinvoiceImage(invoice)
-                                                                setIdUpdate(invoice.sick_surgery_id)
-                                                                setsick_surgery_id(invoice.sick_surgery_id)
-                                                            }}
+
                                                             key={sick.sick_id + index + 3}
                                                             className='flex flex-col  m-2 '>
                                                             <div
+                                                                onClick={() => {
+                                                                    setShowWorkingType(true);
+                                                                    set_surgery_type_id(data.surgery_type_id)
+                                                                    set_surgery_type_name(sn[sid.indexOf(`${data.surgery_type_id}`)]);
+                                                                    set_surgery_type_price(data.surgery_type_price)
+                                                                    set_sick_surgery_invoice_note(data.sick_surgery_invoice_note)
+                                                                    console.log(sick_surgery_invoice_note);
+
+                                                                }}
+
                                                                 className=' -tracking-tight  '>
                                                                 <strong className='text-gray-600'>Surgery Tpye :</strong> <span className='text-base'> {sn[sid.indexOf(`${data.surgery_type_id}`)]}</span>
                                                                 <br />

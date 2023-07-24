@@ -4,7 +4,7 @@ import bin from '../../../../src/img/image/bin.png'
 import GlobalContext from '../../contexts/createContext/context';
 
 
-const DetailViewImageModal = ({ invoiceImage, setinvoiceImage, idUpdate, onClose }) => {
+const DetailViewImageModal = ({ invoiceImage, idUpdate, onClose }) => {
 
     const { deleteSurgeryImage } = useContext(GlobalContext)
     // console.log(invoiceImage);
