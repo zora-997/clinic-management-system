@@ -435,7 +435,7 @@ const ProviderState = ({ children }) => {
         fetchSick();
     }
 
-    // add sick surgery
+
     const deleteSurgeryImage = async (sick_surgery_invoice_image_id) => {
         // ba kar hatwa la <DetailBodyInput />
         console.log(sick_surgery_invoice_image_id);
@@ -445,24 +445,27 @@ const ProviderState = ({ children }) => {
         fetchSick();
     }
 
-    // add sick surgery
+
     const deletSickSurgery = async (sick_surgery_id) => {
         // ba kar hatwa la <DetailBodyInput />
         console.log(sick_surgery_id);
-        const res = await api.post('sick_surgery/delete.php', { "sick_surgery_id": sick_surgery_id })
-        console.log(res);
+        await api.post('sick_surgery/delete.php', { "sick_surgery_id": sick_surgery_id })
+
         fetchSickSurgery();
         fetchSick();
     }
 
+    // ama update naw price u date aka la commponenty SurgeryTypeModal
     const UpdateSickSurgery = async (formData) => {
-        // ba kar hatwa la <DetailBodyInput />
-        const res = await api.post('sick_surgery/update.php', formData);
-        console.log(res);
-        // dispatch({
-        //     type: SET_TYPE_OF_WORK,
-        //     payload: formData
-        // })
+        await api.post('sick_surgery/update.php', formData);
+        fetchSickSurgery();
+        fetchSick();
+    }
+
+    // ama update price u description aka la commponenty WorkingTypeModal
+    const UpdateSickSurgeryInvoice = async (sick_surgery_invoice) => {
+        await api.post('sick_surgery_invoice/update.php', sick_surgery_invoice);
+
         fetchSickSurgery();
         fetchSick();
     }
@@ -523,7 +526,8 @@ const ProviderState = ({ children }) => {
             searchAppointment,
             deleteSurgeryImage,
             deletSickSurgery,
-            UpdateSickSurgery
+            UpdateSickSurgery,
+            UpdateSickSurgeryInvoice
 
         }}>
             {/** am div bo awaya header ka la gall body ka wa column dar kawn wa la sidbar ka bn ba dw div flex */}

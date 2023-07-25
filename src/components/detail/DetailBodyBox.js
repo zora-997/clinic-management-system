@@ -29,7 +29,7 @@ const DetailBodyBox = () => {
     const [invoiceImage, setinvoiceImage] = useState([]);
 
     // bo update price u description ba kari ahwni la commponenty workin type
-    const [updat_sick_surgery_id, set_updat_sick_surgery_id] = useState(0);
+    const [sick_surgery_invoice_id, set_sick_surgery_invoice_id] = useState(0);
     const [surgery_type_id, set_surgery_type_id] = useState(0);
     const [surgery_type_name, set_surgery_type_name] = useState("");
     const [surgery_type_price, set_surgery_type_price] = useState(0);
@@ -103,6 +103,8 @@ const DetailBodyBox = () => {
                                     sick_surgery_invoice_note={sick_surgery_invoice_note}
                                     set_surgery_type_id={set_surgery_type_id}
                                     surgery_type_id={surgery_type_id}
+                                    set_sick_surgery_invoice_id={set_sick_surgery_invoice_id}
+                                    sick_surgery_invoice_id={sick_surgery_invoice_id}
                                 />
 
                                 {/* date div */}
@@ -150,6 +152,7 @@ const DetailBodyBox = () => {
                                                             className='flex flex-col  m-2 '>
                                                             <div
                                                                 onClick={() => {
+                                                                    set_sick_surgery_invoice_id(data.sick_surgery_invoice_id)
                                                                     setShowWorkingType(true);
                                                                     set_surgery_type_id(data.surgery_type_id)
                                                                     set_surgery_type_name(sn[sid.indexOf(`${data.surgery_type_id}`)]);
@@ -160,7 +163,7 @@ const DetailBodyBox = () => {
                                                                 }}
 
                                                                 className=' -tracking-tight  '>
-                                                                <strong className='text-gray-600'>Surgery Tpye :</strong> <span className='text-base'> {sn[sid.indexOf(`${data.surgery_type_id}`)]}</span>
+                                                                <strong className='text-gray-600'>Work tpye :</strong> <span className='text-base'> {sn[sid.indexOf(`${data.surgery_type_id}`)]}</span>
                                                                 <br />
                                                                 <span className='text-gray-600'>Description : </span> <span className='text-base'>{data.sick_surgery_invoice_note}</span>
                                                             </div>

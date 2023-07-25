@@ -1,29 +1,31 @@
-import React, { useState } from 'react'
-import { VscAdd } from 'react-icons/vsc';
-import uuid from 'react-uuid';
+import React, { useContext, useState } from 'react'
 
-const WorkingTypeModal = ({ isVisible, onClose, set_surgery_type_name, surgery_type_name, set_surgery_type_price, surgery_type_price, set_sick_surgery_invoice_note, sick_surgery_invoice_note, set_surgery_type_id, surgery_type_id }) => {
+import GlobalContext from '../../contexts/createContext/context';
 
+
+const WorkingTypeModal = ({ isVisible, onClose, set_surgery_type_name, surgery_type_name, set_surgery_type_price, surgery_type_price, set_sick_surgery_invoice_note, sick_surgery_invoice_note, set_sick_surgery_invoice_id, sick_surgery_invoice_id }) => {
+
+    const { UpdateSickSurgeryInvoice } = useContext(GlobalContext)
     //console.log(sick_surgery_invoice_note);
     const [showError, set_showError] = useState(false);
-    const [sick_surgery, setsicksurgerys] = useState([]);
+
 
     // uuid for delte surgery type in table add new work
-    const newWork = (e) => {
+    const update = (e) => {
         e.preventDefault();
-        // if (surgery_type_id == 0) {
-        //     // bo error border bakarde la inputy working type
-        //     set_showError(true)
 
-        // } else {
-        setsicksurgerys([...sick_surgery, { sick_surgery_id: uuid(), surgery_type_id, surgery_type_price, sick_surgery_invoice_note }]);
-        // }
+        UpdateSickSurgeryInvoice({ surgery_type_price, sick_surgery_invoice_note, sick_surgery_invoice_id })
 
-        set_surgery_type_id(0);
+        set_sick_surgery_invoice_id(0)
         set_surgery_type_name('');
         set_surgery_type_price('');
         set_sick_surgery_invoice_note('');
+        onClose(false)
+
+
     }
+
+
 
     if (!isVisible) return null;
     return (
@@ -32,7 +34,7 @@ const WorkingTypeModal = ({ isVisible, onClose, set_surgery_type_name, surgery_t
                 <div className={` place-self-center p-6 w-full flex flex-col overflow-y-auto `}>
                     <button className='text-red-400  text-xl place-self-end mt-3 mr-3 ' onClick={() => onClose(false)}> X </button>
 
-                    <form onSubmit={newWork} >
+                    <form onSubmit={update} >
 
                         <div className="mt-8 flex justify-between">
                             <div className='relative w-[30%]'>
@@ -63,9 +65,10 @@ const WorkingTypeModal = ({ isVisible, onClose, set_surgery_type_name, surgery_t
                             <div className='flex pt-7 '>
                                 <button
                                     type='submit'
-                                    //  onClick={() => { surgery_type_id && set_show(true) }}
-                                    className={` hover:text-white shadow-sm flex items-center shadow-gray-300 border text-sky-400 border-sky-300 h-fit p-1.5 px-3 rounded-md hover:bg-sky-300`}>
-                                    <VscAdd className='mr-1' /> New Work
+
+                                    disabled={surgery_type_price ? false : true}
+                                    className={` ${surgery_type_price ? 'bg-green-500 hover:bg-green-400' : 'bg-green-200'} w-32  shadow-sm  shadow-gray-300 border text-white border-green-300  p-1.5  rounded-md  `} >
+                                    Upadte
                                 </button>
                             </div>
                         </div>
