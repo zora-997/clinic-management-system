@@ -12,7 +12,7 @@ import AppointmentList from "./AppointmentList";
 import SickDetailMenu from "./SickDetailMenu";
 
 
-const BottomSideBar = () => {
+const BottomSideBar = ({ setShowSildBar }) => {
     const location = useLocation()
     const user = localStorage.getItem("data")
     let role = user && JSON.parse(user).role;
@@ -20,7 +20,7 @@ const BottomSideBar = () => {
     return (
 
         <ul style={{ color: '#AEAEAE' }} className=' flex flex-col gap-2  text-sm w-full px-2   select-none'>
-            <li className={`hover:text-white  ${location.pathname === '/main' && 'bg-blue-500 text-white'} group  hover:bg-blue-500   cursor-pointer w-full p-2.5  rounded-lg`} >
+            <li onClick={() => setShowSildBar(false)} className={`hover:text-white  ${location.pathname === '/main' && 'bg-blue-500 text-white'} group  hover:bg-blue-500   cursor-pointer w-full p-2.5  rounded-lg`} >
                 <Link to="/main" className=" flex justify-between items-center ">
                     <div className="flex gap-3">
                         <RxDashboard size={19} />
@@ -30,14 +30,14 @@ const BottomSideBar = () => {
                 </Link>
             </li>
 
-            <AppointmentList />
-            {role === "doctor" && <SickDetailMenu />}
-            <DoctorList />
-            <SickList />
-            <SurgeryTypeList />
-            <ExpenseType />
-            <ExpenseList />
-            <ReportList />
+            <AppointmentList setShowSildBar={setShowSildBar} />
+            {role === "doctor" && <SickDetailMenu setShowSildBar={setShowSildBar} />}
+            <DoctorList setShowSildBar={setShowSildBar} />
+            <SickList setShowSildBar={setShowSildBar} />
+            <SurgeryTypeList setShowSildBar={setShowSildBar} />
+            <ExpenseType setShowSildBar={setShowSildBar} />
+            <ExpenseList setShowSildBar={setShowSildBar} />
+            <ReportList setShowSildBar={setShowSildBar} />
         </ul>
 
 

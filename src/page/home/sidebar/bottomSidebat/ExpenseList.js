@@ -4,11 +4,11 @@ import { SiExpensify } from "react-icons/si";
 
 
 
-const ExpenseList = () => {
+const ExpenseList = ({ setShowSildBar }) => {
     const location = useLocation()
     return (
 
-        <li className={`${location.pathname === '/expense' && 'bg-blue-500 text-white'}  group cursor-pointer w-full  hover:text-white hover:bg-blue-500 duration-100 p-2.5 rounded-lg `} >
+        <li onClick={() => setShowSildBar(false)} className={`${location.pathname === '/expense' && 'bg-blue-500 text-white'}  group cursor-pointer w-full  hover:text-white hover:bg-blue-500 duration-100 p-2.5 rounded-lg `} >
             <Link to="/expense" className=" flex justify-between items-center ">
                 <div className="flex gap-3">
                     <SiExpensify size={20} />

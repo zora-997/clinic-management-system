@@ -4,11 +4,11 @@ import { MdArrowRight } from "react-icons/md";
 
 
 
-const DoctorList = () => {
+const DoctorList = ({ setShowSildBar }) => {
     const location = useLocation()
     return (
 
-        <li className={`${location.pathname === '/doctor' && 'bg-blue-500 text-white'}  group cursor-pointer w-full items-center hover:text-white hover:bg-blue-500 duration-100 p-2.5 rounded-lg `} >
+        <li onClick={() => setShowSildBar(false)} className={`${location.pathname === '/doctor' && 'bg-blue-500 text-white'}  group cursor-pointer w-full items-center hover:text-white hover:bg-blue-500 duration-100 p-2.5 rounded-lg `} >
             <Link to="/doctor" className=" flex justify-between items-center w-full">
                 <div className="flex gap-3">
                     <HiOutlineUserGroup size={22} />

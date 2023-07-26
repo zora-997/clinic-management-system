@@ -37,7 +37,7 @@ import Header from "./components/layout/header/Header";
 
 //import Main from "./page/home/main/Main";
 
-const MainRoutes = () => {
+const MainRoutes = ({ showSildBar, setShowSildBar }) => {
 
     const location = useLocation()
 
@@ -45,7 +45,7 @@ const MainRoutes = () => {
 
         <ProviderState>
             {/** am header lera bo awa danrwa chunka useState haia ba nawi query la global nasanuta boya abe la naw <ProviderState> be bo away la naw hamu page kan darkawe */}
-            {location.pathname !== "/login" && <Header />}
+            {location.pathname !== "/login" && <Header showSildBar={showSildBar} setShowSildBar={setShowSildBar} />}
             <Routes>
                 {/* page route */}
                 {/* PrivateRoute ama bo awaya kasaka login nakrdbe natwane bcheta naw hich bashekawa  */}

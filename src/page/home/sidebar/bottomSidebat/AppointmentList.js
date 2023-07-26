@@ -5,10 +5,10 @@ import { BiUserPin } from "react-icons/bi";
 
 
 
-const AppointmentList = () => {
+const AppointmentList = ({ setShowSildBar }) => {
     const location = useLocation()
     return (
-        <li className={` ${location.pathname === '/appointment' && 'bg-blue-500 text-white'}  group cursor-pointer  items-center hover:text-white hover:bg-blue-500 duration-100 p-2.5 rounded-lg `} >
+        <li onClick={() => setShowSildBar(false)} className={` ${location.pathname === '/appointment' && 'bg-blue-500 text-white'}  group cursor-pointer  items-center hover:text-white hover:bg-blue-500 duration-100 p-2.5 rounded-lg `} >
             <Link to="/appointment" className="flex justify-between items-center ">
                 <div className="flex gap-3">
                     <BiUserPin size={23} className="" />
