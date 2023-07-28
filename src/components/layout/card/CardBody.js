@@ -47,7 +47,7 @@ const CardBody = () => {
                     <FaUser style={{ color: '#04D5C7' }} size={25} className=" relative  transition-colors duration-500 ease-in-out" />
                 </div>
                 <div className='flex flex-col  pt-3 pl-2 g transition-colors duration-500 ease-in-out'>
-                    <span style={{ color: '#ACFFFB' }} className='text-sm  '>Active Sick</span>
+                    <span style={{ color: '#ACFFFB' }} className='text-sm  '>Active Patient</span>
                     <span style={{ color: '#EBFFFF' }} className='text-xl pb-3 relative '>{sickList.length}</span>
                 </div>
 

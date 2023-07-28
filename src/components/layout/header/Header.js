@@ -18,10 +18,6 @@ const Header = ({ showSildBar, setShowSildBar }) => {
 
                 {/* menu */}
                 <AiOutlineMenu onClick={() => setShowSildBar(true)} className='lg:hidden cursor-pointer mr-2' color='gray' size={30} />
-                {showSildBar &&
-                    <div onClick={() => setShowSildBar(false)} className='bg-black/10 cursor-pointer lg:hidden w-full h-screen absolute top-0 left-0 z-10'></div>
-                }
-
 
 
 

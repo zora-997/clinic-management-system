@@ -13,7 +13,7 @@ const Body = () => {
         <div className='body  -mt-10 '>
             < div className='flex-1 flex-col ' >
                 <CardBody />
-                <div className='md:flex gap-3 grid   mx-2 '>
+                <div className='md:flex  gap-3 grid  mx-2 '>
                     <CardOne />
                     <CardCalendar ddate={ddate} setDate={setDate} />
                 </div>
