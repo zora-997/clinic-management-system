@@ -75,6 +75,8 @@ const DetailBodyBox = () => {
                 )
             })}
 
+            {/* booxy date u price u work type u description */}
+
             {sickList && sickList.map(sick => {
                 return (
                     <div key={sick.sick_id} className=' '>
@@ -113,7 +115,7 @@ const DetailBodyBox = () => {
                                         <div
 
                                             key={sick.sick_id + index + 1}
-                                            className=' text-left flex  shadow-sm shadow-black/10  rounded mb-4 justify-between w-full p-2.5    text-gray-700 text-xl '>
+                                            className=' text-left flex bg-white shadow-sm shadow-black/10  rounded mb-4 justify-between w-full p-2.5    text-gray-700 text-xl '>
 
                                             {/** div date u price */}
                                             <div
@@ -143,13 +145,13 @@ const DetailBodyBox = () => {
                                             </div>
 
                                             {/** div surgery type u description */}
-                                            <div className='text-start pl-2 w-full '>
+                                            <div className='text-start pl-2 w-full mt-2 '>
                                                 {invoice.sick_surgery_invoice && invoice.sick_surgery_invoice.map((data, index) => {
                                                     return (
                                                         <div
 
                                                             key={sick.sick_id + index + 3}
-                                                            className='flex flex-col  m-2 '>
+                                                            className='flex flex-col  '>
                                                             <div
                                                                 onClick={() => {
                                                                     set_sick_surgery_invoice_id(data.sick_surgery_invoice_id)
@@ -165,7 +167,7 @@ const DetailBodyBox = () => {
                                                                 className=' -tracking-tight  '>
                                                                 <strong className='text-gray-600'>Work tpye :</strong> <span className='text-base'> {sn[sid.indexOf(`${data.surgery_type_id}`)]}</span>
                                                                 <br />
-                                                                <span className='text-gray-600'>Description : </span> <span className='text-base'>{data.sick_surgery_invoice_note}</span>
+                                                                <strong className='text-gray-600'>Description : </strong> <span className='text-base'>{data.sick_surgery_invoice_note}</span>
                                                             </div>
                                                         </div>
                                                     )

@@ -29,7 +29,7 @@ const DetailTypeOfWork = ({ sick_surgery, clickAddWork, setsicksurgerys, file, s
                     <tr className=''>
                         <th scope="col" className="pl-1.5 w-72">work Type</th>
                         <th scope="col" className="pl-1.5 w-48">Price</th>
-                        <th scope="col" className="pl-1.5 ">Not</th>
+                        <th scope="col" className="pl-1.5 ">Note</th>
                         <th scope="col" className="pl-1.5 ">Action</th>
                     </tr>
                 </thead>

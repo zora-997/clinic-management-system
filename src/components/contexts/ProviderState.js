@@ -70,10 +70,10 @@ const ProviderState = ({ children }) => {
 
     // sick search
     const searchSick = (data) => {
-        return data.filter((item) => query.toLowerCase() === '' ? item : item.sick_name.toLowerCase().includes(query))
+        return data.filter((item) => query.toLowerCase() === '' ? item : item.sick_phone.toLowerCase().includes(query))
     }
 
-    // sick search
+    // searchSurgeryType search
     const searchSurgeryType = (data) => {
         return data.filter((item) => query.toLowerCase() === '' ? item : item.surgery_type_name.toLowerCase().includes(query))
     }
