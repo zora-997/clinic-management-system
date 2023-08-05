@@ -98,6 +98,7 @@ const SurgeryTypeModal = ({ isVisible, onClose, sick_surgery_id, invoiceImage, s
             <div className={` flex flex-col justify-between  w-5/6 bg-white h-[580px] rounded-md  `}>
                 <div className={` place-self-center p-6 w-full flex flex-col overflow-y-auto `}>
                     <button className='text-red-400  text-xl place-self-end mt-3 mr-3 ' onClick={() => onClose(false)}> X </button>
+
                     <form onSubmit={newWork} >
                         <div className="mt-2 flex justify-center gap-2">
                             <div className='relative w-[30%]'>

@@ -141,7 +141,7 @@ const Appointment = () => {
                             <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">Id</th>
-                                    <th scope="col" className="px-3 py-3">Sick name</th>
+                                    <th scope="col" className="px-3 py-3">Ptient name</th>
                                     <th scope="col" className="px-3 py-3">Doctor name</th>
                                     <th scope="col" className="px-3 py-3">Date</th>
                                     <th scope="col" className="px-3 py-3">Time</th>

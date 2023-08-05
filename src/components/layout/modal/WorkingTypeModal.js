@@ -30,13 +30,14 @@ const WorkingTypeModal = ({ isVisible, onClose, set_surgery_type_name, surgery_t
     if (!isVisible) return null;
     return (
         <div className='fixed z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
-            <div className={` flex flex-col justify-between  w-5/6 bg-white h-[420px] rounded-md  `}>
-                <div className={` place-self-center p-6 w-full flex flex-col overflow-y-auto `}>
-                    <button className='text-red-400  text-xl place-self-end mt-3 mr-3 ' onClick={() => onClose(false)}> X </button>
+            <div className='flex flex-col  justify-center items-center w-5/6'>
+                <button className='text-gray-700  place-self-end text-xl    ' onClick={() => onClose(false)}> X </button>
+                <div className={` flex flex-col p-5  w-full bg-white h-[400px] rounded-md  `}>
+
 
                     <form onSubmit={update} >
 
-                        <div className="mt-8 flex justify-between">
+                        <div className="mt-5 flex justify-between">
                             <div className='relative w-[30%]'>
                                 <div className='flex flex-col w-full border-b rounded-md  absolute'>
                                     <label className='text-gray-700 mb-2'>Working Type</label>
@@ -76,7 +77,7 @@ const WorkingTypeModal = ({ isVisible, onClose, set_surgery_type_name, surgery_t
                         {/** description input*/}
                         <div className='flex flex-col w-full mt-9 '>
                             <label className='text-gray-700 mb-1'>Description</label>
-                            <textarea placeholder='Description' cols="50" rows="4"
+                            <textarea placeholder='Description' cols="50" rows="6"
                                 value={sick_surgery_invoice_note || ''}
                                 onChange={(e) => set_sick_surgery_invoice_note(e.target.value)}
                                 className={` ${sick_surgery_invoice_note ? 'bg-sky-100' : 'bg-slate-50 '} focus:ring-1 focus:outline-none border p-3 flex-wrap rounded-md shadow-sm shadow-black/10`} >
@@ -86,6 +87,7 @@ const WorkingTypeModal = ({ isVisible, onClose, set_surgery_type_name, surgery_t
 
 
                     </form>
+
 
                 </div>
             </div>

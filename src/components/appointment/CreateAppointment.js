@@ -62,8 +62,8 @@ const CreateAppointment = ({ ddate }) => {
                     <div className='md:w-1/4 w-full   '>
 
                         <div className='flex flex-col w-full  rounded-md  '>
-                            <label className='text-gray-700 '>Sick name</label>
-                            <input type="text" required placeholder='Sick search' value={sick_name || ''}
+                            <label className='text-gray-700 '>Ptient name</label>
+                            <input type="text" required placeholder='Ptient search' value={sick_name || ''}
                                 onChange={(e) => setSick_name(e.target.value)}
                                 autoComplete="off"
                                 className={`focus:ring-1 focus:outline-none border pl-2 p-2 w-full rounded`} />

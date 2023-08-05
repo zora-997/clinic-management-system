@@ -19,7 +19,7 @@ const BottomSideBar = ({ setShowSildBar }) => {
 
     return (
 
-        <ul style={{ color: '#AEAEAE' }} className=' flex flex-col gap-2  text-sm w-full px-2   select-none'>
+        <ul style={{ color: '#AEAEAE' }} className=' flex flex-col  gap-2  text-sm w-full px-2   select-none'>
             <li onClick={() => setShowSildBar(false)} className={`hover:text-white  ${location.pathname === '/main' && 'bg-blue-500 text-white'} group  hover:bg-blue-500   cursor-pointer w-full p-2.5  rounded-lg`} >
                 <Link to="/main" className=" flex justify-between items-center ">
                     <div className="flex gap-3">
