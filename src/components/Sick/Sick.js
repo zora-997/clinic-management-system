@@ -56,7 +56,7 @@ const Sick = () => {
                     >Create patient</button>
                 </div>
 
-                <table className=" overflow-hidden bg-white text-sm shadow-sm text-left text-gray-500  w-[1030px]">
+                <table className=" overflow-hidden bg-white text-sm shadow-sm text-left text-gray-500  w-full">
                     <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                         <tr className=''>
                             <th scope="col" className="px-5 py-3 text-center">Id</th>

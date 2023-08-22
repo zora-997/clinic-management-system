@@ -4,6 +4,7 @@ import GlobalContext from '../../contexts/createContext/context'
 
 const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
     setSick_id,
+    doctor_id,
     sick_name,
     setSick_name,
     doctor_name,
@@ -22,6 +23,7 @@ const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
 
     // update appointment.
     const updateAppointmentHandler = (e) => {
+        console.log(doctor_id);
         e.preventDefault();
         // aw ddate bo awa la ffeachappointment dwbara update bbinitawa
         updateAppointment({

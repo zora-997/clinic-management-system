@@ -136,8 +136,9 @@ const ProviderState = ({ children }) => {
 
     // update Appointment
     const updateAppointment = async (appointment, ddate) => {
+        console.log(appointment);
         const res = await api.post('appointment/update.php', appointment);
-
+        console.log(res);
         fetchAppointment(ddate);
         dispatch({
             type: UPDATE_APPOINTMENT,

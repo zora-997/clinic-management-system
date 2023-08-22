@@ -7,7 +7,7 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
     return (
         <>
             <aside
-                className={`lg:flex hidden  w-60 h-screen flex-col gap-6 
+                className={`lg:flex hidden  w-60  2xl:w-72 3xl:w-96 h-screen flex-col gap-6 
                      shadow-sm shadow-gray-100 bg-white font-body
                     `}>
                 <TopSideBar />

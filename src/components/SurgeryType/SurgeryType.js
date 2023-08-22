@@ -23,14 +23,14 @@ const SurgeryType = () => {
                 <SurgeryModal isVisible={show} onClose={setShow} surgery_type_name={surgery_type_name} setSurgey_name={setSurgey_name} surgery_type_price={surgery_type_price} setSurgey_price={setSurgey_price} surgery_type_id={surgery_type_id} />
                 <AddSurgeryModal isAddVisible={addshow} onClose={setAddShow} />
 
-                <div className='mx-3 mt-10 bg-white overflow-auto rounded-md  p-5 '>
+                <div className='mx-3 mt-10 bg-white overflow-auto rounded-md  p-5  '>
                     <div className='flex justify-between'>
                         <button onClick={() => setAddShow(true)}
                             className={`
                      text-white shadow-sm flex items-center shadow-gray-300 border mb-2 
                       hover:text-cyan-400 border-cyan-300 h-fit p-1 px-9 rounded-md bg-cyan-500 hover:bg-transparent duration-200`}>Create working type</button>
                     </div>
-                    <table className="bg-white overflow-hidden text-sm shadow-sm text-left text-gray-500 w-[1030px]">
+                    <table className="bg-white overflow-hidden text-sm shadow-sm text-left text-gray-500 w-full">
                         <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                             <tr>
                                 <th scope="col" className="px-6 py-3">Id</th>

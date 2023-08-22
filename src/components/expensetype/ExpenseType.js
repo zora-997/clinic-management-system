@@ -26,7 +26,7 @@ const ExpenseType = () => {
                      text-white shadow-sm flex items-center shadow-gray-300 border mb-2 
                       hover:text-cyan-400 border-cyan-300 h-fit p-1 px-9 rounded-md bg-cyan-500 hover:bg-transparent duration-200`}>Create ExpenseType</button>
                 </div>
-                <table className="whitespace-nowrap bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 w-[500px] sm:w-[1030px]">
+                <table className="whitespace-nowrap bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 w-full">
                     <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500  ">
                         <tr>
                             <th scope="col" className="px-6 py-3">Id</th>

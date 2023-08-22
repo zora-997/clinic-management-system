@@ -20,24 +20,24 @@ const AddModal = ({ isAddVisible, onClose }) => {
     if (!isAddVisible) return null;
     return (
         <div className='fixed  z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center '>
-            <div className='w-[500px] flex flex-col '>
+            <div className='   flex flex-col '>
                 <button className='text-white text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
-                <form onSubmit={(e) => { addDoctorHandler(e); onClose(false); }} className=' bg-white rounded-md  grid p-5'>
+                <form onSubmit={(e) => { addDoctorHandler(e); onClose(false); }} className=' bg-white rounded-md 2xl:w-[700px]   flex flex-col  p-5'>
                     <div className='flex justify-between'>
                         <div className='relative w-3/4 mr-5'>
-                            <label className='text-gray-500'>Name</label>
-                            <input type='text' name='doctor_name' autoComplete="off" placeholder='D.name' required className=" block w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2" onChange={(val) => setDoctor_name(val.target.value)} />
+                            <label className='text-gray-500 2xl:text-xl'>Name</label>
+                            <input type='text' name='doctor_name' autoComplete="off" placeholder='Dr.name' required className=" block placeholder:2xl:text-xl w-full focus:ring-1 focus:outline-none rounded border mb-3 2xl:mb-0 mt-2 p-2 2xl:p-4" onChange={(val) => setDoctor_name(val.target.value)} />
 
                         </div>
                         <div className='w-1/3'>
-                            <label className='text-gray-500'>Percentage</label>
-                            <input type='number' name='doctor_percentage' autoComplete="off" placeholder='0.00' required className="block w-full focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 p-2" onChange={(val) => setDoctor_percentage(val.target.value)} />
+                            <label className='text-gray-500 2xl:text-xl'>Percentage</label>
+                            <input type='number' name='doctor_percentage' autoComplete="off" placeholder='0.00' required className="block placeholder:2xl:text-xl w-full focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 2xl:mb-0 p-2 2xl:p-4" onChange={(val) => setDoctor_percentage(val.target.value)} />
                         </div>
 
                     </div>
 
 
-                    <button type='submit' className='border rounded-md bg-cyan-500 hover:bg-cyan-400 text-white p-2 my-2'>create</button>
+                    <button type='submit' className='border 2xl:mt-6 rounded-md bg-cyan-500 hover:bg-cyan-400 text-white p-2 2xl:p-3 2xl:text-2xl '>Create Doctor</button>
                 </form>
 
             </div>

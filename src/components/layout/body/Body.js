@@ -10,7 +10,7 @@ const Body = () => {
     const [ddate, setDate] = useState(new Date());
     console.log(ddate.toISOString().slice(0, 10) + " date now");
     return (
-        <div className='body  -mt-10 '>
+        <div className='body  -mt-14 '>
             < div className='flex-1 flex-col ' >
                 <CardBody />
                 <div className='md:flex  gap-3 grid  mx-2 '>
