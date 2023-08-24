@@ -9,7 +9,6 @@ const ReportWorkingType = ({ showWorkingType, workingTypeReportList }) => {
     if (!showWorkingType) return null;
     return (
         <div className='mt-4'>
-            <WorkingTypeReportModal workingType={workingType} show={show} setShow={setShow} />
             <div className='w-full bg-white p-5 rounded-md'>
                 <h1 className=' text-2xl border-b-2  mb-2 '>Working Type Report</h1>
                 <table className="whitespace-nowrap w-full bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 ">
@@ -22,6 +21,7 @@ const ReportWorkingType = ({ showWorkingType, workingTypeReportList }) => {
                         </tr>
                     </thead>
                     <tbody>
+                        <WorkingTypeReportModal workingType={workingType} show={show} setShow={setShow} />
                         {workingTypeReportList.data && workingTypeReportList.data.map((work, index) => {
                             return (
                                 <tr key={index}

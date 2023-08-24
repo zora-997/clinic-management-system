@@ -30,6 +30,7 @@ const ReportMain = ({ from, to, doctor_id, expense_type_id, working_type_id }) =
             setShowDoctor(true)
             setShowExpense(false)
             setShowMain(false)
+            setShowWorkingType(false)
         } else {
             console.log("from " + from + " to " + to + " doctrid " + doctor_id);
         }
@@ -43,6 +44,7 @@ const ReportMain = ({ from, to, doctor_id, expense_type_id, working_type_id }) =
             setShowExpense(true)
             setShowDoctor(false)
             setShowMain(false)
+            setShowWorkingType(false)
         } else {
             console.log("from " + from + " to " + to + " expense_type_id  " + expense_type_id);
         }
@@ -56,6 +58,7 @@ const ReportMain = ({ from, to, doctor_id, expense_type_id, working_type_id }) =
             setShowMain(true)
             setShowExpense(false)
             setShowDoctor(false)
+            setShowWorkingType(false)
         } else {
             console.log("from " + from + " to " + to);
         }
