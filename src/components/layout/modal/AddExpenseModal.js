@@ -21,6 +21,7 @@ const AddExpenseModal = ({ isAddVisible, onClose }) => {
     // update exponse type.
     const createExpenseHandler = (e) => {
         e.preventDefault();
+
         addExpense({ expense_type_id, expense_amount, admin_id, expense_date, expense_note });
         set_new_expense_type_id()
         set_new_expense_amount()
@@ -39,7 +40,7 @@ const AddExpenseModal = ({ isAddVisible, onClose }) => {
                         <div className='flex'>
                             <div className='w-3/4 mr-5'>
                                 <label className='text-gray-500' >ExpenseType</label>
-                                <select required onChange={(val) => set_new_expense_type_id(val.target.value)} className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 '>
+                                <select required onChange={(val) => { set_new_expense_type_id(val.target.value); console.log(expense_type_id); }} className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 '>
                                     <option></option>
                                     {expenseTypeList && expenseTypeList.map((expenseType) => {
                                         return <option key={expenseType.expense_type_id} value={`${expenseType.expense_type_id}`}>{expenseType.expense_type_name}</option>

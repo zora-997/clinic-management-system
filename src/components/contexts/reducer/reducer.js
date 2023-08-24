@@ -154,11 +154,31 @@ const reducer = (state, { type, payload }) => {
                 ...state,
                 adminList: payload,
             };
-        ///************* report ***** */
+        ///************* report main***** */
         case 'GETREPORT':
             return {
                 ...state,
                 mainReportList: payload,
+            };
+        ///************* report doctor ***** */
+        case 'GETDOCTORREPORT':
+            return {
+                ...state,
+                doctorlegerList: payload,
+            };
+
+        ///************* report expense ***** */
+        case 'GETEXPENSEREPORT':
+            return {
+                ...state,
+                expenseReportList: payload,
+            };
+
+        ///************* report WORKING TYPE ***** */
+        case 'GETWORKINGTYPEREPORT':
+            return {
+                ...state,
+                workingTypeReportList: payload,
             };
 
         ///************* APPOINTMENT ***** */

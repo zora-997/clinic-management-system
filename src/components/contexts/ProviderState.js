@@ -38,7 +38,10 @@ const ProviderState = ({ children }) => {
         expenseList: [],
         adminList: [],
         mainReportList: [],
-        appointmentList: []
+        appointmentList: [],
+        doctorlegerList: [],
+        expenseReportList: [],
+        workingTypeReportList: [],
     }
 
     const [query, setQuery] = useState("")
@@ -182,13 +185,46 @@ const ProviderState = ({ children }) => {
     }
 
     //  feach main report
-    const fetchReport = async (date) => {
-        const res = await api.post('report/mainreport.php', date);
+    const fetchReport = async (data) => {
+        const res = await api.post('report/mainreport.php', data);
         dispatch({
             type: 'GETREPORT',
             payload: res.data
         })
-        // console.log(res.data.doctor.map(i => i.doctor_name));
+        console.log(res.data);
+
+    }
+
+    //  feach main report
+    const fetchDoctorlegerReport = async (date) => {
+        const res = await api.post('report/doctorleger.php', date);
+        dispatch({
+            type: 'GETDOCTORREPORT',
+            payload: res.data
+        })
+        console.log(res.data);
+        console.log(state.fetchDoctorlegerReport);
+    }
+
+    //  feach expense report
+    const fetchExpensereportReport = async (data) => {
+        const res = await api.post('report/expensereport.php', data);
+        dispatch({
+            type: 'GETEXPENSEREPORT',
+            payload: res.data
+        })
+        console.log(res.data);
+
+    }
+
+    //  feach expense report
+    const fetchWorkingTypeReportReport = async (data) => {
+        const res = await api.post('report/workingtypereport.php', data);
+        dispatch({
+            type: 'GETWORKINGTYPEREPORT',
+            payload: res.data
+        })
+        console.log(res.data);
 
     }
 
@@ -528,7 +564,17 @@ const ProviderState = ({ children }) => {
             deleteSurgeryImage,
             deletSickSurgery,
             UpdateSickSurgery,
-            UpdateSickSurgeryInvoice
+            UpdateSickSurgeryInvoice,
+
+            fetchDoctorlegerReport,
+            doctorlegerList: state.doctorlegerList,
+
+            fetchExpensereportReport,
+            expenseReportList: state.expenseReportList,
+
+            fetchWorkingTypeReportReport,
+            workingTypeReportList: state.workingTypeReportList
+
 
         }}>
             {/** am div bo awaya header ka la gall body ka wa column dar kawn wa la sidbar ka bn ba dw div flex */}

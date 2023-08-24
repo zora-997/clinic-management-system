@@ -15,7 +15,7 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
     // add Sick.
     const addSickrHandler = e => {
         e.preventDefault();
-        console.log(sick_gender);
+
         addSick({ sick_name, sick_phone, sick_age, sick_gender, doctor_id, sick_date });
 
         setSick_name("")
@@ -63,7 +63,7 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
                     <div className='flex'>
                         <div className='w-3/4 mr-5'>
                             <label className='text-gray-500' >Doctor</label>
-                            <select required onChange={(e) => setDoctor_id(e.target.value)} className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 '>
+                            <select required onChange={(e) => { setDoctor_id(e.target.value) }} className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 '>
                                 <option></option>
                                 {doctorList.map((doctor) => {
                                     return <option key={doctor.doctor_id} value={`${doctor.doctor_id}`}>{doctor.doctor_name}</option>
