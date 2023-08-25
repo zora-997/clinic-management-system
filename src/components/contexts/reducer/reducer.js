@@ -1,41 +1,30 @@
 import {
-    ADD_DOCTOR,
     DELETE_DOCTOR,
-    UPDATE_DOCTOR,
-    ADD_SURGERY_TYPE,
     DELETE_SURGERY_TYPE,
-    UPDATE_SURGERY_TYPE,
-    ADD_SICK,
-    UPDATE_SICK,
     DELETE_SICK,
-    SET_TYPE_OF_WORK,
     DELETE_EXPENSE_TYPE,
-    UPDATE_EXPENSE_TYPE,
-    ADD_EXPENSE_TYPE,
     DELETE_EXPENSE,
-    UPDATE_EXPENSE,
-    ADD_EXPENSE,
-    ADD_APPOINTMENT,
-    UPDATE_APPOINTMENT,
     DELETE_APPOINTMENT,
-    CHANGE_STATE_APPOINTMENT
+    DELETE_USER
 } from "../actions/action";
 
 
 const reducer = (state, { type, payload }) => {
     switch (type) {
-        case ADD_DOCTOR:
-            return {
-                ...state,
-                doctorList: [...state.doctorList, payload]
-            };
-        case UPDATE_DOCTOR:
-            return {
-                ...state,
-                doctorList: state.doctorList.map((doc) => {
-                    return doc.doctor_id === payload ? payload : state
-                })
-            };
+        // atani nai nusi
+        // case ADD_DOCTOR:
+        //     return {
+        //         ...state,
+        //         doctorList: [...state.doctorList, payload]
+        //     };
+
+        // case UPDATE_DOCTOR:
+        //     return {
+        //         ...state,
+        //         doctorList: state.doctorList.map((doc) => {
+        //             return doc.doctor_id === payload ? payload : state
+        //         })
+        //     };
         case DELETE_DOCTOR:
             return {
                 ...state,
@@ -47,56 +36,77 @@ const reducer = (state, { type, payload }) => {
                 doctorList: payload
             };
 
+        // case ADD_USER:
+        //     return {
+        //         ...state,
+        //         userList: [...state.userList, payload]
+        //     };
+        case DELETE_USER:
+            return {
+                ...state,
+                userList: state.userList.filter((user) => user.admin_id !== payload),
+            };
+
+        case 'GETUSER':
+            return {
+                ...state,
+                userList: payload
+            };
+
+
         case 'GETSURGERY':
             return {
                 ...state,
                 surgeryType: payload,
             };
-        case ADD_SURGERY_TYPE:
-            return {
-                ...state,
-                surgeryType: [...state.surgeryType, payload]
-            };
+        // case ADD_SURGERY_TYPE:
+        //     return {
+        //         ...state,
+        //         surgeryType: [...state.surgeryType, payload]
+        //     };
         case DELETE_SURGERY_TYPE:
             return {
                 ...state,
                 surgeryType: state.surgeryType.filter((surgery) => surgery.surgery_type_id !== payload),
             };
-        case UPDATE_SURGERY_TYPE:
-            return {
-                ...state,
-                surgeryType: state.surgeryType.map((surgery) => {
-                    return surgery.surgery_type_id === payload ? payload : state
-                })
-            };
+
+        // *********** ama way lw aka hamui relodek bka , ballam nabe natha aw shta relod abe ka to aigori
+        // case UPDATE_SURGERY_TYPE:
+        //     return {
+        //         ...state,
+        //         surgeryType: state.surgeryType.map((surgery) => {
+        //             return surgery.surgery_type_id === payload ? payload : state
+        //         })
+        //     };
 
         case 'GETSICK':
             return {
                 ...state,
                 sickList: payload,
             };
-        case ADD_SICK:
-            return {
-                ...state,
-                sickList: [...state.sickList, payload]
-            };
-        case UPDATE_SICK:
-            return {
-                ...state,
-                sickList: state.sickList.map((sick) => {
-                    return sick.sick_id === payload.sick_id ? payload : state
-                })
-            };
+        // case ADD_SICK:
+        //     return {
+        //         ...state,
+        //         sickList: [...state.sickList, payload]
+        //     };
+
+        // case UPDATE_SICK:
+        //     return {
+        //         ...state,
+        //         sickList: state.sickList.map((sick) => {
+        //             return sick.sick_id === payload.sick_id ? payload : state
+        //         })
+        //     };
         case DELETE_SICK:
             return {
                 ...state,
                 sickList: state.sickList.filter((sick) => sick.sick_id !== payload),
             };
-        case SET_TYPE_OF_WORK:
-            return {
-                ...state,
-                sickSurgery: [...state.sickSurgery, payload]
-            };
+        // case SET_TYPE_OF_WORK:
+        //     return {
+        //         ...state,
+        //         sickSurgery: [...state.sickSurgery, payload]
+        //     };
         case 'GETSICKSURGERY':
             return {
                 ...state,
@@ -113,36 +123,40 @@ const reducer = (state, { type, payload }) => {
                 ...state,
                 expenseTypeList: state.expenseTypeList.filter((expense) => expense.expense_type_id !== payload),
             };
-        case UPDATE_EXPENSE_TYPE:
-            return {
-                ...state,
-                expenseTypeList: state.expenseTypeList.map((expense) => {
-                    return expense.expense_type_id === payload ? payload : state
-                })
-            };
-        case ADD_EXPENSE_TYPE:
-            return {
-                ...state,
-                expenseTypeList: [...state.expenseTypeList, payload]
-            };
+        // case UPDATE_EXPENSE_TYPE:
+        //     return {
+        //         ...state,
+        //         expenseTypeList: state.expenseTypeList.map((expense) => {
+        //             return expense.expense_type_id === payload ? payload : state
+        //         })
+        //     };
+
+        // case ADD_EXPENSE_TYPE:
+        //     return {
+        //         ...state,
+        //         expenseTypeList: [...state.expenseTypeList, payload]
+        //     };
+
         ///************* expense ***** */
         case 'GETEXPENSE':
             return {
                 ...state,
                 expenseList: payload,
             };
-        case ADD_EXPENSE:
-            return {
-                ...state,
-                expenseList: [...state.expenseList, payload]
-            };
-        case UPDATE_EXPENSE:
-            return {
-                ...state,
-                expenseList: state.expenseList.map((expense) => {
-                    return expense.expense_id === payload ? payload : state
-                })
-            };
+
+        // case ADD_EXPENSE:
+        //     return {
+        //         ...state,
+        //         expenseList: [...state.expenseList, payload]
+        //     };
+
+        // case UPDATE_EXPENSE:
+        //     return {
+        //         ...state,
+        //         expenseList: state.expenseList.map((expense) => {
+        //             return expense.expense_id === payload ? payload : state
+        //         })
+        //     };
         case DELETE_EXPENSE:
             return {
                 ...state,
@@ -187,30 +201,32 @@ const reducer = (state, { type, payload }) => {
                 ...state,
                 appointmentList: payload,
             };
-        case ADD_APPOINTMENT:
-            return {
-                ...state,
-                appointmentList: [...state.appointmentList, payload]
-            };
+        // case ADD_APPOINTMENT:
+        //     return {
+        //         ...state,
+        //         appointmentList: [...state.appointmentList, payload]
+        //     };
         case DELETE_APPOINTMENT:
             return {
                 ...state,
                 appointmentList: state.appointmentList.filter((appointment) => appointment.appointment_id !== payload),
             };
-        case UPDATE_APPOINTMENT:
-            return {
-                ...state,
-                appointmentList: state.appointmentList.map((appointment) => {
-                    return appointment.appointment_id === payload ? payload : state
-                })
-            };
-        case CHANGE_STATE_APPOINTMENT:
-            return {
-                ...state,
-                appointmentList: state.appointmentList.map((appointment) => {
-                    return appointment.appointment_id === payload ? payload : state
-                })
-            };
+        // case UPDATE_APPOINTMENT:
+        //     return {
+        //         ...state,
+        //         appointmentList: state.appointmentList.map((appointment) => {
+        //             return appointment.appointment_id === payload ? payload : state
+        //         })
+        //     };
+
+        // *********** ama way lw aka hamui relodek bka , ballam nabe natha aw shta relod abe ka to aigori
+        // case CHANGE_STATE_APPOINTMENT:
+        //     return {
+        //         ...state,
+        //         appointmentList: state.appointmentList.map((appointment) => {
+        //             return appointment.appointment_id === payload ? payload : state
+        //         })
+        //     };
 
         default:
             return state;

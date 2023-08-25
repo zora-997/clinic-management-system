@@ -17,9 +17,9 @@ const ReportExpense = ({ setShowDoctor, setShowExpense, showExpense, expenseRepo
                     <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                         <tr>
                             <th scope="col" className="px-6 py-3">Expense Name</th>
-                            <th scope="col" className="px-6 py-3">Expense Amount</th>
-                            <th scope="col" className="px-6 py-3">Expense Date</th>
-                            <th scope="col" className="px-6 py-3">Expense Note</th>
+                            <th scope="col" className="px-6 py-3 ">Expense Amount</th>
+                            <th scope="col" className="px-6 py-3 ">Expense Date</th>
+                            <th scope="col" className="px-6 py-3 ">Expense Note</th>
 
                         </tr>
                     </thead>
@@ -30,18 +30,20 @@ const ReportExpense = ({ setShowDoctor, setShowExpense, showExpense, expenseRepo
                                     className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
                                     <th scope='row' className="px-5 py-4">{expense.expense_type_name}</th>
                                     <td className="px-6 py-4">{expense.expense_amount}</td>
-                                    <th scope='row' className="px-5 py-4">{expense.expense_date}</th>
+                                    <td scope='row' className="px-5 py-4">{expense.expense_date}</td>
                                     <td className="px-6 py-4">{expense.expense_note}</td>
                                 </tr>
 
                             )
                         })}
 
+                        <tr className="border w-full  cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
+                            <th scope='row' className="px-5 py-4 ">Total Expense</th>
+                            <td className=""></td>
+                            <td className=""></td>
+                            <th className="px-6 py-4 ">{expenseReportList.total_expense}</th>
+                        </tr>
                     </tbody>
-                    <tr className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
-                        <th scope='row' className="px-5 py-4">Total Expense</th>
-                        <td className="px-6 py-4">{expenseReportList.total_expense}</td>
-                    </tr>
                 </table>
             </div>
         </div>

@@ -12,7 +12,7 @@ const ExpenseType = ({ setShowSildBar }) => {
             <Link to="/expensetype" className=" flex justify-between items-center">
                 <div className="flex items-center gap-3">
                     <TbReportMoney size={22} className="2xl:scale-125" />
-                    <span className="2xl:text-xl">ExpenseType</span>
+                    <span className="2xl:text-xl">Expense Type</span>
                 </div>
 
                 <MdArrowRight className={` ${location.pathname === '/doctor' && 'text-white'}  text-white  group-hover:text-white rounded-xl`} size={20} />

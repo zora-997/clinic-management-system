@@ -29,6 +29,7 @@ import AllSickDetail from "./components/sickDetail/allSickDetail/AllSickDetail";
 import SickDetail from "./components/sickDetail/SickDetail";
 
 import Header from "./components/layout/header/Header";
+import { User } from "./components/users/User";
 
 
 
@@ -54,51 +55,35 @@ const MainRoutes = ({ showSildBar, setShowSildBar }) => {
                     <Route exact path="main" element={<Dashbord />} />
 
                     {/* Doctor */}
-                    <Route exact path="/" element={<AllDoctor />} >
-                        <Route exact path="doctor" element={<Doctors />} />
-                    </Route>
-
-
+                    <Route exact path="doctor" element={<Doctors />} />
 
                     {/* sick */}
-                    <Route exact path="/" element={<AllSick />} >
-                        <Route exact path="patient" element={<Sick />} />
-                    </Route>
+                    <Route exact path="patient" element={<Sick />} />
 
                     {/* surgery route */}
-                    <Route exact path="/" element={<AllSurgeryType />} >
-                        <Route exact path="workingtype" element={<SurgeryType />} />
-                    </Route>
+                    <Route exact path="workingtype" element={<SurgeryType />} />
 
                     {/* detail route */}
-                    <Route exact path="/" element={<AllDetail />} >
-                        <Route exact path="detail" element={<Detail />} />
-                    </Route>
+                    <Route exact path="detail" element={<Detail />} />
 
                     {/* Expense type */}
-                    <Route exact path="/" element={<AllExpenseType />} >
-                        <Route exact path="expensetype" element={<ExpenseType />} />
-                    </Route>
+                    <Route exact path="expensetype" element={<ExpenseType />} />
 
                     {/* Expense  */}
-                    <Route exact path="/" element={<AllExpense />} >
-                        <Route exact path="expense" element={<Expense />} />
-                    </Route>
+                    <Route exact path="expense" element={<Expense />} />
 
                     {/* Report  */}
-                    <Route exact path="/" element={<AllReport />} >
-                        <Route exact path="report" element={<Report />} />
-                    </Route>
+                    <Route exact path="report" element={<Report />} />
 
                     {/* appointment  */}
-                    <Route exact path="/" element={<AllApointment />} >
-                        <Route exact path="appointment" element={<Appointment />} />
-                    </Route>
+                    <Route exact path="appointment" element={<Appointment />} />
 
                     {/* sick detal  */}
-                    <Route exact path="/" element={<AllSickDetail />} >
-                        <Route exact path="sickdetail" element={<SickDetail />} />
-                    </Route>
+                    <Route exact path="sickdetail" element={<SickDetail />} />
+
+                    {/* user  */}
+                    <Route exact path="user" element={<User />} />
+
 
 
                     {/** aw index bo awa katek to  login krdwa la naw dashbordy ballam pathy dashbordaka asritawa aw index ai garenetawa bo dashbord wa dway awa path dashbord daney u bangi componenty dashbord akay */}

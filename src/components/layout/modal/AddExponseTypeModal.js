@@ -19,8 +19,8 @@ const ExponseTypeModal = ({ isAddVisible, onClose }) => {
         <div className=' fixed z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
             <div className='w-[400px] flex flex-col'>
                 <button className='text-white text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
-                <form onSubmit={(e) => { createExpenseTypeHandler(e); onClose(false); }} className=' bg-white rounded-md  grid p-5'>
-                    <div className=' bg-white rounded-md p-5 grid '>
+                <form onSubmit={(e) => { createExpenseTypeHandler(e); onClose(false); }} className=' bg-white rounded-md  grid '>
+                    <div className=' bg-white rounded-md p-3 grid '>
                         <label className='text-gray-500'>Name</label>
                         <input type="text" autoComplete="off"
                             onChange={(val) => set_expense_type_name(val.target.value)}
@@ -31,7 +31,7 @@ const ExponseTypeModal = ({ isAddVisible, onClose }) => {
 
                         <button type='submit'
                             className='border rounded-md bg-cyan-500 hover:bg-cyan-400 text-white p-2 my-2'>
-                            create
+                            Create Expense Type
                         </button>
 
 

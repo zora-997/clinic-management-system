@@ -12,14 +12,15 @@ import ReportAll from './ReportAll';
 import ReportWorkingType from './ReportWorkingType';
 
 
-const ReportMain = ({ from, to, doctor_id, expense_type_id, working_type_id }) => {
+const ReportMain = ({ from, to, doctor_id, expense_type_id, working_type_id, setErorFrom, setErorTo, setErorDoctorid }) => {
     const [showDoctor, setShowDoctor] = useState(false);
     const [showExpense, setShowExpense] = useState(false);
     const [showMain, setShowMain] = useState(false);
     const [showWorkingType, setShowWorkingType] = useState(false);
 
 
-    const { mainReportList, doctorlegerList, expenseReportList, fetchExpensereportReport, fetchDoctorlegerReport, fetchReport, fetchWorkingTypeReportReport, workingTypeReportList } = useContext(GlobalContext);
+    const { mainReportList, doctorlegerList, expenseReportList, fetchExpensereportReport, fetchDoctorlegerReport,
+        fetchReport, fetchWorkingTypeReportReport, workingTypeReportList } = useContext(GlobalContext);
 
 
     // doctor report
@@ -31,8 +32,15 @@ const ReportMain = ({ from, to, doctor_id, expense_type_id, working_type_id }) =
             setShowExpense(false)
             setShowMain(false)
             setShowWorkingType(false)
-        } else {
-            console.log("from " + from + " to " + to + " doctrid " + doctor_id);
+        } else if (!from) {
+            setErorFrom(true)
+        }
+
+        else if (!to) {
+            setErorTo(true)
+        }
+        else if (!doctor_id) {
+            setErorDoctorid(true)
         }
     }
 
@@ -45,8 +53,12 @@ const ReportMain = ({ from, to, doctor_id, expense_type_id, working_type_id }) =
             setShowDoctor(false)
             setShowMain(false)
             setShowWorkingType(false)
-        } else {
-            console.log("from " + from + " to " + to + " expense_type_id  " + expense_type_id);
+        } else if (!from) {
+            setErorFrom(true)
+        }
+
+        else if (!to) {
+            setErorTo(true)
         }
     }
 
@@ -59,8 +71,12 @@ const ReportMain = ({ from, to, doctor_id, expense_type_id, working_type_id }) =
             setShowExpense(false)
             setShowDoctor(false)
             setShowWorkingType(false)
-        } else {
-            console.log("from " + from + " to " + to);
+        } else if (!from) {
+            setErorFrom(true)
+        }
+
+        else if (!to) {
+            setErorTo(true)
         }
     }
     // working type report
@@ -72,15 +88,19 @@ const ReportMain = ({ from, to, doctor_id, expense_type_id, working_type_id }) =
             setShowMain(false)
             setShowExpense(false)
             setShowDoctor(false)
-        } else {
-            console.log("from " + from + " to " + to);
+        } else if (!from) {
+            setErorFrom(true)
+        }
+
+        else if (!to) {
+            setErorTo(true)
         }
     }
 
 
     return (
 
-        <div className='mt-7'>
+        <div className='mt-4 '>
             <div className='grid gap-y-5 gap-x-5 place-items-center sm:grid-cols-2 md:grid-cols-4  px-5
               bg-white rounded-md py-8'>
 

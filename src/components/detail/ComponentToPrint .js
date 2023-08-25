@@ -35,7 +35,7 @@ const ComponentToPrint = React.forwardRef(({ props }, ref) => {
                             <div key={sick.sick_id} className=''>
                                 {sick.sick_id === location.state &&
                                     <div className=''>
-                                        <i className='text-2xl  font-serif p-2 px-2  w-full rounded-full'>Dr.{dn[did.indexOf(`${sick.doctor_id}`)]}</i>
+                                        <i className='text-2xl  font-serif p-2 px-2  w-full rounded-full'>{dn[did.indexOf(`${sick.doctor_id}`)]}</i>
                                     </div>
                                 }
                             </div>

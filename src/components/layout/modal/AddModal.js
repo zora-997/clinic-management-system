@@ -32,7 +32,8 @@ const AddModal = ({ isAddVisible, onClose }) => {
                                 autoComplete="off"
                                 placeholder='Dr.name'
                                 required
-                                className=" block 2xl:placeholder:text-2xl 2xl:text-2xl w-full focus:ring-1 focus:outline-none rounded border mb-3 2xl:mb-0 mt-2 p-2 2xl:p-4" onChange={(val) => setDoctor_name(val.target.value)} />
+                                className=" block 2xl:placeholder:text-2xl 2xl:text-2xl w-full focus:ring-1 focus:outline-none rounded border mb-3 2xl:mb-0 mt-2 p-2 2xl:p-4"
+                                onChange={(val) => setDoctor_name(val.target.value)} />
 
                         </div>
                         <div className='w-1/3'>
@@ -43,7 +44,8 @@ const AddModal = ({ isAddVisible, onClose }) => {
                                 autoComplete="off"
                                 placeholder='0.00'
                                 required
-                                className="block 2xl:placeholder:text-2xl 2xl:text-2xl w-full focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 2xl:mb-0 p-2 2xl:p-4" onChange={(val) => setDoctor_percentage(val.target.value)} />
+                                className="block 2xl:placeholder:text-2xl 2xl:text-2xl w-full focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 2xl:mb-0 p-2 2xl:p-4"
+                                onChange={(val) => setDoctor_percentage(val.target.value)} />
                         </div>
 
                     </div>

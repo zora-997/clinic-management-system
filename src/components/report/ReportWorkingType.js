@@ -15,8 +15,8 @@ const ReportWorkingType = ({ showWorkingType, workingTypeReportList }) => {
                     <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                         <tr>
                             <th scope="col" className="px-6 py-3">Name</th>
-                            <th scope="col" className="px-6 py-3">qty</th>
-                            <th scope="col" className="px-6 py-3">price</th>
+                            <th scope="col" className="px-6 py-3">Total Work</th>
+                            <th scope="col" className="px-6 py-3">Total Price</th>
 
                         </tr>
                     </thead>

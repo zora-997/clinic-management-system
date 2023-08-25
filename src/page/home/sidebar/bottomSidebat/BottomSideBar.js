@@ -10,12 +10,14 @@ import ExpenseList from "./ExpenseList";
 import ReportList from "./ReportList";
 import AppointmentList from "./AppointmentList";
 import SickDetailMenu from "./SickDetailMenu";
+import UsersList from "./UsersList";
 
 
 const BottomSideBar = ({ setShowSildBar }) => {
     const location = useLocation()
     const user = localStorage.getItem("data")
     let role = user && JSON.parse(user).role;
+    console.log(role);
 
     return (
 
@@ -30,14 +32,15 @@ const BottomSideBar = ({ setShowSildBar }) => {
                 </Link>
             </li>
 
-            <AppointmentList setShowSildBar={setShowSildBar} />
+            {(role === "reception" || role === "admin") && <AppointmentList setShowSildBar={setShowSildBar} />}
             {role === "doctor" && <SickDetailMenu setShowSildBar={setShowSildBar} />}
-            <DoctorList setShowSildBar={setShowSildBar} />
-            <SickList setShowSildBar={setShowSildBar} />
-            <SurgeryTypeList setShowSildBar={setShowSildBar} />
-            <ExpenseType setShowSildBar={setShowSildBar} />
-            <ExpenseList setShowSildBar={setShowSildBar} />
-            <ReportList setShowSildBar={setShowSildBar} />
+            {role === "admin" && <DoctorList setShowSildBar={setShowSildBar} />}
+            {(role === "reception" || role === "admin") && <SickList setShowSildBar={setShowSildBar} />}
+            {role === "admin" && <SurgeryTypeList setShowSildBar={setShowSildBar} />}
+            {(role === "reception" || role === "admin") && <ExpenseType setShowSildBar={setShowSildBar} />}
+            {(role === "reception" || role === "admin") && <ExpenseList setShowSildBar={setShowSildBar} />}
+            {role === "admin" && <ReportList setShowSildBar={setShowSildBar} />}
+            {role === "admin" && <UsersList setShowSildBar={setShowSildBar} />}
         </ul>
 
 

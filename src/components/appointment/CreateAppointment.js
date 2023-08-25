@@ -20,6 +20,7 @@ const CreateAppointment = ({ ddate }) => {
     const [appointment_date, setAppointmentDate] = useState("");
     const [appointment_time, setAppointmentTime] = useState("");
     const [appointment_note, setAppointmentNot] = useState("");
+    const [showError, set_showError] = useState(false);
 
 
 
@@ -27,13 +28,20 @@ const CreateAppointment = ({ ddate }) => {
     // add appointment.
     const addAppointmentHandler = e => {
         e.preventDefault();
-        addAppointment({
-            sick_id,
-            doctor_id,
-            appointment_date,
-            appointment_time,
-            appointment_note
-        }, ddate)
+
+        if (sick_id == 0) {
+            set_showError(true)
+            return
+
+        } else {
+            addAppointment({
+                sick_id,
+                doctor_id,
+                appointment_date,
+                appointment_time,
+                appointment_note
+            }, ddate)
+        }
 
         setSick_name("");
         setDoctor_name("");
@@ -45,8 +53,11 @@ const CreateAppointment = ({ ddate }) => {
 
 
     }
-    const onSearch = (search, id) => {
-        setSick_name(search)
+    const onSearch = (search, id, sick_id) => {
+        if (search && sick_id) {
+            console.log(sick_id);
+            setSick_name(search)
+        }
         doctorList.map((item) => {
             if (item.doctor_id === id) {
                 setDoctor_name(item.doctor_name)
@@ -55,7 +66,7 @@ const CreateAppointment = ({ ddate }) => {
     }
     return (
 
-        < div className='w-full  ' >
+        < div className='w-full' >
             <form onSubmit={(e) => addAppointmentHandler(e)} className=' bg-white rounded-md  grid p-5'>
                 <div className='md:flex grid sm:grid-cols-2 gap-x-3 gap-y-3 '>
                     {/** sick name start */}
@@ -66,7 +77,8 @@ const CreateAppointment = ({ ddate }) => {
                             <input type="text" required placeholder='Ptient search' value={sick_name || ''}
                                 onChange={(e) => setSick_name(e.target.value)}
                                 autoComplete="off"
-                                className={`focus:ring-1 focus:outline-none border pl-2 p-2 w-full rounded`} />
+                                onFocus={() => set_showError(false)}
+                                className={`focus:ring-1 focus:outline-none border pl-2 p-2 w-full rounded ${showError && ' border border-red-400 bg-red-50'}`} />
 
                             {sickList && sickList.filter(itme => {
                                 const search = sick_name.toLowerCase();
@@ -77,7 +89,7 @@ const CreateAppointment = ({ ddate }) => {
                                 .slice(0, 3)
                                 .map((itme) => {
                                     return <ul key={itme.sick_id} className='cursor-pointer bg-white hover:bg-sky-500  hover:text-white'
-                                        onClick={() => { onSearch(itme.sick_name, itme.doctor_id); setSick_id(itme.sick_id); setDoctor_id(itme.doctor_id) }} >
+                                        onClick={() => { onSearch(itme.sick_name, itme.doctor_id, itme.sick_id); setSick_id(itme.sick_id); setDoctor_id(itme.doctor_id) }} >
                                         <li className='border-r border-l pl-2'>{itme.sick_name}</li>
                                     </ul>
                                 })}

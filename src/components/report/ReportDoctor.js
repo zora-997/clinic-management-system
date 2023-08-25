@@ -14,8 +14,8 @@ const ReportDoctor = ({ showDoctor, doctorlegerList }) => {
                 <table className="whitespace-nowrap w-full bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 ">
                     <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                         <tr>
-                            <th scope="col" className="px-6 py-3">Number</th>
-                            <th scope="col" className="px-6 py-3">Name</th>
+                            <th scope="col" className="px-6 py-3">Id</th>
+                            <th scope="col" className="px-6 py-3">Patient Name</th>
                             <th scope="col" className="px-6 py-3">Phone</th>
                             <th scope="col" className="px-6 py-3">Wrking type</th>
                             <th scope="col" className="px-6 py-3">Price</th>
@@ -29,7 +29,7 @@ const ReportDoctor = ({ showDoctor, doctorlegerList }) => {
                                     key={index}
                                     className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
                                     <th scope='row' className="px-5 py-4">{index + 1}</th>
-                                    <th scope='row' className="px-5 py-4">{doctor.sick_name}</th>
+                                    <td scope='row' className="px-5 py-4">{doctor.sick_name}</td>
                                     <td className="px-6 py-4">{doctor.sick_phone}</td>
                                     <td className="px-6 py-4">{doctor.surgery_type_name}</td>
                                     <td className="px-6 py-4">{doctor.surgery_type_price}</td>
@@ -39,9 +39,13 @@ const ReportDoctor = ({ showDoctor, doctorlegerList }) => {
 
                             )
                         })}
-                        <tr className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
-                            <th scope='row' className="px-5 py-4">Total Income</th>
-                            <td className="px-6 py-4">{doctorlegerList.price}</td>
+                        <tr className="border w-full  cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
+                            <th scope='row' className="px-5 py-4 ">Total Income</th>
+                            <td className=""></td>
+                            <td className=""></td>
+                            <td className=""></td>
+                            <td className=""></td>
+                            <th className="px-6 py-4 ">{doctorlegerList.price}</th>
                         </tr>
 
                     </tbody>

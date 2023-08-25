@@ -28,17 +28,14 @@ const AddSurgeryModal = ({ isAddVisible, onClose }) => {
                     <div className='flex justify-between mb-3'>
                         <div className='w-3/4 mr-5'>
                             <label className='text-gray-500'>Name</label>
-                            <input type='text' name='surgery_type_name' autoComplete="off" placeholder='Surgery Name' required className="w-full focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 p-2" onChange={(e) => setSurgery_type_name(e.target.value)} />
+                            <input type='text' name='surgery_type_name' autoComplete="off" placeholder='Working Type' required className="w-full focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 p-2" onChange={(e) => setSurgery_type_name(e.target.value)} />
                         </div>
                         <div className='w-1/3'>
                             <label className='text-gray-500'>Price</label>
                             <input type='number' name='surgery_type_price' autoComplete="off" placeholder='0.00' required className="w-full focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 p-2" onChange={(e) => setSurgery_type_price(e.target.value)} />
                         </div>
                     </div>
-
-
-
-                    <button type='submit' className='border rounded-md bg-cyan-500 hover:bg-cyan-400 text-white p-2 my-3'>Create Surgery Type</button>
+                    <button type='submit' className='border rounded-md bg-cyan-500 hover:bg-cyan-400 text-white p-2 my-3'>Create Working Type</button>
                 </form>
             </div>
         </div>

@@ -16,7 +16,7 @@ const ExponseTypeModal = ({ isVisible, onClose, expense_type_name, setNewName, e
         <div className=' fixed z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
             <div className='w-[400px] flex flex-col'>
                 <button className='text-white text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
-                <div className=' bg-white rounded-md p-5 grid '>
+                <div className=' bg-white rounded-md p-3 grid '>
                     <label className='text-gray-500'>Name</label>
                     <input type="text" autoComplete="off"
                         onChange={(val) => setNewName(val.target.value)} value={expense_type_name} placeholder='new expense type'

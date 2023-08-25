@@ -1,14 +1,15 @@
 import React, { useContext } from 'react'
 import GlobalContext from '../../contexts/createContext/context';
 
-const ExpenseModal = ({ isVisible, onClose, expense_type_name, expense_id, expense_type_id, set_new_expense_type_id, expense_amount, set_new_expense_amount, admin_id, expense_note, set_new_expense_note }) => {
+const ExpenseModal = ({ isVisible, onClose, expense_type_name, set_expense_type_name, expense_id, expense_type_id, set_new_expense_type_id, expense_amount, set_new_expense_amount, admin_id, expense_note, set_new_expense_note }) => {
     const { updateExpense, deleteExpense, expenseTypeList } = useContext(GlobalContext);
 
-
+    console.log(expense_type_name);
     // update exponse type.
     const updateExpenseHandler = (e) => {
         e.preventDefault();
         updateExpense({ expense_id, expense_type_id, expense_amount, admin_id, expense_note });
+        set_expense_type_name("")
     }
 
     if (!isVisible) return null;

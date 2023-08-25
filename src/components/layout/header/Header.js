@@ -23,7 +23,7 @@ const Header = ({ showSildBar, setShowSildBar }) => {
 
 
                 {/** search input */}
-                {location.pathname !== "/detail" && location.pathname !== "/main" &&
+                {location.pathname !== "/detail" && location.pathname !== "/main" && location.pathname !== "/report" &&
                     < div className='search flex items-center rounded-full   bg-white/60 hover:bg-white p-1.5  w-[410px] 2xl:w-[500px] 2xl:h-12 shadow-sm '>
                         <AiOutlineSearch size={22} className="text-sky-500" />
                         <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search...' className=' bg-transparent w-full focus:outline-none pl-2' />

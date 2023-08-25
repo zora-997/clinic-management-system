@@ -50,7 +50,7 @@ const Expense = () => {
                             return <tr key={index}
                                 onClick={() => {
                                     setShow(true);
-                                    set_expense_type_name(en[eid.indexOf(`${expense.expense_type_id}`)]);
+                                    set_expense_type_name(expense.expense_type_name);
                                     set_new_expense_type_id(expense.expense_type_id);
                                     set_expense_id(expense.expense_id);
                                     set_new_expense_amount(expense.expense_amount);

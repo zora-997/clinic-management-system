@@ -3,27 +3,13 @@ import reducer from "./reducer/reducer";
 import GlobalContext from "../contexts/createContext/context";
 import api from "../../api/api";
 import {
-    ADD_DOCTOR,
     DELETE_DOCTOR,
-    UPDATE_DOCTOR,
-    ADD_SURGERY_TYPE,
     DELETE_SURGERY_TYPE,
-    UPDATE_SURGERY_TYPE,
-    ADD_SICK,
-    UPDATE_SICK,
     DELETE_SICK,
-    SET_TYPE_OF_WORK,
     DELETE_EXPENSE_TYPE,
-    UPDATE_EXPENSE_TYPE,
-    ADD_EXPENSE_TYPE,
-    ADD_EXPENSE,
     DELETE_EXPENSE,
-    UPDATE_EXPENSE,
-    ADD_APPOINTMENT,
-    UPDATE_APPOINTMENT,
     DELETE_APPOINTMENT,
-    CHANGE_STATE_APPOINTMENT
-
+    DELETE_USER,
 } from "../contexts/actions/action";
 
 
@@ -42,6 +28,7 @@ const ProviderState = ({ children }) => {
         doctorlegerList: [],
         expenseReportList: [],
         workingTypeReportList: [],
+        userList: [],
     }
 
     const [query, setQuery] = useState("")
@@ -60,6 +47,7 @@ const ProviderState = ({ children }) => {
         fetchSickSurgery();
         fetchExpenseType();
         fetchExpense();
+        fetchUser();
         fetchAppointment(ddate);
 
 
@@ -69,6 +57,11 @@ const ProviderState = ({ children }) => {
     // doctor search
     const searchDoctor = (data) => {
         return data.filter((item) => query.toLowerCase() === '' ? item : item.doctor_name.toLowerCase().includes(query))
+    }
+
+    // user search
+    const searchUser = (data) => {
+        return data.filter((item) => query.toLowerCase() === '' ? item : item.admin_name.toLowerCase().includes(query))
     }
 
     // sick search
@@ -106,7 +99,6 @@ const ProviderState = ({ children }) => {
     }
     // fetchDashbordAppointment
     const fetchDashbordAppointment = async (ddate) => {
-
         const res = await api.post('appointment/read.php', { ddate });
         dispatch({
             type: 'GETAPPOINTMENT',
@@ -117,20 +109,13 @@ const ProviderState = ({ children }) => {
     // add appointment
     const addAppointment = async (appointment, ddate) => {
         // aw ddate bo awaya la katy druskrdni appointment yaksar datakaw bo feach bka bikata naw table appointment
-
-        const res = await api.post('appointment/create.php', appointment);
+        await api.post('appointment/create.php', appointment);
         fetchAppointment(ddate)
-
-        dispatch({
-            type: ADD_APPOINTMENT,
-            payload: appointment
-        })
     }
 
     // delete Appointment
     const deleteAppointment = async (appointment_id) => {
-        const res = await api.post('appointment/delete.php', { "appointment_id": appointment_id });
-
+        await api.post('appointment/delete.php', { "appointment_id": appointment_id });
         dispatch({
             type: DELETE_APPOINTMENT,
             payload: appointment_id
@@ -139,40 +124,23 @@ const ProviderState = ({ children }) => {
 
     // update Appointment
     const updateAppointment = async (appointment, ddate) => {
-        console.log(appointment);
-        const res = await api.post('appointment/update.php', appointment);
-        console.log(res);
+        await api.post('appointment/update.php', appointment);
         fetchAppointment(ddate);
-        dispatch({
-            type: UPDATE_APPOINTMENT,
-            payload: appointment.appointment_id
-        })
     }
 
     // change state Appointment
     const ChangeStateAppointment = async (changeState, ddate) => {
         await api.post('appointment/changestate.php', changeState);
-
-        dispatch({
-            type: CHANGE_STATE_APPOINTMENT,
-            payload: changeState.appointment_id
-        })
         fetchAppointment(ddate);
-
-
     }
 
-    let re;
+
     // inrow Appointment
     const inrowAppointment = async (doctor_id) => {
         const res = await api.post('appointment/inrow.php', { doctor_id });
-        console.log(res.data.data);
         return res.data.data
 
     }
-
-
-
 
     //   feach admin
     const fetchAdmin = async (admin) => {
@@ -191,8 +159,6 @@ const ProviderState = ({ children }) => {
             type: 'GETREPORT',
             payload: res.data
         })
-        console.log(res.data);
-
     }
 
     //  feach main report
@@ -202,8 +168,6 @@ const ProviderState = ({ children }) => {
             type: 'GETDOCTORREPORT',
             payload: res.data
         })
-        console.log(res.data);
-        console.log(state.fetchDoctorlegerReport);
     }
 
     //  feach expense report
@@ -213,7 +177,6 @@ const ProviderState = ({ children }) => {
             type: 'GETEXPENSEREPORT',
             payload: res.data
         })
-        console.log(res.data);
 
     }
 
@@ -225,7 +188,6 @@ const ProviderState = ({ children }) => {
             payload: res.data
         })
         console.log(res.data);
-
     }
 
 
@@ -255,20 +217,12 @@ const ProviderState = ({ children }) => {
     const updateExpenseType = async (expensetype) => {
         await api.post('expense_type/update.php', expensetype);
         fetchExpenseType();
-        dispatch({
-            type: UPDATE_EXPENSE_TYPE,
-            payload: expensetype.expense_type_id
-        })
     }
 
     // add expense type
     const addExpenseType = async (expenseType) => {
         await api.post('expense_type/create.php', expenseType);
         fetchExpenseType();
-        dispatch({
-            type: ADD_EXPENSE_TYPE,
-            payload: expenseType
-        })
     }
     //************************************* expense ******************* */
 
@@ -285,10 +239,6 @@ const ProviderState = ({ children }) => {
     const addExpense = async (expense) => {
         await api.post('expense/create.php', expense);
         fetchExpense();
-        dispatch({
-            type: ADD_EXPENSE,
-            payload: expense
-        })
     }
 
     // delete ExpenseType
@@ -304,25 +254,23 @@ const ProviderState = ({ children }) => {
     const updateExpense = async (expense) => {
         await api.post('expense/update.php', expense);
         fetchExpense();
-        dispatch({
-            type: UPDATE_EXPENSE,
-            payload: expense.expense_id
-        })
     }
-
-
-
-
-
-
 
 
     // all doctor
     const fetchDoctors = async () => {
         const res = await api.get('doctor/read.php');
-
         dispatch({
             type: 'GET',
+            payload: res.data.data
+        })
+    }
+
+    // all user
+    const fetchUser = async () => {
+        const res = await api.get('admin/read.php');
+        dispatch({
+            type: 'GETUSER',
             payload: res.data.data
         })
     }
@@ -340,7 +288,6 @@ const ProviderState = ({ children }) => {
     // all sick
     const fetchSick = async () => {
         const { data } = await api.get('sick/read.php');
-
         dispatch({
             type: 'GETSICK',
             payload: data.data
@@ -350,35 +297,62 @@ const ProviderState = ({ children }) => {
     // all sick surgery
     const fetchSickSurgery = async () => {
         const { data } = await api.get('sick_surgery/read.php');
-
         dispatch({
             type: 'GETSICKSURGERY',
             payload: data.data
         })
     }
 
-    //***************************************************************************************** */
+    //**************** users **************** */
+
+    // add user
+    const addUser = async (user) => {
+        await api.post('admin/create.php', user);
+        fetchUser();
+        // dispatch({
+        //     type: ADD_USER,
+        //     payload: user
+        // })
+    }
+
+    // update user
+    const updateUser = async (updateUser) => {
+        await api.post('admin/update.php', updateUser);
+
+        fetchUser();
+        // dispatch({
+        //     type: UPDATE_USER,
+        //     payload: updateUser.admin_id
+        // })
+    }
+
+
+    // delete user
+    const deleteUser = async (admin_id) => {
+        console.log(admin_id);
+        await api.post('admin/delete.php', { "admin_id": admin_id });
+        dispatch({
+            type: DELETE_USER,
+            payload: admin_id
+        })
+
+    }
+
+
+
+    //*********************************************** doctor ****************************************** */
 
     // add doctor
     const addDoctor = async (doctor) => {
         await api.post('doctor/create.php', doctor);
         fetchDoctors();
-        dispatch({
-            type: ADD_DOCTOR,
-            payload: doctor
-        })
     }
 
 
     // update doctor
     const updateDoctor = async (update_doctor) => {
-        const res = await api.post('doctor/update.php', update_doctor);
-        console.log(res.data)
+        await api.post('doctor/update.php', update_doctor);
         fetchDoctors();
-        dispatch({
-            type: UPDATE_DOCTOR,
-            payload: update_doctor.doctor_id
-        })
     }
 
     // delete Doctoe
@@ -400,10 +374,6 @@ const ProviderState = ({ children }) => {
     const addSurgeryType = async (surgery) => {
         await api.post('surgery_type/create.php', surgery);
         fetchSurgeryType();
-        dispatch({
-            type: ADD_SURGERY_TYPE,
-            payload: surgery
-        })
     }
 
     // delete surgery
@@ -419,10 +389,6 @@ const ProviderState = ({ children }) => {
     const updateSurgery = async (surgery) => {
         await api.post('surgery_type/update.php', surgery);
         fetchSurgeryType();
-        dispatch({
-            type: UPDATE_SURGERY_TYPE,
-            payload: surgery.surgery_type_id
-        })
     }
 
 
@@ -431,24 +397,14 @@ const ProviderState = ({ children }) => {
 
     // add doctor
     const addSick = async (sick) => {
-        const res = await api.post('sick/create.php', sick);
+        await api.post('sick/create.php', sick);
         fetchSick();
-        console.log(res.data);
-        dispatch({
-            type: ADD_SICK,
-            payload: sick
-        })
     }
 
     // update Sick 
     const updateSick = async (sick) => {
-        const res = await api.post('sick/update.php', sick);
-        console.log(res.data);
+        await api.post('sick/update.php', sick);
         fetchSick();
-        dispatch({
-            type: UPDATE_SICK,
-            payload: sick,
-        })
     }
 
     // delete sick
@@ -464,10 +420,6 @@ const ProviderState = ({ children }) => {
     const addSickSurgery = async (formData) => {
         // ba kar hatwa la <DetailBodyInput />
         await api.post('sick_surgery/createe.php', formData)
-        dispatch({
-            type: SET_TYPE_OF_WORK,
-            payload: formData
-        })
         fetchSickSurgery();
         fetchSick();
     }
@@ -476,8 +428,7 @@ const ProviderState = ({ children }) => {
     const deleteSurgeryImage = async (sick_surgery_invoice_image_id) => {
         // ba kar hatwa la <DetailBodyInput />
         console.log(sick_surgery_invoice_image_id);
-        const res = await api.post('sick_surgery/delete_image.php', { "sick_surgery_invoice_image_id": sick_surgery_invoice_image_id })
-        console.log(res);
+        await api.post('sick_surgery/delete_image.php', { "sick_surgery_invoice_image_id": sick_surgery_invoice_image_id })
         fetchSickSurgery();
         fetchSick();
     }
@@ -485,9 +436,7 @@ const ProviderState = ({ children }) => {
 
     const deletSickSurgery = async (sick_surgery_id) => {
         // ba kar hatwa la <DetailBodyInput />
-        console.log(sick_surgery_id);
         await api.post('sick_surgery/delete.php', { "sick_surgery_id": sick_surgery_id })
-
         fetchSickSurgery();
         fetchSick();
     }
@@ -502,15 +451,9 @@ const ProviderState = ({ children }) => {
     // ama update price u description aka la commponenty WorkingTypeModal
     const UpdateSickSurgeryInvoice = async (sick_surgery_invoice) => {
         await api.post('sick_surgery_invoice/update.php', sick_surgery_invoice);
-
         fetchSickSurgery();
         fetchSick();
     }
-
-
-
-
-
 
     return (
         <GlobalContext.Provider value={{
@@ -573,7 +516,13 @@ const ProviderState = ({ children }) => {
             expenseReportList: state.expenseReportList,
 
             fetchWorkingTypeReportReport,
-            workingTypeReportList: state.workingTypeReportList
+            workingTypeReportList: state.workingTypeReportList,
+
+            addUser,
+            updateUser,
+            deleteUser,
+            searchUser,
+            userList: state.userList
 
 
         }}>

@@ -50,8 +50,7 @@ const SickModal = ({
                     <div className='flex'>
                         <div className='w-3/4 mr-4'>
                             <label className='text-gray-500' >Doctor</label>
-                            <select required onChange={(e) => setDoctor_id(e.target.value)} className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 '>
-                                <option>{doctor_name || ''}</option>
+                            <select required onChange={(e) => setDoctor_id(e.target.value)} value={doctor_id} className='w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 '>
                                 {doctorList.map((doctor) => {
                                     return <option key={doctor.doctor_id} value={`${doctor.doctor_id}`}>{doctor.doctor_name}</option>
                                 })}

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import GlobalContext from '../contexts/createContext/context';
 
-const ReportInput = ({ from, to, setFrom, setTo, setWorkingType_id, setDoctor_id, expense_type_id, setExpenseType_id }) => {
+const ReportInput = ({ from, to, setFrom, setTo, erorFrom, erorTo, setWorkingType_id, setDoctor_id, doctor_id, erordoctorid, setExpenseType_id }) => {
 
 
     const { doctorList, expenseTypeList, surgeryType } = useContext(GlobalContext)
@@ -9,14 +9,14 @@ const ReportInput = ({ from, to, setFrom, setTo, setWorkingType_id, setDoctor_id
 
     return (
         <div className=' mt-8 '>
-            <div className='bg-white rounded-md p-5 '>
+            <div className='bg-white rounded-md p-5  '>
                 <form className='flex gap-4'>
 
                     {/* ExpenseType input */}
                     <div className=' w-2/5 '>
                         <label className='text-gray-600 text-base  ' >Doctor</label>
                         <select required onChange={(e) => { setDoctor_id(e.target.value) }}
-                            className='focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 w-full  rounded shadow-sm shadow-black/10 '>
+                            className={`${!doctor_id && !erordoctorid ? 'bg-white' : !doctor_id && ' border-red-300 border-2 bg-red-200'}focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 w-full  rounded shadow-sm shadow-black/10`}>
                             <option value={0}>Select Doctor</option>
                             {doctorList.map((doctor) => {
                                 return <option key={doctor.doctor_id} value={`${doctor.doctor_id}`}>{doctor.doctor_name}</option>
@@ -57,7 +57,7 @@ const ReportInput = ({ from, to, setFrom, setTo, setWorkingType_id, setDoctor_id
                             required
                             onChange={(e) => setFrom(e.target.value)}
                             value={from}
-                            className={`bg-white ${from && 'bg-blue-300/30'} focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 w-full  rounded shadow-sm shadow-black/10`} />
+                            className={`bg-white ${!from && !erorFrom ? 'bg-white' : !from && ' border-red-300 border-2'}  mt-1 focus:outline-none border pl-2 p-1 w-full  rounded shadow-sm shadow-black/10`} />
                     </div>
 
                     {/** to input */}
@@ -69,7 +69,7 @@ const ReportInput = ({ from, to, setFrom, setTo, setWorkingType_id, setDoctor_id
                             required
                             onChange={(e) => setTo(e.target.value)}
                             value={to}
-                            className={`bg-white ${to && 'bg-blue-300/30'} focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 w-full  rounded shadow-sm shadow-black/10`} />
+                            className={`bg-white ${!to && !erorTo ? 'bg-white' : !to && ' border-red-300 border-2'}  mt-1 focus:outline-none border pl-2 p-1 w-full  rounded shadow-sm shadow-black/10`} />
                     </div>
 
                     {/** button search */}
