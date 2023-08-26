@@ -60,8 +60,8 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
                         </div>
                     </div>
 
-                    <div className='flex'>
-                        <div className='w-3/4 mr-5'>
+                    <div className=''>
+                        <div className='w-full mr-5'>
                             <label className='text-gray-500' >Doctor</label>
                             <select required onChange={(e) => { setDoctor_id(e.target.value) }} className='w-full focus:ring-1 focus:outline-none rounded border  p-2 '>
                                 <option></option>
@@ -70,7 +70,7 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
                                 })}
                             </select>
                         </div>
-                        <div className='w-1/3 place-self-end'>
+                        <div className='w-full place-self-end mt-3'>
                             <button type='submit' className='border w-full rounded-md bg-cyan-500 hover:bg-cyan-400 text-white p-2 '>Create Patient</button>
                         </div>
                     </div>
