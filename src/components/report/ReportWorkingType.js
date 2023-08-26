@@ -5,7 +5,14 @@ const ReportWorkingType = ({ showWorkingType, workingTypeReportList }) => {
 
     const [show, setShow] = useState(false);
     const [workingType, setWorkingType] = useState([]);
-
+    const initialValue = 0;
+    const initialValue2 = 0;
+    const price = workingTypeReportList.data && workingTypeReportList.data.map((work) => work.price)
+    const total_price = price && price.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue2);
+    console.log(total_price);
+    const qty = workingTypeReportList.data && workingTypeReportList.data.map((work) => work.qty)
+    const total_work = qty && qty.reduce((accumulator, currentValue) => accumulator + currentValue, initialValue2)
+    console.log();
     if (!showWorkingType) return null;
     return (
         <div className='mt-4'>
@@ -27,7 +34,7 @@ const ReportWorkingType = ({ showWorkingType, workingTypeReportList }) => {
                                 <tr key={index}
                                     onClick={() => { setShow(true); setWorkingType(work.working_type) }}
                                     className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
-                                    <th scope='row' className="px-5 py-4">{work.surgery_type_name}</th>
+                                    <td scope='row' className="px-5 py-4">{work.surgery_type_name}</td>
                                     <td className="px-6 py-4">{work.qty}</td>
                                     <th scope='row' className="px-5 py-4">{work.price}</th>
 
@@ -35,7 +42,17 @@ const ReportWorkingType = ({ showWorkingType, workingTypeReportList }) => {
                             )
                         })}
 
+                        <tr className="border w-full  cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
+                            <th scope='row' className="px-5 py-4 ">Total Price</th>
+                            <td className=""></td>
+                            <th className="px-6 py-4 ">{total_price}</th>
+                        </tr>
+                        <tr className="border w-full  cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
 
+                            <th scope='row' className="px-5 py-4 ">Total Work</th>
+                            <td className=""></td>
+                            <th className="px-6 py-4 ">{total_work}</th>
+                        </tr>
                     </tbody>
 
                 </table>

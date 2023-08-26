@@ -28,7 +28,7 @@ const ReportExpense = ({ setShowDoctor, setShowExpense, showExpense, expenseRepo
                             return (
                                 <tr key={index}
                                     className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
-                                    <th scope='row' className="px-5 py-4">{expense.expense_type_name}</th>
+                                    <td scope='row' className="px-5 py-4">{expense.expense_type_name}</td>
                                     <td className="px-6 py-4">{expense.expense_amount}</td>
                                     <td scope='row' className="px-5 py-4">{expense.expense_date}</td>
                                     <td className="px-6 py-4">{expense.expense_note}</td>

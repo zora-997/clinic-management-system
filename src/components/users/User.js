@@ -26,9 +26,9 @@ export const User = () => {
                 <div className='place-self-start'>
                     <button onClick={() => setAddShow(true)} className={`
                      text-white shadow-sm flex items-center shadow-gray-300 border mb-2 
-                      hover:text-cyan-400 border-cyan-300 h-fit p-1 px-9 rounded-md bg-cyan-500 hover:bg-transparent duration-200`}>Create User</button>
+                      hover:text-cyan-400 border-cyan-300 h-fit 2xl:text-xl p-1 px-9 rounded-md bg-cyan-500 hover:bg-transparent duration-200`}>Create User</button>
                 </div>
-                <table className="whitespace-nowrap w-full bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 ">
+                <table className="whitespace-nowrap w-full bg-white overflow-hidden text-sm 2xl:text-lg shadow-sm rounded-sm text-left text-gray-500 ">
                     <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                         <tr>
                             <th scope="col" className="px-6 py-3">Id</th>

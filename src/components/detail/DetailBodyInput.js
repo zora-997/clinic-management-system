@@ -100,15 +100,15 @@ const DetailBodyInput = () => {
 
             <form onSubmit={onClick} >
 
-                <div className="mt-8 flex justify-between">
-                    <div className='relative w-[30%]'>
+                <div className="mt-8 flex gap-4">
+                    <div className='relative w-full'>
                         <div className='flex flex-col w-full border-b rounded-md  absolute'>
-                            <label className='text-gray-700 mb-2'>Working Type</label>
+                            <label className='text-gray-700 mb-2  2xl:text-xl'>Working Type</label>
                             <input type="text" required name='surgery_type_name' placeholder='Working Type Search' value={surgery_type_name || ''}
                                 onChange={(e) => set_surgery_type_name(e.target.value)}
                                 autoComplete="off"
                                 onFocus={() => set_showError(false)}
-                                className={` ${surgery_type_name ? 'bg-sky-100' : 'bg-slate-50'} ${showError && ' border border-red-400 bg-red-50'}  w-full  text-sm focus:ring-1 focus:ring-sky-500 pl-2 focus:outline-none border border-gray-300 p-2 rounded shadow-sm shadow-black/10 `} />
+                                className={` ${surgery_type_name ? 'bg-sky-100' : 'bg-slate-50'} ${showError && ' border border-red-400 bg-red-50'} 2xl:placeholder:text-lg  w-full  text-lg focus:ring-1 focus:ring-sky-500 pl-2 focus:outline-none border border-gray-300 p-2 2xl:p-3 rounded shadow-sm shadow-black/10 `} />
 
                             {surgeryType && surgeryType.filter(itme => {
                                 const search = surgery_type_name.toLowerCase();
@@ -128,32 +128,32 @@ const DetailBodyInput = () => {
                     </div>
 
                     {/** price input */}
-                    <div className='flex flex-col w-[30%]'>
-                        <label className='text-gray-700 mb-1'>Price</label>
+                    <div className='flex flex-col w-full'>
+                        <label className='text-gray-700 mb-1 2xl:text-xl'>Price</label>
                         {/** value = {surgery_type_price || ''} aw or agar da naney awa alle auncontrolled wata ama sarata null yan undefined boia aw || bo da aney ka te batallish be */}
                         <input type="number" name='surgery_type_price' required placeholder='0.00' value={surgery_type_price || ''}
                             onChange={(e) => set_surgery_type_price(e.target.value)}
-                            className={`focus:ring-1 ${surgery_type_price ? 'bg-sky-100 ' : 'bg-slate-50 '} focus:outline-none border pl-2 p-2 w-full  rounded shadow-sm shadow-black/10`} />
+                            className={`focus:ring-1 ${surgery_type_price ? 'bg-sky-100 ' : 'bg-slate-50 '} 2xl:placeholder:text-lg text-lg focus:outline-none border pl-2 p-2  mt-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10`} />
                     </div>
 
                     {/** button  Add New Work*/}
-                    <div className='flex pt-7 '>
+                    <div className=' pt-7 2xl:text-xl place-self-end'>
                         <button
                             type='submit'
                             onClick={() => { surgery_type_id && set_show(true) }}
-                            className={` hover:text-white shadow-sm flex items-center shadow-gray-300 border text-sky-400 border-sky-300 h-fit p-1.5 px-3 rounded-md hover:bg-sky-300`}>
+                            className={` hover:text-white w-36 2xl:text-lg shadow-sm flex items-center shadow-gray-300 border text-sky-400 border-sky-300 h-fit p-3 px-3 rounded-md hover:bg-sky-300`}>
                             <VscAdd className='mr-1' /> New Work
                         </button>
                     </div>
                 </div>
 
                 {/** description input*/}
-                <div className='flex flex-col w-full mt-2 '>
+                <div className='flex flex-col w-full mt-2 2xl:text-xl'>
                     <label className='text-gray-700 mb-1'>Description</label>
                     <textarea placeholder='Description' cols="50" rows="4"
                         value={sick_surgery_invoice_note}
                         onChange={(e) => set_sick_surgery_invoice_note(e.target.value)}
-                        className={` ${sick_surgery_invoice_note ? 'bg-sky-100' : 'bg-slate-50 '} focus:ring-1 focus:outline-none border p-3 flex-wrap rounded-md shadow-sm shadow-black/10`} >
+                        className={` ${sick_surgery_invoice_note ? 'bg-sky-100' : 'bg-slate-50 '} focus:ring-1 2xl:text-lg focus:outline-none border p-3 2xl:p-3 flex-wrap rounded-md shadow-sm shadow-black/10`} >
                     </textarea>
                 </div>
 
