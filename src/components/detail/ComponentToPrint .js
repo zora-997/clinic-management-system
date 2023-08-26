@@ -110,7 +110,7 @@ const ComponentToPrint = React.forwardRef(({ props }, ref) => {
                                                         <div key={sick.sick_id + index + 3} className='flex flex-col  m-2 '>
                                                             <div
                                                                 className=' -tracking-tight  '>
-                                                                <strong className='text-gray-600'>Surgery Tpye :</strong> <span className='text-base'> {sn[sid.indexOf(`${data.surgery_type_id}`)]}</span>
+                                                                <strong className='text-gray-600'>Working Tpye :</strong> <span className='text-base'> {sn[sid.indexOf(`${data.surgery_type_id}`)]}</span>
                                                                 <br />
                                                                 <span className='text-gray-600'>Description : </span> <span className='text-base'>{data.sick_surgery_invoice_note}</span>
                                                             </div>
