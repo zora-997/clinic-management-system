@@ -1,8 +1,7 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import GlobalContext from '../../contexts/createContext/context';
-import AppointmentModal from '../modal/AppointmentModal';
 
-const CardAppointment = ({ ddate }) => {
+const CardAppointment = () => {
     const { appointmentList } = useContext(GlobalContext);
 
 

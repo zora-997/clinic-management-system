@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import GlobalContext from "../contexts/createContext/context";
 import { AddSickModal } from '../layout/modal/AddSickModal';
@@ -7,6 +7,7 @@ import SickModal from '../layout/modal/SickModal';
 const Sick = () => {
 
     const { sickList, doctorList, searchSick } = useContext(GlobalContext);
+
 
     const history = useNavigate();
 

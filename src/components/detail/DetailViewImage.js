@@ -1,8 +1,5 @@
-import React, { useContext, useState } from 'react'
-import { HiArrowNarrowRight } from 'react-icons/hi'
-import GlobalContext from '../contexts/createContext/context'
-import { useLocation } from 'react-router-dom';
-import ViewImageModal from '../layout/modal/ViewImageModal';
+import React from 'react'
+
 import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 
@@ -33,8 +30,8 @@ const DetailViewImage = ({ isVisible, setIsVisible, id, invoice }) => {
                         <div className=' flex  justify-center w-[800px] items-center bg-white  rounded-md '>
                             {/** amsh bo drusbuni actiony scrollakaw u hidn scroll ka ba karde */}
                             <div id='slider' key={invoice.sick_surgery_id + 1} className='flex overflow-x-scroll scrollbar-hide scroll whitespace-nowrap  scroll-smooth ' >
-                                {invoice.image && invoice.image.map((img, index) => {
-                                    {/* am div xwarawa nabe scrollka durs nabe hamu nwenakan ba statiki yatawa */ }
+                                {invoice.image && invoice.image.map(img => {
+                                    //   {/* am div xwarawa nabe scrollka durs nabe hamu nwenakan ba statiki yatawa */ }
                                     return (
                                         <div key={img.sick_surgery_invoice_image_id + 1} className='flex' >
                                             <div key={img.sick_surgery_invoice_image_id} className='w-[400px]' >

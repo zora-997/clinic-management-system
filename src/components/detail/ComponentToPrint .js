@@ -14,16 +14,14 @@ const ComponentToPrint = React.forwardRef(({ props }, ref) => {
 
 
     // bo dar kdni nawi surgery tpe
-    const sid = surgeryType.map((d) => d.surgery_type_id)
-    const sn = surgeryType.map((d) => d.surgery_type_name)
-
+    const sid = surgeryType.map((d) => d.surgery_type_id);
+    const sn = surgeryType.map((d) => d.surgery_type_name);
     // bo dar kdni nawi doctor
-    const did = doctorList.map((d) => d.doctor_id)
-    const dn = doctorList.map((d) => d.doctor_name)
+    const did = doctorList.map((d) => d.doctor_id);
+    const dn = doctorList.map((d) => d.doctor_name);
+
     return (
         <div ref={ref} className='p-5 onprint' >
-
-
             {/** header print */}
             <div className='relative grid justify-center mt-3 border-b-2  pb-2 '>
                 <div className=' w-fit flex flex-col items-center'>

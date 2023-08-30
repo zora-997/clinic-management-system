@@ -32,8 +32,6 @@ const ProviderState = ({ children }) => {
     }
 
     const [query, setQuery] = useState("")
-    const [sick_id, setDetailSickId] = useState(0)
-
     const [state, dispatch] = useReducer(reducer, initialState)
 
 
@@ -49,9 +47,6 @@ const ProviderState = ({ children }) => {
         fetchExpense();
         fetchUser();
         fetchAppointment(ddate);
-
-
-
     }, [])
 
     // doctor search
@@ -297,10 +292,12 @@ const ProviderState = ({ children }) => {
     // all sick surgery
     const fetchSickSurgery = async () => {
         const { data } = await api.get('sick_surgery/read.php');
+
         dispatch({
             type: 'GETSICKSURGERY',
             payload: data.data
         })
+
     }
 
     //**************** users **************** */
@@ -418,8 +415,10 @@ const ProviderState = ({ children }) => {
 
     // add sick surgery
     const addSickSurgery = async (formData) => {
+
         // ba kar hatwa la <DetailBodyInput />
-        await api.post('sick_surgery/createe.php', formData)
+        const res = await api.post('sick_surgery/createe.php', formData)
+        console.log(res.data);
         fetchSickSurgery();
         fetchSick();
     }
@@ -436,7 +435,8 @@ const ProviderState = ({ children }) => {
 
     const deletSickSurgery = async (sick_surgery_id) => {
         // ba kar hatwa la <DetailBodyInput />
-        await api.post('sick_surgery/delete.php', { "sick_surgery_id": sick_surgery_id })
+        const res = await api.post('sick_surgery/delete.php', { "sick_surgery_id": sick_surgery_id })
+        console.log(res.data);
         fetchSickSurgery();
         fetchSick();
     }
@@ -450,7 +450,8 @@ const ProviderState = ({ children }) => {
 
     // ama update price u description aka la commponenty WorkingTypeModal
     const UpdateSickSurgeryInvoice = async (sick_surgery_invoice) => {
-        await api.post('sick_surgery_invoice/update.php', sick_surgery_invoice);
+        const res = await api.post('sick_surgery_invoice/update.php', sick_surgery_invoice);
+        console.log(res.data);
         fetchSickSurgery();
         fetchSick();
     }
@@ -474,9 +475,10 @@ const ProviderState = ({ children }) => {
             searchDoctor,
             searchSick,
             searchSurgeryType,
-            sick_id,
-            setDetailSickId,
-
+            // sick_id,
+            // setDetailSickId,
+            setDate,
+            ddate,
             sickSurgery: state.sickSurgery,
             addSickSurgery,
             expenseTypeList: state.expenseTypeList,
@@ -499,8 +501,7 @@ const ProviderState = ({ children }) => {
             fetchDashbordAppointment,
             deleteAppointment,
             updateAppointment,
-            setDate,
-            ddate,
+
             ChangeStateAppointment,
             inrowAppointment,
             searchAppointment,
@@ -522,7 +523,9 @@ const ProviderState = ({ children }) => {
             updateUser,
             deleteUser,
             searchUser,
-            userList: state.userList
+            userList: state.userList,
+
+
 
 
         }}>

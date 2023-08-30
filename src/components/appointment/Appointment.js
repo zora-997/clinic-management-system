@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import GlobalContext from '../contexts/createContext/context';
 import AppointmentModal from '../layout/modal/AppointmentModal';
 // import AddAppointmentModal from '../layout/modal/AddAppointmentModal';
 import CreateAppointment from './CreateAppointment';
-import arrows from "../../img/image/arrows.png";
 import timer from "../../img/image/time-left.png";
-import checked from "../../img/image/check-mark.png";
 import x from "../../img/image/cancel.png";
 import surgery from "../../img/image/scalpel (1).png";
 import SickCancel from '../sickDetail/SickCancel';
@@ -15,7 +13,7 @@ import SickWorkingModal from '../sickDetail/SickWorkingModal';
 
 const Appointment = () => {
 
-    const { appointmentList, setDate, ddate, fetchAppointment, ChangeStateAppointment, searchAppointment } = useContext(GlobalContext);
+    const { appointmentList, fetchAppointment, ddate, setDate, ChangeStateAppointment, searchAppointment } = useContext(GlobalContext);
     const [show, setShow] = useState(false);
     const [showCancel, setShowCancel] = useState(false);
     const [showWorking, setShowWorking] = useState(false);
@@ -29,24 +27,21 @@ const Appointment = () => {
     const [appointment_time, setAppointmentTime] = useState("");
     const [appointment_note, setAppointmentNot] = useState("");
 
-
-    const [state, setState] = useState("");
-    const [waitState, setWaitState] = useState("");
-    const [workingState, setWorkingState] = useState("");
-    const [completedState, setCompletedState] = useState("");
-    const [canceledState, setCanceledState] = useState("");
-
-
-
     /* const did = doctorList.map((d) => d.doctor_id)
     const dn = doctorList.map((d) => d.doctor_name)
     
     const sid = sickList.map((s) => s.sick_id)
     const sn = sickList.map((s) => s.sick_name) */
 
-    useEffect(() => {
+
+
+    const selectDate = (ddate) => {
+        console.log(ddate);
+        setDate(ddate)
         fetchAppointment(ddate)
-    }, [ddate])
+    }
+
+
 
 
 
@@ -57,7 +52,7 @@ const Appointment = () => {
             appointment_id,
             appointment_state: "wait"
         }, ddate)
-        console.log(waitState + " " + appointment_id);
+
 
 
     }
@@ -123,7 +118,7 @@ const Appointment = () => {
                 <SickCancel isVisible={showCancel} setShowCancel={setShowCancel} />
                 <SickWorkingModal isVisible={showWorking} setShowWorking={setShowWorking} />
                 {/* <AddAppointmentModal isAddVisible={addshow} onClose={setAddShow} /> */}
-                <CreateAppointment ddate={ddate} canceledState={canceledState} />
+                <CreateAppointment ddate={ddate} />
 
 
 
@@ -132,7 +127,7 @@ const Appointment = () => {
 
                         <div className='flex flex-col   '>
                             <label className='text-gray-600' >Appointment Date</label>
-                            <input onChange={(e) => setDate(e.target.value)} value={ddate} type="date" className={`focus:ring-1 focus:outline-none border  p-1 rounded max-w-xs`} />
+                            <input onChange={(e) => selectDate(e.target.value)} value={ddate} type="date" className={`focus:ring-1 focus:outline-none border  p-1 rounded max-w-xs`} />
                         </div>
 
 
@@ -174,12 +169,12 @@ const Appointment = () => {
                                         <td className=" px-2 py-4">{appointment.appointment_time}</td>
                                         <td className={`px-2 w-10 py-4 `} ><span className={`${appointment.appointment_state === "wait" && 'bg-yellow-200/60 px-2 py-0.5 rounded-xl'} ${appointment.appointment_state === "working" && 'bg-green-200/60 px-2 py-0.5 rounded-xl'} ${appointment.appointment_state === "scheduled" && 'bg-sky-200/60 px-2 py-0.5 rounded-xl'}`}>{appointment.appointment_state}</span></td>
                                         <td className=" px-2 py-4 flex gap-3 ">
-                                            {/* onClick={() => waitStateHandel(appointment.appointment_id)}  */}
-                                            <img className='w-7 rounded-xl bg-gray-100' src={timer} alt='wait' />
-                                            {/*  onClick={() => { workingStateHandel(appointment.appointment_id, appointment.doctor_id) }} */}
-                                            <img className='w-7 rounded-xl bg-gray-100' src={surgery} alt='working' />
-                                            {/* onClick={() => { canceledStateHandel(appointment.appointment_id, appointment.appointment_state); setAppointmentId(appointment.appointment_id) }}  */}
-                                            <img className='w-7  rounded-xl bg-gray-100' src={x} alt='cros' />
+                                            <img onClick={() => waitStateHandel(appointment.appointment_id)}
+                                                className='w-7 rounded-xl bg-yellow-100 hover:bg-yellow-200/75' src={timer} alt='wait' />
+                                            <img onClick={() => { workingStateHandel(appointment.appointment_id, appointment.doctor_id) }}
+                                                className='w-7 rounded-xl bg-green-200-100 hover:bg-green-200' src={surgery} alt='working' />
+                                            <img onClick={() => { canceledStateHandel(appointment.appointment_id, appointment.appointment_state); setAppointmentId(appointment.appointment_id) }}
+                                                className='w-7  rounded-xl bg-red-100 hover:bg-red-200/75' src={x} alt='cros' />
                                         </td>
                                         <td className="ml-2 px-2 py-4">{appointment.appointment_note}</td>
                                     </tr>
@@ -188,7 +183,7 @@ const Appointment = () => {
                         </table>
                     </div>
 
-                    {!ddate ?
+                    {!appointmentList.length ?
                         <div className='py-1 w-full bg-yellow-100/50  text-yellow-500 flex justify-center'><span className='  p-1 rounded'>No Appointment</span></div> : null}
                 </div>
             </div>

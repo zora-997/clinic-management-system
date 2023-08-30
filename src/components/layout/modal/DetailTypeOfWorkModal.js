@@ -1,13 +1,11 @@
 import React, { useContext } from 'react'
 import GlobalContext from '../../contexts/createContext/context';
 import bin from '../../../../src/img/image/bin.png'
-import SickDetailImage from '../../sickDetail/SickDetailImage';
-import DetailViewImageModal from './DetailViewImageModal';
 import DetailImageIputModal from './DetailImageIputModal';
 
-const DetailTypeOfWorkModal = ({ clickAddWork, file, setFile, invoice, setinvoice }) => {
+const DetailTypeOfWorkModal = ({ file, setFile, invoice, setinvoice }) => {
 
-    const { surgeryType, sickList } = useContext(GlobalContext);
+    const { surgeryType } = useContext(GlobalContext);
 
 
     const sid = surgeryType.map((d) => d.surgery_type_id);

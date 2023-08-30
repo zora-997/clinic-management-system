@@ -3,8 +3,6 @@ import GlobalContext from '../../contexts/createContext/context';
 import { VscAdd } from 'react-icons/vsc';
 import uuid from "react-uuid";
 import { useLocation } from 'react-router-dom';
-import SickDetailTypeOfWork from '../../sickDetail/SickDetailTypeOfWork';
-import SickDetailTypeOfWorkModal from './DetailTypeOfWorkModal';
 import DetailTypeOfWorkModal from './DetailTypeOfWorkModal';
 import DetailViewImageModal from './DetailViewImageModal';
 
@@ -12,22 +10,15 @@ import DetailViewImageModal from './DetailViewImageModal';
 const SurgeryTypeModal = ({ isVisible, onClose, sick_surgery_id, invoiceImage, setinvoiceImage, invoice, setinvoice, idUpdate }) => {
 
     const { surgeryType, deletSickSurgery, UpdateSickSurgery, sickList } = useContext(GlobalContext);
+    const location = useLocation();
 
     const [surgery_type_id, set_surgery_type_id] = useState(0)
     const [surgery_type_name, set_surgery_type_name] = useState("")
     const [surgery_type_price, set_surgery_type_price] = useState()
     const [sick_surgery_invoice_note, set_sick_surgery_invoice_note] = useState("");
     const [showError, set_showError] = useState(false);
-    // TEMP bo war grtni type of worky taza
-    const [sick_surgery, setsicksurgerys] = useState([]);
     // file image kan
     const [file, setFile] = useState([]);
-
-    const [show, set_show] = useState(false);
-
-
-
-    const location = useLocation();
     // id doctor
     let doctor_id = sickList.map(sick => sick.sick_id === location.state && sick.doctor_id).filter(f => f !== false)
 
@@ -50,7 +41,7 @@ const SurgeryTypeModal = ({ isVisible, onClose, sick_surgery_id, invoiceImage, s
     // uuid for delte surgery type in table add new work
     const newWork = (e) => {
         e.preventDefault();
-        if (surgery_type_id == 0) {
+        if (surgery_type_id === 0) {
             set_showError(true)
 
         } else {
@@ -68,7 +59,7 @@ const SurgeryTypeModal = ({ isVisible, onClose, sick_surgery_id, invoiceImage, s
 
         let formData = new FormData();
         let dfile = file;
-        if (!(file.length == 0)) {
+        if (!(file.length === 0)) {
             dfile = file.target.files;
         }
         console.log(dfile);
@@ -162,7 +153,7 @@ const SurgeryTypeModal = ({ isVisible, onClose, sick_surgery_id, invoiceImage, s
                             <div className='flex pt-7 '>
                                 <button
                                     type='submit'
-                                    onClick={() => { surgery_type_id && set_show(true) }}
+                                    //  onClick={() => { surgery_type_id && set_show(true) }}
                                     className={` hover:text-white shadow-sm flex items-center shadow-gray-300 border text-sky-400 border-sky-300  p-2   rounded-md hover:bg-sky-300`}>
                                     <VscAdd className='mr-1' /> New
                                 </button>
@@ -174,8 +165,6 @@ const SurgeryTypeModal = ({ isVisible, onClose, sick_surgery_id, invoiceImage, s
                     {
 
                         <DetailTypeOfWorkModal
-                            sick_surgery={sick_surgery}
-                            clickAddWork={clickAddWork}
                             file={file}
                             setFile={setFile}
                             invoice={invoice}
