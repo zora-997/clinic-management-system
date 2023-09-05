@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import GlobalContext from '../../contexts/createContext/context';
 
 const CardAppointment = () => {
-    const { appointmentList } = useContext(GlobalContext);
+    const { appointmentListDashbord } = useContext(GlobalContext);
 
 
     return (
@@ -21,7 +21,7 @@ const CardAppointment = () => {
                 </thead>
 
                 <tbody className='flex-1'>
-                    {appointmentList && appointmentList.map((appointment, index) => {
+                    {appointmentListDashbord && appointmentListDashbord.map((appointment, index) => {
                         return <tr
                             key={index}
 

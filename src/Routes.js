@@ -1,31 +1,22 @@
-import { Routes, Route, Navigate, useHistory, useLocation, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 import ProviderState from "./components/contexts/ProviderState";
-import AllDoctor from "./components/doctors/allDoctor/AllDoctor";
 import Doctors from "./components/doctors/Doctor";
 
-import AllSick from "./components/Sick/allSick/AllSick";
 import Sick from "./components/Sick/Sick";
-import AllSurgeryType from "./components/SurgeryType/allSurgery/AllSurgeryType";
 import SurgeryType from "./components/SurgeryType/SurgeryType";
-import AllDetail from "./components/detail/alldetail/AllDetail";
 import Detail from "./components/detail/Detail";
 import Dashbord from "./page/home/dashbord/Dashbord";
 
 import Login from "./page/Login";
 
 import ExpenseType from "./components/expensetype/ExpenseType";
-import AllExpenseType from "./components/expensetype/allExpenseType/AllExpenseType";
 
-import AllExpense from "./components/expense/allExpense/AllExpense";
 import Expense from "./components/expense/Expense";
-import AllReport from "./components/report/allReport/AllReport";
 import Report from "./components/report/Report";
 
 import Appointment from "./components/appointment/Appointment";
-import AllApointment from "./components/appointment/allAppointment/AllApointment";
 import PrivateRoute from "./page/home/PrivateRoute";
 
-import AllSickDetail from "./components/sickDetail/allSickDetail/AllSickDetail";
 import SickDetail from "./components/sickDetail/SickDetail";
 
 import Header from "./components/layout/header/Header";

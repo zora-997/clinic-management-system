@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import GlobalContext from '../contexts/createContext/context';
 import AppointmentModal from '../layout/modal/AppointmentModal';
 // import AddAppointmentModal from '../layout/modal/AddAppointmentModal';
@@ -13,7 +13,7 @@ import SickWorkingModal from '../sickDetail/SickWorkingModal';
 
 const Appointment = () => {
 
-    const { appointmentList, fetchAppointment, ddate, setDate, ChangeStateAppointment, searchAppointment } = useContext(GlobalContext);
+    const { appointmentList, fetchAppointment, ChangeStateAppointment, searchAppointment } = useContext(GlobalContext);
     const [show, setShow] = useState(false);
     const [showCancel, setShowCancel] = useState(false);
     const [showWorking, setShowWorking] = useState(false);
@@ -27,22 +27,12 @@ const Appointment = () => {
     const [appointment_time, setAppointmentTime] = useState("");
     const [appointment_note, setAppointmentNot] = useState("");
 
-    /* const did = doctorList.map((d) => d.doctor_id)
-    const dn = doctorList.map((d) => d.doctor_name)
-    
-    const sid = sickList.map((s) => s.sick_id)
-    const sn = sickList.map((s) => s.sick_name) */
+    // ama date bo bashi appoimenta
+    const [ddate, setDate] = useState(new Date().toISOString().slice(0, 10));
 
-
-
-    const selectDate = (ddate) => {
-        console.log(ddate);
-        setDate(ddate)
+    useEffect(() => {
         fetchAppointment(ddate)
-    }
-
-
-
+    }, [ddate])
 
 
 
@@ -52,9 +42,6 @@ const Appointment = () => {
             appointment_id,
             appointment_state: "wait"
         }, ddate)
-
-
-
     }
 
     const workingStateHandel = (appointment_id, doctor_id) => {
@@ -69,12 +56,7 @@ const Appointment = () => {
                 appointment_state: 'working'
             }, ddate, doctor_id)
         }
-
-
-
     }
-
-
 
     const canceledStateHandel = (appointment_id, appointment_state) => {
         if (appointment_state === "working") {
@@ -86,7 +68,6 @@ const Appointment = () => {
             }, ddate)
         }
     }
-
 
 
     return (
@@ -127,7 +108,7 @@ const Appointment = () => {
 
                         <div className='flex flex-col   '>
                             <label className='text-gray-600' >Appointment Date</label>
-                            <input onChange={(e) => selectDate(e.target.value)} value={ddate} type="date" className={`focus:ring-1 focus:outline-none border  p-1 rounded max-w-xs`} />
+                            <input onChange={(e) => setDate(e.target.value)} value={ddate} type="date" className={`focus:ring-1 focus:outline-none border  p-1 rounded max-w-xs`} />
                         </div>
 
 

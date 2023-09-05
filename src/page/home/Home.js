@@ -19,7 +19,6 @@ const Home = () => {
             </div>
 
 
-
             <div className='flex-1 overflow-auto '>
                 <MainRoutes showSildBar={showSildBar} setShowSildBar={setShowSildBar} />
             </div>

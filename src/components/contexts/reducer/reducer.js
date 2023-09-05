@@ -201,6 +201,13 @@ const reducer = (state, { type, payload }) => {
                 ...state,
                 appointmentList: payload,
             };
+
+        case 'GETAPPOINTMENTDASHBORD':
+            return {
+                ...state,
+                appointmentListDashbord: payload,
+            };
+
         // case ADD_APPOINTMENT:
         //     return {
         //         ...state,

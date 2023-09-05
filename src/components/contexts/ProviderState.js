@@ -25,6 +25,7 @@ const ProviderState = ({ children }) => {
         adminList: [],
         mainReportList: [],
         appointmentList: [],
+        appointmentListDashbord: [],
         doctorlegerList: [],
         expenseReportList: [],
         workingTypeReportList: [],
@@ -35,7 +36,6 @@ const ProviderState = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState)
 
 
-    const [ddate, setDate] = useState(new Date().toISOString().slice(0, 10));
 
     // load all doctors.
     useEffect(() => {
@@ -46,7 +46,8 @@ const ProviderState = ({ children }) => {
         fetchExpenseType();
         fetchExpense();
         fetchUser();
-        fetchAppointment(ddate);
+
+
     }, [])
 
     // doctor search
@@ -85,18 +86,23 @@ const ProviderState = ({ children }) => {
 
     // feach appointment
     const fetchAppointment = async (ddate) => {
+
+        console.log("ddate");
+        console.log(ddate);
         const res = await api.post('appointment/read.php', { ddate });
+        console.log(res.data);
         dispatch({
             type: 'GETAPPOINTMENT',
             payload: res.data.data
         })
 
     }
-    // fetchDashbordAppointment
+    // // fetchDashbordAppointment
     const fetchDashbordAppointment = async (ddate) => {
         const res = await api.post('appointment/read.php', { ddate });
+        console.log(res.data);
         dispatch({
-            type: 'GETAPPOINTMENT',
+            type: 'GETAPPOINTMENTDASHBORD',
             payload: res.data.data
         })
     }
@@ -283,6 +289,7 @@ const ProviderState = ({ children }) => {
     // all sick
     const fetchSick = async () => {
         const { data } = await api.get('sick/read.php');
+        console.log(data);
         dispatch({
             type: 'GETSICK',
             payload: data.data
@@ -475,10 +482,7 @@ const ProviderState = ({ children }) => {
             searchDoctor,
             searchSick,
             searchSurgeryType,
-            // sick_id,
-            // setDetailSickId,
-            setDate,
-            ddate,
+
             sickSurgery: state.sickSurgery,
             addSickSurgery,
             expenseTypeList: state.expenseTypeList,
@@ -495,12 +499,15 @@ const ProviderState = ({ children }) => {
             mainReportList: state.mainReportList,
             fetchReport,
             fetchAdmin,
+
             appointmentList: state.appointmentList,
+            appointmentListDashbord: state.appointmentListDashbord,
             addAppointment,
             fetchAppointment,
             fetchDashbordAppointment,
             deleteAppointment,
             updateAppointment,
+
 
             ChangeStateAppointment,
             inrowAppointment,
