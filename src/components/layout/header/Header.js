@@ -17,7 +17,7 @@ const Header = ({ showSildBar, setShowSildBar }) => {
                 <span className={`font-medium text-2xl 2xl:text-4xl hidden lg:block text-gray-600 capitalize`}> {location.pathname.slice(1)} </span>
 
                 {/* menu */}
-                <AiOutlineMenu onClick={() => setShowSildBar(true)} className='lg:hidden cursor-pointer mr-2' color='gray' size={30} />
+                <AiOutlineMenu onClick={() => setShowSildBar(!showSildBar)} className='lg:hidden cursor-pointer mr-2' color='gray' size={30} />
 
 
 

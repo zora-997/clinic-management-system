@@ -1,23 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react'
 import GlobalContext from '../contexts/createContext/context';
 import AppointmentModal from '../layout/modal/AppointmentModal';
-// import AddAppointmentModal from '../layout/modal/AddAppointmentModal';
 import CreateAppointment from './CreateAppointment';
 import timer from "../../img/image/time-left.png";
 import x from "../../img/image/cancel.png";
 import surgery from "../../img/image/scalpel (1).png";
-import SickCancel from '../sickDetail/SickCancel';
-import SickWorkingModal from '../sickDetail/SickWorkingModal';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./toast.css";
 
 
 const Appointment = () => {
 
     const { appointmentList, fetchAppointment, ChangeStateAppointment, searchAppointment } = useContext(GlobalContext);
-    const [show, setShow] = useState(false);
-    const [showCancel, setShowCancel] = useState(false);
-    const [showWorking, setShowWorking] = useState(false);
 
+    const [show, setShow] = useState(false);
     const [appointment_id, setAppointmentId] = useState(0);
     const [sick_id, setSick_id] = useState(0)
     const [doctor_id, setDoctor_id] = useState(0);
@@ -29,38 +26,61 @@ const Appointment = () => {
 
     // ama date bo bashi appoimenta
     const [ddate, setDate] = useState(new Date().toISOString().slice(0, 10));
-
     useEffect(() => {
         fetchAppointment(ddate)
     }, [ddate])
 
 
-
-    const waitStateHandel = (appointment_id) => {
-        // setWaitState("wait");
-        ChangeStateAppointment({
-            appointment_id,
-            appointment_state: "wait"
-        }, ddate)
+    const waitStateHandel = (appointment_id, appointment_date) => {
+        // am if test aw appoimenta aka ka wait akai agr hi aw rozha nabe qbulli naka
+        if (appointment_date === new Date().toISOString().slice(0, 10)) {
+            ChangeStateAppointment({
+                appointment_id,
+                appointment_state: "wait"
+            }, ddate)
+        } else {
+            // katek appoimentek hi aw rozha nia kasek ayawe wait bka
+            toast("This appoiment is from another day", {
+                className: "error-toast",
+                draggable: true,
+                position: toast.POSITION.TOP_CENTER
+            })
+        }
     }
 
-    const workingStateHandel = (appointment_id, doctor_id) => {
-        // setWorkingState("working");
-        const g = appointmentList.map(app => app.doctor_id === doctor_id && app.appointment_state).filter(f => f !== false)
-        const check = g.includes("working")
-        if (check) {
-            setShowWorking(true)
+    const workingStateHandel = (appointment_id, doctor_id, appointment_date) => {
+        // aw doctor_id bas bo awaia daim check bka bo away bzane aw dctora la work daia yan na
+        const search = appointmentList.map(app => app.doctor_id === doctor_id && app.appointment_state).filter(f => f !== false)
+        const check = search.includes("working")
+
+        if (appointment_date !== new Date().toISOString().slice(0, 10)) {
+            toast("This appoiment is from another day", {
+                className: "error-toast",
+                draggable: true,
+                position: toast.POSITION.TOP_CENTER
+            })
+        } else if (check) {
+            console.log("modal");
+            toast("This docor have a patient", {
+                className: "error-toast",
+                draggable: true,
+                position: toast.POSITION.TOP_CENTER
+            })
         } else {
             ChangeStateAppointment({
                 appointment_id,
                 appointment_state: 'working'
-            }, ddate, doctor_id)
+            }, ddate)
         }
     }
 
     const canceledStateHandel = (appointment_id, appointment_state) => {
         if (appointment_state === "working") {
-            return setShowCancel(true);
+            toast("The patient is working !", {
+                className: "error-toast",
+                draggable: true,
+                position: toast.POSITION.TOP_CENTER
+            })
         } else {
             ChangeStateAppointment({
                 appointment_id,
@@ -69,39 +89,22 @@ const Appointment = () => {
         }
     }
 
-
     return (
 
         <div className=" select-none mt-8 ">
             <div className='mx-3 '>
-                <AppointmentModal
-                    isVisible={show}
-                    onClose={setShow}
-                    appointment_id={appointment_id}
-                    sick_id={sick_id}
-                    setSick_id={setSick_id}
-                    doctor_id={doctor_id}
-                    setDoctor_id={setDoctor_id}
-                    sick_name={sick_name}
-                    setSick_name={setSick_name}
-                    doctor_name={doctor_name}
-                    setDoctor_name={setDoctor_name}
-                    appointment_date={appointment_date}
-                    setAppointmentDate={setAppointmentDate}
-                    appointment_time={appointment_time}
-                    setAppointmentTime={setAppointmentTime}
-                    appointment_note={appointment_note}
-                    setAppointmentNot={setAppointmentNot}
-                    ddate={ddate}
-                />
+                {/* bo pshan dani toasta kan bakar de */}
+                <ToastContainer limit={2} />
 
-                {/* sick cancel modal */}
-                <SickCancel isVisible={showCancel} setShowCancel={setShowCancel} />
-                <SickWorkingModal isVisible={showWorking} setShowWorking={setShowWorking} />
-                {/* <AddAppointmentModal isAddVisible={addshow} onClose={setAddShow} /> */}
+                {/* edit appoiment */}
+                <AppointmentModal isVisible={show} onClose={setShow} appointment_id={appointment_id} sick_id={sick_id} setSick_id={setSick_id}
+                    doctor_id={doctor_id} setDoctor_id={setDoctor_id} sick_name={sick_name} setSick_name={setSick_name}
+                    doctor_name={doctor_name} setDoctor_name={setDoctor_name} appointment_date={appointment_date}
+                    setAppointmentDate={setAppointmentDate} appointment_time={appointment_time} setAppointmentTime={setAppointmentTime}
+                    appointment_note={appointment_note} setAppointmentNot={setAppointmentNot} ddate={ddate} />
+
+                {/* add appoiment */}
                 <CreateAppointment ddate={ddate} />
-
-
 
                 <div className=' overflow-auto  w-full mt-6 bg-white p-5 rounded-md'>
                     <div className='flex flex-col w-full gap-3'>
@@ -111,9 +114,7 @@ const Appointment = () => {
                             <input onChange={(e) => setDate(e.target.value)} value={ddate} type="date" className={`focus:ring-1 focus:outline-none border  p-1 rounded max-w-xs`} />
                         </div>
 
-
                         <table className="whitespace-nowrap w-full bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 ">
-
                             <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                                 <tr>
                                     <th scope="col" className="px-6 py-3">Id</th>
@@ -150,9 +151,9 @@ const Appointment = () => {
                                         <td className=" px-2 py-4">{appointment.appointment_time}</td>
                                         <td className={`px-2 w-10 py-4 `} ><span className={`${appointment.appointment_state === "wait" && 'bg-yellow-200/60 px-2 py-0.5 rounded-xl'} ${appointment.appointment_state === "working" && 'bg-green-200/60 px-2 py-0.5 rounded-xl'} ${appointment.appointment_state === "scheduled" && 'bg-sky-200/60 px-2 py-0.5 rounded-xl'}`}>{appointment.appointment_state}</span></td>
                                         <td className=" px-2 py-4 flex gap-3 ">
-                                            <img onClick={() => waitStateHandel(appointment.appointment_id)}
+                                            <img onClick={() => waitStateHandel(appointment.appointment_id, appointment.appointment_date)}
                                                 className='w-7 rounded-xl bg-yellow-100 hover:bg-yellow-200/75' src={timer} alt='wait' />
-                                            <img onClick={() => { workingStateHandel(appointment.appointment_id, appointment.doctor_id) }}
+                                            <img onClick={() => { workingStateHandel(appointment.appointment_id, appointment.doctor_id, appointment.appointment_date) }}
                                                 className='w-7 rounded-xl bg-green-200-100 hover:bg-green-200' src={surgery} alt='working' />
                                             <img onClick={() => { canceledStateHandel(appointment.appointment_id, appointment.appointment_state); setAppointmentId(appointment.appointment_id) }}
                                                 className='w-7  rounded-xl bg-red-100 hover:bg-red-200/75' src={x} alt='cros' />
