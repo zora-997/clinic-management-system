@@ -28,7 +28,7 @@ const WorkingTypeReportModal = ({ setShow, show, workingType }) => {
                                         <th scope='row' className="px-5 py-4 w-10">{work.sick_name}</th>
                                         <th scope='row' className="px-5 py-4 w-10">{work.sick_surgery_invoice_date}</th>
                                         <th scope='row' className="px-5 py-4">{work.surgery_type_price}</th>
-                                        <td scope='row' className="px-6 py-4  ">{work.sick_surgery_invoice_note}</td>
+                                        <td className="px-6 py-4  ">{work.sick_surgery_invoice_note}</td>
 
                                     </tr>
                                 )

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import GlobalContext from '../../contexts/createContext/context'
 
 
@@ -7,7 +7,6 @@ const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
     doctor_id,
     sick_name,
     setSick_name,
-    doctor_name,
     setDoctor_name,
     appointment_date,
     setAppointmentDate,

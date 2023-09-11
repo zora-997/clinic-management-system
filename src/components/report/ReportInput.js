@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import GlobalContext from '../contexts/createContext/context';
 
 const ReportInput = ({ from, to, setFrom, setTo, erorFrom, erorTo, setWorkingType_id, setDoctor_id, doctor_id, erordoctorid, setExpenseType_id }) => {
@@ -27,7 +27,7 @@ const ReportInput = ({ from, to, setFrom, setTo, erorFrom, erorTo, setWorkingTyp
                     {/* ExpenseType input */}
                     <div className='w-2/5'>
                         <label className='text-gray-600 text-base 2xl:text-lg' >Expense Type</label>
-                        <select required onChange={(val) => { { setExpenseType_id(val.target.value); } }}
+                        <select required onChange={(val) => setExpenseType_id(val.target.value)}
                             className='focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10 '>
                             <option value={0}>Select Expense Type</option>
                             {expenseTypeList && expenseTypeList.map((expenseType) => {

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import GlobalContext from '../../contexts/createContext/context';
-import SideBar from '../../../page/home/sidebar/SideBar';
+
 
 const Header = ({ showSildBar, setShowSildBar }) => {
     const location = useLocation()

@@ -7,11 +7,9 @@ import GlobalContext from '../../contexts/createContext/context';
 const CardCalendar = () => {
 
     const { fetchDashbordAppointment } = useContext(GlobalContext);
-
     const [ddate, setDate] = useState(new Date().toISOString().slice(0, 10))
 
     useEffect(() => {
-        console.log(ddate);
         fetchDashbordAppointment(ddate);
     }, [ddate])
 

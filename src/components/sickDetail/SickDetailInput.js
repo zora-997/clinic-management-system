@@ -1,13 +1,12 @@
 import React, { useContext, useState } from 'react'
-import DetailTypeOfWork from '../detail/DetailTypeOfWork'
 import uuid from "react-uuid";
 import { VscAdd } from 'react-icons/vsc'
 import GlobalContext from '../contexts/createContext/context';
 import SickDetailTypeOfWork from './SickDetailTypeOfWork';
 
-const SickDetailInput = ({ sickDetail, setSickDetail }) => {
+const SickDetailInput = ({ sickDetail }) => {
 
-    const { surgeryType, addSickSurgery, setDetailDoctorId } = useContext(GlobalContext)
+    const { surgeryType, addSickSurgery } = useContext(GlobalContext)
 
     const [surgery_type_id, set_surgery_type_id] = useState("")
     const [surgery_type_name, set_surgery_type_name] = useState("")

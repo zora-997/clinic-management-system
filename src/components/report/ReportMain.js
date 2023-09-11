@@ -1,12 +1,10 @@
 import React, { useContext, useState } from 'react'
 import GlobalContext from '../contexts/createContext/context'
 import ReportDoctor from './ReportDoctor';
-import { HiArrowSmRight, HiOutlineAnnotation } from "react-icons/hi";
+import { HiOutlineAnnotation } from "react-icons/hi";
 import { AiOutlineMoneyCollect } from "react-icons/ai";
 import { MdAttachMoney } from "react-icons/md";
 import { SiExpensify } from "react-icons/si";
-import { TbZoomMoney } from "react-icons/tb";
-import { BiUserPin } from "react-icons/bi";
 import ReportExpense from './ReportExpense';
 import ReportAll from './ReportAll';
 import ReportWorkingType from './ReportWorkingType';

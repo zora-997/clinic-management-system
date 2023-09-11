@@ -15,7 +15,6 @@ const CardOne = () => {
                 tension: 0.4,
                 borderColor: "#156CDD",
                 pointStyle: "circl",
-                hoverBorderWidth: 1,
                 borderJoinStyle: "round",
                 pointBorderColor: "#156CDD",
                 pointHoverBorderColor: "#156CDD",

@@ -9,7 +9,7 @@ const SickDetailImage = ({ file, setFile }) => {
             {Array.from(file).map((item, index) => {
                 return (
                     <div key={index}>
-                        <img className='w-72 flex' src={file ? URL.createObjectURL(item) : null} />
+                        <img className='w-72 flex' src={file ? URL.createObjectURL(item) : null} alt='upload wena' />
                     </div>
                 )
             })}

@@ -3,7 +3,7 @@ import GlobalContext from '../../contexts/createContext/context'
 
 const AddUser = ({ isAddVisible, onClose, admin_name, setAdminName, admin_password, setAdminPassword, admin_role, setAdminRole }) => {
 
-    const { userList, addUser } = useContext(GlobalContext)
+    const { addUser } = useContext(GlobalContext)
 
     // add user.
     const addUserHandler = e => {

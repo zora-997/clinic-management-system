@@ -39,7 +39,7 @@ const DetailViewImageModal = ({ invoiceImage, idUpdate, onClose }) => {
                             {/** amsh bo drusbuni actiony scrollakaw u hidn scroll ka ba karde */}
                             <div id='slider' key={invoiceImage.sick_surgery_id + 1} className='flex overflow-x-scroll scrollbar-hide scroll whitespace-nowrap  scroll-smooth ' >
                                 {invoiceImage.image && invoiceImage.image.map((img, index) => {
-                                    {/* am div xwarawa nabe scrollka durs nabe hamu nwenakan ba statiki yatawa */ }
+                                    //{/* am div xwarawa nabe scrollka durs nabe hamu nwenakan ba statiki yatawa */ }
                                     return (
                                         <div key={img.sick_surgery_invoice_image_id + 1} className='flex flex-col' >
                                             <img onClick={() => { deleteHandller(img.sick_surgery_invoice_image_id); onClose(false) }} src={bin} className='hover:bg-red-100  w-5 place-self-center ml-4' alt='delete icon' />

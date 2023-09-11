@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import GlobalContext from '../contexts/createContext/context';
-import DetailImage from '../detail/DetailImage';
 import bin from '../../../src/img/image/bin.png'
 import SickDetailImage from './SickDetailImage';
 

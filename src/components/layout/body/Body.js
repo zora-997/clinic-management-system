@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import CardBody from '../card/CardBody'
 import CardOne from '../card/CardOne'
 import CardAppointment from '../card/CardAppointment'
@@ -16,7 +16,6 @@ const Body = () => {
                     <CardCalendar />
                 </div>
                 <CardAppointment />
-
             </div >
         </div>
     )

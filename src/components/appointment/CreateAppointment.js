@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import GlobalContext from '../contexts/createContext/context';
 
 const CreateAppointment = ({ ddate }) => {
@@ -29,7 +29,7 @@ const CreateAppointment = ({ ddate }) => {
     const addAppointmentHandler = e => {
         e.preventDefault();
 
-        if (sick_id == 0) {
+        if (sick_id === 0) {
             set_showError(true)
             return
 

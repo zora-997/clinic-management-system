@@ -29,7 +29,7 @@ const ReportDoctor = ({ showDoctor, doctorlegerList }) => {
                                     key={index}
                                     className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
                                     <th scope='row' className="px-5 py-4">{index + 1}</th>
-                                    <td scope='row' className="px-5 py-4">{doctor.sick_name}</td>
+                                    <td className="px-5 py-4">{doctor.sick_name}</td>
                                     <td className="px-6 py-4">{doctor.sick_phone}</td>
                                     <td className="px-6 py-4">{doctor.surgery_type_name}</td>
                                     <td className="px-6 py-4">{doctor.surgery_type_price}</td>
@@ -41,10 +41,10 @@ const ReportDoctor = ({ showDoctor, doctorlegerList }) => {
                         })}
                         <tr className="border w-full  cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
                             <th scope='row' className="px-5 py-4 ">Total Income</th>
-                            <td className=""></td>
-                            <td className=""></td>
-                            <td className=""></td>
-                            <td className=""></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                             <th className="px-6 py-4 ">{doctorlegerList.price}</th>
                         </tr>
 
