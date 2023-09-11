@@ -142,7 +142,7 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
                                     {data.role && data.role.map(rolse => {
                                         return (
                                             rolse === role &&
-                                            <li onClick={() => setShowSildBar(false)} className={data.style} >
+                                            <li key={data.id + 1} onClick={() => setShowSildBar(false)} className={data.style} >
                                                 <Link to={data.to} className=" flex justify-between items-center ">
                                                     <div className="flex gap-3 items-center">
                                                         {data.icon}
@@ -150,7 +150,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
                                                     </div>
                                                     {data.mdarrowright}
                                                 </Link>
-                                            </li>)
+                                            </li>
+                                        )
                                     })}
                                 </div>
                             )
@@ -182,7 +183,7 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
                                         {data.role.map(rolse => {
                                             return (
                                                 rolse === role &&
-                                                <li onClick={() => setShowSildBar(false)} className={data.style} >
+                                                <li key={data.id + 1} onClick={() => setShowSildBar(false)} className={data.style} >
                                                     <Link to={data.to} className=" flex justify-between items-center ">
                                                         <div className="flex gap-3 items-center">
                                                             {data.icon}

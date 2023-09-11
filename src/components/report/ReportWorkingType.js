@@ -17,7 +17,8 @@ const ReportWorkingType = ({ showWorkingType, workingTypeReportList }) => {
     if (!showWorkingType) return null;
     return (
         <div className='mt-4'>
-            <div className='w-full bg-white p-5 rounded-md'>
+            <div className='w-full bg-white p-5 rounded-md overflow-x-auto'>
+                <WorkingTypeReportModal workingType={workingType} show={show} setShow={setShow} />
                 <h1 className=' text-2xl border-b-2  mb-2 '>Working Type Report</h1>
                 <table className="whitespace-nowrap w-full bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 ">
                     <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
@@ -29,7 +30,6 @@ const ReportWorkingType = ({ showWorkingType, workingTypeReportList }) => {
                         </tr>
                     </thead>
                     <tbody>
-                        <WorkingTypeReportModal workingType={workingType} show={show} setShow={setShow} />
                         {workingTypeReportList.data && workingTypeReportList.data.map((work, index) => {
                             return (
                                 <tr key={index}
@@ -37,7 +37,7 @@ const ReportWorkingType = ({ showWorkingType, workingTypeReportList }) => {
                                     className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
                                     <td className="px-5 py-4">{work.surgery_type_name}</td>
                                     <td className="px-6 py-4">{work.qty}</td>
-                                    <th scope='row' className="px-5 py-4">{work.price}</th>
+                                    <td scope='row' className="px-5 py-4">{work.price}</td>
                                 </tr>
                             )
                         })}
@@ -48,7 +48,6 @@ const ReportWorkingType = ({ showWorkingType, workingTypeReportList }) => {
                             <th className="px-6 py-4 ">{total_price}</th>
                         </tr>
                         <tr className="border w-full  cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
-
                             <th scope='row' className="px-5 py-4 ">Total Work</th>
                             <td></td>
                             <th className="px-6 py-4 ">{total_work}</th>

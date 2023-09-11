@@ -10,14 +10,14 @@ const ReportInput = ({ from, to, setFrom, setTo, erorFrom, erorTo, setWorkingTyp
     return (
         <div className=' mt-8 '>
             <div className='bg-white rounded-md p-5  '>
-                <form className='flex gap-4'>
+                <form className='flex justify-between gap-4'>
 
                     {/* ExpenseType input */}
-                    <div className=' w-2/5 '>
+                    <div className='w-full'>
                         <label className='text-gray-600 text-base 2xl:text-lg ' >Doctor</label>
                         <select required onChange={(e) => { setDoctor_id(e.target.value) }}
                             className={`${!doctor_id && !erordoctorid ? 'bg-white' : !doctor_id && ' border-red-300 border-2 bg-red-200'}focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10`}>
-                            <option value={0}>Select Doctor</option>
+                            <option value={0} >Select</option>
                             {doctorList.map((doctor) => {
                                 return <option key={doctor.doctor_id} value={`${doctor.doctor_id}`}>{doctor.doctor_name}</option>
                             })}
@@ -25,11 +25,11 @@ const ReportInput = ({ from, to, setFrom, setTo, erorFrom, erorTo, setWorkingTyp
                     </div>
 
                     {/* ExpenseType input */}
-                    <div className='w-2/5'>
+                    <div className='w-full'>
                         <label className='text-gray-600 text-base 2xl:text-lg' >Expense Type</label>
                         <select required onChange={(val) => setExpenseType_id(val.target.value)}
                             className='focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10 '>
-                            <option value={0}>Select Expense Type</option>
+                            <option value={0}>Select</option>
                             {expenseTypeList && expenseTypeList.map((expenseType) => {
                                 return <option key={expenseType.expense_type_id} value={`${expenseType.expense_type_id}`}>{expenseType.expense_type_name}</option>
                             })}
@@ -37,11 +37,11 @@ const ReportInput = ({ from, to, setFrom, setTo, erorFrom, erorTo, setWorkingTyp
                     </div>
 
                     {/* Working type input */}
-                    <div className='w-2/5'>
+                    <div className='w-full'>
                         <label className='text-gray-600 text-base 2xl:text-lg' >Working Type</label>
                         <select required onChange={(val) => { setWorkingType_id(val.target.value) }}
                             className='focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10 '>
-                            <option value={0}>Select Working Type</option>
+                            <option value={0}>Select</option>
                             {surgeryType && surgeryType.map((surgeryType) => {
                                 return <option key={surgeryType.surgery_type_id} value={`${surgeryType.surgery_type_id}`}>{surgeryType.surgery_type_name}</option>
                             })}
@@ -49,7 +49,7 @@ const ReportInput = ({ from, to, setFrom, setTo, erorFrom, erorTo, setWorkingTyp
                     </div>
 
                     {/** from input */}
-                    <div className='w-2/5'>
+                    <div className='w-full'>
                         <label className='text-gray-600  text-base 2xl:text-lg'>From</label>
                         <input
                             type="date"
@@ -61,7 +61,7 @@ const ReportInput = ({ from, to, setFrom, setTo, erorFrom, erorTo, setWorkingTyp
                     </div>
 
                     {/** to input */}
-                    <div className=' w-2/5 '>
+                    <div className='w-full '>
                         <label className='text-gray-600 mr-2 text-base 2xl:text-lg'>To</label>
                         <input
                             type="date"

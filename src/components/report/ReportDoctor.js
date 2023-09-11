@@ -9,7 +9,7 @@ const ReportDoctor = ({ showDoctor, doctorlegerList }) => {
     if (!showDoctor) return null;
     return (
         <div className='mt-4'>
-            <div className='w-full bg-white p-5 rounded-md'>
+            <div className='w-full bg-white p-5 rounded-md overflow-x-auto'>
                 <h1 className=' text-2xl border-b-2  mb-2 '>Doctor Report</h1>
                 <table className="whitespace-nowrap w-full bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 ">
                     <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">

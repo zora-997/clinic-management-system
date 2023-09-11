@@ -7,7 +7,10 @@ const AddModal = ({ isAddVisible, onClose }) => {
 
     const [doctor_name, setDoctor_name] = useState("");
     const [doctor_percentage, setDoctor_percentage] = useState(0);
-    // const [doctor_date, setDoctor_date] = useState("");
+    const [doctor_username, setDoctor_username] = useState(0);
+    const [doctor_password, setDoctor_password] = useState("");
+
+
     let doctor_date = (new Date().toISOString().slice(0, 10));
 
 
@@ -34,7 +37,6 @@ const AddModal = ({ isAddVisible, onClose }) => {
                                 required
                                 className=" block 2xl:placeholder:text-2xl 2xl:text-2xl w-full focus:ring-1 focus:outline-none rounded border mb-3 2xl:mb-0 mt-2 p-2 2xl:p-4"
                                 onChange={(val) => setDoctor_name(val.target.value)} />
-
                         </div>
                         <div className='w-1/3'>
                             <label className='text-gray-500 2xl:text-2xl'>Percentage</label>
@@ -48,6 +50,25 @@ const AddModal = ({ isAddVisible, onClose }) => {
                                 onChange={(val) => setDoctor_percentage(val.target.value)} />
                         </div>
 
+                    </div>
+
+                    <div className='relative w-full'>
+                        <label className='text-gray-500 2xl:text-2xl'>Username</label>
+                        <input
+                            type='text'
+                            autoComplete="off"
+                            placeholder='username'
+                            className=" block 2xl:placeholder:text-2xl 2xl:text-2xl w-full focus:ring-1 focus:outline-none rounded border mb-3 2xl:mb-0 mt-2 p-2 2xl:p-4"
+                            onChange={(val) => setDoctor_username(val.target.value)} />
+                    </div>
+                    <div className='relative w-full'>
+                        <label className='text-gray-500 2xl:text-2xl'>Password</label>
+                        <input
+                            type='password'
+                            autoComplete="off"
+                            placeholder='password'
+                            className=" block 2xl:placeholder:text-2xl 2xl:text-2xl w-full focus:ring-1 focus:outline-none rounded border mb-3 2xl:mb-0 mt-2 p-2 2xl:p-4"
+                            onChange={(val) => setDoctor_password(val.target.value)} />
                     </div>
 
 
