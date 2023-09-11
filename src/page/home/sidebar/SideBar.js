@@ -23,7 +23,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             to: '/main',
             icon: <RxDashboard size={19} className={`2xl:scale-125`} />,
             link: 'Main',
-            mdarrowright: <MdArrowRight className={` ${location.pathname === '/main' && 'text-white'}  text-white  group-hover:text-white rounded-xl`} size={20} />
+            mdarrowright: <MdArrowRight className={` ${location.pathname === '/main' && 'text-white'}  text-white  group-hover:text-white rounded-xl`} size={20} />,
+            role: ["doctor", "reception", "admin"]
         },
         {
             id: 2,
@@ -31,7 +32,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             to: '/appointment',
             icon: <BiUserPin size={23} className="2xl:scale-125" />,
             link: 'Appointment',
-            mdarrowright: <MdArrowRight className={` ${location.pathname === '/appointment' && 'text-white'}  text-white  group-hover:text-white rounded-xl`} size={20} />
+            mdarrowright: <MdArrowRight className={` ${location.pathname === '/appointment' && 'text-white'}  text-white  group-hover:text-white rounded-xl`} size={20} />,
+            role: ["reception", "admin"]
         },
         {
             id: 3,
@@ -40,7 +42,7 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <HiOutlineUserGroup size={22} className="2xl:scale-125" />,
             link: 'Doctor',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/doctor' && 'text-white'} text-white  group-hover:text-white rounded-xl`} size={20} />,
-            role: "admin"
+            role: ["admin"]
 
         },
         {
@@ -50,7 +52,7 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <TbListDetails size={22} className='2xl:scale-125' />,
             link: 'Ptient Detail',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/sickdetail' && 'text-white'} text-white  group-hover:text-white rounded-xl`} size={20} />,
-            role: "admin"
+            role: ["doctor"]
 
         },
         {
@@ -59,7 +61,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             to: '/patient',
             icon: <BsHeartPulse size={20} className="2xl:scale-125" />,
             link: 'Patient',
-            mdarrowright: <MdArrowRight className={` ${location.pathname === '/patient' && 'text-white'}  text-white  rounded-xl`} size={20} />
+            mdarrowright: <MdArrowRight className={` ${location.pathname === '/patient' && 'text-white'}  text-white  rounded-xl`} size={20} />,
+            role: ["reception", "admin"]
 
         },
 
@@ -70,7 +73,7 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <HiOutlineAnnotation size={22} className="2xl:scale-125" />,
             link: 'Working Type',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/workingtype' && 'text-white'}  text-white rounded-xl`} size={20} />,
-            role: "admin"
+            role: ["admin"]
 
 
         },
@@ -80,7 +83,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             to: '/expensetype',
             icon: <TbReportMoney size={22} className="2xl:scale-125" />,
             link: 'Expense Type',
-            mdarrowright: <MdArrowRight className={` ${location.pathname === '/doctor' && 'text-white'}  text-white  group-hover:text-white rounded-xl`} size={20} />
+            mdarrowright: <MdArrowRight className={` ${location.pathname === '/doctor' && 'text-white'}  text-white  group-hover:text-white rounded-xl`} size={20} />,
+            role: ["reception", "admin"]
 
         },
         {
@@ -89,7 +93,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             to: '/expense',
             icon: <SiExpensify size={20} className="2xl:scale-125" />,
             link: 'Expense',
-            mdarrowright: <MdArrowRight className={` ${location.pathname === '/expense' && 'text-white'}  text-white   group-hover:text-white rounded-xl`} size={20} />
+            mdarrowright: <MdArrowRight className={` ${location.pathname === '/expense' && 'text-white'}  text-white   group-hover:text-white rounded-xl`} size={20} />,
+            role: ["reception", "admin"]
 
         },
         {
@@ -99,7 +104,7 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <TbReportMedical size={23} className="2xl:scale-125" />,
             link: 'Report',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/report' && 'text-white'} text-white  group-hover:text-white rounded-xl`} size={20} />,
-            role: "admin"
+            role: ["admin"]
 
         },
         {
@@ -109,7 +114,7 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <HiOutlineUser size={22} className="2xl:scale-125" />,
             link: 'User',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/user' && 'text-white'} text-white  group-hover:text-white rounded-xl`} size={20} />,
-            role: "admin"
+            role: ["admin"]
 
         },
 
@@ -134,23 +139,24 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
                         {sidebarData.map(data => {
                             return (
                                 <div key={data.id}>
-                                    {(data.role === role || !data.role) &&
-                                        <li onClick={() => setShowSildBar(false)} className={data.style} >
-                                            <Link to={data.to} className=" flex justify-between items-center ">
-                                                <div className="flex gap-3 items-center">
-                                                    {data.icon}
-                                                    <span className=" 2xl:text-xl">{data.link}</span>
-                                                </div>
-                                                {data.mdarrowright}
-                                            </Link>
-                                        </li>}
+                                    {data.role && data.role.map(rolse => {
+                                        return (
+                                            rolse === role &&
+                                            <li onClick={() => setShowSildBar(false)} className={data.style} >
+                                                <Link to={data.to} className=" flex justify-between items-center ">
+                                                    <div className="flex gap-3 items-center">
+                                                        {data.icon}
+                                                        <span className=" 2xl:text-xl">{data.link}</span>
+                                                    </div>
+                                                    {data.mdarrowright}
+                                                </Link>
+                                            </li>)
+                                    })}
                                 </div>
                             )
                         })}
-
                     </ul>
                 </div>
-
             </aside>
 
 
@@ -173,16 +179,20 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
                             {sidebarData.map(data => {
                                 return (
                                     <div key={data.id}>
-                                        {(data.role === role || !data.role) &&
-                                            <li onClick={() => setShowSildBar(false)} className={data.style} >
-                                                <Link to={data.to} className=" flex justify-between items-center ">
-                                                    <div className="flex gap-3 items-center">
-                                                        {data.icon}
-                                                        <span className=" 2xl:text-xl">{data.link}</span>
-                                                    </div>
-                                                    {data.mdarrowright}
-                                                </Link>
-                                            </li>}
+                                        {data.role.map(rolse => {
+                                            return (
+                                                rolse === role &&
+                                                <li onClick={() => setShowSildBar(false)} className={data.style} >
+                                                    <Link to={data.to} className=" flex justify-between items-center ">
+                                                        <div className="flex gap-3 items-center">
+                                                            {data.icon}
+                                                            <span className=" 2xl:text-xl">{data.link}</span>
+                                                        </div>
+                                                        {data.mdarrowright}
+                                                    </Link>
+                                                </li>)
+
+                                        })}
                                     </div>
                                 )
                             })}
