@@ -47,7 +47,10 @@ const ReportAll = ({ from, to, doctor_id, expense_type_id, working_type_id, setE
     const expenseReport = (e) => {
         e.preventDefault();
         if (from && to) {
-            fetchExpensereportReport({ from, to, expense_type_id })
+            fetchExpensereportReport({
+                from, to,
+                expense_type_id
+            })
             setShowExpense(true)
             setShowDoctor(false)
             setShowMain(false)
@@ -129,7 +132,6 @@ const ReportAll = ({ from, to, doctor_id, expense_type_id, working_type_id, setE
             requier: "(From , To)"
         },
 
-
     ]
 
 
@@ -141,7 +143,7 @@ const ReportAll = ({ from, to, doctor_id, expense_type_id, working_type_id, setE
                 {reportData.map(report => {
                     return (
                         <div key={report.id} onClick={(e) => report.action(e)}
-                            className={`relative w-full cursor-pointer p-3 overflow-hidden bg-white group  border duration-300  ${report.style}  rounded-lg shadow `}>
+                            className={`relative w-full h-full cursor-pointer p-3 overflow-hidden bg-white group  border duration-300  ${report.style}  rounded-lg shadow `}>
                             <div className='flex items-start justify-between'>{report.icon}</div>
                             <h5 className="my-3 text-xl font-semibold tracking-tight text-gray-900 ">{report.name}</h5>
                             <p className="my-1 font-body text-sm text-gray-500 ">{report.requier}</p>
@@ -149,7 +151,6 @@ const ReportAll = ({ from, to, doctor_id, expense_type_id, working_type_id, setE
                     )
                 })}
             </div>
-
             {showDoctor && <ReportDoctor showDoctor={showDoctor} setShowDoctor={setShowDoctor} doctorlegerList={doctorlegerList} />}
             {showExpense && <ReportExpense showExpense={showExpense} expenseReportList={expenseReportList} />}
             {showMain && <ReportMain showMain={showMain} mainReportList={mainReportList} />}

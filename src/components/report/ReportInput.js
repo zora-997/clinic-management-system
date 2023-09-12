@@ -14,7 +14,7 @@ const ReportInput = ({ from, to, setFrom, setTo, erorFrom, erorTo, setWorkingTyp
 
                     {/* ExpenseType input */}
                     <div className='w-full'>
-                        <label className='text-gray-600 text-base 2xl:text-lg ' >Doctor</label>
+                        <label className='text-gray-600 text-sm 2xl:text-lg ' >Doctor</label>
                         <select required onChange={(e) => { setDoctor_id(e.target.value) }}
                             className={`${!doctor_id && !erordoctorid ? 'bg-white' : !doctor_id && ' border-red-300 border-2 bg-red-200'}focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10`}>
                             <option value={0} >Select</option>
@@ -26,7 +26,7 @@ const ReportInput = ({ from, to, setFrom, setTo, erorFrom, erorTo, setWorkingTyp
 
                     {/* ExpenseType input */}
                     <div className='w-full'>
-                        <label className='text-gray-600 text-base 2xl:text-lg' >Expense Type</label>
+                        <label className='text-gray-600 text-sm 2xl:text-lg' >Expense Type</label>
                         <select required onChange={(val) => setExpenseType_id(val.target.value)}
                             className='focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10 '>
                             <option value={0}>Select</option>
@@ -38,7 +38,7 @@ const ReportInput = ({ from, to, setFrom, setTo, erorFrom, erorTo, setWorkingTyp
 
                     {/* Working type input */}
                     <div className='w-full'>
-                        <label className='text-gray-600 text-base 2xl:text-lg' >Working Type</label>
+                        <label className='text-gray-600 text-sm 2xl:text-lg' >Working Type</label>
                         <select required onChange={(val) => { setWorkingType_id(val.target.value) }}
                             className='focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10 '>
                             <option value={0}>Select</option>
@@ -50,7 +50,7 @@ const ReportInput = ({ from, to, setFrom, setTo, erorFrom, erorTo, setWorkingTyp
 
                     {/** from input */}
                     <div className='w-full'>
-                        <label className='text-gray-600  text-base 2xl:text-lg'>From</label>
+                        <label className='text-gray-600  text-sm 2xl:text-lg'>From</label>
                         <input
                             type="date"
                             name='from'
@@ -62,7 +62,7 @@ const ReportInput = ({ from, to, setFrom, setTo, erorFrom, erorTo, setWorkingTyp
 
                     {/** to input */}
                     <div className='w-full '>
-                        <label className='text-gray-600 mr-2 text-base 2xl:text-lg'>To</label>
+                        <label className='text-gray-600 mr-2 text-sm 2xl:text-lg'>To</label>
                         <input
                             type="date"
                             name='to'
@@ -71,18 +71,6 @@ const ReportInput = ({ from, to, setFrom, setTo, erorFrom, erorTo, setWorkingTyp
                             value={to}
                             className={`bg-white ${!to && !erorTo ? 'bg-white' : !to && ' border-red-300 border-2'}  mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10`} />
                     </div>
-
-                    {/** button search */}
-                    {/* <div className=''>
-                        <button
-                            type='submit'
-                            className={`
-                     hover:text-white shadow-sm  shadow-gray-300 border tracking-wider mt-1
-                      text-sky-400 border-sky-300  p-1.5 w-full text-center rounded-md hover:bg-sky-300`}
-                        >
-                            Search
-                        </button>
-                    </div> */}
                 </form>
             </div>
         </div>

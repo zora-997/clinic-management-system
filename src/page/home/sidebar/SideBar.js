@@ -62,7 +62,7 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <BsHeartPulse size={20} className="2xl:scale-125" />,
             link: 'Patient',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/patient' && 'text-white'}  text-white  rounded-xl`} size={20} />,
-            role: ["reception", "admin"]
+            role: ["reception", "admin", "doctor"]
 
         },
 

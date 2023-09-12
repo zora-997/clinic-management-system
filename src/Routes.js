@@ -21,6 +21,7 @@ import SickDetail from "./components/sickDetail/SickDetail";
 
 import Header from "./components/layout/header/Header";
 import { User } from "./components/users/User";
+import Loan from "./components/loan/Loan";
 
 
 
@@ -75,6 +76,8 @@ const MainRoutes = ({ showSildBar, setShowSildBar }) => {
                     {/* user  */}
                     <Route exact path="user" element={<User />} />
 
+                    {/* loan  */}
+                    <Route exact path="loan" element={<Loan />} />
 
 
                     {/** aw index bo awa katek to  login krdwa la naw dashbordy ballam pathy dashbordaka asritawa aw index ai garenetawa bo dashbord wa dway awa path dashbord daney u bangi componenty dashbord akay */}

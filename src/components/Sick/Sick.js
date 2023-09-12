@@ -4,15 +4,17 @@ import GlobalContext from "../contexts/createContext/context";
 import { AddSickModal } from '../layout/modal/AddSickModal';
 import SickModal from '../layout/modal/SickModal';
 
+
 const Sick = () => {
 
     const { sickList, doctorList, searchSick } = useContext(GlobalContext);
 
-
     const history = useNavigate();
-
     const did = doctorList.map((d) => d.doctor_id)
     const dn = doctorList.map((d) => d.doctor_name)
+
+    const user = localStorage.getItem("data")
+    let role = user && JSON.parse(user).role;
 
 
     const [sick_id, setSick_id] = useState(0);
@@ -76,10 +78,9 @@ const Sick = () => {
                         {searchSick(sickList).map((sick, index) => {
                             return (
                                 <tr key={index}
-
-                                    onDoubleClick={() => { history(`/detail`, { state: sick.sick_id }) }}
-
+                                    onDoubleClick={() => { role === 'doctor' ? history(`/detail`, { state: sick.sick_id }) : history('/loan', { state: sick.sick_id }) }}
                                     className="  border hover:w-44 cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300 ">
+
                                     <th scope='row' className="px-5 py-4">&nbsp;&nbsp; {index + 1}</th>
                                     <td className="py-4 w-56 ">{sick.sick_name}</td>
                                     <td className="px-6 py-4">{sick.sick_phone}</td>
@@ -98,11 +99,7 @@ const Sick = () => {
                                             setDoctor_id(sick.doctor_id)
                                             setDoctor_name(dn[did.indexOf(`${sick.doctor_id}`)])
                                         }} className=" py-4 "> <span className='hover:border-b hover:border-cyan-400 w-fit'>Edit</span></td>
-
                                 </tr>
-
-
-
                             )
                         })}
 
