@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import MainRoutes from '../../Routes';
-import SideBar from './sidebar/SideBar';
+import MainRoutes from '../../routes/Routes';
+import SideBar from '../../layout/sidebar/SideBar';
 import { useLocation } from 'react-router-dom';
 
 
