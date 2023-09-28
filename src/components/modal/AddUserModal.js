@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import GlobalContext from '../../contexts/createContext/context'
 import ButtonAdd from '../ui/button/ButtonAdd'
+import Modal from '../ui/modal/Modal'
 
 const AddUser = ({ isAddVisible, onClose, admin_name, setAdminName, admin_password, setAdminPassword, admin_role, setAdminRole }) => {
 
@@ -14,7 +15,7 @@ const AddUser = ({ isAddVisible, onClose, admin_name, setAdminName, admin_passwo
 
     if (!isAddVisible) return null;
     return (
-        <div className='fixed  z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center '>
+        <Modal>
             <div className='   flex flex-col '>
                 <button className='text-white text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
                 <form onSubmit={(e) => { addUserHandler(e); onClose(false); }} className=' bg-white rounded-md 2xl:w-[700px] w-[500px]   flex flex-col  p-5'>
@@ -67,7 +68,8 @@ const AddUser = ({ isAddVisible, onClose, admin_name, setAdminName, admin_passwo
                 </form>
 
             </div>
-        </div>
+
+        </Modal>
     )
 }
 

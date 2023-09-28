@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import GlobalContext from '../../contexts/createContext/context';
 import ButtonAdd from '../ui/button/ButtonAdd';
+import Modal from '../ui/modal/Modal';
 
 
 
@@ -33,7 +34,7 @@ const AddExpenseModal = ({ isAddVisible, onClose }) => {
 
     if (!isAddVisible) return null;
     return (
-        <div className=' fixed z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
+        <Modal>
             <div className='w-[550px] flex flex-col'>
                 <button className='text-white text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
                 <form onSubmit={(e) => { createExpenseHandler(e); onClose(false); }} className=' bg-white rounded-md  grid p-5'>
@@ -71,7 +72,7 @@ const AddExpenseModal = ({ isAddVisible, onClose }) => {
                     </div>
                 </form>
             </div>
-        </div>
+        </Modal>
     )
 }
 

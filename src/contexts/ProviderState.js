@@ -34,9 +34,8 @@ const ProviderState = ({ children }) => {
     }
 
     const [query, setQuery] = useState("")
+    const [loader, setLoader] = useState(false)
     const [state, dispatch] = useReducer(reducer, initialState)
-
-
 
     // load all doctors.
     useEffect(() => {
@@ -47,8 +46,6 @@ const ProviderState = ({ children }) => {
         fetchExpenseType();
         fetchExpense();
         fetchUser();
-
-
     }, [])
 
     // doctor search
@@ -280,11 +277,15 @@ const ProviderState = ({ children }) => {
 
     // all user
     const fetchUser = async () => {
+        setLoader(true)
         const res = await api.get('admin/read.php');
-        dispatch({
-            type: 'GETUSER',
-            payload: res.data.data
-        })
+        if (res.status === 200) {
+            setLoader(false)
+            dispatch({
+                type: 'GETUSER',
+                payload: res.data.data
+            })
+        }
     }
 
     // all surgeryType
@@ -544,7 +545,10 @@ const ProviderState = ({ children }) => {
             userList: state.userList,
 
             loanList: state.loanList,
-            fetchLoan
+            fetchLoan,
+
+            loader,
+            setLoader
 
 
 

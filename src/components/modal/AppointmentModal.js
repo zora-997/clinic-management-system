@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import GlobalContext from '../../contexts/createContext/context'
+import Modal from '../ui/modal/Modal'
 
 
 const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
@@ -53,7 +54,7 @@ const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
 
     if (!isVisible) return null;
     return (
-        <div className=' fixed z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex flex-col justify-center items-center'>
+        <Modal>
             <button className='text-white w-[770px] text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
             <div className='w-[600px] flex flex-col bg-white rounded-md p-5'>
                 <div className='flex'>
@@ -128,7 +129,8 @@ const AppointmentModal = ({ isVisible, onClose, appointment_id, sick_id, ddate,
 
 
             </div>
-        </div>
+
+        </Modal>
     )
 }
 

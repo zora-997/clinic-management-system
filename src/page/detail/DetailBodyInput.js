@@ -111,7 +111,7 @@ const DetailBodyInput = () => {
                                 return search && surgeryName.startsWith(search) && surgeryName !== search
                             })
                                 // limit aka tanha 3 dana law naaway search bo aaki pshani ada
-                                .slice(0, 3)
+                                .slice(0, 5)
                                 .map((itme) => {
                                     return <ul key={itme.surgery_type_id} className='cursor-pointer bg-white hover:bg-sky-500  hover:text-white'
                                         onClick={() => { onSearch(itme.surgery_type_name, itme.surgery_type_id); set_surgery_type_id(itme.surgery_type_id) }} >

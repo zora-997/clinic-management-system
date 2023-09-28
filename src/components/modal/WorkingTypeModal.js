@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 
 import GlobalContext from '../../contexts/createContext/context';
+import Modal from '../ui/modal/Modal';
 
 
 const WorkingTypeModal = ({ isVisible, onClose, set_surgery_type_name, surgery_type_name, set_surgery_type_price, surgery_type_price, set_sick_surgery_invoice_note, sick_surgery_invoice_note, set_sick_surgery_invoice_id, sick_surgery_invoice_id }) => {
@@ -29,7 +30,7 @@ const WorkingTypeModal = ({ isVisible, onClose, set_surgery_type_name, surgery_t
 
     if (!isVisible) return null;
     return (
-        <div className='fixed z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
+        <Modal>
             <div className='flex flex-col  justify-center items-center w-5/6'>
                 <button className='text-gray-700  place-self-end text-xl    ' onClick={() => onClose(false)}> X </button>
                 <div className={` flex flex-col p-5  w-full bg-white h-[400px] rounded-md  `}>
@@ -91,7 +92,8 @@ const WorkingTypeModal = ({ isVisible, onClose, set_surgery_type_name, surgery_t
 
                 </div>
             </div>
-        </div>
+
+        </Modal>
     )
 }
 

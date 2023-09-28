@@ -5,6 +5,7 @@ import uuid from "react-uuid";
 import { useLocation } from 'react-router-dom';
 import DetailTypeOfWorkModal from './DetailTypeOfWorkModal';
 import DetailViewImageModal from './DetailViewImageModal';
+import Modal from '../ui/modal/Modal';
 
 
 const SurgeryTypeModal = ({ isVisible, onClose, sick_surgery_id, invoiceImage, setinvoiceImage, invoice, setinvoice, idUpdate }) => {
@@ -85,7 +86,7 @@ const SurgeryTypeModal = ({ isVisible, onClose, sick_surgery_id, invoiceImage, s
 
     if (!isVisible) return null;
     return (
-        <div className='fixed z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
+        <Modal>
             <div className={` flex flex-col justify-between  w-5/6 bg-white h-[580px] rounded-md  `}>
                 <div className={` place-self-center p-6 w-full flex flex-col overflow-y-auto `}>
                     <button className='text-red-400  text-xl place-self-end mt-3 mr-3 ' onClick={() => onClose(false)}> X </button>
@@ -194,7 +195,8 @@ const SurgeryTypeModal = ({ isVisible, onClose, sick_surgery_id, invoiceImage, s
 
                 </div>
             </div>
-        </div>
+
+        </Modal>
     )
 
 }

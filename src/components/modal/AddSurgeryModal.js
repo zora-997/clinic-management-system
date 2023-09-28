@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import GlobalContext from "../../contexts/createContext/context";
 import ButtonAdd from '../ui/button/ButtonAdd';
+import Modal from '../ui/modal/Modal';
 
 
 const AddSurgeryModal = ({ isAddVisible, onClose }) => {
@@ -22,7 +23,7 @@ const AddSurgeryModal = ({ isAddVisible, onClose }) => {
     if (!isAddVisible) return null;
 
     return (
-        <div className='fixed z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
+        <Modal>
             <div className='w-[500px] flex flex-col'>
                 <button className='text-white text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
                 <form onSubmit={(e) => { addSurgeryHandler(e); onClose(false); }} className=' bg-white rounded-md p-5 grid'>
@@ -41,7 +42,7 @@ const AddSurgeryModal = ({ isAddVisible, onClose }) => {
                     <ButtonAdd add="Add Working Type" />
                 </form>
             </div>
-        </div>
+        </Modal>
 
     )
 }

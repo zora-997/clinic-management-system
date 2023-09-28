@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import GlobalContext from "../../contexts/createContext/context";
 import ButtonAdd from '../ui/button/ButtonAdd';
+import Modal from '../ui/modal/Modal';
 export const AddSickModal = ({ isAddVisible, onClose }) => {
 
     const { addSick, doctorList } = useContext(GlobalContext);
@@ -31,7 +32,7 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
 
     if (!isAddVisible) return null;
     return (
-        <div className='fixed z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
+        <Modal>
             <div className='w-[600px] flex flex-col'>
                 <button className='text-white text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
 
@@ -78,6 +79,7 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
                 </form>
 
             </div>
-        </div>
+        </Modal>
+
     )
 }

@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import GlobalContext from '../../contexts/createContext/context'
 import ButtonUpdate from '../ui/button/ButtonUpdate'
 import ButtonDelete from '../ui/button/ButtonDelete'
+import Modal from '../ui/modal/Modal'
 
 
 const SickModal = ({
@@ -37,7 +38,7 @@ const SickModal = ({
 
     if (!isVisible) return null;
     return (
-        <div className='fixed z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
+        <Modal>
             <div className='w-[600px] flex flex-col'>
                 <button className='text-white text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
                 <div className=' bg-white rounded-md p-4 grid'>
@@ -94,7 +95,8 @@ const SickModal = ({
 
                 </div>
             </div>
-        </div>
+
+        </Modal>
     )
 }
 

@@ -6,6 +6,7 @@ import SickModal from '../../components/modal/SickModal';
 import ButtonCreate from '../../components/ui/button/ButtonCreate';
 
 
+
 const Sick = () => {
 
     const { sickList, doctorList, searchSick } = useContext(GlobalContext);
@@ -30,7 +31,6 @@ const Sick = () => {
     const [addshow, setAddShow] = useState(false);
 
 
-
     return (
         <div className="select-none">
             <SickModal
@@ -53,7 +53,6 @@ const Sick = () => {
             {/** button u table hamui tyaya */}
             <div className='mx-3 mt-10 bg-white rounded-md p-5 overflow-auto'>
                 <ButtonCreate setAddShow={setAddShow} buttonName="Create Patient" />
-
                 <table className=" overflow-hidden bg-white text-sm 2xl:text-lg shadow-sm text-left text-gray-500  w-full">
                     <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
                         <tr className=''>
@@ -68,7 +67,7 @@ const Sick = () => {
 
                         </tr>
                     </thead>
-                    <tbody className=''>
+                    <tbody>
 
                         {searchSick(sickList).map((sick, index) => {
                             return (

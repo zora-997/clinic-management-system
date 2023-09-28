@@ -7,7 +7,6 @@ import DetailHeader from './DetailHeader';
 
 const Detail = () => {
 
-
     return (
         <div className=' font-body flex flex-col p-3 w-full '>
             <DetailHeader />

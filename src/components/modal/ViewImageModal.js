@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import GlobalContext from '../../contexts/createContext/context';
 import { useLocation } from 'react-router-dom';
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
+import Modal from '../ui/modal/Modal';
 
 const ViewImageModal = ({ isVisible, setIsVisible }) => {
     const { sickList } = useContext(GlobalContext);
@@ -23,13 +24,10 @@ const ViewImageModal = ({ isVisible, setIsVisible }) => {
     if (!isVisible) return null;
     return (
 
-        <div
-            className=' fixed z-20 overflow-x-scroll inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex flex-col justify-center items-center'>
-
+        <Modal>
             <button className='text-white text-xl place-self-end pr-[15rem] w-fit ' onClick={() => setIsVisible(false)}> X </button>
             <div className='flex  items-center overflow-x-scroll'>
                 <MdChevronLeft className='opacity-50 cursor-pointer hover:opacity-100' onClick={slidLeft} size={40} />
-
                 <div id='slider' className=' bg-white rounded-md flex h-[500px]  w-[1000px] overflow-x-scroll scroll  scroll-smooth  scrollbar-hide whitespace-nowrap'>
                     {
                         sickList && sickList.map(sick => {
@@ -74,7 +72,8 @@ const ViewImageModal = ({ isVisible, setIsVisible }) => {
                 <MdChevronRight className='opacity-50 cursor-pointer hover:opacity-100' onClick={slidRight} size={40} />
             </div>
 
-        </div>
+
+        </Modal>
 
 
     )

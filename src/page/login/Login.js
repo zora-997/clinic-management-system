@@ -47,10 +47,8 @@ const Login = () => {
     }
 
     return (
-        <div className=' bg-purple-400 max-w-full'>
-
+        <div>
             <ToastContainer limit={2} />
-
             <div className="select-none bg-gradient-to-r from-sky-300  to-white w-full h-screen flex items-center justify-center">
                 <div className='relative h-64 mx-2 px-2 w-fit md:w-[700px] md:h-[300px] lg:w-[900px] lg:h-2/3 xl:w-[1050px] xl:h-3/4 2xl:w-[1300px] 2xl:h-3/4 bg-gradient-to-l from-sky-300 via-white to-white flex items-center   justify-between shadow-xl rounded-md'>
                     {/* div lay chap */}

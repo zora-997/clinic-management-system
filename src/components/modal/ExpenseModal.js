@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import GlobalContext from '../../contexts/createContext/context';
 import ButtonUpdate from '../ui/button/ButtonUpdate';
 import ButtonDelete from '../ui/button/ButtonDelete';
+import Modal from '../ui/modal/Modal';
 
 const ExpenseModal = ({ isVisible, onClose, expense_type_name, expense_id, expense_type_id, set_new_expense_type_id, expense_amount, set_new_expense_amount, admin_id, expense_note, set_new_expense_note }) => {
     const { updateExpense, deleteExpense, expenseTypeList } = useContext(GlobalContext);
@@ -21,7 +22,7 @@ const ExpenseModal = ({ isVisible, onClose, expense_type_name, expense_id, expen
 
     if (!isVisible) return null;
     return (
-        <div className=' fixed z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
+        <Modal>
             <div className='w-[550px] flex flex-col'>
                 <button className='text-white text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
                 <div className=' bg-white rounded-md p-5 grid '>
@@ -55,7 +56,7 @@ const ExpenseModal = ({ isVisible, onClose, expense_type_name, expense_id, expen
 
                 </div>
             </div>
-        </div>
+        </Modal>
     )
 }
 

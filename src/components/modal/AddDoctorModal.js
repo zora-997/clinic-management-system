@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import GlobalContext from '../../contexts/createContext/context'
 import ButtonAdd from '../ui/button/ButtonAdd';
+import Modal from '../ui/modal/Modal';
 
 
 const AddModal = ({ isAddVisible, onClose }) => {
@@ -23,7 +24,7 @@ const AddModal = ({ isAddVisible, onClose }) => {
 
     if (!isAddVisible) return null;
     return (
-        <div className='fixed  z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center '>
+        <Modal>
             <div className='   flex flex-col '>
                 <button className='text-white text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
                 <form onSubmit={(e) => { addDoctorHandler(e); onClose(false); }} className=' bg-white rounded-md 2xl:w-[700px]   flex flex-col  p-5'>
@@ -75,7 +76,7 @@ const AddModal = ({ isAddVisible, onClose }) => {
                 </form>
 
             </div>
-        </div>
+        </Modal>
     )
 }
 export default AddModal

@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import GlobalContext from "../../contexts/createContext/context";
 import ButtonUpdate from '../ui/button/ButtonUpdate';
 import ButtonDelete from '../ui/button/ButtonDelete';
+import Modal from '../ui/modal/Modal';
 
 
 const SurgeryModal = ({ isVisible, onClose, surgery_type_name, setSurgey_name, surgery_type_price, setSurgey_price, surgery_type_id }) => {
@@ -20,7 +21,7 @@ const SurgeryModal = ({ isVisible, onClose, surgery_type_name, setSurgey_name, s
 
     if (!isVisible) return null;
     return (
-        <div className='fixed z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center'>
+        <Modal>
             <div className='w-[400px] flex flex-col'>
                 <button className='text-white text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
                 <div className=' bg-white rounded-md p-5 grid'>
@@ -36,7 +37,8 @@ const SurgeryModal = ({ isVisible, onClose, surgery_type_name, setSurgey_name, s
 
                 </div>
             </div>
-        </div>
+
+        </Modal>
     )
 }
 

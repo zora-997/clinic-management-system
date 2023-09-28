@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import GlobalContext from "../../contexts/createContext/context";
-import AddModal from '../../components/modal/AddModal';
-import Modal from '../../components/modal/Modal';
+import AddDoctorModal from '../../components/modal/AddDoctorModal';
+import DoctorModal from '../../components/modal/DoctorModal';
 import ButtonCreate from '../../components/ui/button/ButtonCreate';
 import Table from '../../components/ui/table/Table';
 
@@ -29,8 +29,8 @@ const Doctors = () => {
 
     return (
         <div className="select-none">
-            <Modal isVisible={show} onClose={setShow} doctor_name={newName} setNewName={setNewName} doctor_percentage={newPercentage} setNewPercentage={setNewPercentage} doctor_id={newDoctor_id} />
-            <AddModal isAddVisible={addshow} onClose={setAddShow} />
+            <DoctorModal isVisible={show} onClose={setShow} doctor_name={newName} setNewName={setNewName} doctor_percentage={newPercentage} setNewPercentage={setNewPercentage} doctor_id={newDoctor_id} />
+            <AddDoctorModal isAddVisible={addshow} onClose={setAddShow} />
             <div className=' bg-white overflow-auto mx-3  mt-10 rounded-md  p-5 '>
                 <ButtonCreate setAddShow={setAddShow} buttonName="Create Doctor" />
                 <Table thead={thead} data={doctorList} search={searchDoctor} tbody={tbody} setState={setState} setShow={setShow} change={change} />

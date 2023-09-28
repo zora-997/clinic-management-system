@@ -8,7 +8,7 @@ import Table from '../../components/ui/table/Table';
 export const User = () => {
 
     // context for share data
-    const { userList, searchUser } = useContext(GlobalContext);
+    const { userList, searchUser, loader } = useContext(GlobalContext);
     //change input
     const [admin_id, setAdmin_id] = useState(0);
     const [admin_name, setAdminName] = useState("");
@@ -28,10 +28,15 @@ export const User = () => {
         <div className=" select-none">
             <UserModal isVisible={show} onClose={setShow} admin_id={admin_id} admin_name={admin_name} setAdminName={setAdminName} admin_password={admin_password} setAdminPassword={setAdminPassword} admin_role={admin_role} setAdminRole={setAdminRole} />
             <AddUserModal isAddVisible={addshow} onClose={setAddShow} admin_name={admin_name} setAdminName={setAdminName} admin_password={admin_password} setAdminPassword={setAdminPassword} admin_role={admin_role} setAdminRole={setAdminRole} />
-            <div className=' bg-white overflow-auto mx-3  mt-10 rounded-md  p-5 '>
-                <ButtonCreate setAddShow={setAddShow} buttonName="Create User" />
-                <Table thead={thead} data={userList} search={searchUser} tbody={tbody} setState={setState} setShow={setShow} change={change} />
-            </div>
+            {loader ?
+                <div className='absolute top-[40%] left-[50%] bg-white/60 p-1 rounded  border-l border-l-gray-100 '>
+                    <h1 className='text-xl tracking-wider'>Loding...</h1>
+                </div> :
+                <div className=' bg-white overflow-auto mx-3  mt-10 rounded-md  p-5 '>
+                    <ButtonCreate setAddShow={setAddShow} buttonName="Create User" />
+                    <Table thead={thead} data={userList} search={searchUser} tbody={tbody} setState={setState} setShow={setShow} change={change} />
+                </div>
+            }
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import GlobalContext from '../../contexts/createContext/context';
 import ButtonUpdate from '../ui/button/ButtonUpdate';
 import ButtonDelete from '../ui/button/ButtonDelete';
+import Modal from '../ui/modal/Modal';
 
 const UserModal = ({ isVisible, onClose, admin_id, admin_name, setAdminName, admin_password, setAdminPassword, admin_role, setAdminRole }) => {
 
@@ -21,7 +22,7 @@ const UserModal = ({ isVisible, onClose, admin_id, admin_name, setAdminName, adm
 
     if (!isVisible) return null;
     return (
-        <div className='fixed  z-20 inset-0 bg-black bg-opacity-25 backdrop-blur-sm flex justify-center items-center '>
+        <Modal>
             <div className='   flex flex-col '>
                 <button className='text-white text-xl place-self-end ' onClick={() => onClose(false)}> X </button>
                 <form onSubmit={(e) => { updateUserHandler(e); onClose(false); }} className=' bg-white rounded-md 2xl:w-[700px] w-[500px]   flex flex-col  p-5'>
@@ -74,7 +75,8 @@ const UserModal = ({ isVisible, onClose, admin_id, admin_name, setAdminName, adm
                 </form>
 
             </div>
-        </div>
+
+        </Modal>
     )
 }
 
