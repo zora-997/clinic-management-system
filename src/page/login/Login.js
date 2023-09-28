@@ -5,6 +5,8 @@ import login from "../../assets/image/login.gif";
 import { TiLockClosed, TiUser } from "react-icons/ti";
 import { GiHospitalCross } from "react-icons/gi";
 import api from "../../api/api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 
@@ -15,15 +17,10 @@ const Login = () => {
 
     const [admin_name, setUsername] = useState("");
     const [admin_password, setPassword] = useState("");
-    const [error, setError] = useState("");
-    const [show, setShow] = useState(false);
     const [loading, setLoading] = useState(false);
 
 
-
-
-
-    //   feach admin
+    //   fetch admin
     const fetchAdmin = async (e) => {
         e.preventDefault();
         setLoading(true)
@@ -38,8 +35,12 @@ const Login = () => {
             history("/main", { state: user })
 
         } else {
-            setShow(true)
-            setError(res.data.message)
+
+            toast(res.data.message, {
+                className: "error-toast",
+                draggable: true,
+                position: toast.POSITION.TOP_CENTER
+            })
             setLoading(false)
         }
 
@@ -48,27 +49,16 @@ const Login = () => {
     return (
         <div className=' bg-purple-400 max-w-full'>
 
-
-            {/** alert */}
-            <div className={`p-3 mt-2 w-full h-[10] ${!show && '-top-16'} ${show && '-top-2 duration-300'} flex justify-between place-self-center mb-4 absolute text-sm text-red-600 rounded bg-red-100 `} role="alert">
-                <span className="font-medium">{error}</span>
-                <span onClick={() => setShow(false)} className="font-medium text-2xl cursor-pointer">×</span>
-            </div>
-
+            <ToastContainer limit={2} />
 
             <div className="select-none bg-gradient-to-r from-sky-300  to-white w-full h-screen flex items-center justify-center">
-
                 <div className='relative h-64 mx-2 px-2 w-fit md:w-[700px] md:h-[300px] lg:w-[900px] lg:h-2/3 xl:w-[1050px] xl:h-3/4 2xl:w-[1300px] 2xl:h-3/4 bg-gradient-to-l from-sky-300 via-white to-white flex items-center   justify-between shadow-xl rounded-md'>
-
                     {/* div lay chap */}
                     <div className='flex flex-col mx-auto  w-full md:max-w-xs lg:max-w-sm xl:max-w-md'>
-
                         {/** logo login */}
                         <div className='absolute top-0 md:top-0.5 lg:top-1.5 xl:top-2.5 h-full'>
                             <GiHospitalCross size={30} className='text-sky-400   scale-75 md:scale-90 lg:scale-100 xl:scale-125 ' />
                         </div>
-
-
 
                         <form onSubmit={fetchAdmin} className='flex flex-col gap-2 md:gap-4 lg:gap-6  w-full'>
                             <p className='font-bold text-sky-400 border-b-2 w-12 xl:w-20 lg:w-16 tracking-wider text-start pb-2 border-b-sky-300 text-md lg:text-xl xl:text-2xl '>Login</p>
