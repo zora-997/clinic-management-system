@@ -14,15 +14,19 @@ const ReportMain = ({ showMain, mainReportList }) => {
 
                         <tr className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
                             <th scope="col" className="bg-cyan-500 text-white px-6 py-3">Total Income</th>
+                            {/* btawe fariza darkawe => parseFloat(mainReportList.total_income).toLocaleString() */}
                             <td className="px-6 py-4">{mainReportList.total_income}</td>
                         </tr>
                         <tr className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
                             <th scope="col" className="bg-cyan-500 text-white px-6 py-3">Total Expense</th>
+                            {/* btawe fariza darkawe => parseFloat(mainReportList.total_expense).toLocaleString() */}
                             <td className="px-6 py-4">{mainReportList.total_expense}</td>
                         </tr>
                         <tr className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
                             <th scope="col" className="bg-cyan-500 text-white px-6 py-3">Summary</th>
+                            {/* btawe fariza darkawe => parseFloat(mainReportList.summary).toLocaleString() */}
                             <td className="px-6 py-4">{mainReportList.summary}</td>
+                            {/* parseFloat(data[body]) && body.slice(body.length - 2) !== "te" ? parseFloat(data[body]).toLocaleString() : data[body] */}
                         </tr>
                     </tbody>
 

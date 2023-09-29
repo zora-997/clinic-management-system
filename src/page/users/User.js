@@ -4,6 +4,7 @@ import AddUserModal from '../../components/modal/AddUserModal';
 import UserModal from '../../components/modal/UserModal';
 import ButtonCreate from '../../components/ui/button/ButtonCreate';
 import Table from '../../components/ui/table/Table';
+import Loader from '../../components/ui/loader/Loader';
 
 export const User = () => {
 
@@ -24,14 +25,12 @@ export const User = () => {
     const change = ["admin_name", "admin_password", "admin_role", "admin_id"]
     const setState = [setAdminName, setAdminPassword, setAdminRole, setAdmin_id]
 
+
     return (
         <div className=" select-none">
             <UserModal isVisible={show} onClose={setShow} admin_id={admin_id} admin_name={admin_name} setAdminName={setAdminName} admin_password={admin_password} setAdminPassword={setAdminPassword} admin_role={admin_role} setAdminRole={setAdminRole} />
             <AddUserModal isAddVisible={addshow} onClose={setAddShow} admin_name={admin_name} setAdminName={setAdminName} admin_password={admin_password} setAdminPassword={setAdminPassword} admin_role={admin_role} setAdminRole={setAdminRole} />
-            {loader ?
-                <div className='absolute top-[40%] left-[50%] bg-white/60 p-1 rounded  border-l border-l-gray-100 '>
-                    <h1 className='text-xl tracking-wider'>Loding...</h1>
-                </div> :
+            {loader ? <Loader /> :
                 <div className=' bg-white overflow-auto mx-3  mt-10 rounded-md  p-5 '>
                     <ButtonCreate setAddShow={setAddShow} buttonName="Create User" />
                     <Table thead={thead} data={userList} search={searchUser} tbody={tbody} setState={setState} setShow={setShow} change={change} />
