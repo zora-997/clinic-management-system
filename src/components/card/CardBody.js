@@ -6,18 +6,33 @@ import medicalteam2 from "../../assets/image/medical-team (1).png";
 import report from "../../assets/image/report.png";
 import reportkall2 from "../../assets/image/reportkall2.png";
 import GlobalContext from '../../contexts/createContext/context';
+import { motion } from "framer-motion"
 
 const CardBody = () => {
 
     const { doctorList, sickList, sickSurgery, appointmentList } = useContext(GlobalContext)
 
 
+
+
     return (
         <div className=' mx-2 xl:flex  xl:justify-between grid  sm:grid-cols-2 gap-3 xl:gap-5   '>
 
 
-            <div style={{ backgroundColor: '#0171FE' }}
-                className='pl-5 rounded-2xl  w-full h-[120px] 2xl:h-[150px] flex items-center justify-start  
+            <motion.div
+                animate={{
+                    y: 0,
+                    opacity: 1,
+                }}
+                initial={{
+                    y: -100,
+                    opacity: 0.1
+                }}
+
+                transition={{
+                    duration: 1
+                }}
+                className='pl-5 rounded-2xl bg-[#0171FE]  w-full h-[120px] 2xl:h-[150px] flex items-center justify-start  
                 relative  py-3 overflow-hidden shadow-md shadow-blue-100 border-2 border-blue-200'>
                 <div className='bg-white rounded-full'>
                     {/* <FaUsers style={{ color: '#0171FE' }} size={25} className=" relative  transition-colors duration-500 ease-in-out" /> */}
@@ -36,12 +51,24 @@ const CardBody = () => {
                     <span className='absolute rounded-full w-32 2xl:w-36 h-32 2xl:h-36 bg-white/10 -left-10  -top-20 '></span>
 
                 </div>
-            </div>
+            </motion.div>
 
 
             {/** card 3 */}
-            <div style={{ backgroundColor: '#04D5C7' }}
-                className='  pl-5 rounded-2xl  w-full h-[120px] 2xl:h-[150px] flex items-center justify-start i 
+            <motion.div
+                animate={{
+                    y: 0,
+                    opacity: 1,
+                }}
+                initial={{
+                    y: -100,
+                    opacity: 0.1
+                }}
+
+                transition={{
+                    duration: 1.5
+                }}
+                className='bg-[#04D5C7]  pl-5 rounded-2xl  w-full h-[120px] 2xl:h-[150px] flex items-center justify-start i 
                 relative py-3 overflow-hidden shadow-md shadow-emerald-100 border-2 border-emerald-200'>
                 <div className='bg-white rounded-full  2xl:p-5 p-3'>
                     <FaUser style={{ color: '#04D5C7' }} size={25} className=" relative 2xl:scale-150 " />
@@ -57,11 +84,23 @@ const CardBody = () => {
                     <span className='absolute rounded-full w-28 2xl:w-32 h-28 2xl:h-32 bg-white/10 -left-10  -top-20 '></span>
                     <span className='absolute rounded-full w-32 2xl:w-36 h-32 2xl:h-36 bg-white/20 -left-10  -top-20 '></span>
                 </div>
-            </div>
+            </motion.div>
 
             {/** card 2 */}
-            <div style={{ backgroundColor: '#9284F7' }}
-                className='  pl-5 rounded-2xl  w-full h-[120px] 2xl:h-[150px] flex items-center justify-start i 
+            <motion.div
+                animate={{
+                    y: 0,
+                    opacity: 1,
+                }}
+                initial={{
+                    y: -100,
+                    opacity: 0.1
+                }}
+
+                transition={{
+                    duration: 2
+                }}
+                className='bg-[#9284F7]  pl-5 rounded-2xl  w-full h-[120px] 2xl:h-[150px] flex items-center justify-start i 
                 relative py-3 overflow-hidden shadow-md shadow-purple-200/70 border-2 border-purple-200'>
                 <div className='bg-white rounded-full p-3 2xl:p-[17px] text-center'>
                     <BsFillHeartPulseFill style={{ color: '#9284F7' }} size={25} className=" relative 2xl:scale-150  transition-colors duration-500 ease-in-out" />
@@ -77,13 +116,25 @@ const CardBody = () => {
                     <span className='absolute rounded-full w-28 2xl:w-32 h-28 2xl:h-32 bg-white/5 -left-10  -top-20 '></span>
                     <span className='absolute rounded-full w-32 2xl:w-36 h-32 2xl:h-36 bg-white/10 -left-10  -top-20 '></span>
                 </div>
-            </div>
+            </motion.div>
 
 
 
             {/** card 4 */}
-            <div style={{ backgroundColor: '#FF996C' }}
-                className='pl-5 rounded-2xl  w-full h-[120px] 2xl:h-[150px] flex items-center justify-start
+            <motion.div
+                animate={{
+                    y: 0,
+                    opacity: 1,
+                }}
+                initial={{
+                    y: -100,
+                    opacity: 0.1
+                }}
+
+                transition={{
+                    duration: 2.5
+                }}
+                className='bg-[#FF996C] pl-5 rounded-2xl  w-full h-[120px] 2xl:h-[150px] flex items-center justify-start
                 relative py-3 overflow-hidden shadow-md shadow-orange-100 border-2 border-orange-200'>
                 <div className='bg-white rounded-full p-3'>
                     <img src={report} alt="no doctor" className=' 2xl:w-10 ' />
@@ -100,7 +151,7 @@ const CardBody = () => {
                     <span className='absolute rounded-full w-28 2xl:w-32 h-28 2xl:h-32 bg-white/10 -left-10  -top-20 '></span>
                     <span className='absolute rounded-full w-32 2xl:w-36 h-32 2xl:h-36 bg-white/20 -left-10  -top-20 '></span>
                 </div>
-            </div>
+            </motion.div>
 
         </div>
     )

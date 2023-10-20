@@ -8,6 +8,7 @@ import { BsHeartPulse } from "react-icons/bs";
 import { TbListDetails, TbReportMedical, TbReportMoney } from "react-icons/tb";
 import { SiExpensify } from "react-icons/si";
 import { FaClinicMedical } from 'react-icons/fa';
+import { motion } from 'framer-motion'
 
 const SideBar = ({ showSildBar, setShowSildBar }) => {
 
@@ -24,7 +25,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <RxDashboard size={19} className={`2xl:scale-125`} />,
             link: 'Main',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/main' && 'text-white'}  text-white  group-hover:text-white rounded-xl`} size={20} />,
-            role: ["doctor", "reception", "admin"]
+            role: ["doctor", "reception", "admin"],
+            duration: .5
         },
         {
             id: 2,
@@ -33,7 +35,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <BiUserPin size={23} className="2xl:scale-125" />,
             link: 'Appointment',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/appointment' && 'text-white'}  text-white  group-hover:text-white rounded-xl`} size={20} />,
-            role: ["reception", "admin"]
+            role: ["reception", "admin"],
+            duration: .7
         },
         {
             id: 3,
@@ -42,7 +45,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <HiOutlineUserGroup size={22} className="2xl:scale-125" />,
             link: 'Doctor',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/doctor' && 'text-white'} text-white  group-hover:text-white rounded-xl`} size={20} />,
-            role: ["admin"]
+            role: ["admin"],
+            duration: .9
 
         },
         {
@@ -52,7 +56,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <TbListDetails size={22} className='2xl:scale-125' />,
             link: 'Ptient Detail',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/sickdetail' && 'text-white'} text-white  group-hover:text-white rounded-xl`} size={20} />,
-            role: ["doctor"]
+            role: ["doctor"],
+            duration: 1.1
 
         },
         {
@@ -62,7 +67,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <BsHeartPulse size={20} className="2xl:scale-125" />,
             link: 'Patient',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/patient' && 'text-white'}  text-white  rounded-xl`} size={20} />,
-            role: ["reception", "admin", "doctor"]
+            role: ["reception", "admin", "doctor"],
+            duration: 1.3
 
         },
 
@@ -73,7 +79,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <HiOutlineAnnotation size={22} className="2xl:scale-125" />,
             link: 'Working Type',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/workingtype' && 'text-white'}  text-white rounded-xl`} size={20} />,
-            role: ["admin"]
+            role: ["admin"],
+            duration: 1.5
 
 
         },
@@ -84,7 +91,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <TbReportMoney size={22} className="2xl:scale-125" />,
             link: 'Expense Type',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/doctor' && 'text-white'}  text-white  group-hover:text-white rounded-xl`} size={20} />,
-            role: ["reception", "admin"]
+            role: ["reception", "admin"],
+            duration: 1.7
 
         },
         {
@@ -94,7 +102,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <SiExpensify size={20} className="2xl:scale-125" />,
             link: 'Expense',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/expense' && 'text-white'}  text-white   group-hover:text-white rounded-xl`} size={20} />,
-            role: ["reception", "admin"]
+            role: ["reception", "admin"],
+            duration: 1.9
 
         },
         {
@@ -104,7 +113,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <TbReportMedical size={23} className="2xl:scale-125" />,
             link: 'Report',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/report' && 'text-white'} text-white  group-hover:text-white rounded-xl`} size={20} />,
-            role: ["admin"]
+            role: ["admin"],
+            duration: 2
 
         },
         {
@@ -114,7 +124,8 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <HiOutlineUser size={22} className="2xl:scale-125" />,
             link: 'User',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/user' && 'text-white'} text-white  group-hover:text-white rounded-xl`} size={20} />,
-            role: ["admin"]
+            role: ["admin"],
+            duration: 2.2
 
         },
 
@@ -125,20 +136,46 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
         <>
             <aside className={`lg:flex hidden  w-60  2xl:w-72 3xl:w-96 h-screen flex-col gap-6 shadow-sm shadow-gray-100 bg-white font-body  `}>
 
-                <div className='TopSidbar'>
+                <motion.div
+                    animate={{
+                        scale: 1,
+                        opacity: 1,
+                    }}
+                    initial={{
+                        scale: 0,
+                        // opacity: 0.1
+                    }}
+
+                    transition={{
+                        duration: .8
+                    }}
+                    className='TopSidbar'>
                     <div className='flex justify-center items-start pt-3 max-w-full  h-24'>
                         <div className='text-xl gap-3 flex  justify-center items-center'>
                             <FaClinicMedical size={38} className=' text-sky-500' />
                             <span className=" font-medium text-2xl text-sky-400"><span className="text-yellow-300 text-2xl">Top</span>&nbsp;Clinic</span>
                         </div>
                     </div>
-                </div>
+                </motion.div>
 
                 <div className="Sidbar Menu" >
                     <ul className=' flex flex-col  gap-2 text-[#AEAEAE]  text-sm w-full px-2   select-none'>
                         {sidebarData.map(data => {
                             return (
-                                <div key={data.id}>
+                                <motion.div
+                                    animate={{
+                                        x: 0,
+                                        opacity: 1,
+                                    }}
+                                    initial={{
+                                        x: -100,
+                                        // opacity: 0.1
+                                    }}
+
+                                    transition={{
+                                        duration: data.duration
+                                    }}
+                                    key={data.id}>
                                     {data.role && data.role.map(rolse => {
                                         return (
                                             rolse === role &&
@@ -153,7 +190,7 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
                                             </li>
                                         )
                                     })}
-                                </div>
+                                </motion.div>
                             )
                         })}
                     </ul>

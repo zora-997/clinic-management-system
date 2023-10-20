@@ -29,7 +29,7 @@ const SickDetailViewImage = ({ isVisible, setIsVisible, id, invoice }) => {
                             {/** amsh bo drusbuni actiony scrollakaw u hidn scroll ka ba karde */}
                             <div id='slider' key={invoice.sick_surgery_id + 1} className='flex overflow-x-scroll scrollbar-hide scroll whitespace-nowrap  scroll-smooth ' >
                                 {invoice.image && invoice.image.map((img, index) => {
-                                    {/* am div xwarawa nabe scrollka durs nabe hamu nwenakan ba statiki yatawa */ }
+                                    // {/* am div xwarawa nabe scrollka durs nabe hamu nwenakan ba statiki yatawa */ }
                                     return (
                                         <div key={img.sick_surgery_invoice_image_id + 1} className='flex' >
                                             <div key={img.sick_surgery_invoice_image_id} className='w-[400px]' >

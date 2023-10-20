@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import "./toast.css";
 
 
+
 const Appointment = () => {
 
     const { appointmentList, fetchAppointment, ChangeStateAppointment, searchAppointment } = useContext(GlobalContext);
@@ -43,10 +44,10 @@ const Appointment = () => {
             }, ddate)
         } else {
             // katek appoimentek hi aw rozha nia kasek ayawe wait bka
-            toast("This appoiment is from another day", {
+            toast.warn("This appoiment is from another day", {
                 className: "error-toast",
                 draggable: true,
-                position: toast.POSITION.TOP_CENTER
+                position: toast.POSITION.TOP_RIGHT
             })
         }
     }
@@ -57,17 +58,17 @@ const Appointment = () => {
         const check = search.includes("working")
 
         if (appointment_date !== new Date().toISOString().slice(0, 10)) {
-            toast("This appoiment is from another day", {
+            toast.warn("This appoiment is from another day", {
                 className: "error-toast",
                 draggable: true,
-                position: toast.POSITION.TOP_CENTER
+                position: toast.POSITION.TOP_RIGHT
             })
         } else if (check) {
             console.log("modal");
-            toast("This docor have a patient", {
+            toast.warn("This docor have a patient", {
                 className: "error-toast",
                 draggable: true,
-                position: toast.POSITION.TOP_CENTER
+                position: toast.POSITION.TOP_RIGHT
             })
         } else {
             ChangeStateAppointment({
@@ -79,10 +80,10 @@ const Appointment = () => {
 
     const canceledStateHandel = (appointment_id, appointment_state) => {
         if (appointment_state === "working") {
-            toast("The patient is working !", {
+            toast.warn("The patient is working !", {
                 className: "error-toast",
                 draggable: true,
-                position: toast.POSITION.TOP_CENTER
+                position: toast.POSITION.TOP_RIGHT
             })
         } else {
             ChangeStateAppointment({
@@ -96,6 +97,7 @@ const Appointment = () => {
 
         <div className=" select-none mt-8 ">
             <div className='mx-3 '>
+
                 {/* bo pshan dani toasta kan bakar de */}
                 <ToastContainer limit={2} />
 
@@ -171,7 +173,9 @@ const Appointment = () => {
                     {!appointmentList.length ?
                         <div className='py-1 w-full bg-yellow-100/50  text-yellow-500 flex justify-center'><span className='  p-1 rounded'>No Appointment</span></div> : null}
                 </div>
+
             </div>
+
 
 
         </div>

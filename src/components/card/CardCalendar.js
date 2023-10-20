@@ -14,9 +14,9 @@ const CardCalendar = () => {
     }, [ddate])
 
     return (
-        <>
-            <Calendar className=' min-w-full md:min-w-0 scale-95 place-self-stretch  rounded-2xl shadow-sm ' onClickDay={(newDate) => setDate(newDate.toISOString().slice(0, 10))} />
-        </>
+        <div>
+            <Calendar className='font-body bg-white/80 min-w-full md:min-w-0 scale-95 place-self-stretch  rounded-2xl shadow-sm ' onClickDay={(newDate) => setDate(newDate.toISOString().slice(0, 10))} />
+        </div>
     )
 }
 

@@ -4,12 +4,13 @@ import ExponseTypeModal from '../../components/modal/ExponseTypeModal';
 import AddExponseTypeModal from '../../components/modal/AddExponseTypeModal';
 import ButtonCreate from '../../components/ui/button/ButtonCreate';
 import Table from '../../components/ui/table/Table';
+import Loader from '../../components/ui/loader/Loader';
 
 
 const ExpenseType = () => {
 
     // context for share data
-    const { expenseTypeList, searchExpenseType } = useContext(GlobalContext);
+    const { expenseTypeList, searchExpenseType, loader } = useContext(GlobalContext);
     //change input
     const [newExpense_id, set_Expense_id] = useState(0);
     const [newName, setNewName] = useState("");
@@ -27,10 +28,12 @@ const ExpenseType = () => {
         <div className="select-none">
             <ExponseTypeModal isVisible={show} onClose={setShow} expense_type_name={newName} setNewName={setNewName} expense_type_id={newExpense_id} />
             <AddExponseTypeModal isAddVisible={addshow} onClose={setAddShow} />
-            <div className='overflow-auto mx-3 mt-10 bg-white rounded-md p-5 '>
-                <ButtonCreate setAddShow={setAddShow} buttonName="Create Expense Type" />
-                <Table thead={thead} data={expenseTypeList} search={searchExpenseType} tbody={tbody} setState={setState} setShow={setShow} change={change} />
-            </div>
+            {loader ? <Loader /> :
+                <div className='overflow-auto mx-3 mt-10 bg-white rounded-md p-5 '>
+                    <ButtonCreate setAddShow={setAddShow} buttonName="Create Expense Type" />
+                    <Table thead={thead} data={expenseTypeList} search={searchExpenseType} tbody={tbody} setState={setState} setShow={setShow} change={change} />
+                </div>
+            }
         </div>
     )
 }

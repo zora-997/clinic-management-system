@@ -95,9 +95,9 @@ const DetailBodyInput = () => {
 
             <form onSubmit={onClick} >
 
-                <div className="mt-8 flex gap-4">
-                    <div className='relative w-full'>
-                        <div className='flex flex-col w-full border-b rounded-md  absolute'>
+                <div className="mt-8 grid md:grid-cols-3 bg-emerald-200">
+                    <div className='relative w-full '>
+                        <div className=' flex flex-col w-full border-b rounded-md  absolute'>
                             <label className='text-gray-700 mb-2  2xl:text-xl'>Working Type</label>
                             <input type="text" required name='surgery_type_name' placeholder='Working Type Search' value={surgery_type_name || ''}
                                 onChange={(e) => set_surgery_type_name(e.target.value)}

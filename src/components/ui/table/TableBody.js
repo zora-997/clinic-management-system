@@ -15,7 +15,7 @@ const TableBody = ({ data, search, tbody, setState, change, setShow }) => {
                         <th scope='row' className="px-5 py-4">&nbsp;&nbsp;{index + 1}</th>
                         {tbody.map((body, index) => {
                             // bo katek btawe fariza habe am coda dane => parseFloat(data[body]) && body.slice(body.length - 2) !== "te" ? parseFloat(data[body]).toLocaleString() : data[body]
-                            return <td key={index} className="px-6 py-4">{data[body]}</td>
+                            return <td key={index} className="px-6 py-4">{parseFloat(data[body]) && body.slice(body.length - 2) !== "te" ? parseFloat(data[body]).toLocaleString() : data[body]}</td>
                         })}
                     </tr>
                 )

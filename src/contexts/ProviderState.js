@@ -94,11 +94,7 @@ const ProviderState = ({ children }) => {
 
     // feach appointment
     const fetchAppointment = async (ddate) => {
-
-        console.log("ddate");
-        console.log(ddate);
         const res = await api.post('appointment/read.php', { ddate });
-        console.log(res.data);
         dispatch({
             type: 'GETAPPOINTMENT',
             payload: res.data.data
@@ -108,7 +104,6 @@ const ProviderState = ({ children }) => {
     // // fetchDashbordAppointment
     const fetchDashbordAppointment = async (ddate) => {
         const res = await api.post('appointment/read.php', { ddate });
-        console.log(res.data);
         dispatch({
             type: 'GETAPPOINTMENTDASHBORD',
             payload: res.data.data
@@ -285,6 +280,7 @@ const ProviderState = ({ children }) => {
                 type: 'GETUSER',
                 payload: res.data.data
             })
+
         }
     }
 
@@ -298,10 +294,11 @@ const ProviderState = ({ children }) => {
     }
 
 
+
+
     // all sick
     const fetchSick = async () => {
         const { data } = await api.get('sick/read.php');
-        console.log(data);
         dispatch({
             type: 'GETSICK',
             payload: data.data
@@ -311,7 +308,6 @@ const ProviderState = ({ children }) => {
     // all sick surgery
     const fetchSickSurgery = async () => {
         const { data } = await api.get('sick_surgery/read.php');
-
         dispatch({
             type: 'GETSICKSURGERY',
             payload: data.data
@@ -319,6 +315,11 @@ const ProviderState = ({ children }) => {
 
     }
 
+    // add loan
+    const addLoan = async (loan) => {
+        const res = await api.post('loan_to_cash/create.php', loan);
+        console.log(res.data);
+    }
     //**************** users **************** */
 
     // add user
@@ -545,6 +546,7 @@ const ProviderState = ({ children }) => {
             userList: state.userList,
 
             loanList: state.loanList,
+            addLoan,
             fetchLoan,
 
             loader,
@@ -554,10 +556,8 @@ const ProviderState = ({ children }) => {
 
 
         }}>
-            {/** am div bo awaya header ka la gall body ka wa column dar kawn wa la sidbar ka bn ba dw div flex */}
-            <div className='flex flex-col'>
-                {children}
-            </div>
+
+            {children}
         </GlobalContext.Provider>
     )
 }

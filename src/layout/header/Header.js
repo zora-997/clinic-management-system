@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import GlobalContext from '../../contexts/createContext/context';
-
+import { motion } from 'framer-motion'
 
 const Header = ({ showSildBar, setShowSildBar }) => {
     const location = useLocation()
@@ -14,7 +14,22 @@ const Header = ({ showSildBar, setShowSildBar }) => {
         <div className={` flex items-start w-full ${location.pathname === "/main" && 'bg-white h-[105px] 2xl:h-[125px] shadow shadow-gray-300 '}  pt-1  select-none `}>
 
             <div className={`flex justify-between items-center px-2.5 w-full mt-2`}>
-                <span className={`font-medium text-2xl 2xl:text-4xl hidden lg:block text-gray-600 capitalize`}> {location.pathname.slice(1)} </span>
+                <motion.span
+                    animate={{
+                        x: 0,
+                        opacity: 1,
+                    }}
+                    initial={{
+                        x: -100,
+                        // opacity: 0.1
+                    }}
+
+                    transition={{
+                        duration: 1
+                    }}
+                    className={`font-medium text-2xl 2xl:text-4xl hidden lg:block text-gray-600 capitalize`}>
+                    {location.pathname.slice(1)}
+                </motion.span>
 
                 {/* menu */}
                 <AiOutlineMenu onClick={() => setShowSildBar(!showSildBar)} className='lg:hidden cursor-pointer mr-2' color='gray' size={30} />

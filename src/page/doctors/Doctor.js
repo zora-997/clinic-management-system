@@ -4,6 +4,7 @@ import AddDoctorModal from '../../components/modal/AddDoctorModal';
 import DoctorModal from '../../components/modal/DoctorModal';
 import ButtonCreate from '../../components/ui/button/ButtonCreate';
 import Table from '../../components/ui/table/Table';
+import Loader from '../../components/ui/loader/Loader';
 
 
 const Doctors = () => {
@@ -11,7 +12,7 @@ const Doctors = () => {
     // let sort = doctorList.sort((a, b) => b.doctor_percentage - a.doctor_percentage);
 
     // context for share data
-    const { doctorList, searchDoctor } = useContext(GlobalContext);
+    const { doctorList, searchDoctor, loader } = useContext(GlobalContext);
     //change input
     const [newDoctor_id, setDoctor_id] = useState(0);
     const [newName, setNewName] = useState("");
@@ -31,10 +32,15 @@ const Doctors = () => {
         <div className="select-none">
             <DoctorModal isVisible={show} onClose={setShow} doctor_name={newName} setNewName={setNewName} doctor_percentage={newPercentage} setNewPercentage={setNewPercentage} doctor_id={newDoctor_id} />
             <AddDoctorModal isAddVisible={addshow} onClose={setAddShow} />
-            <div className=' bg-white overflow-auto mx-3  mt-10 rounded-md  p-5 '>
-                <ButtonCreate setAddShow={setAddShow} buttonName="Create Doctor" />
-                <Table thead={thead} data={doctorList} search={searchDoctor} tbody={tbody} setState={setState} setShow={setShow} change={change} />
-            </div>
+            {loader ? <Loader /> :
+                <div className=' bg-white overflow-auto mx-3  mt-10 rounded-md  p-5 '>
+                    <ButtonCreate setAddShow={setAddShow} buttonName="Create Doctor" />
+                    <Table thead={thead} data={doctorList} search={searchDoctor} tbody={tbody} setState={setState} setShow={setShow} change={change} />
+                </div>
+            }
+
+
+
         </div>
     )
 }

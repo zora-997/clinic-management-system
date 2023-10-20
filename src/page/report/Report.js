@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import ReportInput from './ReportInput'
 import ReportAll from './ReportAll';
+import GlobalContext from '../../contexts/createContext/context';
+import Loader from '../../components/ui/loader/Loader';
 
 const Report = () => {
+
+    const { loader } = useContext(GlobalContext)
+
     const [from, setFrom] = useState("");
     const [to, setTo] = useState("");
     const [erorFrom, setErorFrom] = useState(false);
@@ -14,12 +19,16 @@ const Report = () => {
 
     return (
         <div className='flxe flex-col px-3'>
-            <ReportInput from={from} setFrom={setFrom} to={to}
-                setTo={setTo} doctor_id={doctor_id} setDoctor_id={setDoctor_id} expense_type_id={expense_type_id}
-                setExpenseType_id={setExpenseType_id} setWorkingType_id={setWorkingType_id} erorFrom={erorFrom} erorTo={erorTo} erordoctorid={erordoctorid} />
+            {loader ? <Loader /> :
+                <>
+                    <ReportInput from={from} setFrom={setFrom} to={to}
+                        setTo={setTo} doctor_id={doctor_id} setDoctor_id={setDoctor_id} expense_type_id={expense_type_id}
+                        setExpenseType_id={setExpenseType_id} setWorkingType_id={setWorkingType_id} erorFrom={erorFrom} erorTo={erorTo} erordoctorid={erordoctorid} />
 
-            <ReportAll from={from} to={to} doctor_id={doctor_id} expense_type_id={expense_type_id}
-                working_type_id={working_type_id} erorFrom={erorFrom} setErorFrom={setErorFrom} erorTo={erorTo} setErorTo={setErorTo} erordoctorid={erordoctorid} setErorDoctorid={setErorDoctorid} />
+                    <ReportAll from={from} to={to} doctor_id={doctor_id} expense_type_id={expense_type_id}
+                        working_type_id={working_type_id} erorFrom={erorFrom} setErorFrom={setErorFrom} erorTo={erorTo} setErorTo={setErorTo} erordoctorid={erordoctorid} setErorDoctorid={setErorDoctorid} />
+                </>
+            }
         </div>
     )
 }

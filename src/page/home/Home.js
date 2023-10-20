@@ -11,7 +11,7 @@ const Home = () => {
     const [showSildBar, setShowSildBar] = useState(false)
 
     return (
-        <div className={`Home flex  h-screen`}>
+        <div className={`Home flex  h-screen `}>
             {/** am sibar la naw am home ya ka body borserkaia tanha la login dar nakawe  */}
 
             <div className='h-screen'>

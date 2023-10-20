@@ -11,6 +11,7 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
     const [sick_age, setSick_age] = useState(0);
     const [sick_gender, setSick_gender] = useState("male");
     const [doctor_id, setDoctor_id] = useState(0);
+    const [sick_init_loan, setSick_init_loan] = useState(0);
 
 
 
@@ -18,13 +19,14 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
     const addSickrHandler = e => {
         e.preventDefault();
 
-        addSick({ sick_name, sick_phone, sick_age, sick_gender, doctor_id, sick_date });
+        addSick({ sick_name, sick_phone, sick_age, sick_gender, doctor_id, sick_date, sick_init_loan });
 
         setSick_name("")
         setSick_phone("")
         setSick_age(0)
         setSick_gender("male")
         setDoctor_id(0)
+        setSick_init_loan(0)
 
 
     }
@@ -62,8 +64,8 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
                         </div>
                     </div>
 
-                    <div className=''>
-                        <div className='w-full mr-5 mb-3'>
+                    <div className='flex'>
+                        <div className='w-3/4 mr-5 mb-3'>
                             <label className='text-gray-500' >Doctor</label>
                             <select required onChange={(e) => { setDoctor_id(e.target.value) }} className='w-full focus:ring-1 focus:outline-none rounded border  p-2 '>
                                 <option></option>
@@ -72,7 +74,12 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
                                 })}
                             </select>
                         </div>
+                        <div className='w-1/3'>
+                            <label className='text-gray-500' >Loan</label>
+                            <input type='number' name='sick_init_loan' placeholder='loan' autoComplete="off" className='w-full focus:ring-1 focus:outline-none rounded border   p-2 ' onChange={(e) => setSick_init_loan(e.target.value)} />
+                        </div>
                     </div>
+
 
                     {/* zya krdni patient */}
                     <ButtonAdd add="Add patient" />
