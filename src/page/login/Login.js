@@ -32,7 +32,7 @@ const Login = () => {
             setLoading(false)
             localStorage.setItem("data", JSON.stringify(res.data))
             const user = localStorage.getItem("data")
-            //console.log(JSON.parse(user));
+            console.log(JSON.parse(user).token);
 
             history("/main", { state: user })
 
@@ -51,13 +51,13 @@ const Login = () => {
     return (
         <div>
             <ToastContainer limit={2} />
-            <div className="select-none bg-gradient-to-r from-sky-300  to-white  w-full h-screen flex items-center justify-center overflow-hidden">
-                {/* <div className='w-80 h-[400px] rounded-full bg-gradient-to-r from-yellow-200 via-green-200 to-green-300 absolute -left-32 -top-10' ></div>
-                <div className='w-96 h-48 rounded-full bg-gradient-to-r from-yellow-200 via-green-200 to-green-300  absolute -left-14 top-0' ></div> */}
-
-                <div className='relative overflow-hidden bg-gradient-to-l from-sky-300 via-white to-white  h-64 mx-2 px-2 w-fit md:w-[700px] md:h-[300px] lg:w-[900px] lg:h-2/3 xl:w-[1050px] xl:h-3/4 2xl:w-[1300px] 2xl:h-3/4 bg-white flex items-center   justify-between shadow-xl rounded-md'>
-                    {/* <div className='w-40 h-[200px] rounded-full bg-gradient-to-r from-yellow-200 via-green-200 to-green-300 absolute -right-14 -bottom-5 overflow-hidden' ></div>
-                    <div className='w-56 h-28 rounded-full bg-gradient-to-r from-yellow-200 via-green-200 to-green-300  absolute -right-7 -bottom-5 overflow-hidden' ></div> */}
+            <div className="select-none bg-white   w-full h-screen flex items-center justify-center overflow-hidden">
+             
+                <div className='relative overflow-hidden bg-gradient-to-l from-sky-300 via-white
+                 to-white  h-64 mx-2 px-2 w-fit md:w-[700px] md:h-[300px] lg:w-[900px] lg:h-2/3 xl:w-[1050px]
+                  xl:h-3/4 2xl:w-[1300px] 2xl:h-3/4 flex items-center   justify-between shadow-xl
+                   rounded-md  border-sky-300/90  border-4'>
+                   
                     {/* div lay chap */}
                     <div className='flex flex-col mx-auto  w-full md:max-w-xs lg:max-w-sm xl:max-w-md'>
                         {/** logo login */}

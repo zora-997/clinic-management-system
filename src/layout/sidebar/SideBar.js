@@ -56,7 +56,7 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
             icon: <TbListDetails size={22} className='2xl:scale-125' />,
             link: 'Ptient Detail',
             mdarrowright: <MdArrowRight className={` ${location.pathname === '/sickdetail' && 'text-white'} text-white  group-hover:text-white rounded-xl`} size={20} />,
-            role: ["doctor"],
+            role: ["doctor", "admin"],
             duration: 1.1
 
         },

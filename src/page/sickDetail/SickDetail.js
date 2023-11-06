@@ -40,7 +40,7 @@ const SickDetail = () => {
         <div className=" font-body ">
 
             {/** body  */}
-            <div className=' font-body flex flex-col p-3 bg-white mr-5 w-full'>
+            <div className=' font-body flex flex-col p-3 bg-white mr-5 mt-3 w-full'>
 
                 <SickDetailHeader sickDetail={sickDetail} />
                 <SickDetailBodyTop sickDetail={sickDetail} setSickDetail={setSickDetail} />

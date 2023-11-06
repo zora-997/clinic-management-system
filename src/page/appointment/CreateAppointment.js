@@ -39,7 +39,8 @@ const CreateAppointment = ({ ddate }) => {
                 doctor_id,
                 appointment_date,
                 appointment_time,
-                appointment_note
+                // appointment_note
+
             }, ddate)
         }
 

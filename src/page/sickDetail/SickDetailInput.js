@@ -52,7 +52,7 @@ const SickDetailInput = ({ sickDetail }) => {
 
         let formData = new FormData();
         let dfile = [];
-        if (file) {
+        if (!(file.length === 0)) {
             dfile = file.target.files;
         }
         for (let i = 0; i < dfile.length; i++) {
@@ -64,9 +64,14 @@ const SickDetailInput = ({ sickDetail }) => {
         formData.append('sick_surgery_date', sick_surgery_date);
         formData.append('items', JSON.stringify(sick_surgery));
 
-        addSickSurgery(formData)
+        
+        const year = new Date().getFullYear();
+        const month = new Date().getMonth() + 1;
+        const day = new Date().getDate();
+        let toDate = year+"-"+month+"-"+day ;
 
-
+        // add sick surgery
+        addSickSurgery(formData, toDate)
         // bo away la naw table typeOfWork datay peshutr pshan naiatawa
         setsicksurgerys([])
         // bo away la sar typeOfWork  namene

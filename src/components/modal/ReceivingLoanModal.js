@@ -1,6 +1,6 @@
 import React from "react";
 
-const WorkingTypeReportModal = ({ setShow, show, workingType }) => {
+const ReceivingLoanModal = ({ show, setShow, loanList }) => {
   if (!show) return null;
   return (
     <div
@@ -9,21 +9,21 @@ const WorkingTypeReportModal = ({ setShow, show, workingType }) => {
     >
       <div className="mt-4 w-3/4 overflow-x-auto">
         <div className=" h-[600px] overflow-y-auto bg-white  p-5 rounded-md">
-          <h1 className=" text-2xl border-b-2  mb-2 ">Working Type Report</h1>
+          <h1 className=" text-2xl border-b-2  mb-2 ">Receiving Loan</h1>
           <table className="whitespace-nowrap w-full bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 ">
             <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
               <tr>
                 <th scope="col" className="px-6 py-3 ">
-                  Working Type
+                  Patient name
                 </th>
                 <th scope="col" className="px-6 py-3 ">
-                  Patient Name
+                  phone
                 </th>
                 <th scope="col" className="px-6 py-3 ">
-                  date
+                  amount
                 </th>
                 <th scope="col" className="px-6 py-3">
-                  price
+                  date
                 </th>
                 <th scope="col" className="px-6 py-3 ">
                   note
@@ -31,24 +31,18 @@ const WorkingTypeReportModal = ({ setShow, show, workingType }) => {
               </tr>
             </thead>
             <tbody>
-              {workingType &&
-                workingType.map((work, index) => {
+              {loanList &&
+                loanList.map((loan, index) => {
                   return (
                     <tr
                       key={index}
                       className="border   select-none hover:bg-sky-100 border-cyan-200  duration-300  "
                     >
-                      <td className="px-5 py-4 w-10">
-                        {work.surgery_type_name}
-                      </td>
-                      <td className="px-5 py-4 w-10">{work.sick_name}</td>
-                      <td className="px-5 py-4 w-10">
-                        {work.sick_surgery_invoice_date}
-                      </td>
-                      <td className="px-5 py-4">{work.surgery_type_price}</td>
-                      <td className="px-6 py-4  ">
-                        {work.sick_surgery_invoice_note}
-                      </td>
+                      <td className="px-5 py-4">{loan.sick_name}</td>
+                      <td className="px-5 py-4">{loan.sick_phone}</td>
+                      <td className="px-5 py-4">{loan.loan_to_cash_amount}</td>
+                      <td className="px-5 py-4">{loan.loan_to_cash_date}</td>
+                      <td className="px-6 py-4">{loan.loan_to_cash_note}</td>
                     </tr>
                   );
                 })}
@@ -60,4 +54,4 @@ const WorkingTypeReportModal = ({ setShow, show, workingType }) => {
   );
 };
 
-export default WorkingTypeReportModal;
+export default ReceivingLoanModal;
