@@ -1,78 +1,150 @@
-import React, { useContext } from 'react'
-import GlobalContext from '../../contexts/createContext/context';
+import React, { useContext } from "react";
+import GlobalContext from "../../contexts/createContext/context";
 
-const ReportInput = ({ from, to, setFrom, setTo, erorFrom, erorTo, setWorkingType_id, setDoctor_id, doctor_id, erordoctorid, setExpenseType_id }) => {
+const ReportInput = ({
+  from,
+  to,
+  setFrom,
+  setTo,
+  erorFrom,
+  erorTo,
+  setWorkingType_id,
+  setDoctor_id,
+  doctor_id,
+  erordoctorid,
+  setExpenseType_id,
+}) => {
+  const { doctorList, expenseTypeList, surgeryType } =
+    useContext(GlobalContext);
 
-    const { doctorList, expenseTypeList, surgeryType } = useContext(GlobalContext);
+  return (
+    <div className=" mt-8 ">
+      <div className="bg-white rounded-md p-5  ">
+        <form className="grid  md:grid-cols-5 gap-3">
+          {/* doctor input */}
+          <div className="w-full">
+            <label className="text-gray-600 text-base 2xl:text-lg ">
+              Doctor
+            </label>
+            <select
+              required
+              onChange={(e) => {
+                setDoctor_id(e.target.value);
+              }}
+              className={`${
+                !doctor_id && !erordoctorid
+                  ? "bg-white"
+                  : !doctor_id && " border-red-400 border-2 bg-red-50"
+              }focus:ring-2 mt-1 focus:outline-none border  pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10`}
+            >
+              <option value={0} className={`text-xs text-gray-500`}>
+                Select
+              </option>
+              {doctorList.map((doctor) => {
+                return (
+                  <option key={doctor.doctor_id} value={`${doctor.doctor_id}`}>
+                    {doctor.doctor_name}
+                  </option>
+                );
+              })}
+            </select>
+          </div>
 
-    return (
-        <div className=' mt-8 '>
-            <div className='bg-white rounded-md p-5  '>
-                <form className='grid  md:grid-cols-5 gap-3'>
+          {/* ExpenseType input */}
+          <div className="w-full">
+            <label className="text-gray-600 text-base 2xl:text-lg">
+              Expense Type
+            </label>
+            <select
+              required
+              onChange={(val) => setExpenseType_id(val.target.value)}
+              className="focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10 "
+            >
+              <option value={0} className="text-xs text-gray-500">
+                Select
+              </option>
+              {expenseTypeList &&
+                expenseTypeList.map((expenseType) => {
+                  return (
+                    <option
+                      key={expenseType.expense_type_id}
+                      value={`${expenseType.expense_type_id}`}
+                    >
+                      {expenseType.expense_type_name}
+                    </option>
+                  );
+                })}
+            </select>
+          </div>
 
-                    {/* doctor input */}
-                    <div className='w-full'>
-                        <label className='text-gray-600 text-base 2xl:text-lg ' >Doctor</label>
-                        <select required onChange={(e) => { setDoctor_id(e.target.value) }}
-                            className={`${!doctor_id && !erordoctorid ? 'bg-white' : !doctor_id && ' border-red-300 border-2 bg-red-200'}focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10`}>
-                            <option value={0} className='text-xs text-gray-500' >Select</option>
-                            {doctorList.map((doctor) => {
-                                return <option key={doctor.doctor_id} value={`${doctor.doctor_id}`}>{doctor.doctor_name}</option>
-                            })}
-                        </select>
-                    </div>
+          {/* Working type input */}
+          <div className="w-full">
+            <label className="text-gray-600 text-base 2xl:text-lg">
+              Working Type
+            </label>
+            <select
+              required
+              onChange={(val) => {
+                setWorkingType_id(val.target.value);
+              }}
+              className="focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10 "
+            >
+              <option value={0} className="text-xs text-gray-500">
+                Select
+              </option>
+              {surgeryType &&
+                surgeryType.map((surgeryType) => {
+                  return (
+                    <option
+                      key={surgeryType.surgery_type_id}
+                      value={`${surgeryType.surgery_type_id}`}
+                    >
+                      {surgeryType.surgery_type_name}
+                    </option>
+                  );
+                })}
+            </select>
+          </div>
 
-                    {/* ExpenseType input */}
-                    <div className='w-full'>
-                        <label className='text-gray-600 text-base 2xl:text-lg' >Expense Type</label>
-                        <select required onChange={(val) => setExpenseType_id(val.target.value)}
-                            className='focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10 '>
-                            <option value={0} className='text-xs text-gray-500'>Select</option>
-                            {expenseTypeList && expenseTypeList.map((expenseType) => {
-                                return <option key={expenseType.expense_type_id} value={`${expenseType.expense_type_id}`}>{expenseType.expense_type_name}</option>
-                            })}
-                        </select>
-                    </div>
+          {/** from input */}
+          <div className="w-full">
+            <label className="text-gray-600  text-base 2xl:text-lg">From</label>
+            <input
+              type="date"
+              name="from"
+              required
+              onChange={(e) => setFrom(e.target.value)}
+              value={from}
+              className={`bg-white ${
+                !from && !erorFrom
+                  ? "bg-white"
+                  : !from && " border-red-400 border-2 bg-red-50"
+              }  mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10`}
+            />
+          </div>
 
-                    {/* Working type input */}
-                    <div className='w-full'>
-                        <label className='text-gray-600 text-base 2xl:text-lg' >Working Type</label>
-                        <select required onChange={(val) => { setWorkingType_id(val.target.value) }}
-                            className='focus:ring-2 mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10 '>
-                            <option value={0} className='text-xs text-gray-500' >Select</option>
-                            {surgeryType && surgeryType.map((surgeryType) => {
-                                return <option key={surgeryType.surgery_type_id} value={`${surgeryType.surgery_type_id}`}>{surgeryType.surgery_type_name}</option>
-                            })}
-                        </select>
-                    </div>
+          {/** to input */}
+          <div className="w-full ">
+            <label className="text-gray-600 mr-2 text-base 2xl:text-lg">
+              To
+            </label>
+            <input
+              type="date"
+              name="to"
+              required
+              onChange={(e) => setTo(e.target.value)}
+              value={to}
+              className={`bg-white ${
+                !to && !erorTo
+                  ? "bg-white"
+                  : !to && " border-red-400 border-2 bg-red-50"
+              }  mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10`}
+            />
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+};
 
-                    {/** from input */}
-                    <div className='w-full'>
-                        <label className='text-gray-600  text-base 2xl:text-lg'>From</label>
-                        <input
-                            type="date"
-                            name='from'
-                            required
-                            onChange={(e) => setFrom(e.target.value)}
-                            value={from}
-                            className={`bg-white ${!from && !erorFrom ? 'bg-white' : !from && ' border-red-300 border-2'}  mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10`} />
-                    </div>
-
-                    {/** to input */}
-                    <div className='w-full '>
-                        <label className='text-gray-600 mr-2 text-base 2xl:text-lg'>To</label>
-                        <input
-                            type="date"
-                            name='to'
-                            required
-                            onChange={(e) => setTo(e.target.value)}
-                            value={to}
-                            className={`bg-white ${!to && !erorTo ? 'bg-white' : !to && ' border-red-300 border-2'}  mt-1 focus:outline-none border pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10`} />
-                    </div>
-                </form>
-            </div>
-        </div>
-    )
-}
-
-export default ReportInput
+export default ReportInput;

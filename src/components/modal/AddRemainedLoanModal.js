@@ -7,14 +7,14 @@ import ButtonAdd from "../ui/button/ButtonAdd";
 const AddRemainedLoanModal = ({ isAddVisible, onClose }) => {
   const { addLoan } = useContext(GlobalContext);
 
-  console.log("tioooooooooooooooo");
   // bo war grtnaway admin_id
   const getIdAdmin = localStorage.getItem("data");
   let admin_id = JSON.parse(getIdAdmin).token;
 
   // bo war grtnaway sick_id
   const location = useLocation();
-  let sick_id = location.state;
+  let sick_id = location.state.sick_id;
+  let doctor_id = location.state.doctor_id;
 
   const [loan_to_cash_amount, setLoan] = useState(0);
   const [loan_to_cash_date, setDate] = useState("");
@@ -26,6 +26,7 @@ const AddRemainedLoanModal = ({ isAddVisible, onClose }) => {
     addLoan({
       loan_to_cash_amount,
       sick_id,
+      doctor_id,
       admin_id,
       loan_to_cash_date,
       loan_to_cash_note,

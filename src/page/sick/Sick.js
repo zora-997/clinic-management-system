@@ -93,7 +93,12 @@ const Sick = () => {
                     onDoubleClick={() => {
                       role === "doctor"
                         ? history(`/detail`, { state: sick.sick_id })
-                        : history("/loan", { state: sick.sick_id });
+                        : history("/loan", {
+                            state: {
+                              sick_id: sick.sick_id,
+                              doctor_id: sick.doctor_id,
+                            },
+                          });
                     }}
                     className="  border hover:w-44 cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300 "
                   >

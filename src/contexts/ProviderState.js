@@ -27,6 +27,9 @@ const ProviderState = ({ children }) => {
     doctorlegerList: [],
     expenseReportList: [],
     workingTypeReportList: [],
+    doctorGivienLoanList: [],
+    doctorRemainLoanList: [],
+    doctorWorkingList: [],
     userList: [],
     loanList: [],
   };
@@ -45,6 +48,7 @@ const ProviderState = ({ children }) => {
     fetchExpense();
     fetchUser();
     fetchLoan();
+    fetchAdmin();
   }, []);
 
   // doctor search
@@ -202,6 +206,37 @@ const ProviderState = ({ children }) => {
     const res = await api.post("report/doctorleger.php", date);
     dispatch({
       type: "GETDOCTORREPORT",
+      payload: res.data,
+    });
+  };
+
+  //  feach doctor Givien Loan List
+  const fetchDoctorGivienLoan = async (data) => {
+    const res = await api.post("report/doctor_givien_loan.php", data);
+    dispatch({
+      type: "GETDOCTORGIVIENLOAN",
+      payload: res.data,
+    });
+  };
+
+  //  feach doctor remain Loan List
+  const fetchDoctorRemainLoan = async (data) => {
+    const res = await api.post("report/doctor_total_remain_loan.php", data);
+    console.log("doctor remain loan");
+    console.log(res.data);
+    dispatch({
+      type: "GETDOCTORREMAINLOAN",
+      payload: res.data,
+    });
+  };
+
+  //  feach doctor working List
+  const fetchDoctorWorking = async (data) => {
+    const res = await api.post("report/doctor_total_working.php", data);
+    console.log("doctor total working");
+    console.log(res.data);
+    dispatch({
+      type: "GETDOCTORTOTALWORKING",
       payload: res.data,
     });
   };
@@ -569,6 +604,15 @@ const ProviderState = ({ children }) => {
 
         fetchWorkingTypeReportReport,
         workingTypeReportList: state.workingTypeReportList,
+
+        fetchDoctorGivienLoan,
+        doctorGivienLoanList: state.doctorGivienLoanList,
+
+        fetchDoctorRemainLoan,
+        doctorRemainLoanList: state.doctorRemainLoanList,
+
+        fetchDoctorWorking,
+        doctorWorkingList: state.doctorWorkingList,
 
         addUser,
         updateUser,

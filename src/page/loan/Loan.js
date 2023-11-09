@@ -4,6 +4,7 @@ import { useLocation } from "react-router-dom";
 import GlobalContext from "../../contexts/createContext/context";
 import AddRemainedLoanModal from "../../components/modal/AddRemainedLoanModal";
 import ReceivingLoanModal from "../../components/modal/ReceivingLoanModal";
+import sx from "../../assets/image/sx.jpg";
 
 const Loan = () => {
   const { loanList, fetchLoan, sickSurgery, surgeryType, sickList } =
@@ -15,7 +16,7 @@ const Loan = () => {
 
   // bo war grtnaway sick_id
   const location = useLocation();
-  let sick_id = location.state;
+  let sick_id = location.state.sick_id;
 
   // dar henani nawi work type
   const sid = surgeryType && surgeryType.map((s) => s.surgery_type_id);
@@ -44,16 +45,13 @@ const Loan = () => {
         loanList={loanList}
       />
       <div className="w-full mx-3  ">
-        <div className="grid w-full">
+        <div className=" w-full">
           {sickSurgery &&
             sickSurgery.map((surgery, index) => {
               return (
                 <div key={index}>
                   {surgery.sick_id === sick_id ? (
-                    <div
-                      key={index}
-                      className="w-full  rounded bg-white p-2 mb-3 shadow"
-                    >
+                    <div className="w-full  rounded bg-white p-2 mb-3 shadow">
                       {surgery.sick_visit &&
                         surgery.sick_visit.map((visit, index) => {
                           return (
@@ -79,36 +77,56 @@ const Loan = () => {
       </div>
 
       {/* section right */}
-      <div className="w-1/4 ">
+      <div className="w-1/4 mr-3">
         {sickList &&
-          sickList.map((sick) => {
+          sickList.map((sick, index) => {
             return (
-              <div>
+              <div key={index}>
                 {sick.sick_id === sick_id && (
-                  <div className="w-full flex flex-col gap-3  rounded ">
-                    <div className="bg-white w-full flex flex-col h-44 justify-center items-center rounded shadow ">
-                      <p>Total price visit</p>
-                      {sick.total_visit_price}
+                  <div className=" flex flex-col gap-3  rounded ">
+                    <div className="bg-white relative   flex flex-col h-44 justify-center items-center rounded-md shadow ">
+                      <img
+                        src={sx}
+                        alt="sx"
+                        className="w-full object-cover rounded-md h-full "
+                      />
+                      <div className="absolute bottom-[3%] left-[3%]">
+                        <h3 className="text-gray-500">Total price visit</h3>
+                        <p className="text-lg font-semibold">
+                          {sick.total_visit_price}
+                        </p>
+                      </div>
                     </div>
                     <div
                       onClick={() => {
                         setAddShow(true);
                         console.log("press");
                       }}
-                      className="bg-white w-full flex flex-col h-44 justify-center items-center rounded shadow cursor-pointer "
+                      className="border border-purple-400 shadow-md shadow-purple-300  relative w-full flex flex-col h-44 justify-center items-center rounded-md  cursor-pointer "
                     >
-                      <p>Remained Loan</p>
-                      {sick.remained_debt}
+                      <img
+                        src={sx}
+                        alt="sx"
+                        className="w-full object-cover rounded-md h-full "
+                      />
+                      <div className="absolute bottom-[3%] left-[3%]">
+                        <h3 className="text-gray-500  mt-3">Remained Loan</h3>
+                        <p className="text-lg font-semibold">
+                          {sick.remained_debt}
+                        </p>
+                      </div>
                     </div>
                     <div
                       onClick={() => {
                         setRecevingShow(true);
                         recevingLoanHandel();
                       }}
-                      className="bg-white w-full flex flex-col h-44 justify-center items-center rounded shadow cursor-pointer "
+                      className="bg-white shadow-md border w-full flex flex-col h-44 justify-center items-center rounded  cursor-pointer "
                     >
-                      <p>Receiving a Loan</p>
-                      {sick.submition_debt}
+                      <p className="text-gray-500">Receiving a Loan</p>
+                      <p className="text-lg font-semibold">
+                        {sick.submition_debt}
+                      </p>
                     </div>
                   </div>
                 )}
