@@ -30,6 +30,7 @@ import ReportReceptionGivinLoan from "./ReportReceptionGivinLoan";
 import ReportAdminDoctorLedger from "./ReportAdminDoctorLedger";
 import ReportAdminSickLedger from "./ReportAdminSickLedger";
 import ReportAdminTotalAppointmetn from "./ReportAdminTotalAppointmetn";
+import { useLocation } from "react-router-dom";
 
 const ReportAll = ({
   from,
@@ -96,6 +97,10 @@ const ReportAll = ({
     adminSickLedgerList,
     adminTotalAppointmentList,
   } = useContext(GlobalContext);
+
+  const location = useLocation();
+  const user = localStorage.getItem("data");
+  let role = user && JSON.parse(user).role;
 
   // handelReceptionTotalLoant
   const handelAdminTotalLoan = (e) => {
@@ -565,6 +570,7 @@ const ReportAll = ({
       ),
       name: "Doctor Report",
       requier: "(Doctor , From , To)",
+      roles: ["admin"],
     },
     {
       id: 2,
@@ -575,6 +581,7 @@ const ReportAll = ({
       ),
       name: "Expense Report",
       requier: "(Expense Type , From , To)",
+      roles: ["admin"],
     },
     {
       id: 3,
@@ -585,6 +592,7 @@ const ReportAll = ({
       ),
       name: "Working Report",
       requier: "(Working Type , From , To)",
+      roles: ["admin"],
     },
     {
       id: 4,
@@ -595,6 +603,7 @@ const ReportAll = ({
       ),
       name: "Main Report",
       requier: "(From , To)",
+      roles: ["admin"],
     },
     {
       id: 5,
@@ -605,6 +614,7 @@ const ReportAll = ({
       ),
       name: "Doctor Givinen Loan",
       requier: "(Doctor , From , To)",
+      roles: ["doctor"],
     },
     {
       id: 6,
@@ -615,6 +625,7 @@ const ReportAll = ({
       ),
       name: "Doctor Remain Loan",
       requier: "(Doctor)",
+      roles: ["doctor"],
     },
     {
       id: 7,
@@ -625,6 +636,7 @@ const ReportAll = ({
       ),
       name: "Doctor Working",
       requier: "(Doctor , From , To)",
+      roles: ["doctor"],
     },
     {
       id: 8,
@@ -635,6 +647,7 @@ const ReportAll = ({
       ),
       name: "Doctor Patient Ledger",
       requier: "(Doctor , Patient , From , To)",
+      roles: ["doctor"],
     },
     {
       id: 9,
@@ -645,6 +658,7 @@ const ReportAll = ({
       ),
       name: "Recption Appointment",
       requier: "(From , To)",
+      roles: ["reception"],
     },
     {
       id: 10,
@@ -655,6 +669,7 @@ const ReportAll = ({
       ),
       name: "Recption Total Loan",
       requier: "(No Parameters)",
+      roles: ["reception"],
     },
     {
       id: 11,
@@ -665,6 +680,7 @@ const ReportAll = ({
       ),
       name: "Admin Total Loan",
       requier: "(Docotr or No parameters)",
+      roles: ["admin"],
     },
     {
       id: 12,
@@ -675,6 +691,7 @@ const ReportAll = ({
       ),
       name: "Reception Expense",
       requier: "(From , To , Admin , Expense)",
+      roles: ["reception"],
     },
     {
       id: 13,
@@ -685,6 +702,7 @@ const ReportAll = ({
       ),
       name: "Reception Givin Loan",
       requier: "(From , To , Admin)",
+      roles: ["reception"],
     },
     {
       id: 14,
@@ -695,6 +713,7 @@ const ReportAll = ({
       ),
       name: "Admin Doctor Ledger",
       requier: "(From , To , Doctor)",
+      roles: ["admin"],
     },
     {
       id: 15,
@@ -705,6 +724,7 @@ const ReportAll = ({
       ),
       name: "Admin Patient Ledger",
       requier: "(From , To , Patient)",
+      roles: ["admin"],
     },
     {
       id: 16,
@@ -715,31 +735,36 @@ const ReportAll = ({
       ),
       name: "Admin Total Appointment",
       requier: "(From , To , Doctor)",
+      roles: ["admin"],
     },
   ];
 
   return (
     <div className="mt-4 ">
       <div className="grid gap-y-5 gap-x-5  sm:grid-cols-2 md:grid-cols-4 px-5 bg-white rounded-md py-8">
-        {reportData.map((report) => {
-          return (
-            <div
-              key={report.id}
-              onClick={(e) => report.action(e)}
-              className={`relative  w-full h-full cursor-pointer p-3 overflow-hidden bg-white group   border duration-300  ${report.style}  rounded-lg shadow `}
-            >
-              <div className="grid h-full">
-                <div>{report.icon}</div>
-                <h5 className="my-3 text-xl font-semibold tracking-tight text-gray-900 ">
-                  {report.name}
-                </h5>
-                <p className=" font-body text-sm text-gray-500 ">
-                  {report.requier}
-                </p>
-              </div>
-            </div>
-          );
-        })}
+        {reportData &&
+          reportData.map((report) => {
+            return (
+              report.roles &&
+              report.roles == role && (
+                <div
+                  key={report.id}
+                  onClick={(e) => report.action(e)}
+                  className={`relative  w-full h-full cursor-pointer p-3 overflow-hidden bg-white group   border duration-300  ${report.style}  rounded-lg shadow `}
+                >
+                  <div className="grid h-full">
+                    <div>{report.icon}</div>
+                    <h5 className="my-3 text-xl font-semibold tracking-tight text-gray-900 ">
+                      {report.name}
+                    </h5>
+                    <p className=" font-body text-sm text-gray-500 ">
+                      {report.requier}
+                    </p>
+                  </div>
+                </div>
+              )
+            );
+          })}
       </div>
       {showDoctor && (
         <ReportDoctor

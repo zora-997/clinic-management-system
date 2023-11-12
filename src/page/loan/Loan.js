@@ -5,6 +5,7 @@ import GlobalContext from "../../contexts/createContext/context";
 import AddRemainedLoanModal from "../../components/modal/AddRemainedLoanModal";
 import ReceivingLoanModal from "../../components/modal/ReceivingLoanModal";
 import sx from "../../assets/image/sx.jpg";
+import cost from "../../assets/image/cost.png";
 
 const Loan = () => {
   const { loanList, fetchLoan, sickSurgery, surgeryType, sickList } =
@@ -53,12 +54,19 @@ const Loan = () => {
               <div key={index}>
                 {sick.sick_id === sick_id && (
                   <div className="  mb-4 flex gap-3  rounded ">
-                    <div className="bg-white w-full flex flex-col h-32 justify-center items-center rounded-md shadow ">
-                      <div className="text-center">
-                        <h3 className="text-gray-500">Total price visit</h3>
-                        <p className="text-lg font-semibold">
-                          {sick.total_visit_price}
-                        </p>
+                    <div className="bg-white border border-sky-400 hover:bg-sky-50 w-full h-32 justify-center items-center rounded-md shadow ">
+                      <div className=" flex justify-around items-center ">
+                        <div className="place-self-end mt-4">
+                          <img src={cost} alt="cost" className="w-20" />
+                        </div>
+                        <div>
+                          <h3 className="text-gray-500 text-2xl ">
+                            Total price visit
+                          </h3>
+                          <p className="text-2xl font-semibold">
+                            {sick.total_visit_price}
+                          </p>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -99,7 +107,7 @@ const Loan = () => {
           <h1 className=" text-2xl border-b-2  mb-2 w-full ">
             History Patient
           </h1>
-          <ul className="pl-1 text-center grid grid-cols-4 gap-x-3 my-4">
+          <ul className="pl-1 text-center grid grid-cols-4 gap-x-3 my-4 bg-white/75 border-2 p-2">
             <li>Work Type</li>
             <li>Date</li>
             <li>Type Monye</li>

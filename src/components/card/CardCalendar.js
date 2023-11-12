@@ -1,25 +1,30 @@
-import React, { useContext, useEffect, useState } from 'react'
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import GlobalContext from '../../contexts/createContext/context';
-
+import React, { useContext, useEffect, useState } from "react";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
+import GlobalContext from "../../contexts/createContext/context";
 
 const CardCalendar = () => {
+  const { fetchDashbordAppointment } = useContext(GlobalContext);
+  const [ddate, setDate] = useState(new Date().toISOString().slice(0, 10));
 
-    const { fetchDashbordAppointment } = useContext(GlobalContext);
-    const [ddate, setDate] = useState(new Date().toISOString().slice(0, 10))
+  //   const y = new Date().getFullYear();
+  //   const m = new Date().getMonth() + 1;
+  //   const d = new Date().getDate() ;
+  //   console.log(y + "-" + m + "-" + d);
+  useEffect(() => {
+    fetchDashbordAppointment(ddate);
+    console.log(ddate);
+  }, [ddate]);
 
-    useEffect(() => {
-        fetchDashbordAppointment(ddate);
-      
-    }, [ddate])
+  return (
+    <div>
+      <Calendar
+        className="font-body bg-white/80 min-w-full md:min-w-0 scale-95 place-self-stretch
+              rounded-2xl shadow-sm "
+        onClickDay={(newDate) => setDate(newDate.toISOString().slice(0, 10))}
+      />
+    </div>
+  );
+};
 
-    return (
-        <div>
-            <Calendar className='font-body bg-white/80 min-w-full md:min-w-0 scale-95 place-self-stretch
-              rounded-2xl shadow-sm ' onClickDay={(newDate) => setDate(newDate.toISOString().slice(0, 10))} />
-        </div>
-    )
-}
-
-export default CardCalendar
+export default CardCalendar;
