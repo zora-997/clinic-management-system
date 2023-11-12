@@ -31,7 +31,7 @@ const Loan = () => {
   };
 
   return (
-    <div className="Loan mt-10 flex justify-between w-full ">
+    <div className="Loan mt-10 flex flex-col  mx-3 ">
       <AddRemainedLoanModal
         isAddVisible={addshow}
         onClose={setAddShow}
@@ -44,53 +44,17 @@ const Loan = () => {
         setShow={setRecevingShow}
         loanList={loanList}
       />
-      <div className="w-full mx-3  ">
-        <div className=" w-full">
-          {sickSurgery &&
-            sickSurgery.map((surgery, index) => {
-              return (
-                <div key={index}>
-                  {surgery.sick_id === sick_id ? (
-                    <div className="w-full  rounded bg-white p-2 mb-3 shadow">
-                      {surgery.sick_visit &&
-                        surgery.sick_visit.map((visit, index) => {
-                          return (
-                            <ul
-                              key={index + 1}
-                              className="pl-1 text-center grid grid-cols-4 gap-x-3 w-full   "
-                            >
-                              <li>
-                                {sn[sid.indexOf(`${visit.surgery_type_id}`)]}
-                              </li>
-                              <li>{surgery.sick_surgery_date}</li>
-                              <li>{surgery.sick_surgery_type}</li>
-                              <li>{visit.surgery_type_price}</li>
-                            </ul>
-                          );
-                        })}
-                    </div>
-                  ) : null}
-                </div>
-              );
-            })}
-        </div>
-      </div>
 
       {/* section right */}
-      <div className="w-1/4 mr-3">
+      <div className="w-full ">
         {sickList &&
           sickList.map((sick, index) => {
             return (
               <div key={index}>
                 {sick.sick_id === sick_id && (
-                  <div className=" flex flex-col gap-3  rounded ">
-                    <div className="bg-white relative   flex flex-col h-44 justify-center items-center rounded-md shadow ">
-                      <img
-                        src={sx}
-                        alt="sx"
-                        className="w-full object-cover rounded-md h-full "
-                      />
-                      <div className="absolute bottom-[3%] left-[3%]">
+                  <div className="  mb-4 flex gap-3  rounded ">
+                    <div className="bg-white w-full flex flex-col h-32 justify-center items-center rounded-md shadow ">
+                      <div className="text-center">
                         <h3 className="text-gray-500">Total price visit</h3>
                         <p className="text-lg font-semibold">
                           {sick.total_visit_price}
@@ -102,14 +66,9 @@ const Loan = () => {
                         setAddShow(true);
                         console.log("press");
                       }}
-                      className="border border-purple-400 shadow-md shadow-purple-300  relative w-full flex flex-col h-44 justify-center items-center rounded-md  cursor-pointer "
+                      className="bg-white border relative w-full flex flex-col h-32 justify-center items-center rounded-md  cursor-pointer "
                     >
-                      <img
-                        src={sx}
-                        alt="sx"
-                        className="w-full object-cover rounded-md h-full "
-                      />
-                      <div className="absolute bottom-[3%] left-[3%]">
+                      <div className="text-center">
                         <h3 className="text-gray-500  mt-3">Remained Loan</h3>
                         <p className="text-lg font-semibold">
                           {sick.remained_debt}
@@ -121,7 +80,7 @@ const Loan = () => {
                         setRecevingShow(true);
                         recevingLoanHandel();
                       }}
-                      className="bg-white shadow-md border w-full flex flex-col h-44 justify-center items-center rounded  cursor-pointer "
+                      className="bg-white  border w-full flex flex-col h-32 justify-center items-center rounded  cursor-pointer "
                     >
                       <p className="text-gray-500">Receiving a Loan</p>
                       <p className="text-lg font-semibold">
@@ -133,6 +92,49 @@ const Loan = () => {
               </div>
             );
           })}
+      </div>
+
+      <div className="  ">
+        <div className=" ">
+          <h1 className=" text-2xl border-b-2  mb-2 w-full ">
+            History Patient
+          </h1>
+          <ul className="pl-1 text-center grid grid-cols-4 gap-x-3 my-4">
+            <li>Work Type</li>
+            <li>Date</li>
+            <li>Type Monye</li>
+            <li>Price</li>
+          </ul>
+          {sickSurgery &&
+            sickSurgery.map((surgery, index) => {
+              return (
+                <div key={index}>
+                  {surgery.sick_id === sick_id ? (
+                    <div className="  rounded bg-white p-2 mb-3 shadow">
+                      {surgery.sick_visit &&
+                        surgery.sick_visit.map((visit, index) => {
+                          return (
+                            <>
+                              <ul
+                                key={index + 1}
+                                className="pl-1 text-center grid grid-cols-4 gap-x-3    "
+                              >
+                                <li>
+                                  {sn[sid.indexOf(`${visit.surgery_type_id}`)]}
+                                </li>
+                                <li>{surgery.sick_surgery_date}</li>
+                                <li>{surgery.sick_surgery_type}</li>
+                                <li>{visit.surgery_type_price}</li>
+                              </ul>
+                            </>
+                          );
+                        })}
+                    </div>
+                  ) : null}
+                </div>
+              );
+            })}
+        </div>
       </div>
     </div>
   );
