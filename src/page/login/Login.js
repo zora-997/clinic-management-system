@@ -108,9 +108,11 @@ const Login = () => {
                 <div className="flex  pt-5 gap-5">
                   <div className="flex gap-1">
                     <input type="checkbox" onChange={() => setRole("doctor")} />
-                    <label htmlFor="doctor">Doctor</label>
+                    <label htmlFor="doctor" className="text-gray-600">
+                      Doctor
+                    </label>
                   </div>
-                  <div className="flex gap-1">
+                  <div className="flex gap-1 text-gray-600">
                     <input
                       type="checkbox"
                       onChange={() => setRole("managment")}
