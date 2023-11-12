@@ -2,18 +2,19 @@ import React, { useContext, useState } from "react";
 import GlobalContext from "../../contexts/createContext/context";
 import ReportDoctor from "./ReportDoctor";
 import { HiOutlineAnnotation } from "react-icons/hi";
-import { AiOutlineMoneyCollect } from "react-icons/ai";
+import { AiOutlineMoneyCollect, AiOutlineBranches } from "react-icons/ai";
 import {
   BsPersonDown,
   BsPersonVcard,
   BsMenuApp,
   BsPersonGear,
 } from "react-icons/bs";
-import { MdAttachMoney } from "react-icons/md";
+import { MdAttachMoney, MdOutlinePerson } from "react-icons/md";
 import { SiExpensify, SiVirustotal } from "react-icons/si";
 import { IoCodeWorkingOutline } from "react-icons/io5";
 import { RiEmpathizeLine } from "react-icons/ri";
-import { TbReceipt2 } from "react-icons/tb";
+import { TbReceipt2, TbNurse } from "react-icons/tb";
+import { MdOutlinePersonPin } from "react-icons/md";
 import ReportExpense from "./ReportExpense";
 import ReportWorkingType from "./ReportWorkingType";
 import ReportMain from "./ReportMain";
@@ -678,9 +679,9 @@ const ReportAll = ({
     {
       id: 13,
       action: handelReceptionGivinLoan,
-      style: "border-[#0EAF94]",
+      style: "border-[#926869]",
       icon: (
-        <TbReceipt2 className="w-10 h-10  group-hover:text-[#25EFCD] duration-300 text-[#0EAF94] " />
+        <MdOutlinePersonPin className="w-10 h-10  group-hover:text-[#B68B8C] duration-300 text-[#926869] " />
       ),
       name: "Reception Givin Loan",
       requier: "(From , To , Admin)",
@@ -688,9 +689,9 @@ const ReportAll = ({
     {
       id: 14,
       action: handelAdminDoctorLedgerReport,
-      style: "border-[#0EAF94]",
+      style: "border-[#5D9280]",
       icon: (
-        <TbReceipt2 className="w-10 h-10  group-hover:text-[#25EFCD] duration-300 text-[#0EAF94] " />
+        <AiOutlineBranches className="w-10 h-10  group-hover:text-[#73B09B] duration-300 text-[#5D9280] " />
       ),
       name: "Admin Doctor Ledger",
       requier: "(From , To , Doctor)",
@@ -698,9 +699,9 @@ const ReportAll = ({
     {
       id: 15,
       action: handelAdminSickLedger,
-      style: "border-[#0EAF94]",
+      style: "border-[#D35950]",
       icon: (
-        <TbReceipt2 className="w-10 h-10  group-hover:text-[#25EFCD] duration-300 text-[#0EAF94] " />
+        <TbNurse className="w-10 h-10  group-hover:text-[#E1867F] duration-300 text-[#D35950] " />
       ),
       name: "Admin Patient Ledger",
       requier: "(From , To , Patient)",
@@ -708,9 +709,9 @@ const ReportAll = ({
     {
       id: 16,
       action: handelAdminTotalAppointment,
-      style: "border-[#0EAF94]",
+      style: "border-[#CD42A6]",
       icon: (
-        <TbReceipt2 className="w-10 h-10  group-hover:text-[#25EFCD] duration-300 text-[#0EAF94] " />
+        <MdOutlinePerson className="w-10 h-10  group-hover:text-[#E090C9] duration-300 text-[#CD42A6] " />
       ),
       name: "Admin Total Appointment",
       requier: "(From , To , Doctor)",
