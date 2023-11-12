@@ -30,6 +30,15 @@ const ProviderState = ({ children }) => {
     doctorGivienLoanList: [],
     doctorRemainLoanList: [],
     doctorWorkingList: [],
+    doctorSickLedgerList: [],
+    receptionAppointmentList: [],
+    receptionTotalLoanList: [],
+    adminTotalLoanList: [],
+    receptionExpenseList: [],
+    receptionGivinLoanList: [],
+    adminDoctorLedgerList: [],
+    adminSickLedgerList: [],
+    adminTotalAppointmentList: [],
     userList: [],
     loanList: [],
   };
@@ -49,6 +58,7 @@ const ProviderState = ({ children }) => {
     fetchUser();
     fetchLoan();
     fetchAdmin();
+    fetchDoctorSicklegerReport();
   }, []);
 
   // doctor search
@@ -202,10 +212,86 @@ const ProviderState = ({ children }) => {
   };
 
   //  feach main report
-  const fetchDoctorlegerReport = async (date) => {
-    const res = await api.post("report/doctorleger.php", date);
+  const fetchDoctorlegerReport = async (data) => {
+    const res = await api.post("report/doctorleger.php", data);
     dispatch({
       type: "GETDOCTORREPORT",
+      payload: res.data,
+    });
+  };
+
+  //  fetch Doctor Sick leger Reportt
+  const fetchDoctorSicklegerReport = async (data) => {
+    const res = await api.post("report/doctor_sick_ledger.php", data);
+    console.log(res.data);
+    console.log("doctor sick ledger");
+    dispatch({
+      type: "GETDOCTORSICKLEDGERREPORT",
+      payload: res.data,
+    });
+  };
+
+  //  fetch admin Doctor leger Reportt
+  const fetchAdminDoctorLedgerReport = async (data) => {
+    const res = await api.post("report/admin_doctor_ledger.php", data);
+    console.log(res.data);
+    console.log("admindoctor ledger");
+    dispatch({
+      type: "GETADMINDOCTORLEDGER",
+      payload: res.data,
+    });
+  };
+
+  //  fetch admin sick leger Reportt
+  const fetchAdminSickLedgerReport = async (data) => {
+    const res = await api.post("report/admin_sick_ledger.php", data);
+    console.log(res.data);
+    console.log("admin sick ledger");
+    dispatch({
+      type: "GETADMINSICKLEDGER",
+      payload: res.data,
+    });
+  };
+  //  fetch admin total appointment Reportt
+  const fetchAdminTotalAppointmentReport = async (data) => {
+    const res = await api.post("report/admin_total_appoinment.php", data);
+    console.log(res.data);
+    console.log("admin total appointmetn");
+    dispatch({
+      type: "GETADMINTOTALAPPOINTMETN",
+      payload: res.data,
+    });
+  };
+
+  //  fetch Reception Appointment Report
+  const fetchReceptionAppointmentReport = async (data) => {
+    const res = await api.post("report/reception_appointment.php", data);
+    console.log(res.data);
+    console.log("reception appointment");
+    dispatch({
+      type: "GETRECEPTIONAPPOINTMENT",
+      payload: res.data,
+    });
+  };
+
+  //  fetch Reception Total Loan Report
+  const fetchReceptionTotalLoanReport = async (data) => {
+    const res = await api.post("report/reception_total_loan.php", data);
+    console.log(res.data);
+    console.log("reception total loan");
+    dispatch({
+      type: "GETRECEPTIONTOTALLOAN",
+      payload: res.data,
+    });
+  };
+
+  //  fetch Admin Total Loan Report
+  const fetchAdminTotalLoanReport = async (data) => {
+    const res = await api.post("report/admin_total_loan.php", data);
+    console.log(res.data);
+    console.log("admin total loan");
+    dispatch({
+      type: "GETADMINTOTALLOAN",
       payload: res.data,
     });
   };
@@ -237,6 +323,28 @@ const ProviderState = ({ children }) => {
     console.log(res.data);
     dispatch({
       type: "GETDOCTORTOTALWORKING",
+      payload: res.data,
+    });
+  };
+
+  //  fetch Reception Expense Report
+  const fetchReceptionExpenseReport = async (data) => {
+    const res = await api.post("report/reception_expense.php", data);
+    console.log("reception expense");
+    console.log(res.data);
+    dispatch({
+      type: "GETRECEPTIONEXPENSE",
+      payload: res.data,
+    });
+  };
+
+  //  fetch Reception givin loan Report
+  const fetchReceptionGivinLoanReport = async (data) => {
+    const res = await api.post("report/reception_givin_loan.php", data);
+    console.log("reception givin loan");
+    console.log(res.data);
+    dispatch({
+      type: "GETRECEPTIONGIVINLOAN",
       payload: res.data,
     });
   };
@@ -539,7 +647,8 @@ const ProviderState = ({ children }) => {
 
   // ama update price u description aka la commponenty WorkingTypeModal
   const changeSickSurgery = async (change) => {
-    const res = await api.post("change_sick_surgery/change.php", change);
+    await api.post("change_sick_surgery/change.php", change);
+    fetchSickSurgery();
   };
 
   return (
@@ -613,6 +722,33 @@ const ProviderState = ({ children }) => {
 
         fetchDoctorWorking,
         doctorWorkingList: state.doctorWorkingList,
+
+        fetchDoctorSicklegerReport,
+        doctorSickLedgerList: state.doctorSickLedgerList,
+
+        fetchReceptionAppointmentReport,
+        receptionAppointmentList: state.receptionAppointmentList,
+
+        fetchReceptionTotalLoanReport,
+        receptionTotalLoanList: state.receptionTotalLoanList,
+
+        fetchAdminTotalLoanReport,
+        adminTotalLoanList: state.adminTotalLoanList,
+
+        fetchReceptionExpenseReport,
+        receptionExpenseList: state.receptionExpenseList,
+
+        fetchReceptionGivinLoanReport,
+        receptionGivinLoanList: state.receptionGivinLoanList,
+
+        fetchAdminDoctorLedgerReport,
+        adminDoctorLedgerList: state.adminDoctorLedgerList,
+
+        fetchAdminSickLedgerReport,
+        adminSickLedgerList: state.adminSickLedgerList,
+
+        fetchAdminTotalAppointmentReport,
+        adminTotalAppointmentList: state.adminTotalAppointmentList,
 
         addUser,
         updateUser,

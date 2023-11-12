@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import GlobalContext from "../../contexts/createContext/context";
 
 const ReportInput = ({
@@ -13,14 +13,22 @@ const ReportInput = ({
   doctor_id,
   erordoctorid,
   setExpenseType_id,
+  setSick_id,
+  sick_id,
+  erorsickid,
+  erorAdminId,
+  admin_id,
+  setAdmin_id,
 }) => {
-  const { doctorList, expenseTypeList, surgeryType } =
+  const { doctorList, expenseTypeList, surgeryType, sickList, userList } =
     useContext(GlobalContext);
+
+  const [sick_name, setSick_name] = useState("");
 
   return (
     <div className=" mt-8 ">
       <div className="bg-white rounded-md p-5  ">
-        <form className="grid  md:grid-cols-5 gap-3">
+        <form className="grid  md:grid-cols-4 gap-3">
           {/* doctor input */}
           <div className="w-full">
             <label className="text-gray-600 text-base 2xl:text-lg ">
@@ -40,13 +48,47 @@ const ReportInput = ({
               <option value={0} className={`text-xs text-gray-500`}>
                 Select
               </option>
-              {doctorList.map((doctor) => {
-                return (
-                  <option key={doctor.doctor_id} value={`${doctor.doctor_id}`}>
-                    {doctor.doctor_name}
-                  </option>
-                );
-              })}
+              {doctorList &&
+                doctorList.map((doctor) => {
+                  return (
+                    <option
+                      key={doctor.doctor_id}
+                      value={`${doctor.doctor_id}`}
+                    >
+                      {doctor.doctor_name}
+                    </option>
+                  );
+                })}
+            </select>
+          </div>
+
+          {/* user input */}
+          <div className="w-full">
+            <label className="text-gray-600 text-base 2xl:text-lg ">
+              Admin
+            </label>
+            <select
+              required
+              onChange={(e) => {
+                setAdmin_id(e.target.value);
+              }}
+              className={`${
+                !admin_id && !erorAdminId
+                  ? "bg-white"
+                  : !admin_id && " border-red-400 border-2 bg-red-50"
+              }focus:ring-2 mt-1 focus:outline-none border  pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10`}
+            >
+              <option value={0} className={`text-xs text-gray-500`}>
+                Select
+              </option>
+              {userList &&
+                userList.map((admin) => {
+                  return (
+                    <option key={admin.admin_id} value={`${admin.admin_id}`}>
+                      {admin.admin_name}
+                    </option>
+                  );
+                })}
             </select>
           </div>
 
@@ -104,6 +146,54 @@ const ReportInput = ({
                   );
                 })}
             </select>
+          </div>
+
+          {/* sick name */}
+          <div className="flex flex-col w-full  rounded-md  ">
+            <label className="text-gray-700 ">Ptient name</label>
+            <input
+              type="text"
+              required
+              placeholder="Ptient search"
+              value={sick_name || ""}
+              onChange={(e) => setSick_name(e.target.value)}
+              autoComplete="off"
+              // onFocus={() => set_showError(false)}
+              className={`${
+                !sick_id && !erorsickid
+                  ? "bg-white"
+                  : !sick_id && " border-red-400 border-2 bg-red-50"
+              }focus:ring-2 mt-1 focus:outline-none border  pl-2 p-1 2xl:p-3 w-full  rounded shadow-sm shadow-black/10`}
+            />
+
+            {sickList &&
+              sickList
+                .filter((itme) => {
+                  const search = sick_name.toLowerCase();
+                  const sickName = itme.sick_name.toLowerCase();
+                  return (
+                    search && sickName.startsWith(search) && sickName !== search
+                  );
+                })
+                // limit aka tanha 3 dana law naaway search bo aaki pshani ada
+                .slice(0, 5)
+                .map((itme) => {
+                  return (
+                    <ul
+                      key={itme.sick_id}
+                      className="cursor-pointer bg-white hover:bg-sky-500  hover:text-white"
+                      onClick={() => {
+                        setSick_name(itme.sick_name);
+                        setSick_id(itme.sick_id);
+                        setDoctor_id(itme.doctor_id);
+                      }}
+                    >
+                      <li className="border-r border-l pl-2">
+                        {itme.sick_name}
+                      </li>
+                    </ul>
+                  );
+                })}
           </div>
 
           {/** from input */}

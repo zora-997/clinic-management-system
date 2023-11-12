@@ -71,6 +71,59 @@ const reducer = (state, { type, payload }) => {
         ...state,
         doctorWorkingList: payload,
       };
+    case "GETDOCTORSICKLEDGERREPORT":
+      return {
+        ...state,
+        doctorSickLedgerList: payload,
+      };
+
+    case "GETRECEPTIONAPPOINTMENT":
+      return {
+        ...state,
+        receptionAppointmentList: payload,
+      };
+
+    case "GETRECEPTIONTOTALLOAN":
+      return {
+        ...state,
+        receptionTotalLoanList: payload,
+      };
+
+    case "GETADMINTOTALLOAN":
+      return {
+        ...state,
+        adminTotalLoanList: payload,
+      };
+
+    case "GETRECEPTIONGIVINLOAN":
+      return {
+        ...state,
+        receptionGivinLoanList: payload,
+      };
+
+    case "GETADMINDOCTORLEDGER":
+      return {
+        ...state,
+        adminDoctorLedgerList: payload,
+      };
+
+    case "GETADMINSICKLEDGER":
+      return {
+        ...state,
+        adminSickLedgerList: payload,
+      };
+
+    case "GETADMINTOTALAPPOINTMETN":
+      return {
+        ...state,
+        adminTotalAppointmentList: payload,
+      };
+
+    case "GETRECEPTIONEXPENSE":
+      return {
+        ...state,
+        receptionExpenseList: payload,
+      };
 
     case "GETSURGERY":
       return {
