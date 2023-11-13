@@ -8,6 +8,7 @@ import sx from "../../assets/image/sx.jpg";
 import cost1 from "../../assets/image/cost1.png";
 import remained from "../../assets/image/remained.png";
 import submition from "../../assets/image/submition.png";
+import PatientHistoryModal from "../../components/modal/PatientHistoryModal";
 
 const Loan = () => {
   const { loanList, fetchLoan, sickSurgery, surgeryType, sickList } =
@@ -27,6 +28,11 @@ const Loan = () => {
 
   const [addshow, setAddShow] = useState(false);
   const [recevingShow, setRecevingShow] = useState(false);
+  const [showPatientHistory, setShowPatientHistory] = useState(false);
+  const [workType, setWorkType] = useState();
+  const [price, setPrice] = useState();
+  const [typeMonye, setTypeMonye] = useState();
+  const [note, setNote] = useState();
 
   const recevingLoanHandel = () => {
     console.log("recevingLoanHandel");
@@ -48,14 +54,23 @@ const Loan = () => {
         loanList={loanList}
       />
 
+      <PatientHistoryModal
+        showPatientHistory={showPatientHistory}
+        setShowPatientHistory={setShowPatientHistory}
+        workType={workType}
+        price={price}
+        typeMonye={typeMonye}
+        note={note}
+      />
+
       {/* section right */}
-      <div className="w-full ">
+      <div className="w-full bg-white mb-4 p-5 rounded">
         {sickList &&
           sickList.map((sick, index) => {
             return (
               <div key={index}>
                 {sick.sick_id === sick_id && (
-                  <div className="  mb-4 flex gap-3  rounded ">
+                  <div className=" flex gap-3  rounded ">
                     <div className="bg-white border border-[#51E7B7] hover:bg-[#DBF7ED] w-full h-32 justify-center items-center rounded-md shadow ">
                       <div className=" flex justify-around items-center ">
                         <div className="place-self-end mt-4">
@@ -115,7 +130,7 @@ const Loan = () => {
                         </div>
                         <div>
                           <h3 className="text-gray-500 text-2xl ">
-                            Submition debt
+                            Remained debt
                           </h3>
                           <p className="text-2xl font-semibold">
                             {sick.submition_debt}
@@ -131,12 +146,11 @@ const Loan = () => {
       </div>
 
       <div className="  ">
-        <div className="bg-white p-1 rounded">
+        <div className="bg-white p-3 rounded">
           <h1 className=" text-2xl  border-b border-b-sky-200  w-fit ">
-            History Patient
+            Patient History
           </h1>
-          <ul className="pl-1 text-center grid font-bold grid-cols-4 gap-x-3 my-6 bg-white/75 border-b border-b-sky-200 p-2">
-            <li>Work Type</li>
+          <ul className="pl-1 text-center grid font-bold grid-cols-3 gap-x-3 my-6 bg-white/75 border-b border-b-sky-200 p-2">
             <li>Date</li>
             <li>Type Monye</li>
             <li>Price</li>
@@ -152,15 +166,21 @@ const Loan = () => {
                           return (
                             <>
                               <ul
+                                onClick={() => {
+                                  setShowPatientHistory(true);
+                                  setWorkType(
+                                    sn[sid.indexOf(`${visit.surgery_type_id}`)]
+                                  );
+                                  setPrice(visit.surgery_type_price);
+                                  setTypeMonye(surgery.sick_surgery_type);
+                                  setNote(visit.sick_surgery_invoice_note);
+                                }}
                                 key={index + 1}
-                                className="pl-1 text-center grid grid-cols-4 gap-x-3    "
+                                className="pl-1 text-center grid grid-cols-3 gap-x-3    "
                               >
-                                <li>
-                                  {sn[sid.indexOf(`${visit.surgery_type_id}`)]}
-                                </li>
                                 <li>{surgery.sick_surgery_date}</li>
                                 <li>{surgery.sick_surgery_type}</li>
-                                <li>{visit.surgery_type_price}</li>
+                                <li>{visit.surgery_type_price} </li>
                               </ul>
                             </>
                           );

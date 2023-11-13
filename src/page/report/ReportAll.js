@@ -568,7 +568,7 @@ const ReportAll = ({
       icon: (
         <MdAttachMoney className="w-10 h-10 group-hover:text-green-400 duration-300 text-green-500 " />
       ),
-      name: "Doctor Report",
+      name: "Doctor",
       requier: "(Doctor , From , To)",
       roles: ["admin"],
     },
@@ -579,7 +579,7 @@ const ReportAll = ({
       icon: (
         <SiExpensify className="w-10 h-10 group-hover:text-purple-400 duration-300 text-purple-500 " />
       ),
-      name: "Expense Report",
+      name: "Expense",
       requier: "(Expense Type , From , To)",
       roles: ["admin"],
     },
@@ -590,7 +590,7 @@ const ReportAll = ({
       icon: (
         <HiOutlineAnnotation className="w-10 h-10 group-hover:text-orange-400 duration-300 text-orange-500 " />
       ),
-      name: "Working Report",
+      name: "Working",
       requier: "(Working Type , From , To)",
       roles: ["admin"],
     },
@@ -612,7 +612,7 @@ const ReportAll = ({
       icon: (
         <BsPersonDown className="w-10 h-10  group-hover:text-pink-400 duration-300 text-pink-500 " />
       ),
-      name: "Doctor Givinen Loan",
+      name: "Givinen Loan",
       requier: "(Doctor , From , To)",
       roles: ["doctor"],
     },
@@ -623,7 +623,7 @@ const ReportAll = ({
       icon: (
         <BsPersonVcard className="w-10 h-10  group-hover:text-yellow-400 duration-300 text-yellow-500 " />
       ),
-      name: "Doctor Remain Loan",
+      name: "Remain Loan",
       requier: "(Doctor)",
       roles: ["doctor"],
     },
@@ -634,7 +634,7 @@ const ReportAll = ({
       icon: (
         <IoCodeWorkingOutline className="w-10 h-10  group-hover:text-lime-400 duration-300 text-lime-500 " />
       ),
-      name: "Doctor Working",
+      name: "Working",
       requier: "(Doctor , From , To)",
       roles: ["doctor"],
     },
@@ -645,7 +645,7 @@ const ReportAll = ({
       icon: (
         <RiEmpathizeLine className="w-10 h-10  group-hover:text-red-400 duration-300 text-red-500 " />
       ),
-      name: "Doctor Patient Ledger",
+      name: "Patient Ledger",
       requier: "(Doctor , Patient , From , To)",
       roles: ["doctor"],
     },
@@ -656,7 +656,7 @@ const ReportAll = ({
       icon: (
         <BsMenuApp className="w-10 h-10  group-hover:text-[#D97212] duration-300 text-[#A8570B] " />
       ),
-      name: "Recption Appointment",
+      name: "Appointment",
       requier: "(From , To)",
       roles: ["reception"],
     },
@@ -667,7 +667,7 @@ const ReportAll = ({
       icon: (
         <SiVirustotal className="w-10 h-10  group-hover:text-[#C20F9B] duration-300 text-[#6D0957] " />
       ),
-      name: "Recption Total Loan",
+      name: "Total Loan",
       requier: "(No Parameters)",
       roles: ["reception"],
     },
@@ -678,8 +678,8 @@ const ReportAll = ({
       icon: (
         <BsPersonGear className="w-10 h-10  group-hover:text-[#2D1DED] duration-300 text-[#190DA5] " />
       ),
-      name: "Admin Total Loan",
-      requier: "(Docotr or No parameters)",
+      name: "Total Loan",
+      requier: "(Doctor or No parameters)",
       roles: ["admin"],
     },
     {
@@ -689,7 +689,7 @@ const ReportAll = ({
       icon: (
         <TbReceipt2 className="w-10 h-10  group-hover:text-[#25EFCD] duration-300 text-[#0EAF94] " />
       ),
-      name: "Reception Expense",
+      name: "Expense",
       requier: "(From , To , Admin , Expense)",
       roles: ["reception"],
     },
@@ -700,7 +700,7 @@ const ReportAll = ({
       icon: (
         <MdOutlinePersonPin className="w-10 h-10  group-hover:text-[#B68B8C] duration-300 text-[#926869] " />
       ),
-      name: "Reception Givin Loan",
+      name: "Givin Loan",
       requier: "(From , To , Admin)",
       roles: ["reception"],
     },
@@ -711,7 +711,7 @@ const ReportAll = ({
       icon: (
         <AiOutlineBranches className="w-10 h-10  group-hover:text-[#73B09B] duration-300 text-[#5D9280] " />
       ),
-      name: "Admin Doctor Ledger",
+      name: "Doctor Ledger",
       requier: "(From , To , Doctor)",
       roles: ["admin"],
     },
@@ -722,7 +722,7 @@ const ReportAll = ({
       icon: (
         <TbNurse className="w-10 h-10  group-hover:text-[#E1867F] duration-300 text-[#D35950] " />
       ),
-      name: "Admin Patient Ledger",
+      name: "Patient Ledger",
       requier: "(From , To , Patient)",
       roles: ["admin"],
     },
@@ -733,7 +733,7 @@ const ReportAll = ({
       icon: (
         <MdOutlinePerson className="w-10 h-10  group-hover:text-[#E090C9] duration-300 text-[#CD42A6] " />
       ),
-      name: "Admin Total Appointment",
+      name: "Total Appointment",
       requier: "(From , To , Doctor)",
       roles: ["admin"],
     },

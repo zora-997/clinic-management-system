@@ -96,6 +96,8 @@ const Sick = () => {
                         : history("/loan", {
                             state: {
                               sick_id: sick.sick_id,
+                              // am sick name la page patient detail ba karm henawa bo away nawi naxosha pshan bam
+                              sick_name: sick.sick_name,
                               doctor_id: sick.doctor_id,
                             },
                           });

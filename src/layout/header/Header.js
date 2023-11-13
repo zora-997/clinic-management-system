@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
 import GlobalContext from "../../contexts/createContext/context";
@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 
 const Header = ({ showSildBar, setShowSildBar }) => {
   const location = useLocation();
+  console.log(location.pathname);
   const { query, setQuery } = useContext(GlobalContext);
 
   return (
@@ -32,7 +33,11 @@ const Header = ({ showSildBar, setShowSildBar }) => {
           className={`font-medium text-2xl 2xl:text-4xl hidden lg:block text-gray-600 capitalize`}
         >
           {/* nawi page */}
-          {location.pathname.slice(1)}
+
+          {/* agar la sar loan bu nawi naxosh pshan bat */}
+          {location.pathname == "/loan"
+            ? location.state.sick_name
+            : location.pathname.slice(1)}
         </motion.span>
 
         {/* menu */}

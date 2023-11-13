@@ -56,16 +56,6 @@ const Modal = ({
             className="focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2"
           />
 
-          <label className="mt-2 text-gray-500">Percentage</label>
-          <input
-            type="number"
-            autoComplete="off"
-            onChange={(val) => setDoctor_percentage(val.target.value)}
-            value={doctor_percentage}
-            placeholder="new Percentage"
-            className="focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2"
-          />
-
           <label className="mt-2 text-gray-500">Password</label>
           <input
             type="text"
@@ -73,6 +63,16 @@ const Modal = ({
             onChange={(val) => setDoctor_password(val.target.value)}
             value={doctor_password}
             placeholder="new password"
+            className="focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2"
+          />
+
+          <label className="mt-2 text-gray-500">Percentage</label>
+          <input
+            type="number"
+            autoComplete="off"
+            onChange={(val) => setDoctor_percentage(val.target.value)}
+            value={doctor_percentage}
+            placeholder="new Percentage"
             className="focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2"
           />
 
