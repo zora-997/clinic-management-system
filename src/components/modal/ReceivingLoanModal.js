@@ -9,7 +9,7 @@ const ReceivingLoanModal = ({ show, setShow, loanList }) => {
     >
       <div className="mt-4 w-3/4 overflow-x-auto">
         <div className=" h-[600px] overflow-y-auto bg-white  p-5 rounded-md">
-          <h1 className=" text-2xl border-b-2  mb-2 ">Receiving Loan</h1>
+          <h1 className=" text-2xl border-b-2  mb-2 ">Submition Loan</h1>
           <table className="whitespace-nowrap w-full bg-white overflow-hidden text-sm shadow-sm rounded-sm text-left text-gray-500 ">
             <thead className="shadow-sm w-full text-md text-white border-2 border-cyan-200 uppercase bg-cyan-500 ">
               <tr>

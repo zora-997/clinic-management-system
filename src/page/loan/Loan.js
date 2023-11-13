@@ -89,7 +89,7 @@ const Loan = () => {
                           </div>
                           <div>
                             <h3 className="text-gray-500 text-2xl ">
-                              Remained Loan
+                              Giving Loan
                             </h3>
                             <p className="text-2xl font-semibold">
                               {sick.remained_debt}
@@ -103,7 +103,7 @@ const Loan = () => {
                         setRecevingShow(true);
                         recevingLoanHandel();
                       }}
-                      className="bg-white border border-sky-300 hover:bg-sky-50 w-full h-32 justify-center items-center rounded-md shadow "
+                      className="bg-white border cursor-pointer border-sky-300 hover:bg-sky-50 w-full h-32 justify-center items-center rounded-md shadow "
                     >
                       <div className=" flex justify-around items-center ">
                         <div className="place-self-end mt-4">
