@@ -31,6 +31,7 @@ const Header = ({ showSildBar, setShowSildBar }) => {
           }}
           className={`font-medium text-2xl 2xl:text-4xl hidden lg:block text-gray-600 capitalize`}
         >
+          {/* nawi page */}
           {location.pathname.slice(1)}
         </motion.span>
 
@@ -44,6 +45,7 @@ const Header = ({ showSildBar, setShowSildBar }) => {
 
         {/** search input */}
         {location.pathname !== "/detail" &&
+          location.pathname !== "/sickdetail" &&
           location.pathname !== "/main" &&
           location.pathname !== "/report" &&
           location.pathname !== "/loan" && (
