@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import login from "../../assets/image/login.gif";
 //import { RxLockClosed, RxPerson } from "react-icons/rx";
@@ -9,8 +9,12 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./login.css";
 import { motion } from "framer-motion";
+import GlobalContext from "../../contexts/createContext/context";
 
 const Login = () => {
+  // am fetch sick bo awaia ka login buu dwraba fetch sick bkatawa chun la sick ,
+  // userid u role abe bnery ka nard abe dwbara fetch bkawatawa
+  const { fetchSick } = useContext(GlobalContext);
   const history = useNavigate();
 
   const [admin_name, setUsername] = useState("");
@@ -36,6 +40,7 @@ const Login = () => {
       localStorage.setItem("data", JSON.stringify(res.data));
       const user = localStorage.getItem("data");
       console.log(JSON.parse(user).token);
+      fetchSick();
 
       history("/main", { state: user });
     } else {

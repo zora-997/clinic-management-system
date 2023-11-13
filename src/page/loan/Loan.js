@@ -5,7 +5,9 @@ import GlobalContext from "../../contexts/createContext/context";
 import AddRemainedLoanModal from "../../components/modal/AddRemainedLoanModal";
 import ReceivingLoanModal from "../../components/modal/ReceivingLoanModal";
 import sx from "../../assets/image/sx.jpg";
-import cost from "../../assets/image/cost.png";
+import cost1 from "../../assets/image/cost1.png";
+import remained from "../../assets/image/remained.png";
+import submition from "../../assets/image/submition.png";
 
 const Loan = () => {
   const { loanList, fetchLoan, sickSurgery, surgeryType, sickList } =
@@ -54,14 +56,14 @@ const Loan = () => {
               <div key={index}>
                 {sick.sick_id === sick_id && (
                   <div className="  mb-4 flex gap-3  rounded ">
-                    <div className="bg-white border border-sky-400 hover:bg-sky-50 w-full h-32 justify-center items-center rounded-md shadow ">
+                    <div className="bg-white border border-[#51E7B7] hover:bg-[#DBF7ED] w-full h-32 justify-center items-center rounded-md shadow ">
                       <div className=" flex justify-around items-center ">
                         <div className="place-self-end mt-4">
-                          <img src={cost} alt="cost" className="w-20" />
+                          <img src={cost1} alt="cost" className="w-20" />
                         </div>
                         <div>
                           <h3 className="text-gray-500 text-2xl ">
-                            Total price visit
+                            Total Patient Price
                           </h3>
                           <p className="text-2xl font-semibold">
                             {sick.total_visit_price}
@@ -76,11 +78,24 @@ const Loan = () => {
                       }}
                       className="bg-white border relative w-full flex flex-col h-32 justify-center items-center rounded-md  cursor-pointer "
                     >
-                      <div className="text-center">
-                        <h3 className="text-gray-500  mt-3">Remained Loan</h3>
-                        <p className="text-lg font-semibold">
-                          {sick.remained_debt}
-                        </p>
+                      <div className="bg-white border border-yellow-400 hover:bg-yellow-50 w-full h-32 justify-center items-center rounded-md shadow ">
+                        <div className=" flex justify-around items-center ">
+                          <div className="place-self-end mt-4">
+                            <img
+                              src={remained}
+                              alt="remained"
+                              className="w-20"
+                            />
+                          </div>
+                          <div>
+                            <h3 className="text-gray-500 text-2xl ">
+                              Remained Loan
+                            </h3>
+                            <p className="text-2xl font-semibold">
+                              {sick.remained_debt}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -88,12 +103,25 @@ const Loan = () => {
                         setRecevingShow(true);
                         recevingLoanHandel();
                       }}
-                      className="bg-white  border w-full flex flex-col h-32 justify-center items-center rounded  cursor-pointer "
+                      className="bg-white border border-sky-300 hover:bg-sky-50 w-full h-32 justify-center items-center rounded-md shadow "
                     >
-                      <p className="text-gray-500">Receiving a Loan</p>
-                      <p className="text-lg font-semibold">
-                        {sick.submition_debt}
-                      </p>
+                      <div className=" flex justify-around items-center ">
+                        <div className="place-self-end mt-4">
+                          <img
+                            src={submition}
+                            alt="remained"
+                            className="w-20"
+                          />
+                        </div>
+                        <div>
+                          <h3 className="text-gray-500 text-2xl ">
+                            Submition debt
+                          </h3>
+                          <p className="text-2xl font-semibold">
+                            {sick.submition_debt}
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -103,11 +131,11 @@ const Loan = () => {
       </div>
 
       <div className="  ">
-        <div className=" ">
-          <h1 className=" text-2xl border-b-2  mb-2 w-full ">
+        <div className="bg-white p-1 rounded">
+          <h1 className=" text-2xl  border-b border-b-sky-200  w-fit ">
             History Patient
           </h1>
-          <ul className="pl-1 text-center grid grid-cols-4 gap-x-3 my-4 bg-white/75 border-2 p-2">
+          <ul className="pl-1 text-center grid font-bold grid-cols-4 gap-x-3 my-6 bg-white/75 border-b border-b-sky-200 p-2">
             <li>Work Type</li>
             <li>Date</li>
             <li>Type Monye</li>

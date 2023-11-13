@@ -475,6 +475,7 @@ const ProviderState = ({ children }) => {
         user_id: user_id,
         user_role: user_role,
       });
+      console.log("sick");
       console.log(data);
       dispatch({
         type: "GETSICK",
@@ -688,6 +689,7 @@ const ProviderState = ({ children }) => {
         mainReportList: state.mainReportList,
         fetchReport,
         fetchAdmin,
+        fetchSick,
 
         appointmentList: state.appointmentList,
         appointmentListDashbord: state.appointmentListDashbord,
