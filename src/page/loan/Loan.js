@@ -160,7 +160,7 @@ const Loan = () => {
               return (
                 <div key={index}>
                   {surgery.sick_id === sick_id ? (
-                    <div className="  rounded bg-white p-2 mb-3 shadow">
+                    <div className="  rounded bg-white p-2 mb-3 shadow cursor-pointer">
                       {surgery.sick_visit &&
                         surgery.sick_visit.map((visit, index) => {
                           return (
