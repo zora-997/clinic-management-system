@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import ButtonAdd from "../../components/ui/button/ButtonAdd";
 import { useLocation } from "react-router-dom";
 import GlobalContext from "../../contexts/createContext/context";
@@ -11,8 +11,13 @@ import submition from "../../assets/image/submition.png";
 import PatientHistoryModal from "../../components/modal/PatientHistoryModal";
 
 const Loan = () => {
-  const { loanList, fetchLoan, sickSurgery, surgeryType, sickList } =
+  const { loanList, fetchLoan, sickSurgery, surgeryType, sickList, fetchSick } =
     useContext(GlobalContext);
+
+  //bo awaia ka aw se box saro dakani daim update bet
+  useEffect(() => {
+    fetchSick();
+  }, []);
 
   // bo war grtnaway admin_id
   const getIdAdmin = localStorage.getItem("data");

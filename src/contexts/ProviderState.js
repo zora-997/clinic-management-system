@@ -131,6 +131,7 @@ const ProviderState = ({ children }) => {
     const { data } = await api.post("loan_to_cash/read.php", ReceivingLoan);
     console.log("loan");
     console.log(data);
+    fetchSick();
     dispatch({
       type: "GETLOAN",
       payload: data.data,

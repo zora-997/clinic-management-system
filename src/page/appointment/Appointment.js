@@ -38,6 +38,11 @@ const Appointment = () => {
 
   // ama date bo bashi appoimenta
   const toDate = new Date().toISOString().slice(0, 10);
+  console.log(toDate);
+  // const year = new Date().getFullYear();
+  // const month = new Date().getMonth() + 1;
+  // const dd = new Date().getDate();
+  // let toDate = year + "-" + month + "-" + dd;
 
   const [ddate, setDate] = useState(toDate);
 
@@ -49,7 +54,7 @@ const Appointment = () => {
     const interval = setInterval(() => {
       console.log("interval");
       getAdmin();
-    }, 10000);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [ddate]);

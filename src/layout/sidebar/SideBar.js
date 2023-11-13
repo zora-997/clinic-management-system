@@ -80,15 +80,15 @@ const SideBar = ({ showSildBar, setShowSildBar }) => {
     {
       id: 4,
       style: `${
-        location.pathname === "/sickdetail" && "bg-[#0171FE] text-white"
+        location.pathname === "/patientdetail" && "bg-[#0171FE] text-white"
       } group cursor-pointer  items-center hover:text-white hover:bg-[#0171FE] duration-100 p-2.5 rounded-lg `,
-      to: "/sickdetail",
+      to: "/patientdetail",
       icon: <TbListDetails size={22} className="2xl:scale-125" />,
       link: "Ptient Detail",
       mdarrowright: (
         <MdArrowRight
           className={` ${
-            location.pathname === "/sickdetail" && "text-white"
+            location.pathname === "/patientdetail" && "text-white"
           } text-white  group-hover:text-white rounded-xl`}
           size={20}
         />
