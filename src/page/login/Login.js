@@ -110,20 +110,17 @@ const Login = () => {
                   Login
                 </p>
 
-                <div className="flex  pt-5 gap-5">
-                  <div className="flex gap-1">
-                    <input type="checkbox" onChange={() => setRole("doctor")} />
-                    <label htmlFor="doctor" className="text-gray-600">
-                      Doctor
-                    </label>
-                  </div>
-                  <div className="flex gap-1 text-gray-600">
-                    <input
-                      type="checkbox"
-                      onChange={() => setRole("managment")}
-                    />
-                    <label htmlFor="managment">Managment</label>
-                  </div>
+                <div className="w-1/3 mt-3">
+                  <label className="text-gray-500 2xl:text-2xl">Rloe</label>
+                  <select
+                    required
+                    onChange={(e) => setRole(e.target.value)}
+                    className="2xl:placeholder:text-2xl 2xl:text-2xl w-full focus:ring-1 focus:outline-none rounded border    2xl:mb-0 p-1.5 2xl:p-4 "
+                  >
+                    <option></option>
+                    <option value="managment">managment</option>
+                    <option value="doctor">Doctor</option>
+                  </select>
                 </div>
 
                 <motion.div

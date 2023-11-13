@@ -2,16 +2,7 @@ import React from "react";
 import TableBody from "./TableBody";
 import TableHead from "./TableHead";
 
-const Table = ({
-  thead,
-  data,
-  search,
-  tbody,
-  setState,
-  change,
-  setShow,
-  doctor_password,
-}) => {
+const Table = ({ thead, data, search, tbody, setState, change, setShow }) => {
   return (
     <table className="whitespace-nowrap w-full bg-white overflow-hidden text-sm 2xl:text-lg shadow-sm rounded-sm text-left text-gray-500 ">
       <TableHead thead={thead} />

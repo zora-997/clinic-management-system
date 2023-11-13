@@ -446,6 +446,7 @@ const ProviderState = ({ children }) => {
   const fetchUser = async () => {
     setLoader(true);
     const res = await api.get("admin/read.php");
+    console.log(res.status);
     if (res.status === 200) {
       setLoader(false);
       dispatch({
@@ -518,7 +519,8 @@ const ProviderState = ({ children }) => {
   // delete user
   const deleteUser = async (admin_id) => {
     console.log(admin_id);
-    await api.post("admin/delete.php", { admin_id: admin_id });
+    const res = await api.post("admin/delete.php", { admin_id: admin_id });
+    console.log(res.data);
     dispatch({
       type: DELETE_USER,
       payload: admin_id,

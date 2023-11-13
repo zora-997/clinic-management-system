@@ -51,7 +51,7 @@ const reducer = (state, { type, payload }) => {
     case "GETUSER":
       return {
         ...state,
-        userList: payload,
+        userList: payload.filter((active) => active.admin_state !== "deactive"),
       };
 
     case "GETDOCTORGIVIENLOAN":
