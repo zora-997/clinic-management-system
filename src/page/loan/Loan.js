@@ -11,12 +11,20 @@ import submition from "../../assets/image/submition.png";
 import PatientHistoryModal from "../../components/modal/PatientHistoryModal";
 
 const Loan = () => {
-  const { loanList, fetchLoan, sickSurgery, surgeryType, sickList, fetchSick } =
-    useContext(GlobalContext);
+  const {
+    loanList,
+    fetchLoan,
+    sickSurgery,
+    surgeryType,
+    sickList,
+    fetchSick,
+    fetchSickSurgery,
+  } = useContext(GlobalContext);
 
   //bo awaia ka aw se box saro dakani daim update bet
   useEffect(() => {
     fetchSick();
+    fetchSickSurgery();
   }, []);
 
   // bo war grtnaway admin_id
@@ -86,7 +94,9 @@ const Loan = () => {
                             Total Patient Price
                           </h3>
                           <p className="text-2xl font-semibold">
-                            {sick.total_visit_price}
+                            {!sick.total_visit_price
+                              ? 0
+                              : sick.total_visit_price}
                           </p>
                         </div>
                       </div>

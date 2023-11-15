@@ -693,6 +693,7 @@ const ProviderState = ({ children }) => {
         fetchReport,
         fetchAdmin,
         fetchSick,
+        fetchSickSurgery,
 
         appointmentList: state.appointmentList,
         appointmentListDashbord: state.appointmentListDashbord,
