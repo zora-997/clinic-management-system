@@ -25,12 +25,15 @@ const ReportInput = ({
 
   const [sick_name, setSick_name] = useState("");
 
+  const user = localStorage.getItem("data");
+  let role = user && JSON.parse(user).role;
+
   return (
     <div className=" mt-8 ">
       <div className="bg-white rounded-md p-5  ">
         <form className="grid  md:grid-cols-4 gap-3">
           {/* doctor input */}
-          <div className="w-full">
+          <div className={`${role === "reception" ? "hidden" : "w-full"}`}>
             <label className="text-gray-600 text-base 2xl:text-lg ">
               Doctor
             </label>
@@ -63,7 +66,11 @@ const ReportInput = ({
           </div>
 
           {/* user input */}
-          <div className="w-full">
+          <div
+            className={`${
+              role === "admin" || role === "doctor" ? "hidden" : "w-full"
+            }`}
+          >
             <label className="text-gray-600 text-base 2xl:text-lg ">
               Admin
             </label>
@@ -93,7 +100,7 @@ const ReportInput = ({
           </div>
 
           {/* ExpenseType input */}
-          <div className="w-full">
+          <div className={`${role === "doctor" ? "hidden" : "w-full"}`}>
             <label className="text-gray-600 text-base 2xl:text-lg">
               Expense Type
             </label>
@@ -120,7 +127,11 @@ const ReportInput = ({
           </div>
 
           {/* Working type input */}
-          <div className="w-full">
+          <div
+            className={`${
+              role === "reception" || role === "doctor" ? "hidden" : "w-full"
+            }`}
+          >
             <label className="text-gray-600 text-base 2xl:text-lg">
               Working Type
             </label>
@@ -149,7 +160,13 @@ const ReportInput = ({
           </div>
 
           {/* sick name */}
-          <div className="flex flex-col w-full  rounded-md  ">
+          <div
+            className={`${
+              role === "reception"
+                ? "hidden"
+                : "flex flex-col w-full  rounded-md"
+            }`}
+          >
             <label className="text-gray-700 ">Ptient name</label>
             <input
               type="text"

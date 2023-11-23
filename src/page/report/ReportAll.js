@@ -98,7 +98,6 @@ const ReportAll = ({
     adminTotalAppointmentList,
   } = useContext(GlobalContext);
 
-  const location = useLocation();
   const user = localStorage.getItem("data");
   let role = user && JSON.parse(user).role;
 
@@ -690,7 +689,7 @@ const ReportAll = ({
         <TbReceipt2 className="w-10 h-10  group-hover:text-[#25EFCD] duration-300 text-[#0EAF94] " />
       ),
       name: "Expense",
-      requier: "(From , To , Admin , Expense)",
+      requier: "(From , To , Admin , Expense Type)",
       roles: ["reception"],
     },
     {
