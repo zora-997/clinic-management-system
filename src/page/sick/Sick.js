@@ -80,9 +80,11 @@ const Sick = () => {
                 <th scope="col" className="px-6 py-3">
                   date
                 </th>
-                <th scope="col" className="pr-2 py-3">
-                  Action
-                </th>
+                {role !== "doctor" && (
+                  <th scope="col" className="pr-2 py-3">
+                    Action
+                  </th>
+                )}
               </tr>
             </thead>
             <tbody>
@@ -115,23 +117,25 @@ const Sick = () => {
                       {dn[did.indexOf(`${sick.doctor_id}`)]}
                     </td>
                     <td className="px-6 py-4">{sick.sick_date}</td>
-                    <td
-                      onClick={() => {
-                        setShow(true);
-                        setSick_name(sick.sick_name);
-                        setSick_phone(sick.sick_phone);
-                        setSick_age(sick.sick_age);
-                        setSick_gender(sick.sick_gender);
-                        setSick_id(sick.sick_id);
-                        setDoctor_id(sick.doctor_id);
-                        setDoctor_name(dn[did.indexOf(`${sick.doctor_id}`)]);
-                      }}
-                      className=" py-4 "
-                    >
-                      <span className="hover:border-b hover:border-cyan-400 w-fit">
-                        Edit
-                      </span>
-                    </td>
+                    {role !== "doctor" && (
+                      <td
+                        onClick={() => {
+                          setShow(true);
+                          setSick_name(sick.sick_name);
+                          setSick_phone(sick.sick_phone);
+                          setSick_age(sick.sick_age);
+                          setSick_gender(sick.sick_gender);
+                          setSick_id(sick.sick_id);
+                          setDoctor_id(sick.doctor_id);
+                          setDoctor_name(dn[did.indexOf(`${sick.doctor_id}`)]);
+                        }}
+                        className=" py-4 "
+                      >
+                        <span className="hover:border-b hover:border-cyan-400 w-fit">
+                          Edit
+                        </span>
+                      </td>
+                    )}
                   </tr>
                 );
               })}
