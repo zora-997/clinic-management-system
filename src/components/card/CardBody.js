@@ -12,6 +12,8 @@ const CardBody = () => {
   const { doctorList, sickList, sickSurgery, appointmentList } =
     useContext(GlobalContext);
 
+  console.log(appointmentList.length);
+
   return (
     <div className=" mx-2 xl:flex  xl:justify-between grid  sm:grid-cols-2 gap-3 xl:gap-5   ">
       <motion.div

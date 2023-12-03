@@ -111,7 +111,7 @@ const Login = () => {
                 </p>
 
                 <div className="w-1/3 mt-3">
-                  <label className="text-gray-500 2xl:text-2xl">Rloe</label>
+                  <label className="text-gray-500 2xl:text-2xl">Role</label>
                   <select
                     required
                     onChange={(e) => setRole(e.target.value)}
