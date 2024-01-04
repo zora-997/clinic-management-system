@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import GlobalContext from "../../contexts/createContext/context";
 import ButtonUpdate from "../ui/button/ButtonUpdate";
 import ButtonDelete from "../ui/button/ButtonDelete";
+import { useState } from "react";
 
 const Modal = ({
   isVisible,
@@ -15,8 +16,7 @@ const Modal = ({
   doctor_id,
 }) => {
   const { updateDoctor, deleteDoctor } = useContext(GlobalContext);
-  console.log("doctor_password");
-  console.log(doctor_password);
+
   // update doctor.
   const updateDoctorHandler = (e) => {
     e.preventDefault();
@@ -32,6 +32,13 @@ const Modal = ({
   const deletee = (e) => {
     e.preventDefault();
     deleteDoctor(doctor_id);
+  };
+
+  // handelDoctorPersentage doctor bo away zhmaray salb u gawratr la 100 daxl naka
+  const handelDoctorPersentage = (persentage) => {
+    if (persentage >= 0 && persentage <= 100) {
+      setDoctor_percentage(persentage);
+    }
   };
 
   if (!isVisible) return null;
@@ -70,9 +77,11 @@ const Modal = ({
           <input
             type="number"
             autoComplete="off"
-            onChange={(val) => setDoctor_percentage(val.target.value)}
+            onChange={(val) => handelDoctorPersentage(val.target.value)}
             value={doctor_percentage}
-            placeholder="new Percentage"
+            placeholder="%"
+            min="0"
+            max="100"
             className="focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2"
           />
 

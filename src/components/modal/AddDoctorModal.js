@@ -60,8 +60,10 @@ const AddModal = ({
                 type="number"
                 name="doctor_percentage"
                 autoComplete="off"
-                placeholder="0.00"
+                placeholder="%"
                 required
+                min="0"
+                max="100"
                 className="block 2xl:placeholder:text-2xl 2xl:text-2xl w-full focus:ring-1 focus:outline-none rounded border  mt-2 mb-3 2xl:mb-0 p-2 2xl:p-4"
                 onChange={(val) => setDoctor_percentage(val.target.value)}
               />
