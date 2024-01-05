@@ -27,6 +27,12 @@ const SurgeryModal = ({
     deleteSurgery(surgery_type_id);
   };
 
+  const handelSurgeryPrice = (price) => {
+    if (price >= 0) {
+      setSurgey_price(price);
+    }
+  };
+
   if (!isVisible) return null;
   return (
     <Modal>
@@ -39,20 +45,20 @@ const SurgeryModal = ({
           X{" "}
         </button>
         <div className=" bg-white rounded-md p-5 grid">
-          <label className="text-gray-500">Name</label>
+          <label className="text-gray-500">Working Type</label>
           <input
             type="text"
             autoComplete="off"
             onChange={(val) => setSurgey_name(val.target.value)}
             value={surgery_type_name}
-            placeholder="Working Type"
+            placeholder="Name"
             className="focus:ring-1 mt-1 focus:outline-none rounded border mb-3  p-2"
           />
           <label className="text-gray-500">Price</label>
           <input
             type="number"
             autoComplete="off"
-            onChange={(val) => setSurgey_price(val.target.value)}
+            onChange={(val) => handelSurgeryPrice(val.target.value)}
             value={surgery_type_price}
             placeholder="0.00"
             className="focus:ring-1 mt-1 focus:outline-none rounded border mb-3  p-2"

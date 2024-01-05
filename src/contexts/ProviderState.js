@@ -84,7 +84,8 @@ const ProviderState = ({ children }) => {
     return data.filter((item) =>
       query.toLowerCase() === ""
         ? item
-        : item.sick_phone.toLowerCase().includes(query)
+        : item.sick_phone.toLowerCase().includes(query) ||
+          item.sick_name.toLowerCase().includes(query)
     );
   };
 

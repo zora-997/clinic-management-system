@@ -26,7 +26,8 @@ const TableBody = ({ data, search, tbody, setState, change, setShow }) => {
                 <td key={index} className="px-6 py-4">
                   {parseFloat(data[body]) &&
                   body.slice(body.length - 2) !== "te" &&
-                  body.slice(body.length - 2) !== "rd"
+                  body.slice(body.length - 2) !== "rd" &&
+                  body.slice(body.length - 7) !== "pe_name"
                     ? parseFloat(data[body]).toLocaleString()
                     : data[body]}
                 </td>

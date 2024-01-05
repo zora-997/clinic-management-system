@@ -52,15 +52,16 @@ const AddRemainedLoanModal = ({ isAddVisible, onClose }) => {
             loanHandler(e);
             onClose(false);
           }}
-          className=" bg-white rounded-md  grid p-5"
+          className=" bg-white rounded-md  grid p-3"
         >
-          <div className=" bg-white rounded-md p-5 grid ">
+          <div className=" bg-white rounded-md p-3 grid ">
             <div className="flex">
               <div className="w-full ">
                 <label className="text-black  2xl:text-xl">Loan Amount</label>
                 <input
                   type="number"
                   required
+                  min="1"
                   onChange={(e) => setLoan(e.target.value)}
                   // value={from}
                   placeholder="0.00"

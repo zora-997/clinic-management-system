@@ -74,6 +74,7 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
                 placeholder="age"
                 autoComplete="off"
                 required
+                min="1"
                 className="w-full focus:ring-1 focus:outline-none rounded border mb-3 mt-2 p-2 "
                 onChange={(e) => setSick_age(e.target.value)}
               />
@@ -138,6 +139,7 @@ export const AddSickModal = ({ isAddVisible, onClose }) => {
                 name="sick_init_loan"
                 placeholder="loan"
                 autoComplete="off"
+                min="0"
                 className="w-full focus:ring-1 focus:outline-none rounded border   p-2 "
                 onChange={(e) => setSick_init_loan(e.target.value)}
               />

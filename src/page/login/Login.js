@@ -160,7 +160,7 @@ const Login = () => {
                   placeholder="username"
                   className={`${admin_name && "border-b border-b-sky-400"}
                                      w-full placeholder-slate-400 pl-12 placeholder:text-sm md:placeholder:text-md lg:placeholder:text-lg py-0.5 md:py-1 lg:py-1.5 px-1 
-                                  focus:ring-0  focus:border-sky-400 focus:outline-none focus:placeholder:text-gray-300  border-b  border-b-gray-300   `}
+                                  focus:ring-0   focus:border-sky-400 focus:outline-none focus:placeholder:text-gray-300  border-b  border-b-gray-300   `}
                 />
                 <TiUser
                   size={25}
