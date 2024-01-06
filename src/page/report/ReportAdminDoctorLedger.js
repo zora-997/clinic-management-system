@@ -20,28 +20,36 @@ const ReportAdminDoctorLedger = ({
                 Initial Loan
               </th>
               {/* btawe fariza darkawe => parseFloat(adminDoctorLedgerList.total_income).toLocaleString() */}
-              <td className="px-6 py-4">{adminDoctorLedgerList.init_loan}</td>
+              <td className="px-6 py-4">
+                {parseFloat(adminDoctorLedgerList.init_loan).toLocaleString()}
+              </td>
             </tr>
             <tr className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
               <th scope="col" className="bg-cyan-500 text-white px-6 py-3">
                 Total Work
               </th>
               {/* btawe fariza darkawe => parseFloat(adminDoctorLedgerList.total_income).toLocaleString() */}
-              <td className="px-6 py-4">{adminDoctorLedgerList.total_work}</td>
+              <td className="px-6 py-4">
+                {parseFloat(adminDoctorLedgerList.total_work).toLocaleString()}
+              </td>
             </tr>
             <tr className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
               <th scope="col" className="bg-cyan-500 text-white px-6 py-3">
                 Total Loan
               </th>
               {/* btawe fariza darkawe => parseFloat(adminDoctorLedgerList.total_expense).toLocaleString() */}
-              <td className="px-6 py-4">{adminDoctorLedgerList.total_loan}</td>
+              <td className="px-6 py-4">
+                {parseFloat(adminDoctorLedgerList.total_loan).toLocaleString()}
+              </td>
             </tr>
             <tr className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
               <th scope="col" className="bg-cyan-500 text-white px-6 py-3">
                 Total Cash
               </th>
               {/* btawe fariza darkawe => parseFloat(adminDoctorLedgerList.summary).toLocaleString() */}
-              <td className="px-6 py-4">{adminDoctorLedgerList.total_cash}</td>
+              <td className="px-6 py-4">
+                {parseFloat(adminDoctorLedgerList.total_cash).toLocaleString()}
+              </td>
               {/* parseFloat(data[body]) && body.slice(body.length - 2) !== "te" ? parseFloat(data[body]).toLocaleString() : data[body] */}
             </tr>
             <tr className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
@@ -50,7 +58,9 @@ const ReportAdminDoctorLedger = ({
               </th>
               {/* btawe fariza darkawe => parseFloat(adminDoctorLedgerList.summary).toLocaleString() */}
               <td className="px-6 py-4">
-                {adminDoctorLedgerList.total_givin_loan}
+                {parseFloat(
+                  adminDoctorLedgerList.total_givin_loan
+                ).toLocaleString()}
               </td>
               {/* parseFloat(data[body]) && body.slice(body.length - 2) !== "te" ? parseFloat(data[body]).toLocaleString() : data[body] */}
             </tr>

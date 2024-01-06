@@ -38,7 +38,9 @@ const ReportReceptionExpense = ({ receptionExpense, receptionExpenseList }) => {
                   >
                     <td className="px-5 py-4">{expense.admin_name}</td>
                     <td className="px-6 py-4">{expense.expense_type_name}</td>
-                    <td className="px-5 py-4">{expense.expense_amount}</td>
+                    <td className="px-5 py-4">
+                      {parseFloat(expense.expense_amount).toLocaleString()}
+                    </td>
                     <td className="px-6 py-4">{expense.expense_date}</td>
                     <td className="px-6 py-4">{expense.expense_note}</td>
                   </tr>
@@ -53,7 +55,9 @@ const ReportReceptionExpense = ({ receptionExpense, receptionExpenseList }) => {
               <td></td>
               <td></td>
               <th className="px-6 py-6 text-lg ">
-                {receptionExpenseList.total_expense_amount}
+                {parseFloat(
+                  receptionExpenseList.total_expense_amount
+                ).toLocaleString()}
               </th>
             </tr>
           </tbody>

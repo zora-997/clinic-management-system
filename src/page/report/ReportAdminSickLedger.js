@@ -16,21 +16,27 @@ const ReportAdminSickLedger = ({ adminSickLedger, adminSickLedgerList }) => {
                 Total Work
               </th>
               {/* btawe fariza darkawe => parseFloat(adminSickLedgerList.total_income).toLocaleString() */}
-              <td className="px-6 py-4">{adminSickLedgerList.total_work}</td>
+              <td className="px-6 py-4">
+                {parseFloat(adminSickLedgerList.total_work).toLocaleString()}
+              </td>
             </tr>
             <tr className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
               <th scope="col" className="bg-cyan-500 text-white px-6 py-3">
                 Total Loan
               </th>
               {/* btawe fariza darkawe => parseFloat(adminSickLedgerList.total_expense).toLocaleString() */}
-              <td className="px-6 py-4">{adminSickLedgerList.total_loan}</td>
+              <td className="px-6 py-4">
+                {parseFloat(adminSickLedgerList.total_loan).toLocaleString()}
+              </td>
             </tr>
             <tr className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
               <th scope="col" className="bg-cyan-500 text-white px-6 py-3">
                 Total Cash
               </th>
               {/* btawe fariza darkawe => parseFloat(adminSickLedgerList.summary).toLocaleString() */}
-              <td className="px-6 py-4">{adminSickLedgerList.total_cash}</td>
+              <td className="px-6 py-4">
+                {parseFloat(adminSickLedgerList.total_cash).toLocaleString()}
+              </td>
               {/* parseFloat(data[body]) && body.slice(body.length - 2) !== "te" ? parseFloat(data[body]).toLocaleString() : data[body] */}
             </tr>
             <tr className="border cursor-pointer select-none hover:bg-sky-100 border-cyan-200  duration-300  ">
@@ -39,7 +45,9 @@ const ReportAdminSickLedger = ({ adminSickLedger, adminSickLedgerList }) => {
               </th>
               {/* btawe fariza darkawe => parseFloat(adminSickLedgerList.summary).toLocaleString() */}
               <td className="px-6 py-4">
-                {adminSickLedgerList.total_givin_loan}
+                {parseFloat(
+                  adminSickLedgerList.total_givin_loan
+                ).toLocaleString()}
               </td>
               {/* parseFloat(data[body]) && body.slice(body.length - 2) !== "te" ? parseFloat(data[body]).toLocaleString() : data[body] */}
             </tr>

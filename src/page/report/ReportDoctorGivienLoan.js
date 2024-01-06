@@ -50,7 +50,9 @@ const ReportDoctorGivienLoan = ({ givenLoan, doctorGivienLoanList }) => {
                     <td className="px-5 py-4">
                       {un[uid.indexOf(loan.admin_id)]}
                     </td>
-                    <td className="px-6 py-4">{loan.loan_to_cash_amount}</td>
+                    <td className="px-6 py-4">
+                      {parseFloat(loan.loan_to_cash_amount).toLocaleString()}
+                    </td>
                     <td className="px-5 py-4">
                       {sn[sid.indexOf(loan.sick_id)]}
                     </td>

@@ -234,9 +234,8 @@ const ReportAll = ({
   // admin total appointment report
   const handelAdminTotalAppointment = (e) => {
     e.preventDefault();
-    console.log("pesh");
+
     if (from && to) {
-      console.log("pash");
       fetchAdminTotalAppointmentReport({ from, to, doctor_id });
       setAdminTotalAppointment(true);
       setShowDoctor(false);

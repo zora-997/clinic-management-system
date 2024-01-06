@@ -17,7 +17,7 @@ const ReportDoctorSickLedger = ({ doctorSickLedger, doctorSickLedgerList }) => {
               </th>
               {/* btawe fariza darkawe => parseFloat(mainReportList.total_income).toLocaleString() */}
               <td className="px-6 py-4 font-semibold ">
-                {doctorSickLedgerList.init_loan}
+                {parseFloat(doctorSickLedgerList.init_loan).toLocaleString()}
               </td>
             </tr>
           </tbody>

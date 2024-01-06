@@ -44,7 +44,9 @@ const ReportReceptionGivinLoan = ({
                         {receptionGivinLoan.sick_name}
                       </td>
                       <td className="px-6 py-4">
-                        {receptionGivinLoan.loan_to_cash_amount}
+                        {parseFloat(
+                          receptionGivinLoan.loan_to_cash_amount
+                        ).toLocaleString()}
                       </td>
                       <td className="px-5 py-4">
                         {receptionGivinLoan.loan_to_cash_date}
