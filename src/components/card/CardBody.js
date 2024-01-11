@@ -9,10 +9,10 @@ import GlobalContext from "../../contexts/createContext/context";
 import { motion } from "framer-motion";
 
 const CardBody = () => {
-  const { doctorList, sickList, sickSurgery, appointmentList } =
+  const { doctorList, sickList, sickSurgery, appointmentListDashbord } =
     useContext(GlobalContext);
 
-  console.log(appointmentList.length);
+  console.log(appointmentListDashbord);
 
   return (
     <div className=" mx-2 xl:flex  xl:justify-between grid  sm:grid-cols-2 gap-3 xl:gap-5   ">
@@ -181,7 +181,7 @@ const CardBody = () => {
             style={{ color: "#F8F6FF" }}
             className="text-xl pb-3 relative 2xl:text-3xl"
           >
-            {appointmentList.length}
+            {appointmentListDashbord.length}
           </span>
         </div>
 

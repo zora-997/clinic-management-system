@@ -11,6 +11,7 @@ import {
   DELETE_APPOINTMENT,
   DELETE_USER,
 } from "./actions/action";
+import { data } from "autoprefixer";
 
 const ProviderState = ({ children }) => {
   const initialState = {
@@ -610,6 +611,7 @@ const ProviderState = ({ children }) => {
     fetchSickSurgery();
     fetchSick();
     fetchAppointment(ddate);
+    fetchDashbordAppointment(data);
   };
 
   const deleteSurgeryImage = async (sick_surgery_invoice_image_id) => {

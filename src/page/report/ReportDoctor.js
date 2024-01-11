@@ -60,7 +60,9 @@ const ReportDoctor = ({ showDoctor, doctorlegerList }) => {
               <td></td>
               <td></td>
               <td></td>
-              <th className="px-6 py-4 ">{doctorlegerList.price}</th>
+              <th className="px-6 py-4 ">
+                {parseFloat(doctorlegerList.price).toLocaleString()}
+              </th>
             </tr>
           </tbody>
         </table>

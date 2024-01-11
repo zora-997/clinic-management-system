@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import GlobalContext from "../../contexts/createContext/context";
 import AppointmentModal from "../../components/modal/AppointmentModal";
 import CreateAppointment from "./CreateAppointment";
-import timer from "../../assets/image/time-left.png";
 import x from "../../assets/image/cancel.png";
 import surgery from "../../assets/image/scalpel (1).png";
 import loan from "../../assets/image/loan.png";
@@ -10,7 +9,6 @@ import cash from "../../assets/image/cash.png";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./toast.css";
-import { json } from "d3";
 
 const Appointment = () => {
   const {
@@ -22,9 +20,9 @@ const Appointment = () => {
   } = useContext(GlobalContext);
 
   // sort la gawra bo bchuk wa ba pechawa nawa la bchuk bo gawra, bo away yak la dway yak bn appoimentakan
-  let appointment = appointmentList.sort(
-    (a, b) => a.appointment_id - b.appointment_id
-  );
+  let appointment =
+    appointmentList &&
+    appointmentList.sort((a, b) => a.appointment_id - b.appointment_id);
 
   const [show, setShow] = useState(false);
   const [appointment_id, setAppointmentId] = useState(0);
@@ -38,7 +36,6 @@ const Appointment = () => {
 
   // ama date bo bashi appoimenta
   const toDate = new Date().toISOString().slice(0, 10);
-  console.log(toDate);
   // const year = new Date().getFullYear();
   // const month = new Date().getMonth() + 1;
   // const dd = new Date().getDate();
@@ -320,7 +317,7 @@ const Appointment = () => {
             </table>
           </div>
 
-          {!appointmentList.length ? (
+          {appointmentList && !appointmentList.length ? (
             <div className="py-1 w-full bg-yellow-100/50  text-yellow-500 flex justify-center">
               <span className="  p-1 rounded">No Appointment</span>
             </div>

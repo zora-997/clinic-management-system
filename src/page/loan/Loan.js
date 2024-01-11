@@ -1,10 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import ButtonAdd from "../../components/ui/button/ButtonAdd";
 import { useLocation } from "react-router-dom";
 import GlobalContext from "../../contexts/createContext/context";
 import AddRemainedLoanModal from "../../components/modal/AddRemainedLoanModal";
 import ReceivingLoanModal from "../../components/modal/ReceivingLoanModal";
-import sx from "../../assets/image/sx.jpg";
 import cost1 from "../../assets/image/cost1.png";
 import remained from "../../assets/image/remained.png";
 import submition from "../../assets/image/submition.png";
@@ -94,9 +92,11 @@ const Loan = () => {
                             Total Patient Price
                           </h3>
                           <p className="text-2xl font-semibold">
-                            {!sick.total_visit_price
-                              ? 0
-                              : sick.total_visit_price}
+                            {sick.total_visit_price
+                              ? parseFloat(
+                                  sick.total_visit_price
+                                ).toLocaleString()
+                              : 0}
                           </p>
                         </div>
                       </div>
@@ -104,7 +104,6 @@ const Loan = () => {
                     <div
                       onClick={() => {
                         setAddShow(true);
-                        console.log("press");
                       }}
                       className="bg-white border relative w-full flex flex-col h-32 justify-center items-center rounded-md  cursor-pointer "
                     >
@@ -122,7 +121,7 @@ const Loan = () => {
                               Giving Loan
                             </h3>
                             <p className="text-2xl font-semibold">
-                              {sick.remained_debt}
+                              {parseFloat(sick.remained_debt).toLocaleString()}
                             </p>
                           </div>
                         </div>
@@ -148,7 +147,7 @@ const Loan = () => {
                             Remained debt
                           </h3>
                           <p className="text-2xl font-semibold">
-                            {sick.submition_debt}
+                            {parseFloat(sick.submition_debt).toLocaleString()}
                           </p>
                         </div>
                       </div>
@@ -181,6 +180,7 @@ const Loan = () => {
                           return (
                             <>
                               <ul
+                                key={index + 1}
                                 onClick={() => {
                                   setShowPatientHistory(true);
                                   setWorkType(
@@ -190,12 +190,15 @@ const Loan = () => {
                                   setTypeMonye(surgery.sick_surgery_type);
                                   setNote(visit.sick_surgery_invoice_note);
                                 }}
-                                key={index + 1}
                                 className="pl-1 text-center grid grid-cols-3 gap-x-3    "
                               >
                                 <li>{surgery.sick_surgery_date}</li>
                                 <li>{surgery.sick_surgery_type}</li>
-                                <li>{visit.surgery_type_price} </li>
+                                <li>
+                                  {parseFloat(
+                                    visit.surgery_type_price
+                                  ).toLocaleString()}{" "}
+                                </li>
                               </ul>
                             </>
                           );
